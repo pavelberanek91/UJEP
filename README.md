@@ -1,4 +1,6 @@
-# UJEP
+# Katedra informatiky PřF UJEP
+
+<img src="https://prf.ujep.cz/wp-content/uploads/2018/08/PřF-UJEP-logo.png" alt="logo přf ujep">
 
 ## 1. Přivítání
 
@@ -13,8 +15,8 @@ Zde se nachází seznam vyučovaných kurzů v tomto akademickém roce. Po klikn
 * DEP/DIS - Depentabilita informačních systémů
 * IKT - Informační a komunikační technologie
 * NSQL - NoSQL Databáze
-* PIN - Programování pro internet
 * OONV - Objektově orientované návrhové vzory
+* PIN - Programování pro internet
 
 ### Letní semestr
 
@@ -60,5 +62,5 @@ Ve volném čase trénuji BJJ (brazilské jiu-jiutsu) a MMA (mixed martial arts)
 
 * Email: pavelberanek91@gmail.com (osobní - preferuji), pavel.beranek@ujep.cz (pracovní)
 * Instagram: @teacherbery
-* Twitch.tv: twitch.tv/teacherstreams (stremuji pravidelně v: DOPLNIT)
-* Discord: DOPLNIT
+* Twitch.tv: twitch.tv/teacherstreams (streamuji pravidelně v: DOPLNIT)
+* Discord: https://discord.gg/Y4UMywPAxy
