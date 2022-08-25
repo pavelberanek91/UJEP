@@ -1,7 +1,9 @@
 # Katedra informatiky PřF UJEP
 
+<center>
 <img src="https://prf.ujep.cz/wp-content/uploads/2018/08/PřF-UJEP-logo.png" alt="logo přf ujep" width="500" height="150">
-
+</center>
+  
 ## 1. Přivítání
 
 Vítejte studenti univerzity UJEP a uživateli ze široké veřejnosti. Na tomto repozitáři naleznete veškeré materiály k výuce, kterou vedu nebo jsem vedl. Ve větvích si můžete rozkliknout i verzi v předchozích letech. Hlavní větev (main) vždy reprezentuje aktuální akademický rok.  
