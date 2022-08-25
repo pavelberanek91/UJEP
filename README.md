@@ -16,6 +16,65 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
 |    Čt    |          |  DEP/DIS  | Konzultace|    IKT    |    IKT    |    APR1   |    APR1   |           |           |
 |    Pá    |   APR1   |   APR1    |           |           |           |           |    PIN    |    PIN    |           |
 
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>9:00</th>
+      <th>10:00</th>
+      <th>11:00</th>
+      <th>12:00</th>
+      <th>13:00</th>
+      <th>14:00</th>
+      <th>15:00</th>
+      <th>16:00</th>
+      <th>17:00</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Po</th>
+      <td colspan="2">APR1</td>
+      <td colspan="2">Konzultace</td>
+      <td></td>
+      <td>NSQL</td>
+      <td colspan="2">OONV</td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>St</th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td colspan="2">APR1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Čt</th>
+      <td></td>
+      <td>DEP/DIS</td>
+      <td>Konzultace</td>
+      <td colspan="2">IKT</td>
+      <td colspan="2">APR1</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>Pá</th>
+      <td colspan="2">APR1</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td> colspan="2">PIN</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### Letní semestr
 
