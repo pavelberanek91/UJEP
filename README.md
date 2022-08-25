@@ -12,11 +12,11 @@ Zde se nachází seznam vyučovaných kurzů v tomto akademickém roce. Po klikn
 
 ### Zimní semestr
 * APR1 - [Algoritmizace a programování 1](https://github.com/pavelberanek91/UJEP/tree/main/APR1)
-* DEP/DIS - Depentabilita informačních systémů
-* IKT - Informační a komunikační technologie
-* NSQL - NoSQL Databáze
-* OONV - Objektově orientované návrhové vzory
-* PIN - Programování pro internet
+* DEP/DIS - [Depentabilita informačních systémů](https://github.com/pavelberanek91/UJEP/tree/main/DIS)
+* IKT - [Informační a komunikační technologie](https://github.com/pavelberanek91/UJEP/tree/main/IKT)
+* NSQL - [NoSQL Databáze](https://github.com/pavelberanek91/UJEP/tree/main/NSQL)
+* OONV - [Objektově orientované návrhové vzory](https://github.com/pavelberanek91/UJEP/tree/main/OONV)
+* PIN - [Programování pro internet](https://github.com/pavelberanek91/UJEP/tree/main/PIN)
 
 ### Letní semestr
 
@@ -24,7 +24,7 @@ Zatím není
 
 ## 3. Rozvrh 2022/2023
 
-Po kliknu na kód předmětu se dostanete na stránku k příslušnému předmětu. Na jednu konzultaci připadá maximálně 1 nebo 2 studenty (podle náročnosti konzultované problematiky). Pro nehladši průběh konzultací se ideálně vzájemně domluvte a zaregistrujte se formulářem na následující adrese: 
+Na jednu konzultaci připadá maximálně 1 nebo 2 studenty (podle náročnosti konzultované problematiky). Pro nehladši průběh konzultací se ideálně vzájemně domluvte a zaregistrujte se formulářem na následující adrese: 
 
 DOPLNIT
 
