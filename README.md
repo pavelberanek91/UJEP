@@ -70,7 +70,7 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
       <td></td>
       <td></td>
       <td></td>
-      <td> colspan="2">PIN</td>
+      <td colspan="2">PIN</td>
       <td></td>
     </tr>
   </tbody>
