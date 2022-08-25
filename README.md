@@ -16,7 +16,8 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
 |    Čt    |          |  DEP/DIS  | Konzultace|    IKT    |    IKT    |    APR1   |    APR1   |           |           |
 |    Pá    |   APR1   |   APR1    |           |           |           |           |    PIN    |    PIN    |           |
 
-<table style="text-align: center">
+<div style="text-align: center">
+<table>
   <thead>
     <tr>
       <th></th>
@@ -74,6 +75,7 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
     </tr>
   </tbody>
 </table>
+</div>
 
 
 ### Letní semestr
