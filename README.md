@@ -1,11 +1,30 @@
 # UJEP
-Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
 
 ## 1. Přivítání
 
+Vítejte studenti univerzity UJEP a uživateli ze široké veřejnosti. Na tomto repozitáři naleznete veškeré materiály k výuce, kterou vedu nebo jsem vedl. Ve větvích si můžete rozkliknout i verzi v předchozích letech. Hlavní větev (main) vždy reprezentuje aktuální akademický rok.  
+
 ## 2. Obsah
 
+Zde se nachází seznam vyučovaných kurzů v tomto akademickém roce. Po kliknu na název předmětu se dostanete na stránku k příslušnému předmětu.
+
+### Zimní semestr
+* APR1 - Algoritmizace a programování 1
+* DEP/DIS - Depentabilita informačních systémů
+* IKT - Informační a komunikační technologie
+* NSQL - NoSQL Databáze
+* PIN - Programování pro internet
+* OONV - Objektově orientované návrhové vzory
+
+### Letní semestr
+
+Zatím není
+
 ## 3. Rozvrh 2022/2023
+
+Po kliknu na kód předmětu se dostanete na stránku k příslušnému předmětu. Na jednu konzultaci připadá maximálně 1 nebo 2 studenty (podle náročnosti konzultované problematiky). Pro nehladši průběh konzultací se ideálně vzájemně domluvte a zaregistrujte se formulářem na následující adrese: 
+
+DOPLNIT
 
 ### Zimní semestr
 
@@ -16,79 +35,30 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
 |    Čt    |          |  DEP/DIS  | Konzultace|    IKT    |    IKT    |    APR1   |    APR1   |           |           |
 |    Pá    |   APR1   |   APR1    |           |           |           |           |    PIN    |    PIN    |           |
 
-<div style="text-align: center">
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th>9:00</th>
-      <th>10:00</th>
-      <th>11:00</th>
-      <th>12:00</th>
-      <th>13:00</th>
-      <th>14:00</th>
-      <th>15:00</th>
-      <th>16:00</th>
-      <th>17:00</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Po</th>
-      <td colspan="2">APR1</td>
-      <td colspan="2">Konzultace</td>
-      <td></td>
-      <td>NSQL</td>
-      <td colspan="2">OONV</td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>St</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td colspan="2">APR1</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Čt</th>
-      <td></td>
-      <td>DEP/DIS</td>
-      <td>Konzultace</td>
-      <td colspan="2">IKT</td>
-      <td colspan="2">APR1</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>Pá</th>
-      <td colspan="2">APR1</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td colspan="2">PIN</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
 
 ### Letní semestr
 
+Zatím není
 
 ### 4. Nabídka závěrečných prací
 
-lorem ipsum
+DOPLNIT
 
-### 5. O mně
+### 5. O mne
 
-lorem ipsum
+Vysokoškolský pedagog na Přírodovědecké fakultě UJEP, středoškolský pedagog na gymnáziu GJJ Litoměřice. Zabývám se zejména problematikou:
+* Softwarové inženýrství
+* Simulace polymerních materiálů
+* Strojové učení
+* Videoherní studia
+* Didaktika fyziky, informatiky a matematiky
+* Psychologie, sociologie a regionální rozvoj
+
+Ve volném čase trénuji BJJ (brazilské jiu-jiutsu) a MMA (mixed martial arts), čtení složitých knížek o fyzice a hraní videoher.
 
 ### 6. Kontakt
 
-lorem ipsum
+* Email: pavelberanek91@gmail.com (osobní - preferuji), pavel.beranek@ujep.cz (pracovní)
+* Instagram: @teacherbery
+* Twitch.tv: twitch.tv/teacherstreams (stremuji pravidelně v: DOPLNIT)
+* Discord: DOPLNIT
