@@ -1,11 +1,6 @@
 # Katedra informatiky PřF UJEP
 
-<img 
-     src="https://prf.ujep.cz/wp-content/uploads/2018/08/PřF-UJEP-logo.png" 
-     alt="logo přf ujep" 
-     width="500"
-     height="100"
->
+<img src="https://prf.ujep.cz/wp-content/uploads/2018/08/PřF-UJEP-logo.png" alt="logo přf ujep" width="500" height="100">
 
 ## 1. Přivítání
 
