@@ -11,7 +11,7 @@ Vítejte studenti univerzity UJEP a uživateli ze široké veřejnosti. Na tomto
 Zde se nachází seznam vyučovaných kurzů v tomto akademickém roce. Po kliknu na název předmětu se dostanete na stránku k příslušnému předmětu.
 
 ### Zimní semestr
-* APR1 - Algoritmizace a programování 1
+* APR1 - [Algoritmizace a programování 1](https://github.com/pavelberanek91/UJEP/tree/main/APR1)
 * DEP/DIS - Depentabilita informačních systémů
 * IKT - Informační a komunikační technologie
 * NSQL - NoSQL Databáze
