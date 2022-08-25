@@ -16,7 +16,7 @@ Repozitář pro univerzitní výuku na univerzitě UJEP v Ústí nad Labem.
 |    Čt    |          |  DEP/DIS  | Konzultace|    IKT    |    IKT    |    APR1   |    APR1   |           |           |
 |    Pá    |   APR1   |   APR1    |           |           |           |           |    PIN    |    PIN    |           |
 
-<table>
+<table style="text-align: center">
   <thead>
     <tr>
       <th></th>
