@@ -1,0 +1,1 @@
+# Dependabilita informačních systémů
