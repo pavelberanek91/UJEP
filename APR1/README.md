@@ -4,16 +4,16 @@
 
 Úvodní kurz algoritmizace a programování (první část) se zaměřuje na základy procedurálního a objektově orientovaného paradigmatu. Pozornost je soustředěna především na objektovou representaci základních kolekcí (řetězců, seznamů, slovníků) a na elementární algoritmy nad nimi. Kurz je určen pro začátečníky (nepředpokládají se předchozí znalosti programování). Výuka (přednášky a cvičení) bude probíhat v jazyce Python.
 
-Přednáší: (Mgr. Jiří Fišer, Ph.D.)[https://ki.ujep.cz/cs/personalni-slozeni/jiri-fiser/]
+Přednáší: [Mgr. Jiří Fišer, Ph.D.](https://ki.ujep.cz/cs/personalni-slozeni/jiri-fiser/)
 
 ## 2. Informace o cvičení
 
 Cvičení jsou vedeny samostatnou prací studentů na úkolech ze zadání na tomto repozitáři. Cvičící slouží jako mentor během hodin: pomáhá s vysvětlováním problematiky, hledá chyby v případě "záseku" studenta a radí, jak nejlépe cvičení vyřešit. Odpovědnost za učení je převážně na studentovi. Teorii potřebnou na cvičení získá z přednášek a z materiálů, které jsou ke každé lekci uvedené v tabulce sylabus cvičení. Student si musí tyto materiály před samotným cvičením projít, aby cvičením rozuměl.
 
 Cvičí:
-1. (Ing. Mgr. Pavel Beránek, MBA, LL.M.)[https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/]
-2. (RNDr. Jiří Škvára, Ph.D.)[https://ki.ujep.cz/cs/personalni-slozeni/jiri-skvara/]
-3. (Ricardo Rodríguez Jorge, Ph.D.)[https://ki.ujep.cz/cs/personalni-slozeni/ricardo-rodriguez-jorge/]
+1. [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
+2. [RNDr. Jiří Škvára, Ph.D.](https://ki.ujep.cz/cs/personalni-slozeni/jiri-skvara/)
+3. [Ricardo Rodríguez Jorge, Ph.D.](https://ki.ujep.cz/cs/personalni-slozeni/ricardo-rodriguez-jorge/)
 
 ## 3. Sylabus přednášek
 
