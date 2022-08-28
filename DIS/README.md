@@ -40,7 +40,7 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    7   |  Diagnostika založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
 |    8   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
 |    9   |  Spolehlivost a její ukazatele | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
-|   10   |  Dependabilita | fasety dependability, závada-chyba-selhání, šíření chyb                                         | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
+|   10   |  Dependabilita | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
 |   11   |  Petriho sítě v dependabilitě | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2011) |
 |   12   |  Řešení praktických úloh | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2012) |
 |   13   |  Řešení praktických úloh pomocí Petriho sítí | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2013) |
