@@ -35,7 +35,7 @@ Cvičí:
 
 |  Týden |  Název |  Obsah | Materiály | Zadání |
 | :----: | :----: | :----: |  :----:   | :----: |
-|    1   |  Google Colab | seznámení s prostředím, markup jazyk, proměnná, artimetické a logické operace    | [Materiály]() | [Zadání]() |
+|    1   |  Google Colab | seznámení s prostředím, markup jazyk, proměnná, artimetické a logické operace    | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%201) |
 |    2   |  Vstup a výstup | výstup, vstup, podmínky, větvení a vnoření podmínek, logické spojky v podmínce | [Materiály]() | [Zadání]() |
 |    3   |  Cykly | cyklus while, řídící proměnná, cyklus for (foreach), předčasné ukončení cyklu a iterace | [Materiály]() | [Zadání]() |
 |    4   |  Řetězce | indexace, vyhledávání, mutabilita, reference a kopie, metody řetězců                  | [Materiály]() | [Zadání]() |
