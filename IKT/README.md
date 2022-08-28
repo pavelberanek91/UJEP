@@ -14,12 +14,12 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 ## 3. Sylabus cvičení
 
-1. Bezpečné používání informačních technologií; bezpečné chování na internetu s důrazem na sociální sítě; zálohování, redundance a zabezpečení dat pro zajištění jejich důvěrnosti, integrity a dostupnosti; ochrana před nežádoucími softwary a útočníky
-2. Principy fungování a správné používání počítačových sítí a koncových prvků
-3. Efektivní využití operačních systémů s důrazem na systém Windows
-4. Sdílení a oběh dokumentů, systémy pro správu a verzování dokumentů, MS Sharepoint, GSuite
-5. Správa dokumentů a správa podnikového obsahu, týmová práce; prostředky pro týmovou práci a time management
-6. Lokální a cloudové služby počítačové sítě; webová úložiště
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
 7. Pokročilé zpracování textového dokumentu; tvorba obsáhlých dokumentů; revize, odkazy
 8. Efektivní práce s tabulkovým procesorem
 9. Zpracování dat, kontingenční tabulky, podmíněné formátování, grafická reprezentace dat
@@ -30,19 +30,19 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Obsah | Materiály | Zadání |
 | :----: | :----: | :----: |  :----:   | :----: |
-|    1   |  Samokontrola a samodiagnostika na systémové úrovni | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%201) |
-|    2   |  Diagnostický graf systémů se samokontrolou | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%202) |
-|    3   |  Grafická presentace diagnostického grafu | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%203) |
-|    4   |  Hodnocení možností diagnostiky podle diagnostického grafu | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%204) |
-|    5   |  Pravděpodobnost správné diagnostiky | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%205) |
-|    6   |  Hodnocení diagnostického grafu s ohledem na vlastnosti atomických kontrol | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
-|    7   |  Diagnostika založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
-|    8   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
-|    9   |  Spolehlivost a její ukazatele | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
-|   10   |  Dependabilita | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
-|   11   |  Petriho sítě v dependabilitě | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2011) |
-|   12   |  Řešení praktických úloh | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2012) |
-|   13   |  Řešení praktických úloh pomocí Petriho sítí | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2013) |
+|    1   |  Bezpečnost v IKT | Bezpečné používání informačních technologií; bezpečné chování na internetu s důrazem na sociální sítě; zálohování, redundance a zabezpečení dat pro zajištění jejich důvěrnosti, integrity a dostupnosti; ochrana před nežádoucími softwary a útočníky | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%201) |
+|    2   |  Počítačové sítě | Principy fungování a správné používání počítačových sítí a koncových prvků | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%202) |
+|    3   |  Operační systémy | Efektivní využití operačních systémů s důrazem na systém Windows | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%203) |
+|    4   |  Správa souborů | Sdílení a oběh dokumentů, systémy pro správu a verzování dokumentů, MS Sharepoint, GSuite | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%204) |
+|    5   |  Spolupráce v týmu | Správa dokumentů a správa podnikového obsahu, týmová práce; prostředky pro týmovou práci a time management | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%205) |
+|    6   |  Cloudové služby | Lokální a cloudové služby počítačové sítě; webová úložiště | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%206) |
+|    7   |  Diagnostika založená na tabulce syndromů | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%207) |
+|    8   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%208) |
+|    9   |  Spolehlivost a její ukazatele | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%209) |
+|   10   |  Dependabilita | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%2010) |
+|   11   |  Petriho sítě v dependabilitě | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%2011) |
+|   12   |  Řešení praktických úloh | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%2012) |
+|   13   |  Řešení praktických úloh pomocí Petriho sítí | | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/IKT/Cvičen%C3%AD%2013) |
 
 
 ## 4. Podmínky úspěšného zakončení předmětu
