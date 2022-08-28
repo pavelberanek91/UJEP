@@ -36,18 +36,19 @@ Cvičí:
 |  Týden |  Název |  Obsah | Materiály | Zadání |
 | :----: | :----: | :----: |  :----:   | :----: |
 |    1   |  Google Colab | seznámení s prostředím, markup jazyk, proměnná, artimetické a logické operace    | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%201) |
-|    2   |  Vstup a výstup | výstup, vstup, podmínky, větvení a vnoření podmínek, logické spojky v podmínce | [Materiály]() | [Zadání]() |
-|    3   |  Cykly | cyklus while, řídící proměnná, cyklus for (foreach), předčasné ukončení cyklu a iterace | [Materiály]() | [Zadání]() |
-|    4   |  Řetězce | indexace, vyhledávání, mutabilita, reference a kopie, metody řetězců                  | [Materiály]() | [Zadání]() |
-|    5   |  Seznamy | metody seznamů, procházení seznamu, spojování seznamů, množiny, asymptotická složitost| [Materiály]() | [Zadání]() |
-|    6   |  Vlastní funkce | parametry, návratové hodnoty, návrat a rozbalení n-tice, algoritmy, návrh SW   | [Materiály]() | [Zadání]() |
-|    7   |  Algoritmy nad seznamem | duplikace, generování, mapování, filtrace, zipování, redukce           | [Materiály]() | [Zadání]() |
-|    8   |  Slovníky a jejich využití | metody slovníku, asociativní pole, řídké pole, mezipaměti           | [Materiály]() | [Zadání]() |
-|    9   |  Hashovací tabulky | implementace, hashovací funkce, využití v bezpečnosti, princip blockchain   | [Materiály]() | [Zadání]() |
-|   10   |  Práce se soubory | čtení, zápis a připisování do textových souborů, binární soubory, bytová pole| [Materiály]() | [Zadání]() |
-|   11   |  Práce s adresáři | tvorba a kopírování adresářů a souborů, procházení souborovým systémem       | [Materiály]() | [Zadání]() |
-|   12   |  Ošetření výjimek | kontextový manažer, strom výjimek, hierarchie výjimek, testování assercí     | [Materiály]() | [Zadání]() |
-|   13   |  Opakování na zápočtový test |  práce s kolekcí, vlastní algoritmy, práce se souborovým systémem | [Materiály]() | [Zadání]() |
+|    2   |  Vstup a výstup | výstup, vstup, podmínky, větvení a vnoření podmínek, logické spojky v podmínce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%202) |
+|    3   |  Cykly | cyklus while, řídící proměnná, cyklus for (foreach), předčasné ukončení cyklu a iterace | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%203) |
+|    4   |  Řetězce | indexace, vyhledávání, mutabilita, reference a kopie, metody řetězců                  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%204) |
+|    5   |  Seznamy | metody seznamů, procházení seznamu, spojování seznamů, množiny, asymptotická složitost| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%205) |
+|    6   |  Vlastní funkce | parametry, návratové hodnoty, návrat a rozbalení n-tice, algoritmy, návrh SW   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%206) |
+|    7   |  Algoritmy nad seznamem | duplikace, generování, mapování, filtrace, zipování, redukce           | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%207) |
+|    8   |  Slovníky a jejich využití | metody slovníku, asociativní pole, řídké pole, mezipaměti           | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%208) |
+|    9   |  Hashovací tabulky | implementace, hashovací funkce, využití v bezpečnosti, princip blockchain   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%209) |
+|   10   |  Práce se soubory | čtení, zápis a připisování do textových souborů, binární soubory, bytová pole| [Materiály]() | [Zadání](
+https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2010) |
+|   11   |  Práce s adresáři | tvorba a kopírování adresářů a souborů, procházení souborovým systémem       | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2011) |
+|   12   |  Ošetření výjimek | kontextový manažer, strom výjimek, hierarchie výjimek, testování assercí     | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2012) |
+|   13   |  Opakování na zápočtový test |  práce s kolekcí, vlastní algoritmy, práce se souborovým systémem | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky získání zápočtu
