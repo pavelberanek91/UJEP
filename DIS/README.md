@@ -53,7 +53,7 @@ Zápočet: seminární práce
 Zkouška: ústní (terminologie a pojmy používané v kontextu dependability, hlavní hrozby pro dependabilitu systému, prostředky pro dosažení dependability systému a pro zajištění spolehlivosti softwaru)
 
 Podmínkou získání zápočtu je zpracování seminární práce. Seminární práce jsou dvojího druhu:
-1. Vypracování sady úkolů, které byly tématicky probrány na cvičeních. Ukázka zadání [ZDE]()
+1. Vypracování sady úkolů, které byly tématicky probrány na cvičeních. Ukázka zadání: [ZDE]()
 2. Vypracování jednoho z témat v následujícím seznamu: [ZDE]()
 
 Oba typy prací budou v zápočtových termínech probrány se studentem, kde student obhajuje jejich porozumění. V případě nálezu plagiátorství nebo nepochopení své vypracované samostatné práce ztrácí student nárok na zápočet (plagiát, vypracování jiným studentem). Důraz při hodnocení je dán na poctivost, nikoliv na dokonalém mentálním uchopení látky. Předmět je jeden z předmětů u SZZ (státní závěrečná zkouška) a pochopení problematiky teď vám zjednoduší učení se na SZZ.
