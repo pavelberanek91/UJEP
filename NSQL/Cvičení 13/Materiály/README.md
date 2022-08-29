@@ -1,7 +1,7 @@
 # NoSQL databázové systémy
 
-## Cvičení 13 - Grafová databáze Neo4J
+## Cvičení 13 - Aplikace grafových databází
 
-### [Materiál 1](https://www.tutorialspoint.com/neo4j/index.htm)
+### [Materiál 1](https://neo4j.com/developer/python/)
 
 lorem
