@@ -32,19 +32,19 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
-|    1   |  Python FastAPI | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%201) |
-|    2   |  Postgres | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%202) |
-|    3   |  Async SQLAlchemy | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%203) |
-|    4   |  ElasticSearch | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%204) |
-|    5   |  Databáze REDIS | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%205) |
-|    6   |  Aplikace databází typu klíč-hodnota | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%206) |
-|    7   |  Dokumentová databáze Mongo | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%207) |
-|    8   |  Map-reduce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%208) |
-|    9   |  Aplikace dokumentových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%209) |
-|   10   |  Sloupcová databáze Cassandra | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2010) |
-|   11   |  Aplikace sloupcových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2011) |
-|   12   |  Grafová databáze Neo4J | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2012) |
-|   13   |  Aplikace grafových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2013) |
+|    1   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%201) |
+|    2   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
+|    3   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
+|    4   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
+|    5   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
+|    6   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
+|    7   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
+|    8   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
+|    9   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%209) |
+|   10   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2010) |
+|   11   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2011) |
+|   12   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2012) |
+|   13   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky úspěšného získání zápočtu
