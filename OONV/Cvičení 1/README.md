@@ -1,0 +1,1 @@
+# Objektově-orientované návrhové vzory
