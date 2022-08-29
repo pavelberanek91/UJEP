@@ -32,19 +32,19 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
-|    1   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%201) |
-|    2   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
-|    3   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
-|    4   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
-|    5   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
-|    6   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
-|    7   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
-|    8   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
-|    9   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%209) |
-|   10   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2010) |
-|   11   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2011) |
-|   12   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2012) |
-|   13   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2013) |
+|    1   | Jazyk C# | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%201) |
+|    2   | Zapouzdření | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
+|    3   | Rozhraní | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
+|    4   | Dědičnost | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
+|    5   | UML class diagram | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
+|    6   | Jedináček | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
+|    7   | Tovární metody a objekty | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
+|    8   | Adaptér, Dekorátor | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
+|    9   | Most, Muší váha | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%209) |
+|   10   | Příkaz, Pozorovatel | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2010) |
+|   11   | Memo | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2011) |
+|   12   | Seminární projekt | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2012) |
+|   13   | Seminární projekt | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky úspěšného získání zápočtu
