@@ -2,6 +2,9 @@
 
 ## Cvičení 7 - Dokumentová databáze Mongo
 
-### [Materiál 1](https://www.tutorialspoint.com/mongodb/index.htm)
+Materiály k samostudiu: [ZDE](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%207/Materiály)
 
-lorem
+### Zadání
+
+Lorem ...
+
