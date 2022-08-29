@@ -18,10 +18,15 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 2. Škálovatelnost (vertikální a horizontální), problémy s konzistencí (CAP teorém a BASE model)
 3. Distribuce dat (sharding, replikace)
 4. Základní typy NoSQL databázových systémů a jejich vztahy k relačním databázovým systémům
-5. - 6. Databáze typu klíč - hodnota (praktická ukázka REDIS)
-7. - 9. Dokumentově orientované databázové systémy (Mongo, BJSON v PostgreSQL), pipelines, map-reduce
-10. - 11. Sloupcově orientované databázové systémy (Cassandra, relační sloupcové: HANA), analytické funkce
-12. - 13. Grafově orientované databázové systémy (Neo4J)
+5. Databáze typu klíč - hodnota (praktická ukázka REDIS)
+6. Databáze typu klíč - hodnota (praktická ukázka REDIS)
+7. Dokumentově orientované databázové systémy (Mongo, BJSON v PostgreSQL), pipelines, map-reduce
+8. Dokumentově orientované databázové systémy (Mongo, BJSON v PostgreSQL), pipelines, map-reduce
+9. Dokumentově orientované databázové systémy (Mongo, BJSON v PostgreSQL), pipelines, map-reduce
+10. Sloupcově orientované databázové systémy (Cassandra, relační sloupcové: HANA), analytické funkce
+11. Sloupcově orientované databázové systémy (Cassandra, relační sloupcové: HANA), analytické funkce
+12. Grafově orientované databázové systémy (Neo4J)
+13. Grafově orientované databázové systémy (Neo4J)
 
 ## 4. Sylabus cvičení
 
