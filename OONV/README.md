@@ -36,7 +36,7 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    2   | Zapouzdření | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
 |    3   | Rozhraní | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
 |    4   | Dědičnost | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
-|    5   | UML class diagram | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
+|    5   | UML diagramy tříd | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
 |    6   | Jedináček | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
 |    7   | Tovární metody a objekty | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
 |    8   | Adaptér, Dekorátor | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
