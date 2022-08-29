@@ -48,12 +48,12 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 ## 5. Podmínky úspěšného zakončení předmětu
 
-Pro zápočet: 
-1. Účast na cvičeních je povinná. 
-2. Student musí uchovávat výsledky práce z každého cvičení (podle výběru studenta), aby mohl je doložit při zápočtu. 
+Podmínky získání zápočtu: 
+1. Účast na cvičeních je povinná (minimálně 3 absence, vyšší absence umožněna jen z prokázaných zdravotních důvodů)
+2. Student musí uchovávat výsledky práce z každého cvičení pro doložení při zápočtu. 
 3. Min 75% výsledků práce ze cvičení musí být správné. 
 
-U zkoušky: 
+Podmínky získání zkoušky: 
 1. Student musí odpovědět na otázku, kterou vylosuje. 
 2. Otázky jsou vymezeny sylabem kurzu. 
 3. Úroveň znalosti konkrétních otázek musí odpovídat obsahu přednášek. 
