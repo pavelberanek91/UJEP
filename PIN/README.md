@@ -31,19 +31,19 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
-|    1   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%201) |
-|    2   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%202) |
-|    3   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%203) |
-|    4   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%204) |
-|    5   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%205) |
-|    6   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
-|    7   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
-|    8   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
-|    9   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
-|   10   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
-|   11   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2011) |
-|   12   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2012) |
-|   13   |  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2013) |
+|    1   | XML | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%201) |
+|    2   | DTD, XML Schema | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%202) |
+|    3   | SVG | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%203) |
+|    4   | CSS, XSLT | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%204) |
+|    5   | XPath | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%205) |
+|    6   | JavaScript, DOM | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%206) |
+|    7   | PHP - syntaxe | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%207) |
+|    8   | PHP - stav | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%208) |
+|    9   | PHP - vizualizace | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%209) |
+|   10   | OOP PHP | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%2010) |
+|   11   | PHP a DOM | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%2011) |
+|   12   | PHP a DB | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%2012) |
+|   13   | Laravel | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/PIN/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky úspěšného zakončení předmětu
