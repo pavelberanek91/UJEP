@@ -1,44 +1,90 @@
-﻿namespace Cviceni1
+﻿using System;
+using System.Collections.Generic;
+
+namespace ws
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Zamestnanec pepa = new Zamestnanec("Pepa", "Skvor", 20);
-
-            
-            Console.Write($"{Environment.NewLine}Press any key to exit...");
-            Console.ReadKey(true);
+            Vlak pepa = new Vlak(5, 28000);
+            pepa.PridejPruvodciho(new Pruvodci("Honza", "Novotny", 3));
+            pepa.PridejPruvodciho(new Pruvodci("Alena", "Skvorova", 2));
+            pepa.KontrolaListku();
         }
     }
 
-    abstract class Zamestnanec{
-
+    class Vlak
+    {
         //fields
-        private string _jmeno;
-        private string _prijmeni;
-        public int _vek {get; private set; }
-        private string? _pozice;
+        private int _pocetVagonu;
+        public string StrojVedouci {get; private set; }
+        private int _vykon;
+        private List<Pruvodci> _seznamPruvodcich;
 
         //konstruktor
-        public Zamestnanec(string jmeno, string prijmeni, int vek){
-            this._jmeno = jmeno;
-            this._prijmeni = prijmeni;
-            this._vek = vek;
-            this._pozice = null;
+        public Vlak(int pocetVagonu, int vykon){
+             this._pocetVagonu = pocetVagonu;
+             this._vykon = vykon;
+             this.StrojVedouci = null;
+             this._seznamPruvodcich = new List<Pruvodci>();
+        }
+
+        //getter/accessor
+        public int GetPocetVagonu(){
+            return this._pocetVagonu;
+        }
+
+        //setter/mutator
+        public void SetPocetVagonu(int novyPocet){
+            this._pocetVagonu = novyPocet;
         }
 
         //vlastnosti
-        public string? Pozice{
-            get {return this._pozice;}
-            set {this._pozice = value;}
+        public int Vykon{
+            get {return this._vykon;}
+            set {this._vykon = value;}
         }
 
-        public int GetVek(){
-            return this._vek;
+        //metody
+        public void Zatrub(int silaTroubeni = 1){
+            if (silaTroubeni <= 0){
+                System.Console.WriteLine("hu ...");
+            } else if (silaTroubeni == 1){
+                System.Console.WriteLine("HUhUHUhU!!!!");
+            } else {
+                System.Console.WriteLine("HU! HU! HU!");
+            }
         }
-        public void SetVek(int vek){
-            this._vek = vek;
+
+        public void PridejPruvodciho(Pruvodci pruvodci){
+            this._seznamPruvodcich.Add(pruvodci);
+        }
+
+        public void KontrolaListku(){
+            foreach (Pruvodci pruvodci in this._seznamPruvodcich)
+            {
+                pruvodci.KontrolujListky(2);
+            }
+        }
+
+    }
+
+    class Pruvodci{
+
+        public string Jmeno {get; private set;}
+        public string Prijmeni {get; private set;}
+        public int Praxe {get; private set;}
+
+        public Pruvodci(string jmeno, string prijmeni, int praxe){
+            this.Jmeno = jmeno;
+            this.Prijmeni = prijmeni;
+            this.Praxe = praxe;
+        }
+
+        public void KontrolujListky(int pocetVagonu){
+            System.Console.WriteLine("Zkontroloval jsem {0} vagonu", pocetVagonu);
+            //algoritmus dodelat
         }
     }
 }
