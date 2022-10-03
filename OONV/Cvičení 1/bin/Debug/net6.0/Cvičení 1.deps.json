@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Cvičení 1/1.0.0": {
+        "runtime": {
+          "Cvičení 1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cvičení 1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

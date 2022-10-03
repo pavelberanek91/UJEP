@@ -1,0 +1,15 @@
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/Cvičení 1
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/Cvičení 1.deps.json
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/Cvičení 1.runtimeconfig.json
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/Cvičení 1.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/ref/Cvičení 1.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/bin/Debug/net6.0/Cvičení 1.pdb
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.csproj.AssemblyReference.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.AssemblyInfoInputs.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.AssemblyInfo.cs
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.csproj.CoreCompileInputs.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/ref/Cvičení 1.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.pdb
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/obj/Debug/net6.0/Cvičení 1.genruntimeconfig.cache

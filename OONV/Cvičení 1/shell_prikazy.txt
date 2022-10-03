@@ -1,0 +1,8 @@
+#instalace dotnet na macos
+brew install dotnet
+
+#zalozeni projektu v aktualnim pracovnim adresari
+dotnet new console --framework net6.0
+
+#spusteni projektu 
+dotnet run
