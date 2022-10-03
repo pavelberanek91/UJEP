@@ -37,7 +37,7 @@ Konzistence v CAP teorému představuje splnění linearizovatelnosti operací. 
 
 Availability v CAP teorému představuje dostupnost v případě požadavku. Každá databáze, která neselhala (server s instancí DB běží), tak musí při mém požadavku úkol provést. 
 
-Partition Tolerace v CAP teorému představuje 
+Partition Tolerace v CAP teorému představuje odolnost pri chybám v síti, kdy se přeruší propojení serverů.
 
 Důkaz CAP teorému spočívá v následující úvaze. Představme si, že máme dva servery a na nich bězí dvě kopie databáze. Jeden server je například v Americe a druhý v Evropě. Tyto servery si spolu vyměňují data, jakmile někdo provede na jednom z nich transakci. Jsou tedy konzistentní. Pak nastane problém a jejich spojení se přeřuší. Servery dále běží, avšak již si nemohou zaslat transakce, které způsobí jejich konzistenci. V takovém případě jsou dvě možnosti, jak se situací vypořádat:
 1. Aplikace budou i nadále dostupné a odolné proti výpadkům, jen bude každý server mít trošku jiná data od doby výpadku propojení.
