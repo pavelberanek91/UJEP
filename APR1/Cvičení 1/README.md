@@ -67,12 +67,15 @@ je_pravouhly
 *Napište program, který se zeptá uživatele na jméno, příjmení a věk. Program na obrazovku vypíše větu se jménem uživatele a oznámí mu, kolik let mu bude příští rok. Př.: ```jmeno=Pavel, prijmeni=Beranek, vek=31```, pak na standardním výstupu bude řetězec ```"Jmenuješ se Pavel Beránek a za rok ti bude 32 let.```*
 
 **Úkol HW1.2: Kalkulačka**
+
 *Napište program, který se zeptá na dvě desetinná čísla ze standardního vstupu a na obrazovce se objeví jejich součet, rozdíl, součin a podíl. Tyto operace proveďte při výpisu v interpolačním řetězci (je možná zadat do složených závorek i např.: a+b).*
 
 **Úkol HW1.3: Objem kvádru**
+
 *Napište program, který se zeptá uživatele na 3 hodnoty oddělené čárkou ze standardního vstupu. Program tyto hodnoty separuje do proměnných, provede jejich přetypování a spočítá objem kvádru. Velikost objemu vypíše na obrazovku.*
 
 **Úkol HW1.4: Výsledek relací**
+
 *Relace je vztah mezi hodnotami. Tyto relace jsou <, <=, >, >=, !=, ==. Výsledky relací lze ukládat do proměnných. Zkuste si porovnat věk dvou osob a ulož výsledek do proměnných. Tento výsledek si vytiskněte na obrazovku*
 
 Př.:
