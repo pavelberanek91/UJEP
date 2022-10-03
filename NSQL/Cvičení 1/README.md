@@ -11,15 +11,15 @@
 
 ### Cognitive apprenticeship
 
-### Úkol OS1.1:
+### Úkol OS1.1 Vytvoření Flask projektu:
 
-### Úkol OS1.2:
+### Úkol OS1.2 Vytvoření koncových bodů:
 
-### Úkol OS1.3:
+### Úkol OS1.3 Vytvoření šablon:
 
-### Úkol OS1.4:
+### Úkol OS1.4 Prolinkování kaskádových stylů:
 
-### Úkol OS1.5:
+### Úkol OS1.5 Napojení databáze:
 
 ## Domácí cvičení 1
 
