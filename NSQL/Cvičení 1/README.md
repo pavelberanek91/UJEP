@@ -113,33 +113,31 @@ Pročtěte si následující tutoriály, ať se lépe konzulte příští lekce 
 
 Flask je microframework pro vývoj webových aplikací v jazyce Python. Oproti například frameworku Django se jedná o jen to nejmenší nutné, aby python šlo využít pro tvorbu webových aplikací. Vytvořte si projekt ve vašem oblíbeném editoru, vytvořte virtuální prostředí v jazyce Python a balíčkovacím systémem pip si nainstalujte Flask. 
 
-Návod naleznete zde: 
+Návod naleznete zde: [ZDE](https://flask.palletsprojects.com/en/2.2.x/installation/)
 
 ### Úkol HW1.2 Koncové body:
 
 Webové aplikace využívají principu koncových bodů. V případě, že napíš uživatel do webového prohlížeče URL obsahující adresu serveru, tak může aktivovat určitý koncový bod dodáním symbolu lomítka a následně názvu koncového bodu. Koncový bod je v Pythonu realizován pomocí dekorátoru, který naslouchá na HTTP metody GET, POST, PUT, DELETE a spouští pythonovskou metodu. Tato metoda pak provádí již určitou službu. typicky při HTTP metodě GET vrátí nějakou webovou stránku, při HTTP metodě POST naopak nahrává uživatel data z formuláře do Pythonu, PUT a DELETE se používají jen u REST API aplikací.
 
-Podívejte se na to, jak se koncové body vytvářejí: [ZDE](https://www.tutorialspoint.com/flask/flask_application.htm)
+Podívejte se na to, jak se koncové body vytvářejí: [ZDE](https://hackersandslackers.com/your-first-flask-application/)
 
 
 ### Úkol HW1.3 Šablony:
 
 Při obdržení požadavku HTTP GET má webový server vracet nějakou webovou stránku. Těm se říká ve Flasku šablony, jelikož mohou obsahovat nějaká data z Pythonu. Tyto data dodáváme do stránky pomocí šablonovacího jazyku, kterým je v případě Flasku jazyk Jinja2. Šablony (webové stránky) ukládáme implicitně do složky templates v projektu Flask aplikace. Šablony mohou mít i své šablony, které jsou pak rozšiřované. 
 
-Podívejte se na to, jak se tvoří a vrací šablony uživateli:
+Podívejte se na to, jak se tvoří a vrací šablony uživateli: [ZDE](https://hackersandslackers.com/flask-jinja-templates)
 
 ### Úkol HW1.4 Kaskádové styly:
 
 Pokud bychom pro tvorbu šablon použili pouze jazyk HTML5, tak jsme sice vytvořili strukturu stránek, ale jejich vzhled by nebyl příliš lákavý. Řešením je využít kaskádových stylů. Psaní grafického návrhu stránky pomocí kaskádových stylů je náročné. Lepší je využít nějaký vhodný pracovní rámec pro styly jako je například W3.CSS nebo Bootstrap5. 
 
-Podívejte se na to, jak dodat CSS do Flask aplikace: 
+Podívejte se na to, jak dodat CSS do Flask aplikace: [ZDE](https://hackersandslackers.com/flask-assets)
 
-Dále si projděte si tutoriál na Bootstrap5:
+Dále si projděte si tutoriál na Bootstrap5: [ZDE](https://blog.appseed.us/bootstrap-for-beginners-with-examples/)
 
 ### Úkol HW1.5 Přihlašovací formulář:
 
 Jedním z prvních úkolů v projektu bude vytvořit přihlašovací systém, který bude využívat relační databázi pro správu uživatelů. Přihlašování bude probíhat pomocí formuláře. 
 
-Podívejte se, jak se tvoří formulář:
-
-Dále se podívejte, jak se získávají data z formuláře ve Flasku: 
+Podívejte se, jak se tvoří a zpracovává formulář: [ZDE](https://hackersandslackers.com/flask-wtforms-forms)
