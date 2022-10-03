@@ -32,10 +32,10 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
-|    1   |  Python FastAPI | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%201) |
-|    2   |  Postgres | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%202) |
-|    3   |  Async SQLAlchemy | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%203) |
-|    4   |  ElasticSearch | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%204) |
+|    1   |  Python Flask | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%201) |
+|    2   |  PostgreSQL | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%202) |
+|    3   |  Dash | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%203) |
+|    4   |  React | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%204) |
 |    5   |  Databáze REDIS | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%205) |
 |    6   |  Aplikace databází typu klíč-hodnota | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%206) |
 |    7   |  Dokumentová databáze Mongo | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%207) |
