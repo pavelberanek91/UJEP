@@ -131,3 +131,6 @@ print(f"{xlog1} and {xlog2} and {xlog3} and {xlog4} = {log_soucin}")
 2. Negace výsledku logického součinu proměnných = logickému součtu znegovaných proměnných
 *Prověřte pomocí kódu v jazyce Python, že opravdu platí a strany si jsou rovny.*
 
+**Video týdne: Programming languages iceberg**
+
+V tomto videu získáte přehled o programovacích jazycích ve videoformátu známém jako icerberg. Začnete od těch nejznámějších jazyků až po ty nejvíce obskurní. Video naleznete [ZDE](https://www.youtube.com/watch?v=pEfrdAtAmqk).
