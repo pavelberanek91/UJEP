@@ -12,7 +12,7 @@ V této lekci se seznamíte s psaním velice komplexních XML Schémat pomocí j
 
 ### On-site
 
-#### Úkol 2.1 - Jazyk XSD
+#### Jazyk XSD
 
 XSD Schema je alternativa k šabloně v DTD formátu. Tento způsob psaní schémat je daleko složitější, ale silnější, než DTD. XSD je název jazyku, který se používá pro popis XML schémat a znamená XML Schema Definiton (je zde trošku terminologický zmatek - někdo používá termín XML Schema, někdo XSD Schema).
 - Ukázku XSD Schema naleznete na stránce: [W3Schools XML Schema](https://w3schools.com/xml/xml_schema.asp)
