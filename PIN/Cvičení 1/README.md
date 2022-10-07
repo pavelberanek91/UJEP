@@ -106,7 +106,7 @@ Pro docker existuje rozšíření jménem docker compose, které přijímá YAML
 
 ```
 <h1>Fakultonahrávač</h1>
-<form enctype="multipart/form-data" action="posli_recept.php" method="POST">
+<form enctype="multipart/form-data" action="index.php" method="POST">
     <label for="fakulta">Kliknutím nahrajte recept ve validním XML souboru.</label>
     <input type="file" name="fakulta" data-max-file-size="2M"/>
     <button type="submit">Odeslat</button>
