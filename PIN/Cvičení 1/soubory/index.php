@@ -1,11 +1,8 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
     <title>Fakultonahrávač</title>
 </head>
-
 <body>
     <h1>Fakultonahrávač</h1>
     <form enctype="multipart/form-data" action="index.php" method="POST">
@@ -15,7 +12,6 @@
         <br>
         <button type="submit">Odeslat</button>
     </form>
-
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adresar_fakulty = 'fakulty/';
@@ -48,7 +44,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
 </body>
-
 </html>
