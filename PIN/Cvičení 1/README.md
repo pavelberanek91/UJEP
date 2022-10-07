@@ -56,7 +56,7 @@ Věřím, že existuje možná lepší linuxový přístup, ale lépe jsem ho as
 **docker-compose.yaml**
 
 ```
-version: '3.8'
+version: "3.8"
 services:
   
   #instalace php 8 na apachi z Docker souboru
