@@ -260,7 +260,7 @@ Vaším úkolem je vytvořit návrh struktury xml dokumentu podle následující
 
 ### Validní XML
 
-Ve cvičení úkol 1.2 jste zkoušeli upravit XML soubor tak, aby byl "Well formed". Kromě "Well formed" by měl být XML soubor ještě validní. Aby byl dokument XML dokument validní, pak se musí jeho struktura řídit šablonou ve formátu DTD (Document Type Definition) nebo XML Schema (novější typ šablony, která je sama o sobě XML). Představit si to lze obdobně jako v objektově orientovaném programování, kde v našem případě šablona odpovídá třídě a XML dokument odpovídá objektu (instanci třídy).
+Ve cvičení úkol 1.2 jste zkoušeli upravit XML soubor tak, aby byl "Well formed". Kromě "Well formed" by měl být XML soubor ještě validní. Aby byl XML dokument validní, pak se musí jeho struktura řídit šablonou ve formátu DTD (Document Type Definition) nebo XML Schema (novější typ šablony, která je sama o sobě XML). Představit si to lze obdobně jako v objektově orientovaném programování, kde v našem případě šablona odpovídá třídě a XML dokument odpovídá objektu (instanci třídy).
 
 Ukázku DTD naleznete na stránce: [W3Schools XML DTD](https://w3schools.com/xml/xml_dtd.asp)
 
