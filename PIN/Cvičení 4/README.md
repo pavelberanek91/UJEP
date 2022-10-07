@@ -26,3 +26,12 @@
 
 #### C4Z4. Využití Bootstrap v XSLT
 
+**Video týdne 1: CSS užitečné rady**
+
+V této lekci jste si vyzkoušeli transformovat XML soubor na jiný XML soubor a dodat do něj kaskádové styly pro vytvoření (snad) pohledné grafiky. Pokud se ponoříte do CSS tak zjistíte, že to není příliš příjemná zkušenost. V následujícím videu naleznete rady, která vám mohou pomoct řešit určité problémy při stylování stránek. [ZDE](https://www.youtube.com/watch?v=Qhaz36TZG5Y)
+
+
+**Video týdne 2: CSS moderně**
+
+Patlání stylů ručně se již v dnešním ekosystému webových technologií nedělá. Podívejte se na následující video, které je zaměřené na CSS a JS, které vám ukáže, jaké technologie postaveně nad CSS se dnes používají pro stylování stránky pomocí CSS.[ZDE](https://www.youtube.com/watch?v=ouncVBiye_M)
+

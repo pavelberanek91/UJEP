@@ -141,3 +141,11 @@ Dále si projděte si tutoriál na Bootstrap5: [ZDE](https://blog.appseed.us/boo
 Jedním z prvních úkolů v projektu bude vytvořit přihlašovací systém, který bude využívat relační databázi pro správu uživatelů. Přihlašování bude probíhat pomocí formuláře. 
 
 Podívejte se, jak se tvoří a zpracovává formulář: [ZDE](https://hackersandslackers.com/flask-wtforms-forms)
+
+**Video týdne 1: Databázová paradigmata**
+
+Pojďme si zopakovat znalosti z hodiny na youtubovém videu :) [ZDE](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
+
+**Video týdne 2: Docker**
+
+Pro snadné používání databází v našem vývojářském ekosystému budeme používat aplikaci Docker. Podívejte se na následující video, které vás do Dockeru zasvětí. [ZDE](https://www.youtube.com/watch?v=gAkwW2tuIqE)

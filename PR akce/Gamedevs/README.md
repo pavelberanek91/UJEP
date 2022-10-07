@@ -1,0 +1,1 @@
+Podívejte například na tohoto středoškolského studenta, který je programátor v jazyce C++ a rozhodl se streamovat své 48 hodinové učení jazyka Python a engine Pygame pro soutěž. [ZDE](https://www.youtube.com/watch?v=7tXsC8YlCq8)

@@ -11,6 +11,8 @@
 
 ## On-site cvičení 1
 
+Pojďme si na začátek shlédnout nějaké motivační video, co se vlastně budete učit. Cílem kurzu je naučit se algoritmizaci, tzn. schopnost řešit problémy pomocí strojových příkazů. To jsou takové příkazy, kterým rozumí počítací stroje. Strojové příkazy se zapisují v programovacím jazyce (programy jsou kolekce příkazů, například školní program nějaké střední školy je kolekce předmětů jako je fyzika, chemie, atd.). Vybraným jazykem pro tento kurz je jazyk Python, který je doporučeným jazykem pro začátečníky. Navíc ve spojení s Javascriptem vám vystačí na celý život. Toto krátké video vám v rychlosti poví, k čemu jazyk slouží a co umí. [ZDE](https://www.youtube.com/watch?v=x7X9w_GIm1s)
+
 **Úkol OS1.1: (De)motivační aplikace**
 
 *Vypište na standardní výstup pomocí interpolačního řetězce pro uživatele přídavné jméno podle výběru*
@@ -131,6 +133,12 @@ print(f"{xlog1} and {xlog2} and {xlog3} and {xlog4} = {log_soucin}")
 2. Negace výsledku logického součinu proměnných = logickému součtu znegovaných proměnných
 *Prověřte pomocí kódu v jazyce Python, že opravdu platí a strany si jsou rovny.*
 
-**Video týdne: Programming languages iceberg**
+**Video týdne 1: Learning to code**
 
-V tomto videu získáte přehled o programovacích jazycích ve videoformátu známém jako icerberg. Začnete od těch nejznámějších jazyků až po ty nejvíce obskurní. Video naleznete [ZDE](https://www.youtube.com/watch?v=pEfrdAtAmqk).
+V tomto videu se dozvíte pár základních rad, jak se naučit efektivně programovat. Se všemi tvrzeními souhlasím, tudíž vám video doporučuji :). [ZDE](https://www.youtube.com/watch?v=NtfbWkxJTHw)
+
+**Video týdne 2: Tisk na standardní výstup**
+
+V tomto videu se naučíte další možnosti tisku na standardní výstup. To se vám bude hodit pro případy, kdy je nutné datový formát výstupu dodatečně upravovat a tím snížíte počet řádků vašeho kódu. Některé termíny (jako třída nebo definice funkce) z videa pochopíte v pozdějších cvičeních, avšak cílem je vidět možnosti výpisu a jejich potenciální sílu. [ZDE](https://www.youtube.com/watch?v=BxUxX1Ku1EQ)
+
+

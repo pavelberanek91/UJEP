@@ -233,3 +233,7 @@ Vlaky patří různým přepravním společnostem. Tyto společnosti mohou mít 
 ### Úkol HW1.5 Movitý cestující:
 
 Přidejte poslední funkcionalitu vašeho systému a to, že cestující si mohou u průvodčího lístek zakoupit, pokud mají lístek špatný nebo jedou na černo. Pokud jeli na černo, tak si za lístek připlatí penále. Pokud peníze nemají, tak je z přepravy vyhoďte.
+
+**Video týdne: Kontroverzní názory ve vývoji**
+
+Na internetu se od spousty přispěvovatelů na diskuzních portálech dočtete, že objektově-orientované programování je nejhorší paradigmat vývoje, který můžete zvolit. Jelikož se brzy dostanete do praxe, pojďme se podívat na některé další kontroverzní názory se kterými se ve vývoji setkáte. Časem si uděláte vlastní názor. [ZDE](https://www.youtube.com/watch?v=goy4lZfDtCE)

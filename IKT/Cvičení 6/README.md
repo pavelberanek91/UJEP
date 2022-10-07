@@ -17,3 +17,7 @@
 #### C6Z2. Další google služby
 
 #### C6Z3. Komunikace se serverem
+
+**Video týdne 1: Softwarové trendy na rok 2022**
+
+V tomto videu z roku 2021 jsou předpovědi trendů na rok 2022 ve vývoji softwaru a služeb na cloudu jako je Metaverse. Tyto předpovědi myslím dobře sedí, tak se na ně podívejte. [ZDE](https://www.youtube.com/watch?v=LOpFYMPXqE4)

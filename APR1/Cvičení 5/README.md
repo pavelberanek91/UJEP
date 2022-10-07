@@ -1,1 +1,5 @@
 # Algoritmizace a programování
+
+**Video týdne 1: Code interview**
+
+Až se budete ucházet o práci jako softwaroví vývojáři, tak váš pravděpodobně čeká tzv. code interview. Mnoho úkolů, které vám dávám za domácí úkol nebo probíráme při lekcích jsou ve skutečnosti úkoly, které já sám jsem buď osobně řešil na code interview nebo je sám zadávám zájemcům při prácí ve firmách nebo pro moje potřeby (občas jsem pozván na nějaké interview jako hodnotitel). To, co se cíleně sleduje, je schopnost algoritmizaci, rozpoznání vzorů, abstrahování a jasné vysvětlení myšlenky. Podívejte se na toto video s typickým příklad, který se objevuje v mnoha code interview. Jak uvidíte na konci, asymptotická složitost je dobré téma z počítačové vědy, které byste měli znát. [ZDE](https://www.youtube.com/watch?v=1t1_a1BZ04o)
