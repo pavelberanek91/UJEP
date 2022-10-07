@@ -105,24 +105,31 @@ Pro docker existuje rozšíření jménem docker compose, které přijímá YAML
 **index.php**
 
 ```
-<h1>Fakultonahrávač</h1>
-<form enctype="multipart/form-data" action="index.php" method="POST">
-    <label for="fakulta">Kliknutím nahrajte recept ve validním XML souboru.</label>
-    <input type="file" name="fakulta" data-max-file-size="2M"/>
-    <button type="submit">Odeslat</button>
-</form>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fakultonahrávač</title>
+</head>
+<body>
+    <h1>Fakultonahrávač</h1>
+    <form enctype="multipart/form-data" action="index.php" method="POST">
+        <label for="fakulta">Kliknutím nahrajte recept ve validním XML souboru.</label>
+        <br>
+        <input type="file" name="fakulta" data-max-file-size="2M"/>
+        <br>
+        <button type="submit">Odeslat</button>
+    </form>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $adresar_fakulty = '../fakulty/';
+    $adresar_fakulty = 'fakulty/';
     $nahrana_fakulta = $adresar_fakulty . basename($_FILES['fakulta']['name']);
 
     if (file_exists($nahrana_fakulta)){
         echo '<p class="text-danger">Soubor se stejným názvem již existuje v databázi. Prosím přejmenujte soubor.!</p>';
     } 
-    else if (move_uploaded_file($_FILES['fakulta']['tmp_name'], $nahrany_fakulta)) {
+    else if (move_uploaded_file($_FILES['fakulta']['tmp_name'], $nahrana_fakulta)) {
         $puvodni_xml = new DOMDocument();
-        $puvodni_xml->load($nahrany_fakulta);
+        $puvodni_xml->load($nahrana_fakulta);
         $koren = 'fakulta';
         $generator_dokumentu = new DOMImplementation;
         $doctype = $generator_dokumentu->createDocumentType($koren, "", 'fakulta.dtd');
@@ -144,6 +151,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+</body>
+</html>
 ```
 
 Tento soubor obsahuje značně komplikovaný program, který validuje XML soubor vůči validačnímu souboru DTD. Problém vězí v tom, že PHP umí validovat pomocí DTD souborů pouze pokud jsou součástí XML souboru. Pravděpodobně asi nechcete nutit uživatele, ať to jeho XML souboru vkládá ručně DTD soubor z našeho serveru a pak nám ho zasílá (občas ani nemůže, protože XML soubor generuje a zasílá na náš server nějaká aplikace). Z toho důvodu tento skript vytvoří nový XML soubor, kam vloží text DTD souboru z našeho serveru a pak vloží text nahraného XML souboru a vytvoří tak nový XML soubor s vloženým DTD souborem. Asi vidíte, jak je to pitomé. Proto v praxi budete používat XSD soubory, které se naučíte používat příští cvičení. DTD soubory jsou starý formát se specifickým jazykem a omezenými možnostmi, přes to se dobře čtou a je to snadné k zapamatování na jednoduchou validaci. Proto doporučuji jejich strukturu se naučit ke státnicím. Úspěšně nahrané soubory se nám budou ukládat do adresáře fakulty.
@@ -269,7 +278,8 @@ děkan CDATA #REQUIRED>
 <!ELEMENT katedra (vedoucí, zaměstnanci, předměty)>
 <!ATTLIST katedra 
 zkratka_katedry CDATA #REQUIRED
-webové_stránky CDATA "https://www.ujep.cz/cs/">
+webové_stránky CDATA "https://www.ujep.cz/cs/"
+>
 
 <!ELEMENT vedoucí (jméno, (telefon|email)+)>
 
@@ -294,8 +304,8 @@ webové_stránky CDATA "https://www.ujep.cz/cs/">
 
 <!ELEMENT předmět (název, popis?)>
 <!ATTLIST předmět 
-zkratka #REQUIRED
-typ (přednáška|seminář|cvičení|kombinované) "seminář">
+zkratka CDATA #REQUIRED
+typ (přednáška|seminář|cvičení|kombinované) "kombinované"
 >
 
 <!ELEMENT název (#PCDATA)>
