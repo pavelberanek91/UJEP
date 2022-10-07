@@ -1,12 +1,13 @@
 # Programování pro internet
 
-**Obsah přednášky 1**:
-* Značkovací jazyk XML (syntaxe, elementy, atributy, jmenné prostory) 
-
 **Obsah cvičení 1**:
+* Propojení obrazů přes docker-compose
 * Jazyk XML
+* Využití jazyka XML
+* Čtení jazyka DTD
+* Validace XML pomocí DTD v php
 
-## Cvičení 1 - Jazyk XML
+## Cvičení 1 - Značkování jazykem XML
 
 V tomto cvičení si vyzkoušíte vytvořit XML datový soubor, který budete validovat na Apache serveru pomocí jazyka PHP. Validaci korektní struktury datového souboru budete provádět pomocí přiloženého DTD souboru. Server Apache spustíte pomocí programu Docker pro který máte připraven Docker soubor a Docker-compose YAML soubor. 
 
@@ -223,7 +224,7 @@ Vaším úkolem je prohlédnout si následující XML kód a opravit ho tak, aby
 <?xml version="1.0" encoding="UTF-8"?>
 ```
 
-### XML služby
+#### XML služby
 
 XML se používá jako jazyk pro popis dat, který vyžadují klientské aplikace od serveru. Takové servery tedy pro klienty poskytují služby. Mezi základní XML formáty, 
 které používají serverové služby řadíme:
@@ -244,7 +245,7 @@ Více o RDF (Resource Description Framework): [linkeddatatools.com](https://link
 **Úkol 1.3: RSS**
 Stáhněte si do mobilního zařízení nebo počítače nějakou RSS čtečku (pro Android např.: Feedly) a přidejte si RSS feed na nějakou stránku. Pokud vydá nový příspěvek, přijde vám upozornění. Prozkoumejte jeho strukturu pokud jste na počítači. Pro zájemce si můžete vytvořit vlastní RSS k webové stránce a zasílat tak upozornění. Například pro Wordpress existují hotové pluginy.
 
-### Návrh XML stromu
+#### Návrh XML stromu
 
 XML nemá žádný model pro grafickou reprezentaci, jako například třídy v OOP jako diagramy tříd z jazyka UML. Přesto by se nám nějaký alespoň primitivní grafický model
 pro přemýšlení nad návrhem, komunikaci o datovém modelu v týmu nebo dokumentaci hodil. Jelikož XML představuje datovou strukturu, kde nalezneme prvotní značku (kořen), 
@@ -258,7 +259,7 @@ Vaším úkolem je vytvořit návrh struktury xml dokumentu podle následující
 > Chtěl bych vytvořit webovou aplikaci pro záznam studentů naší univerzity. O studentovi zaznamenávejte informace: jméno, příjmení, studentské číslo, email, studijní rok, rozvrh, předměty, splněné předměty a další zajímavé informace.
 > Chtěl bych vytvořit webovou aplikaci pro záznam fakult univerzity. O každé fakultě zaznamenávejte informace jako: děkan, katedry, vedoucí kateder, zaměstnanci, kontakt na zaměstnance, pozice zaměstnanců, tituly a další zajímavé informace
 
-### Validní XML
+#### Validní XML
 
 Ve cvičení úkol 1.2 jste zkoušeli upravit XML soubor tak, aby byl "Well formed". Kromě "Well formed" by měl být XML soubor ještě validní. Aby byl XML dokument validní, pak se musí jeho struktura řídit šablonou ve formátu DTD (Document Type Definition) nebo XML Schema (novější typ šablony, která je sama o sobě XML). Představit si to lze obdobně jako v objektově orientovaném programování, kde v našem případě šablona odpovídá třídě a XML dokument odpovídá objektu (instanci třídy).
 
@@ -319,6 +320,7 @@ typ (přednáška|seminář|cvičení|kombinované) "kombinované"
 <!ELEMENT popis (#PCDATA)>
 ```
 
+### Domácí cvičení
 
 **Video týdne 1: Základy internetových technologií**
 
