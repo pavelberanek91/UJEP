@@ -246,17 +246,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nazev_dokumentu = basename($_FILES['recept']['name']) . ".html";
             $transformovany_xml->save("../dokumenty/" . $nazev_dokumentu );
 
-            // ulozeni nahraneho souboru do cookies
-            $cookie_klic = 'mixology';
-            $pocet_sekund = 3600;
-            if(isset($_COOKIE[$cookie_klic])) {              
-              $cookie_hodnota = $_COOKIE[$cookie_klic] . ';' . $nahrany_recept;  
-            } else {
-              $cookie_hodnota = $nahrany_recept;
-            }
-            setcookie($cookie_klic, $cookie_hodnota, time() + $pocet_sekund, "/");
-            ob_end_flush();
-
           } else {
             echo '<p class="text-warning">Nahraný soubor není validní! Prosím zkontrolujte správnou strukturu.</p>';
             unlink($nahrany_recept);

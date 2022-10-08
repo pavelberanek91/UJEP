@@ -188,4 +188,30 @@ Zde vidíte příklad mého XSD souboru, který slouží pro validace barmanský
 
 **Úkol 2.3 - Validace validního XML souboru XSD souborem**
 
-Přepište soubor index.php tak, aby validoval ne pomocí DTD schématu, ale pomocí XSD schématu. Tento úkol vyřešíte po chvilce googlení :).
+Přepište soubor index.php tak, aby validoval ne pomocí DTD schématu, ale pomocí XSD schématu. Uvedu zde svůj validační kód v jazyce PHP, který si upravte do svého kódu.
+
+```
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $adresar_recepty = '../recepty/';
+        $nahrany_recept = $adresar_recepty . basename($_FILES['recept']['name']);
+
+        if (file_exists($nahrany_recept)){
+          echo '<p class="text-danger">Soubor se stejným názvem již existuje v databázi. Prosím přejmenujte soubor.!</p>';
+        } else if (move_uploaded_file($_FILES['recept']['tmp_name'], $nahrany_recept)) {
+
+          // XSD validace
+          $xml = new DOMDocument;
+          $xml->load($nahrany_recept);
+          if ($xml->schemaValidate('../šablony/recept.xsd')){
+          
+            echo '<p class="text-success">Nahraný soubor je validní a byl úspěšně nahrán do databáze.</p>';
+            
+          } else {
+            echo '<p class="text-warning">Nahraný soubor není validní! Prosím zkontrolujte správnou strukturu.</p>';
+            unlink($nahrany_recept);
+          }
+        } else {
+            echo '<p class="text-danger">Došlo k chybě při nahrávání souboru!</p>';
+        }
+      }
+```
