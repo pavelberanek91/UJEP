@@ -15,7 +15,7 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 ## 3. Sylabus přednášek
 
 1. Značkovací jazyk XML (syntaxe, elementy, atributy, jmenné prostory) 
-2. XML. DTD, XML-Schéma. 
+2. DTD, XML-Schéma. 
 3. SVG 
 4. Zobrazení XML souborů (css, XSLT) 
 5. XML, DOM, xPath 
