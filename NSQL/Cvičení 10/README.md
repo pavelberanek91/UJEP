@@ -8,3 +8,7 @@ Materiály k samostudiu: [ZDE](https://github.com/pavelberanek91/UJEP/tree/main/
 
 Lorem ...
 
+
+https://towardsdatascience.com/getting-started-with-apache-cassandra-and-python-81e00ccf17c9
+
+

@@ -8,3 +8,8 @@ Materiály k samostudiu: [ZDE](https://github.com/pavelberanek91/UJEP/tree/main/
 
 Lorem ...
 
+https://realpython.com/search?q=mongodb
+
+https://realpython.com/introduction-to-mongodb-and-python/
+
+https://realpython.com/web-scraping-with-scrapy-and-mongodb/
