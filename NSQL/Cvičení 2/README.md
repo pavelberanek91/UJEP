@@ -70,17 +70,25 @@ Váš webový portál bude pro svou funkci vyžadovat statické soubory (kaskád
 
 ### Úkol HW2.1 HTML5:
 
+Váš výsledný produkt bude využívat HTML5 standard jazyka. Ne všichni programátoři využívají HTML5 možnosti do maximální míry. Projděte si tutorial na w3schools, který vám ukáže možnosti HTML5 [ZDE](https://www.w3schools.com/html/default.asp).
+
 ### Úkol HW2.2 Bootstrap5/W3.CSS:
+
+Místo kaskádových stylů svépomocí se dnes využívají hotové frameworky. Nejoblíbenějším frameworkem je Bootstrap. Alternativou od W3schools je W3.css. Podívejte se na následující tutoriály a vyzkoušejte si implementaci těchto frameworků do vaší aplikace. Návod na Bootstrap5 [ZDE](https://www.w3schools.com/bootstrap5/index.php). Návod na W3.CSS [ZDE](https://www.w3schools.com/w3css/default.asp).
 
 ### Úkol HW2.3 SQLAlchemy:
 
+Pro připojení do databáze budeme používat balíček SQLAlchemy. Budeme s ním pracovat příští hodinu. Zprovozněte si SQLAlchemy podle následujícího tutoriálu [ZDE](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/quickstart/#installation).
+
 ### Úkol HW2.4 Objektově-relační mapování:
 
-### Úkol HW2.5 Dash:
-
-**Video týdne 1: Lorem**
+V tutoriálu z HW2.3 jste si mohli všimnout, že využívají tříd pro práci s databází. Tomuto konceptu se říká objektově-relační mapování. Na následující stránce se dočtete, co je to vlastně ORM [ZDE](https://docs.sqlalchemy.org/en/14/orm/tutorial.html)
 
 
+**Video týdne 1: ORM**
 
-**Video týdne 2: Lorem**
+ORM má své výhody i nevýhody. Podívejte se na následující video [ZDE](https://www.youtube.com/watch?v=3EvhK7-DlZA).
 
+**Video týdne 2: Flask**
+
+Projděte si následující tutoriál na framework flask [ZDE](https://www.youtube.com/watch?v=Z1RJmh_OqeA).
