@@ -44,26 +44,27 @@ Vytvořte si adresář src, do kterého umistěte soubor s názvem app.py. Tento
 Pro pohodlnost si nastavte debug režim a rovnou si nastavte i port (napište stejné číslo jako je defaultní port Flasku). Port si nastavte explicitně z toho důvodu, že se vám může nějaká aplikace na portu bouchat s vaší za určitých okolností a chcete rychle vědět bez googlení, jak port změnit.
 
 
-### Úkol OS2.3 Metody pro koncové body:
+### Úkol OS2.2 Metody pro koncové body:
 
 Dalším úkolem je vytvoření koncových bodů. Zatím si zkuste obecně jak routování ve Flasku funguje, později přepíšete kód podle vaší semestrální práce. Jak zpracovávat data z koncových bodů naleznete: [ZDE](https://www.tutorialspoint.com/flask/flask_variable_rules.htm).
 
 Zatím si můžeme představit, že uživatel chce vracet nějaký článek s univerzitními novinkami. Tyto články se volají přes své id v URL adrese. Zkuste si tedy odchytávat z URL adresy id.
 
-### Úkol OS2.4 Vrácení šablon:
+### Úkol OS2.3 Vrácení šablon:
 
 Flask slouží jako webový server, který zpracovává požadavky. Typickým požadavkem u běžných webových aplikací je návrat obsahu webové stránky. Na následující stránce naleznete návod, jak vrátit uživateli webovou stránku: [ZDE](https://www.tutorialspoint.com/flask/flask_templates.htm).
 
 Zkuste vytvořit endpoint články, kterým přesměrujete uživatele na webovou stránku, obsahující seznam všech hypotetických článků na vašem serveru.
 
-### Úkol OS2.5 Zpracování HTTP metod:
+### Úkol OS2.4 Zpracování HTTP metod:
 
 Protokol HTTP umožňuje zasílat 4 typy metod. Nejčastěji užívanou metodou je metoda GET a POST. GET se používá pro stahování webových stránek a POST pro nahrávání dat na server. Vytvořte si v HTML formulář a pomocí metody POST vložit článek nějakého textu na server. Návod na zpracování požadavků naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_http_methods.htm)
 
-### Úkol OS2.6 Statické soubory:
+Pro řádné bezpečné formuláře doporučuji využít knihovu WTF flask. Návod na její používání naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_wtf.htm).
 
-Váš webový portál bude pro svou funkci vyžadovat 
-https://www.tutorialspoint.com/flask/flask_static_files.htm
+### Úkol OS2.5 Statické soubory:
+
+Váš webový portál bude pro svou funkci vyžadovat statické soubory (kaskádové styly, javascript, obrázky). Následující odkaz vám ukáže, jak nahrát na webový portál statické soubory [ZDE](https://www.tutorialspoint.com/flask/flask_static_files.htm).
 
 ## Domácí cvičení 2
 
