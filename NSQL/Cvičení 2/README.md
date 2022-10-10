@@ -7,6 +7,8 @@
 
 ## On-site cvičení 2
 
+V této lekci si připravíte jednoduchý webový portál, který bude vracet uložené články ve formě html stránek. Dále také může kdokoliv na portál nahrát vlastní článek. Na domovské stránce uživatel vyplní do formuláře text článku, své jméno a další náležitosti. Tyto data se vezmou, vytvoří se nová webová stránka a uloží se do adresáře s ostatními články. Tato nově přidaná stránka bude k dispozici pro otevření v seznamu článku na domovské stránce.
+
 ### Úkol OS2.1 Vytvoření prostředí pro vývoj:
 
 Pro vývoj v jazyce Flask si budeme muset Flask modul nainstalovat. Doporučuji si jako první vytvořit a aktivovat virtuální prostředí. Jako první se ujistěte, že máte mezi balíčky nainstalován balíček pro tvorbu virtuálních prostředí (např.: venv nebo virtualenv).
