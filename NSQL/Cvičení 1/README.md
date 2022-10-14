@@ -117,7 +117,7 @@ Návod naleznete zde: [ZDE](https://flask.palletsprojects.com/en/2.2.x/installat
 
 ### Úkol HW1.2 Koncové body:
 
-Webové aplikace využívají principu koncových bodů. V případě, že napíš uživatel do webového prohlížeče URL obsahující adresu serveru, tak může aktivovat určitý koncový bod dodáním symbolu lomítka a následně názvu koncového bodu. Koncový bod je v Pythonu realizován pomocí dekorátoru, který naslouchá na HTTP metody GET, POST, PUT, DELETE a spouští pythonovskou metodu. Tato metoda pak provádí již určitou službu. typicky při HTTP metodě GET vrátí nějakou webovou stránku, při HTTP metodě POST naopak nahrává uživatel data z formuláře do Pythonu, PUT a DELETE se používají jen u REST API aplikací.
+Webové aplikace využívají principu koncových bodů. V případě, že napíše uživatel do webového prohlížeče URL obsahující adresu serveru, tak může aktivovat určitý koncový bod dodáním symbolu lomítka a následně názvu koncového bodu. Koncový bod je v Pythonu realizován pomocí dekorátoru, který naslouchá na HTTP metody GET, POST, PUT, DELETE a spouští pythonovskou metodu. Tato metoda pak provádí již určitou službu. typicky při HTTP metodě GET vrátí nějakou webovou stránku, při HTTP metodě POST naopak nahrává uživatel data z formuláře do Pythonu, PUT a DELETE se používají jen u REST API aplikací.
 
 Podívejte se na to, jak se koncové body vytvářejí: [ZDE](https://hackersandslackers.com/your-first-flask-application/)
 
