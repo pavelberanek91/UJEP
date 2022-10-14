@@ -53,7 +53,7 @@ Pokud chceme ještě větší volnost a umožnit vložit uživateli v XML v něj
 
 **Úkol 2.1 - DTD soubor student**
 
-Napište DTD validační soubory k entitě student z minulé hodině. Pokud se vám nelíbí moje DTD k fakultě, tak si také vytvořte vlastní DTD pro fakultu.
+Napište DTD validační soubory k entitě student z minulé hodini. Pokud se vám nelíbí moje DTD k fakultě, tak si také vytvořte vlastní DTD pro fakultu.
 
 Zde vidíte příklad mého DTD souboru, který slouží pro validaci barmanských receptů:
 
