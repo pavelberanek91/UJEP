@@ -29,25 +29,27 @@ print(f"Zbyva hodin: {disponibilni_hodiny}")
 ```
 
 
-**Úkol OS2.1: Lorem**
+**Úkol OS2.1: Řešitel kvadratických rovnic**
 
+Napište program, který přijme naráz ze standardního vstupu oddělené mezerou koeficienty kvadratické rovnice. Program následně spočítá a vypíše na obrazovku kořeny této rovnice. V případě neexistujícího řešení v oblasti reálných čísel vypíše na obrazovku informační hlášku.
 
-**Úkol OS2.2: Lorem**
+**Úkol OS2.2: Jednokolová verze kámen-nůžky-papír**
 
-
-**Úkol OS2.3: Lorem**
-
-
+Napište program, který realizuje jedno kolo hry kámen-nůžky-papír. Hráč volí mezi třemi symboly (kámen, nůžky, papír) pomocí standardního vstupu. Protihráčem je umělá inteligence, která vybírá symboly náhodně. Vypište na obrazovku informační hlášku o tom, kdo si vybral jaký symobl a jak kolo hry dopadlo.
 
 ## Domácí cvičení 2
 
-**Úkol HW2.1: Lorem**
+**Úkol HW2.1: Kalkulačka**
 
-**Úkol HW2.2: Lorem**
+Napište program, ve kterém na standardní vstup napíše uživatel sadu čísel oddělených čárkou. Následně ve druhém vstupu zvolí slovy jakou operaci chce s čísly v kolekci provést (například: sečti, vynásob). Program podle výběru spustí příslušný algoritmus, který čísla vzájemně sečte, vynásobí nebo provede další jiné operace, které zavedete.
 
-**Úkol HW2.3: Lorem**
+**Úkol HW2.2: Seznamka**
 
-**Úkol HW2.4: Lorem**
+Napište program, do kterého uživatel zadá svůj věk, výšku a záliby. Řekněme, že na seznamce je již registrována jedna osoba jménem Pepina. Uživatel s ní bude mít match, pokud nejsou příliš daleko od sebe svým věkem, výškou a mají alespoň 2 společné záliby. Realizujte takový algoritmus.
+
+**Úkol HW2.3: Trefa do kulatého terče**
+
+Napište program, který vystřelí náhodně do čtverce. V tomto čtverci je umístěna kružnice s daným středem a poloměrem. Program zahlásí výstřel, pokud souřadnice náhodného výstřelu jsou uvnitř kružnice (terč).
 
 **Úkol HW2.5: Lorem**
 
