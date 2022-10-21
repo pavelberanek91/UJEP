@@ -30,7 +30,7 @@ Tyto XML technologie obecně označujeme jako XSL jazyk (eXtensible Stylesheet L
 
 Ukázku transformace z XML na HTML (konkrétně xhtml) naleznete na stránce [W3Schools XSLT Transform](https://w3schools.com/xml/xsl_transformation.asp). Transformace se provádí pomocí XSLT elementů:
 1. <template> [W3Schools XSLT Template](https://w3schools.com/xml/xsl_templates.asp) - sada transformačních pravidel, aplikujících se na vyhledané uzly výrazem jazyka XPath v atributu match
-2. <apply-templates> [W3Schools XSLT Apply](https://w3schools.com/xsl_apply_templates.asp) - aplikace XSLT pravidel (templates) na element nebo jeho děti
+2. <apply-templates> [W3Schools XSLT Apply](https://w3schools.com/xml/xsl_apply_templates.asp) - aplikace XSLT pravidel (templates) na element nebo jeho děti
 
 #### Podmínky a cykly v XSLT
 
