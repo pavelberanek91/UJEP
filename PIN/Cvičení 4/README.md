@@ -58,7 +58,7 @@ Nad nalezenými uzly z XPath výrazu lze provádět dodatečnou filtraci predik�
 
 Jelikož jazyk XSL-FO je již obsolete (ten je bohužel zapotřebí pro konverzi XML do PDF), tak se využívá pro vizualizaci dat CSS3. Kaskádové styly nejsou součástí našeho kurzu, avšak měli byste mít alespoň základní ponětí o nich. V tomto cvičení si vyzkoušíte naformátovat přetransformovaný XML dokument pomocí kaskádových stylů.
 
-#### XSLT ve webových aplikacích
+#### XSLT ve webových aplikacích
 
 Nejčastější využití XML je u webových aplikací, takže otázkou zůstává, kde se vlastně transformace provádí u vztahu klient-server. K transformaci může docházet na straně klienta, kterému je do aplikace zaslán XML dokument, nejčastěji jazykem Javascript [W3Schools XSLT on the Client](https://w3schools.com/xml/xsl_client.asp), nebo na straně serveru, který XML transformuje pro klienta a zašle mu již transformovaný dokument [W3Schools XSLT on the Server](https://w3schools.com/xml/xsl_server.asp), např.: jazykem PHP.
 
