@@ -23,7 +23,7 @@ Pro potřeby transformace je nutné procházet řízeným způsobem XML dokument
 Tyto XML technologie obecně označujeme jako XSL jazyk (eXtensible Stylesheet Language - obdoba css ale silnější)[W3Schools XSL Language](https://w3schools.com/xml/xsl_languages.asp):
 1. XSLT - jazyk pro transformaci
 2. XPath - jazyk pro navigaci
-3. XSL-FO - jazyk pro vizualizaci (již se nepoužáví, nahrazen CSS3)
+3. XSL-FO - jazyk pro vizualizaci (již se nepoužívá, nahrazen CSS3)
 4. XQuery - jazyk pro dotazování
 
 #### Převod XML do HTML pomocí XSLT
