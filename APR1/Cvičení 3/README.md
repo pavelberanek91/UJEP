@@ -4,6 +4,8 @@
 
 ### On-site
 
+V minulém cvičení jsme se naučili rozhodovat o tom, zda některé příkazy jazyka Python vykonáme nebo ne pomocí konstrukce IF. Také jsme se naučili volit mezi alternativními možnostmi mezi provedenými bloky kódu pomocí sekvence IF-ELIF-...-ELIF-ELSE. Která větev se vykoná závisí na tom, která z podmínek bude splněna (výlučně vůči ostatním). Podmínky mohou být velice komplikované pomocí propojení logickými operátory (and, or, not) s různorodými relacemi (<, <=, >, >=, ==, !=). Dále můžeme měnit precedenci vyhodnocování výrazů ve složené podmínce pomocí závorek.
+
 ```
 jmeno = ""
 while jmeno == "": 
