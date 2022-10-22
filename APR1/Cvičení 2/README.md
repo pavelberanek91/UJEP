@@ -61,7 +61,7 @@ Napište program, který vystřelí náhodně do čtverce. V tomto čtverci je u
 
 **Úkol HW2.6: Narozeniny**
 
-Napište program, do kterého zadáte datum vašeho narození. Program se podívá na dnešní datum pomocí knihovny datetime a vypíše, kolik zbývá dnu do vašich narozenin. Pokud máte narozeniny dnes, tak vám navíc ještě pogratuluje.
+Napište program, do kterého zadáte datum vašeho narození. Program se podívá na dnešní datum pomocí knihovny datetime a vypíše, kolik zbývá dnu do vašich narozenin. Pokud máte narozeniny dnes, tak vám navíc ještě pogratuluje. Jak pracovat s datumem se dozvíte [ZDE] (https://www.w3schools.com/python/python_datetime.asp)
 
 **Video týdne 1: Case match v pythonu 3.10**
 
