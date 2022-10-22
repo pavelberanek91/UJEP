@@ -41,27 +41,34 @@ Napište program, který realizuje jedno kolo hry kámen-nůžky-papír. Hráč 
 
 ### Domácí cvičení 2
 
-**Úkol HW2.1: Kalkulačka**
+**Úkol HW2.1: Vzpomínka na jméno**
+
+Napište program, která obsahuje v proměnné správné jméno nějaké osoby. Program se vás zeptá na to, jak se osoba jmenuje. Pokud napíšete správné jméno, tak vám program vypíše větu "Jsem rád/a, že si mě pamatuješ". Pokud napíšete jméno špatně, tak vám osoba vyhubuje.
+
+**Úkol HW2.2 - Sportka**
+Napište program, který kontroluje výherní los. Uživatel zadá na klávesnici číslo svého losu a pokud jeho los vyhrál ve sportce, tak se vypíše hláška na obrazovku o vítězství. Ve sportce se losuje jen jedna číslice a to od 1 do 9. Los má také jen jednu číslici. Pro generování náhodného čísla použijte knihovnu random a její příkaz randint(min, max), kde min a max jsou rozmezí generování náhodného čísla.
+
+**Úkol HW2.3: Kalkulačka**
 
 Napište program, ve kterém na standardní vstup napíše uživatel sadu čísel oddělených čárkou. Následně ve druhém vstupu zvolí slovy jakou operaci chce s čísly v kolekci provést (například: sečti, vynásob). Program podle výběru spustí příslušný algoritmus, který čísla vzájemně sečte, vynásobí nebo provede další jiné operace, které zavedete.
 
-**Úkol HW2.2: Seznamka**
+**Úkol HW2.4: Seznamka**
 
 Napište program, do kterého uživatel zadá svůj věk, výšku a záliby. Řekněme, že na seznamce je již registrována jedna osoba jménem Pepina. Uživatel s ní bude mít match, pokud nejsou příliš daleko od sebe svým věkem, výškou a mají alespoň 2 společné záliby. Realizujte takový algoritmus.
 
-**Úkol HW2.3: Palindrom**
+**Úkol HW2.5: Palindrom**
 
 Napište program, který zjistí zda zadané slovo je palindrom, Tedy čte se z obou stran stejně. Takové slovo je například "kunanesenanuk" nebo "jelenovipivonelej".
 
-**Úkol HW2.4: Silné heslo**
+**Úkol HW2.6: Silné heslo**
 
 Napište program, který zjistí, zda zadané heslo uživatelem je silné. heslo musí mít alespoň jedno velké písmeno, jedno malé písmeno, jednu číslici, jeden speciální znak a minimální délka musí být alespoň 8 znaků.
 
-**Úkol HW2.5: Trefa do kulatého terče**
+**Úkol HW2.7: Trefa do kulatého terče**
 
 Napište program, který vystřelí náhodně do čtverce. V tomto čtverci je umístěna kružnice s daným středem a poloměrem. Program zahlásí výstřel, pokud souřadnice náhodného výstřelu jsou uvnitř kružnice (terč).
 
-**Úkol HW2.6: Narozeniny**
+**Úkol HW2.8: Narozeniny**
 
 Napište program, do kterého zadáte datum vašeho narození. Program se podívá na dnešní datum pomocí knihovny datetime a vypíše, kolik zbývá dnu do vašich narozenin. Pokud máte narozeniny dnes, tak vám navíc ještě pogratuluje. Jak pracovat s datumem se dozvíte [ZDE](https://www.w3schools.com/python/python_datetime.asp)
 
