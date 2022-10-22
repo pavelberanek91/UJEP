@@ -1,6 +1,8 @@
 # Algoritmizace a programování
 
-## On-site cvičení 2
+## Cvičení 2 - rozhodování pomocí podmínek
+
+### On-site
 
 Cílem tohoto cvičení je naučit program rozhodovat o dalším průběhu, tedy o příkazech, které se vykonají za splnění určité podmínky. Budeme k tomu využívat konstrukce IF-ELIF-ELIF-...-ELIF-ELSE. 
 
@@ -37,7 +39,7 @@ Napište program, který přijme naráz ze standardního vstupu oddělené mezer
 
 Napište program, který realizuje jedno kolo hry kámen-nůžky-papír. Hráč volí mezi třemi symboly (kámen, nůžky, papír) pomocí standardního vstupu. Protihráčem je umělá inteligence, která vybírá symboly náhodně. Vypište na obrazovku informační hlášku o tom, kdo si vybral jaký symobl a jak kolo hry dopadlo.
 
-## Domácí cvičení 2
+### Domácí cvičení 2
 
 **Úkol HW2.1: Kalkulačka**
 
