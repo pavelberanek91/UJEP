@@ -47,14 +47,21 @@ Napište program, ve kterém na standardní vstup napíše uživatel sadu číse
 
 Napište program, do kterého uživatel zadá svůj věk, výšku a záliby. Řekněme, že na seznamce je již registrována jedna osoba jménem Pepina. Uživatel s ní bude mít match, pokud nejsou příliš daleko od sebe svým věkem, výškou a mají alespoň 2 společné záliby. Realizujte takový algoritmus.
 
-**Úkol HW2.3: Trefa do kulatého terče**
+**Úkol HW2.3: Palindrom**
+
+Napište program, který zjistí zda zadané slovo je palindrom, Tedy čte se z obou stran stejně. Takové slovo je například "kunanesenanuk" nebo "jelenovipivonelej".
+
+**Úkol HW2.4: Silné heslo**
+
+Napište program, který zjistí, zda zadané heslo uživatelem je silné. heslo musí mít alespoň jedno velké písmeno, jedno malé písmeno, jednu číslici, jeden speciální znak a minimální délka musí být alespoň 8 znaků.
+
+**Úkol HW2.5: Trefa do kulatého terče**
 
 Napište program, který vystřelí náhodně do čtverce. V tomto čtverci je umístěna kružnice s daným středem a poloměrem. Program zahlásí výstřel, pokud souřadnice náhodného výstřelu jsou uvnitř kružnice (terč).
 
-**Úkol HW2.5: Lorem**
+**Úkol HW2.6: Narozeniny**
 
-**Úkol HW2.6: Lorem**
-
+Napište program, do kterého zadáte datum vašeho narození. Program se podívá na dnešní datum pomocí knihovny datetime a vypíše, kolik zbývá dnu do vašich narozenin. Pokud máte narozeniny dnes, tak vám navíc ještě pogratuluje.
 
 **Video týdne 1: Case match v pythonu 3.10**
 
