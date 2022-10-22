@@ -47,7 +47,7 @@ for cislo in range(11):
     print(cislo)
 ```
 
-Toto implicitní chování souvisí s procházením kolekcí. Kolekce je vícero hodnot, na které odkazujeme jednou proměnnou. Zde vidíme kolekci řetězců, na které se odkazujeme proměnnou kamaradi. Pomocí hranaté závorky a čísla pořadí se můžete odkazovat na konkrétní prvek z kolekce. Číslo pořadí říkáme index a v pythonu má první položka index 0. Poslední položka by se vypočítala jako délka kolekce - 1 (jelikož číslujeme od 0). Rychlá zkratka pro vypsání poslední položky je zvolit index -1, jelikož příkaz pro výpočet délky kolekce se tam automaticky doplní za vás. Kromě doslovných hodnot (literálů) můžeme do hranatých závorek za index volit i proměnnou, jejíž obsah se tam nahraje. To umožňuje procházet postupně prvky v kolekci pomocí cyklu.
+Toto implicitní chování souvisí s procházením kolekcí. Kolekce je vícero hodnot, na které odkazujeme jednou proměnnou. Zde vidíme kolekci řetězců, na které se odkazujeme proměnnou kamaradi. Pomocí hranaté závorky a čísla pořadí se můžete odkazovat na konkrétní prvek z kolekce. Číslo pořadí říkáme index a v pythonu má první položka index 0. Poslední položka by se vypočítala jako délka kolekce - 1 (jelikož číslujeme od 0). Rychlá zkratka pro vypsání poslední položky je zvolit index -1, jelikož příkaz pro výpočet délky kolekce se tam automaticky doplní za vás. Kromě doslovných hodnot (literálů) můžeme do hranatých závorek za index volit i proměnnou, jejíž obsah se tam nahraje. To umožňuje procházet postupně prvky v kolekci pomocí cyklu. Následující program postupně navyšuje index for cyklem od 0 do délky kolekce nevčetně a inkrementuje po 1. Tím projdeme všechny prvky kolekce. Tento způsob procházení je tzv. mutabilní, tudíž mohu prvek na který se aktuálně odkazuji v původní kolekci změnit na jinou hodnotu.
 
 ```
 kamaradi = ['Pavel Beranek', 'Jiri Skvor', 'Jiri Fiser', 'Pavel Kuba']
@@ -55,6 +55,8 @@ for idx in range(len(kamaradi)):
     kamaradi[idx] = "Maxipes Fik"
 print(kamaradi)
 ```
+
+V jiných programovacích jazycích existuje ještě tzv. FOREACH cyklus. V pythonu je ve skutečnosti jen jeden typ FOR cyklus a to FOREACH. FOREACH cyklus funguje tak, že do řídící proměnné nahraje kopii hodnot z kolekce popořadě. Nelze u něj volit krok ani start. Stop je automaticky zvolen jako délka kolekce. Předchozí cyklus byl také FOREACH cyklus, jelikož příkaz range se při kompilace změní na kolekci hodnot od - do s krokem. Kopii těchto hodnot nahráváme do proměnné index. Při použití této FOREACH verze cyklu bez indexu si zablokujeme mutabilitu, jelikož místo přistupování indexem do původní kolekce používáme jen kopie hodnot z kolekce v řídící proměnné. Jedná se tedy o nemutabilní přístup ke kolekci.
 
 ```
 kamaradi = ['Pavel Beranek', 'Jiri Skvor', 'Jiri Fiser', 'Pavel Kuba']
@@ -65,11 +67,11 @@ print(kamaradi)
 
 **OS3.1 - SIM karta**
 
-lorem
+Realizujte algoritmus přihlašování do SIM karty. Program vás požadá o zadání správného PINu SIM karty. Na zadání máte 3 pokusy. Pokud se trefíte do správného PINu, pak vám aplikace vypíše informaci o úspěšném přihlášení do SIM karty. Pokud se netrefíte, pak vás požadá o korektní zadaní. Pokud se netrefíte 3x, tak aplikace vypíše informaci o zablokování SIM karty.
 
 **OS3.2 - Kámen nůžky papír na dvě vítězná kola**
 
-lorem
+Upravte váš kód na kámen-nůžky-papír z předchozího cvičení na verzi hry, ve které vyhrává hráč nebo počítač až po dvou vítězných kolech.
 
 **OS3.3 - Manipulace s pixely**
 
