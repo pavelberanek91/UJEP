@@ -65,16 +65,6 @@ for kamarad in kamaradi:
 print(kamaradi)
 ```
 
-**OS3.1 - SIM karta**
-
-Realizujte algoritmus přihlašování do SIM karty. Program vás požadá o zadání správného PINu SIM karty. Na zadání máte 3 pokusy. Pokud se trefíte do správného PINu, pak vám aplikace vypíše informaci o úspěšném přihlášení do SIM karty. Pokud se netrefíte, pak vás požadá o korektní zadaní. Pokud se netrefíte 3x, tak aplikace vypíše informaci o zablokování SIM karty.
-
-**OS3.2 - Kámen nůžky papír na dvě vítězná kola**
-
-Upravte váš kód na kámen-nůžky-papír z předchozího cvičení na verzi hry, ve které vyhrává hráč nebo počítač až po dvou vítězných kolech.
-
-**OS3.3 - Manipulace s pixely**
-
 For cyklus je ideálním cyklem pro procházení grafických dat. Obrázek je vlastně seznam řádků a každý řádek je seznam hodnot barev. Pro procházení takové struktury je potřeba využít dvojného cyklu. Vnější cyklus se v následujícím případě bude opakovat tolikrát, kolik má obrázek řádků. V řádku projdeme každý pixel, tedy budeme vnitřní cyklus opakovat tolikrát, kolik má obrázek sloupců. Počet řádku a sloupců zjistíme z velikosti obrázku. Abychom však dostali do paměti obrázek v podově schopné procházení bude nutné využít nějakou knihovnu. Takovou knihovnou může být např.: PIL. Následující kód vezme nahraný obrázek s názvem prase.jpeg a provede binarizace jeho pixelů, tedy na základě průměrné hodnoty z intenzit pixelů přebarví pixely na černou nebo bílou. Rozhodnutí o barvě závisí na práhové hodnotě (threshold).
 
 ```
@@ -93,12 +83,117 @@ for y in range(vyska):
             obrazek.putpixel( (x, y), (0, 0, 0) )
 
 display(obrazek) #obrazek.show()
-
 ```
+
+**OS3.1 - SIM karta**
+
+Realizujte algoritmus přihlašování do SIM karty. Program vás požadá o zadání správného PINu SIM karty. Na zadání máte 3 pokusy. Pokud se trefíte do správného PINu, pak vám aplikace vypíše informaci o úspěšném přihlášení do SIM karty. Pokud se netrefíte, pak vás požadá o korektní zadaní. Pokud se netrefíte 3x, tak aplikace vypíše informaci o zablokování SIM karty.
+
+**OS3.2 - Kámen nůžky papír na dvě vítězná kola**
+
+Upravte váš kód na kámen-nůžky-papír z předchozího cvičení na verzi hry, ve které vyhrává hráč nebo počítač až po dvou vítězných kolech.
+
+**OS3.3 - Manipulace s pixely**
+
+Vytvořte si váš vlastní filtr na úpravu vzhledu fotografie. Zkuste například vytvořit nějaký retro filtr.
 
 ### Domácí cvičení
 
-#### Cvičení 3.1
+**HW3.1 - Zadání čísla**
+
+Napište program, který neskončí dokavaď nezadáá uživatel ze standardního vstupu číslo, které po přetypování nevyhodí chybu.
+
+**HW3.2 - Průměr ze zadaných dat**
+
+Napište program, který bude žádat uživatele o zadávání číselných dat z klávesnice do té doby, dokavaď nenapíše řetězec STOP. Poté vypíše na obrazovku aritmetický průměr z hodnot. Přidávání do kolekce se provádí příkazem append. Na začátku si budete muset vytvořit prázdnou kolekci.
+
+```
+kolekce = []
+kolekce.append("Pavel")
+print(kolekce)
+```
+
+**HW3.3 - Modul statistics**
+
+Vemte předchozí program a naimportujte si do něj knihovnu statistics. Tato knihovna obsahuje různé užitečné statistické vzorce. Po nasbírání dat v předchozím cvičení vypište pomocí této knihovny statistické hodnoty jako střední hodnota, modus, medián, směrodatná odchylka, rozptyl, atd.
+
+**HW3.4 - Losovač otázek k maturitě**
+
+Napište program, který v kolekci obsahuje seznam maturitních otázek. Poté se spustí cyklus, který se opakuje do té doby, dokavaď v seznamu nějaká otázka zbývá. Kdykoliv uživatel zmáčkně klávesu ENTER, tak program jednu z otázek náhodně vylosuje a vypíše na obrazovku. Otázky budou voleny náhodně. Podívejte se do modulu random, jaké by funkce by se vám mohly hodit pro tento účel.
+
+**HW3.5 - Sudá a lichá řada**
+
+Napište program, který pomocí for cyklu proiteruje řídící proměnnou od hodnoty 0 do hodnoty 100. Pokud číslo v řídící proměnné bude liché, pak bude číslo uloženo do kolekce lichá_čisla. Pokud bude sudé, tak do kolekce sudá_čísla. Sudost nebo lichost můžete zjistit pomocí operace modulo (značí se procentem v jazyce python).
+
+**HW3.6 - Fibonacciho posloupnost**
+
+Napište program, který vypíše na obrazovku Fibonacciho posloupnost od hodnoty 0 do hodnoty zadané uživatelem (generace králíků).
+
+**HW3.7 - Samohlásky**
+
+Napište program, který projde slovo a spočítá v něm počet samohlášek.
+
+**HW3.8 - Vyhledání extrémů**
+
+Napište program, který projde kolekci čísel a nalezne mezi nimi největší a nejmenší číslo. Nepoužívejte funkce min a max!
+
+**HW3.9 - Analýza sentimentu**
+
+Napište program, který přijme zadanou větu a zjistí, zda má zadavatel spíše negativní nebo spíše pozitivní náladu. Definujte si k tomu kolekci pozitivních slov a kolekci negativních slov.
+
+**HW3.10 - Hádání čísla**
+
+Napište program, kde uživatel hádá náhodné číslo v rozmezí od 1 do nějaké maximální meze. Na začátku je maximální mez nastavena na hodnotu 2. S každým uhádnutým číslem se mez zvětšuje o jedna, takže pokud uživatel v prvním kole číslo uhádne, tak v příštím kole již hádá mezi 1 a 3. Pokud uživatel číslo neuhádně, tak hádáná hodnota musí zůstat stejná a uživatel jen dostane nápovědu, jestli musí hádat číslo nižší nebo vyšší. Uživatel má 3 životy, které pokud dojdou, tak hra končí. Po ukončení hry se na obrazovku vypíše nějakým vhodným způsobem vypočítané skóre.
+
+**HW3.11 - Rovnice lovec-kořist**
+
+Následující program představuje simulaci šíření viru v populaci. Parametry šíření jsou síla viru Beta a rychlost uzdravování Gama. Poměr těchto čísel se nazývá reprodukční číslo, o kterém jste asi slyšeli v souvislosti s Covidem.
+
+```
+import matplotlib.pyplot as plt
+
+#SIR model wiki (compartmental models in epidemiology)
+
+t = list(range(76))  #časové stopy (týdny)
+N = 7768662420       #světová populace
+I = 1                #počet nakažených
+R = 0                #počet vyléčených
+S = N - I            #počet nakazitelných
+  
+nakazitelni = [S]
+nakazeni = [I]
+vyleceni = [R]
+
+rychlostSireni = 1.0     #nejaktuálnější basic reproduction rate: https://en.wikipedia.org/wiki/Basic_reproduction_number
+rychlostZotaveni = 0.5  #recovery rate kterej sem si přibližně spočítal (průměrnej denní přirůstek nakažených/průměrnej denní přirůstek vyléčených)
+
+for i in range(75):
+  dS = - rychlostSireni * I * S / N
+  dI = rychlostSireni * I * S / N - rychlostZotaveni * I
+  dR = rychlostZotaveni * I
+  S += dS
+  I += dI
+  R += dR
+
+nakazitelni.append(S)
+nakazeni.append(I)
+vyleceni.append(R)
+
+plt.title("SIR Model of Coronavirus")
+plt.ylabel("World Population")
+plt.xlabel("Time")
+plt.plot(t,nakazitelni,"b-",label = "Susceptible")
+plt.plot(t,nakazeni,"r-",label = "Infected")
+plt.plot(t,vyleceni,"m-",label = "Recovered")
+plt.legend() #matplotlib pyplot legend
+plt.show()
+```
+
+Upravte program SIR modelu šíření viru do Lotka-Volterrova modelu pro lovce a kořist. Diferenciální rovnice naleznete [ZDE](https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations)
+
+**HW3.12 - Piškvorky**
+
+Naprogramujte hru piškvorky, kde proti sobě hrají dva hráči.
 
 **Video týdne 1: Porovnání rychlosti cyklů**
 
