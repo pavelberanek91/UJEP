@@ -38,8 +38,8 @@ Cvičí:
 |    1   |  Vstup a výstup | seznámení s prostředím, markup jazyk, proměnná, artimetické a logické operace    | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%201) |
 |    2   |  Rozhodování | podmínky, větvení a vnoření podmínek, logické spojky v podmínce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%202) |
 |    3   |  Opakování | cyklus while, řídící proměnná, cyklus for (foreach), předčasné ukončení cyklu a iterace | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%203) |
-|    4   |  Řetězce | indexace, vyhledávání, mutabilita, reference a kopie, metody řetězců                  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%204) |
-|    5   |  Seznamy | metody seznamů, procházení seznamu, spojování seznamů, množiny, asymptotická složitost| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%205) |
+|    4   |  Kolekce | indexace, vyhledávání, mutabilita, reference a kopie, metody kolekcí, seznam, ntice, množina | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%204) |
+|    5   |  ??? | ??? | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%205) |
 |    6   |  Vlastní funkce | parametry, návratové hodnoty, návrat a rozbalení n-tice, algoritmy, návrh SW   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%206) |
 |    7   |  Algoritmy nad seznamem | duplikace, generování, mapování, filtrace, zipování, redukce           | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%207) |
 |    8   |  Slovníky a jejich využití | metody slovníku, asociativní pole, řídké pole, mezipaměti           | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%208) |
