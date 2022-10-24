@@ -4,6 +4,41 @@
 
 ### On-site cvičení
 
+V tomto cvičení se seznámíme s kolekcemi a jejich rozhraním (způsob, jak je používat). Je nutné si uvědomit, že Python je dynamicky typovaný jazyk. Prpoto ve všech kolekcích se mohou nacházet objekty různých datových typů. To ve staticky typovaných jazycích jako je C# nebo Java nelze bez použití generik. Mezi základní kolekce řadíme:
+1. seznam = [] = list()
+2. ntici = () = tuple()
+3. množinu = {} = set()
+
+Seznam je nejpoužívanější kolekcí ze zmíněných. Jedná se o mutabilní kolekci, tedy prvky uvnitř seznamu lze nejen číst, ale i měnit (mutovat). Mezi metody (funkce/chování) seznamu patří:
+1. append(obj) = přidá objekt do kolekce na jeho konec
+2. insert(obj, idx) = přidá objekt do kolekce na zadaný index
+3. extend(list) = přidá prvky z jiného seznamu mezi prvky seznamu, který metodu extend volá
+4. pop(idx) = vyjme prvek z kolekce na zadaném indexu a vrátí vám ho do proměnné, bez indexu se vyjme poslední prvek
+5. remove(obj) = odstraní objekt z kolekce, pokud se tam objekt nachází
+6. clear() = vyprázdní seznam (není smazán, jen je prázdný)
+7. copy() = zkopíruje prvky seznamu do jiného seznamu (mělká kopie, kopírují se i reference)
+8. count(obj) = spočítá, kolikrát se zadaný prvek v kolekci nachází
+9. sort() = seřadí seznam, lze vybrat klíč k řazení a i vzestupnost/sestupnost
+
+Vidíme, že seznam obsahuje spousty užitečných funkcí, které byste si museli v jiných jazycích programovat sami a řešit problém realokace paměti a posouvání hodnot na nově vzniklá prázdná místa.
+
+Další kolekcí je ntice, která je nemutabilní kolekce, tedy prvky uvnitř kolekce nelze měnit, lze je pouze číst. Tato kolekce má pouze dvě metody a to:
+1. index(obj) = vrátí index, na kterém se objekt nachází
+2. count(obj) = vrátí počet nálezů zadaného objektu v ntici
+
+Tato kolekce je velice minimalistická ve svém chování. Její využití je spíše významové. Ntici používáme pro neměnné hodnoty, u kterých i pevně dané pořadí má určitý význam. Například souřadnice (x, y) nebo přihlašovací údaje (login, heslo). Nejčastěji se nachází jako prvky seznamu nebo jako klíče slovníku (příští lekce).
+
+Poslední kolekcí je množina, která je mutabilní kolekce. Její využití souvisí s její vlastností, že objekty uvnitř množiny musí mít unikátní hodnotu. Pokud do množiny vložíme více objektů se stejnou hodnotou, zůstane tam pouze jeden z nich. Kromě využití pro mazání duplicit ze seznamu má spousty užitečných operací z množinové matematiky:
+1. union(set) = sjednocení volající množiny (ta která metodu volá pomocí tečky) a argumentové množiny (ta, která je v závorce jako tzv. argumentú
+2. intersection(set) = průnik volající množiny s argumentovou množinou
+3. difference(set) = smaže prvky z volající množiny, které jsou v argumentové množině
+5. symetric_difference(set) = sjednocení prvků množin, od kterého se odečte průnik množin
+6. issubset(set) = zjistí, zda je volaná množina podmnožinou argumentové
+7. issuperset(set) = zjistí, zda je volaná množina nadmnouzinou argumentové
+8. isdisjoint(set) = zjistí, zda množiny neobsahují stejné položky
+
+Využití množiny jako kolekce tedy souvisí s aplikacemi, kde je zapotřebí využívat množinovou matematiky. Jedná se o různé problémy plánování směn nebo zjišťování zákazníků, kterým je vhodné zaslat zprávu.
+
 **OS4.1 - Počet samohlášek v ntici**
 
 Vytvořte seznam ntic, který naplňte dvojicemi (jméno, počet samohlásek ve jméně). Jména jsou zadaná v předpřipraveném seznamu. Použijte k tomu metodu count.
