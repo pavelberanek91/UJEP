@@ -191,10 +191,6 @@ plt.show()
 
 Upravte program SIR modelu šíření viru do Lotka-Volterrova modelu pro lovce a kořist. Diferenciální rovnice naleznete [ZDE](https://en.wikipedia.org/wiki/Lotka%E2%80%93Volterra_equations)
 
-**HW3.12 - Piškvorky**
-
-Naprogramujte hru piškvorky, kde proti sobě hrají dva hráči.
-
 **Video týdne 1: Porovnání rychlosti cyklů**
 
 V tomto cvičení jste se naučili provádět opakování příkazů pomocí cyklů. Otázkou tedy zůstává, jaký cyklus použít, pokud chci provést nějakou aritmeticko-logickou operaci nad kolekcí objektů (například sečti všechna čísla v kolekci). Odpovědí je: pokud můžete, nepoužívejte cyklus. Vysvětlení této odpovědi naleznete v tomto videu: [ZDE](https://www.youtube.com/watch?v=Qgevy75co8c)
