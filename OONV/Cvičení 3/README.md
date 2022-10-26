@@ -24,7 +24,30 @@ Vytvořte primitivní implementace metod podle vašeho uvážení. Atributy post
 **Řešení**
 
 ```
+class Postava
+{
+    private int Hp {get; private set;} //Zásahové body
+    private int Atk {get; private set;} //Útočné body
+    private int Def {get; private set;} //obranné body
 
+    public Postava(){
+        Random random = new Random();
+        this.Hp = random.next(10, 20);
+        this.Atk = random.next(1, 3);
+        this.Def = random.next(1, 3);
+    }
+
+    public void zautoc(Postava nepritel){
+        Random random = new Random();
+        poskozeni = random.next(0, this.Atk);
+        nepritel.prijmiZasah(poskozeni);
+    }
+
+    public void prijmiZasah(int poskozeni){
+        poskozeni = this.Def >= poskozeni? 0: poskozeni - this.Def;
+        this.Hp -= poskozeni;
+    }
+}
 ```
 
 ### Úkol OS3.2 Tvorba potomků:
