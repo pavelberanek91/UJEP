@@ -33,9 +33,9 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
 |    1   | Jazyk C# | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%201) |
-|    2   | Zapouzdření | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
-|    3   | Rozhraní | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
-|    4   | Dědičnost | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
+|    2   | Rozhraní | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%202) |
+|    3   | Dědičnost | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
+|    4   | Komunikace na úrovni tříd | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
 |    5   | UML diagramy tříd | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
 |    6   | Jedináček | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
 |    7   | Tovární metody a objekty | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
