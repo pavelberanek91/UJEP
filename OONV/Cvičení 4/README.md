@@ -96,3 +96,9 @@ lorem
 
 ### Úkol HW4.5 Lorem:
 
+**Video týdne: Přehled UML diagramů**
+
+V příští lekci se budeme učit zakreslovat návrh systému do UML diagramů. Podívejte se na následující přehled UML diagramů [ZDE](https://www.youtube.com/watch?v=tv-_1er1mWI). Pokud byste chtěli celý kurz na UML diagramy, pak doporučuji následující video [ZDE](https://www.youtube.com/watch?v=WnMQ8HlmeXc).
+
+
+
