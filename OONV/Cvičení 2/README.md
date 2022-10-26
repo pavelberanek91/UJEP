@@ -273,7 +273,7 @@ class Automobil : IPojizdne, IZaparkovatelne
 
 Třídu automobil jsem musel pozměnit. Teď nelze s automobilem řídit metodami s IPojizdne do té doby, dokavaď je zaparkován. Přidal jsem mu tedy atribut s příznakem zaparkování. Tento atribut se nastavuje při zaparkování do garáže a při vyparkování z garáže. Dále jsem mu přidal odkaz na garáž, ve které je zaparkován. Tím jsem propojil obě třídy do vztahu a komunikují spolu. Při zaparkování do garáže přejímá automobil pozici z GPS garáže.
 
-### Úkol OS2.5 Statícké typování a rozhraní:
+### Úkol OS2.5 Statické typování a rozhraní:
 
 **Zadání**
 
