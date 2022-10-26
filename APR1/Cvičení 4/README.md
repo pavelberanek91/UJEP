@@ -134,6 +134,7 @@ Napište program, který přijme ze standardního vstupu různá slova. Program 
 ```
 zadano = ["pavel", "hromada", "traktor"]
 vysledek = ["p", "a", "v", "e", "l", "h", "r", "o", "m", "d", "t", "k"]
+```
 
 **HW4.8 - Piškvorky**
 
