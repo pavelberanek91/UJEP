@@ -2,8 +2,6 @@
 
 ## On-site cvičení 2 - rozhraní
 
-**Obsah cvičení 2 - rozhraní**:
-
 ### Cognitive apprenticeship
 
 ### Úkol OS2.1 Rozhraní:
@@ -273,7 +271,7 @@ class Automobil : IPojizdne, IZaparkovatelne
 
 Třídu automobil jsem musel pozměnit. Teď nelze s automobilem řídit metodami s IPojizdne do té doby, dokavaď je zaparkován. Přidal jsem mu tedy atribut s příznakem zaparkování. Tento atribut se nastavuje při zaparkování do garáže a při vyparkování z garáže. Dále jsem mu přidal odkaz na garáž, ve které je zaparkován. Tím jsem propojil obě třídy do vztahu a komunikují spolu. Při zaparkování do garáže přejímá automobil pozici z GPS garáže.
 
-### Úkol OS2.5 Statické typování a rozhraní:
+### Úkol OS2.5 Statícké typování a rozhraní:
 
 **Zadání**
 
@@ -345,17 +343,23 @@ Pokud jste bezrozmyšlenkovitě opisovali můj návrh, tak teď se vám to vrát
 
 Vytvořte nějakou třídu, která je zaparkovatelné, ale není pojízdná. Zkuste s ní provést experimenty.
 
-### Úkol HW2.3 Lorem:
+### Úkol HW2.3 Palivo:
 
-Lorem
+Doplňte třídám mechanismus, který neumožňuje jezdit, pokud dopravnímu prostředku dojde palivo. Palivo ubyde v případě, že dopravní prostředek jede dopředu nebo dozadu.
 
-### Úkol HW2.4 Lorem:
+### Úkol HW2.4 Benzínka:
 
-Lorem
+Vytvořte třídu Benzínka (nebo krmírna ... i Kačenka potřebuje palivo, takže zkuste vymyslet univerzální název, možná DoplňovačkaPaliva???), která umožňuje dvě věci:
+1. Doplnit palivo do dopravního prostředku
+2. Vzít si sebou v kanistrech/pytlech na zrní palivo do garáže v omezeném počtu a doplnit ho v garáži
 
-### Úkol HW2.5 Lorem:
+### Úkol HW2.5 Více dopravních prostředků a omezená garáž:
 
-lorem
+Doprogramujte mechanismus, který umožňuje řidiči vlastnit více dopravních prostředků, které jsou umístěné v garáži. Řidič si může vybrat, kterým prostředkem vyjede z garáže. Garáž je však omezená kapacitou, což by bylo asi vhodné dát rovnou do konstruktoru (garáž se staví s nějakou kapacitou). Pokud by vás mrzela pevná velikost garáže, tak můžete vytvořit ještě třídu StavebníFirma, která kapacitu garáže dostaví :).
+
+**Video týdne: Fancy slova**
+
+V paradigmatu objektově-orientovaného programování přibývá spousty zvláštních slov, například návrhové vzory. Jiné paradigmaty, jako je funkcionální programování, mají také své fancy slova, například: monády. Pojďme se podívat na video, které některá důležitá slova vysvětluje, se kterými se setkáte v různých paradigmatech. [ZDE](https://www.youtube.com/watch?v=4Zc9ci9L5wY)
 
 **Video týdne: Fancy slova**
 
