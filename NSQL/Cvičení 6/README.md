@@ -22,30 +22,43 @@ Ujistíme se, že Docker kontejner běží pomocí příkazu: ```docker ps``` a 
 
 Pokud byste chtěli vidět stavové výpisy Redis, pak napište ```docker logs muj_redis```.
 
-Pokud byste spustili docker kontejner se jménem, se kterým nejste spokojeni, pak můžete docker kontejner zastavit pomocí příkazu: ```docker stop muj_redis``` 
-
-========== dodělat
-
-a případně smazat kontejner příkazem ```docker rmi $(docker image | grep 'muj_redis')```. Pokud byste chtěli smazat stažený obraz, pak použijte příkaz: ```docker rmi $(docker image | grep 'muj_redis')```.
+Pokud byste spustili docker kontejner se jménem, se kterým nejste spokojeni, pak můžete docker kontejner zastavit pomocí příkazu: ```docker stop muj_redis``` a případně smazat kontejner příkazem ```docker rmi $(docker image | grep 'muj_redis')```. Pokud byste chtěli smazat stažený obraz, pak použijte příkaz: ```docker rmi $(docker image | grep 'muj_redis')```.
 
 Pokud byste chtěli smazat všechny stažené obrazy, pak to provedete příkazem ```docker rmi $(docker images -q)```.
-
-========== 
 
 Pro využívání CLI příkazů na obrazu Redis si zapneme interaktivní mód a zapneme shell: ```docker exec -it muj_redis sh```.
 
 V shellu Redis kontajneru můžeme zapnout aplikace redis-cli pro práci s Redis databází v příkazové řádce: ```redis-cli```.
 
+Vyzkoušejte si, že jste schopni s Redisem komunikovat pomocí příkazu ```PING```. Mělo by se vám ozvat ```PONG```.
+
 ### Úkol OS6.2 Komunikace s Redis pomocí redis-py:
 
+Další fází je připojit se jazykem python do redis databáze.
 
-### Úkol OS6.3 Lorem:
+### Úkol OS6.3 Komunikace s Redis z Flask:
+
+Nainstalujte si do virtuálního prostředí (nebo pro odvážlivce nativního prostředí) přes balíčkovací systém pip knihovnu redis ```python -m pip install redis```. Vyzkoušejte si poslat pár příkazů z přednášky do instance redisu:
+
+```
+import redis
+r = redis.Redis()
+
+r.mset({"Katedra Informatiky": "Jiří Škvor", "Katedra Fyzika": "Eva Hejnová"})
+r.get("Katedra Informatiky")
+```
 
 
-### Úkol OS6.4 Využití Redis jako rychlé in-memory databáze:
+### Úkol OS6.4 Využití Redis jako cachovací databáze:
 
-
-### Úkol OS6.5 Využití Redis jako cachovací databáze:
+Prověďte následující úkoly:
+1. Naplňte Postgres databázi informacema o katedrách na jednotlivých fakultách (stačí pár údajů) a vyprázdněete Redis databázi. 
+2. Vytvořte webovou stránku ve Flasku, kde uživatel zvolí katedru.
+3. Uživatel si na stránce zvolí katedru,  Flask aplikace se nejprve podívá do redis databáze a pokud se tám katedra nachází, tak vrátí její data.
+4. Pokud se tam nebude katedra nacházet, pak se podívejte do Postgres databáze a přečtěte informace z ní.
+5. Tyto informace uložte do Redis databáze, ať tam jsou nacachované pro příští rychlé využití. 
+6. Informace tam zůstanou nacachované maximálně minutu. 
+7. Vrácená data vizualizujte šablonovacím jazykem Jinja2.  
 
 ![image](https://user-images.githubusercontent.com/42642687/199008241-984f260f-b345-4cb3-b9c8-36e16c0bfac8.png)
 
