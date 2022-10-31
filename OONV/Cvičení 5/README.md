@@ -11,7 +11,7 @@ Cílem dnešního cvičení je naučit se modelovat informační systémy pomoc�
 Diagram případů užití zachycuje v grafické podobě interakce třídy klienta = actor (běžný uživatel, admin, aj.) se službami systému. Jedná se o vysokoúrovňový pohled na systém a možnosti komunikace s ním. Používá se jako základní nástroj pro komunikaci se zainteresovanými stranami.
 
 Na následujícím obrázku vidíte diagram případů užití pro interakce v restauraci:
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Use_case_restaurant_model.svg/1920px-Use_case_restaurant_model.svg.png"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Restaurant_Model.png"/>
 
 **Zadání**
 
