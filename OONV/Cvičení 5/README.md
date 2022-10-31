@@ -4,7 +4,14 @@
 
 ### Cognitive apprenticeship
 
-### Úkol OS5.1 Lorem:
+Cílem dnešního cvičení je naučit se modelovat informační systémy pomocí grafické notace ve formě UML diagramů. Veškeré diagramy budeme modelovat ve webové aplikace draw.io: [ZDE](https://app.diagrams.net/).
+
+### Úkol OS5.1 Diagramy případů užití (Use-case diagrams):
+
+Diagram případů užití zachycuje v grafické podobě interakce třídy klienta = actor (běžný uživatel, admin, aj.) se službami systému. Jedná se o vysokoúrovňový pohled na systém a možnosti komunikace s ním. Používá se jako základní nástroj pro komunikaci se zainteresovanými stranami.
+
+Na následujícím obrázku vidíte diagram případů užití pro interakce v restauraci:
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Use_case_restaurant_model.svg/1920px-Use_case_restaurant_model.svg.png"/>
 
 **Zadání**
 
