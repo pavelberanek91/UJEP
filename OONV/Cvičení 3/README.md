@@ -90,15 +90,143 @@ Chování hrdiny se liší od postavy v následujícím:
 **Řešení**
 
 ```
+using System.Collections;
 
+class Hrdina: Postava
+{
+    public int Ap {get; private set;} //dovednostni body
+    public int Lvl {get; private set;} //úroveň postavy
+    public int Exp {get; private set;} //zkušenostní body
+    public int NextLvlExp {get; private set;} //zkušenostní body pro další úroveň postavy
+
+    public Dictionary<string, int> Dovednosti {get; private set;}
+
+    public Hrdina(string jmeno):base(jmeno){
+        Random random = new Random();
+        this.Ap = random.Next(3, 10);
+        this.Exp = 0;
+        this.NextLvlExp = 10;
+        this.Dovednosti = new Dictionary<string, int>(){
+            {"Ohnivá koule", 2},
+            {"Ledová sprcha", 3},
+            {"Kyselinový déšť", 3}
+        };
+    }
+
+    public override void zautoc(Postava nepritel){
+        Random random = new Random();
+        System.Console.WriteLine("1: Útok");
+        int index_dovednosti = 2;
+        int poskozeni = 0;
+        foreach(KeyValuePair<string, int> dovednost in this.Dovednosti){
+            System.Console.WriteLine("{0}: {1}({2} AP)", index_dovednosti, dovednost.Key, dovednost.Value);
+            index_dovednosti++;
+        }
+        switch(System.Console.ReadLine()){
+            case "1":
+                poskozeni = random.Next(0, this.Atk);
+                break;
+            case "2":
+                poskozeni = random.Next(5, this.Atk+5);
+                break;
+            case "3":
+                poskozeni = random.Next(0, this.Atk+20);
+                break;
+            case "4":
+                poskozeni = random.Next(10, this.Atk+10);
+                break;
+            default:
+                System.Console.WriteLine("Zvolen neplatný útok");
+                break;
+        }
+        nepritel.prijmiZasah(poskozeni);
+    }
+}
 ```
 
 ```
+using System.Collections;
 
+class Nepritel: Postava
+{
+    public int Exp {get; private set;} //zkušenostní body, které odevzdá hrdinům
+
+    public Nepritel(string jmeno):base(jmeno){
+        Random random = new Random();
+        this.Exp = random.Next(1, 3);
+    }
+
+    public void zautoc(Hrdina hrdina){
+        Random random = new Random();
+        int poskozeni = random.Next(0, this.Atk);
+        hrdina.prijmiZasah(poskozeni);
+    }
+}
 ```
 
 ```
+class Bitva
+{
+    public List<Hrdina> Hrdinove {get; private set;}
+    public List<Nepritel> Nepratele {get; private set;}
+    public List<string> JmenaNepratel {get; private set;}
 
+    public Bitva(){
+        this.JmenaNepratel = new List<string>(){
+            "Skřet", "Harpije", "Beránek", "Vlkodlak", "Upír"
+        };
+        this.Hrdinove = new List<Hrdina>(){
+            new Hrdina("Geralt"),
+            new Hrdina("Gandalf"),
+            new Hrdina("Itachi"),
+            new Hrdina("Noctis"),
+        };
+        this.Nepratele = this.vylosujNahodneNepratele();
+    }
+
+    public List<Nepritel> vylosujNahodneNepratele(){
+        Random random = new Random();
+        int pocetNepratel = random.Next(1, 5);
+        List<Nepritel> nepratele = new List<Nepritel>();
+        for (int inepritel = 1; inepritel <= pocetNepratel; inepritel++){
+            nepratele.Add(new Nepritel(
+                this.JmenaNepratel[random.Next(this.JmenaNepratel.Count)]
+            ));
+        }
+        return nepratele;
+    }
+
+    public void zacniBitvu(){
+        
+        foreach(Hrdina hrdina in this.Hrdinove){
+            if (this.Nepratele.Count > 0){
+                System.Console.WriteLine("{0} (HP={1}): Na koho chceš zaútočit?", 
+                    hrdina.Jmeno, hrdina.Hp);
+                int index = 1;
+                foreach(Nepritel nepritel in this.Nepratele){
+                    System.Console.WriteLine("{0}: {1} (HP={2})", index, nepritel.Jmeno, nepritel.Hp);
+                    index++;
+                }
+                System.Console.Write(">");
+                index = Convert.ToInt32(Console.ReadLine());
+                hrdina.zautoc(this.Nepratele[index-1]);
+                if (this.Nepratele[index-1].Hp <= 0){
+                    this.Nepratele.Remove(this.Nepratele[index-1]);
+                }
+            } else{
+                System.Console.WriteLine("Nepřátelé byli poraženi.");
+            }
+        }
+
+        foreach(Nepritel nepritel in this.Nepratele){
+            Random random = new Random();
+            int index_ublizeneho = random.Next(this.Hrdinove.Count);
+            System.Console.WriteLine("{0} utoci na {1} (HP={2})", 
+                nepritel.Jmeno, this.Hrdinove[index_ublizeneho].Jmeno, 
+                this.Hrdinove[index_ublizeneho].Hp);
+        }
+    }
+}
 ```
 
 ### Úkol OS3.3 Abstraktní třída:
