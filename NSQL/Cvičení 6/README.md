@@ -1,13 +1,5 @@
 # NoSQL databázové systémy
 
-**Obsah přednášky 6:**
-
-1. Databáze typu klíč - hodnota (praktická ukázka REDIS)
-
-**Obsah cvičení 6:**
-
-* Redis-py
-
 ## On-site cvičení 6
 
 ### Úkol OS6.1 Vytvoření prostředí pro vývoj:
