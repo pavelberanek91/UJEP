@@ -84,13 +84,23 @@ Prověďte následující úkoly:
 
 ## Domácí cvičení 1
 
-### Úkol HW6.1 Lorem:
+### Úkol HW6.1 Úvod do Redis:
 
-### Úkol HW6.2 Lorem:
+Projděte si následující tutoriál, který vás uvede do světa Redisu krok za krokem [ZDE](https://betterprogramming.pub/getting-started-with-redis-a-python-tutorial-3a18531a73a6)
 
-### Úkol HW6.3 Lorem:
+### Úkol HW6.2 Příkazy Redisu:
 
-### Úkol HW6.4 Lorem:
+Projděte si následující tutoriál, který vám ukáže všechny možné příkazy Redisu. Vyzkoušejte si je volat z redis-py: [ZDE](https://www.tutorialspoint.com/redis/index.htm)
 
-### Úkol HW6.5 Lorem:
+### Úkol HW6.3 Praktická použití Redisu:
+
+Projděte si následující tutoriál, který vám ukáže, jak lze redis využít pro praktické aplikace: [ZDE](https://realpython.com/python-redis/)
+
+### Úkol HW6.4 Flask Redis fronta:
+
+Projděte si následující tutoriál, který vám ukáže praktickou implementace abstraktní datové struktury fronta, kterou tvoří interně Redis ve webové aplikaci [ZDE](https://realpython.com/flask-by-example-implementing-a-redis-task-queue/)
+
+### Úkol HW6.5 Objektové-modelování v Redis:
+
+Projděte si následující tutoriál, který využívá specializovaný modul om-redis, vytvářející abstrakci nad redisem pro práci s objektovým modelem: [ZDE](https://redis.io/docs/stack/get-started/tutorials/stack-python/)
 
