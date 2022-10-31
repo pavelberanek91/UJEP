@@ -47,7 +47,7 @@ V shellu Redis kontajneru můžeme zapnout aplikace redis-cli pro práci s Redis
 
 ### Úkol OS6.5 Využití Redis jako cachovací databáze:
 
-<img src="https://global-uploads.webflow.com/5dcc26d1cb881d7a98f0a292/60d03f69573dbbe8e8efbe97_MRjGUkXt7bYpWTPFmEtN8y10wlufxDjkISpi-WpPeFpmToCaVauXyy2GxkHmCCNZ__MQHrKfy5DW2oH-JQDT4e89qWcYzsE5KDWdWA9nr89Z0HMYFW-7jfiBq_P__7iA1sLTd75P.png"/>
+![image](https://user-images.githubusercontent.com/42642687/199008241-984f260f-b345-4cb3-b9c8-36e16c0bfac8.png)
 
 
 ## Domácí cvičení 1
