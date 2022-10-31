@@ -55,7 +55,7 @@ Diagram aktivit představuje vysokoúrovňový pohled na vnitřní chování sys
 
 Na následujícím obrázku vidíte diagram aktivit pro objednání zboží na eshopu.
 
-<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fgitmind.com%2Factivity-diagram-example.html&psig=AOvVaw1T_eByawPgW6LJ8FPB8-Gj&ust=1667304327746000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCPD0uuO2ivsCFQAAAAAdAAAAABBM"/>
+<img src="https://webusupload.apowersoft.info/gitmind/wp-content/uploads/2021/04/online-shopping-activity.jpg.webp"/>
 
 Návod na tvorbu diagramů aktivit v draw.io naleznete [ZDE](https://drawio-app.com/create-uml-activity-diagrams-in-draw-io/)
 
@@ -72,6 +72,10 @@ Nakreslete diagram aktivit pro zápis předmětů v IS STAG.
 **Zadání**
 
 Diagram tříd je hlavním diagramem pro zobrazení struktury aplikace při využívání paradiagmatu objektově-orientovaného programování. Diagram tříd zobrazuje třídy z OOP včetně jejich atributů (vlastnosti, členské proměnné) a operací (metody). K atributům a operacím se uvádí i viditelnost (modifikátory přístupu). K názvu třídy, operací a atributů se dává příznak abstraktnosti nebo statičnosti třídy. Vztahy mezí třídami se zakreslují pomocí šipek a diamantů, kterými lze modelovat generalizaci (dědičnost) a agregaci (instance třídy v sobě obsahuje jinou instanci třídy se kterou komunikuje). Ke vztahům se často udává kardinalita nebo typ vztahu. Zde je krátký návod na notaci třídních diagramů: [ZDE](https://courses.cs.washington.edu/courses/cse403/11sp/lectures/lecture08-uml1.pdf)
+
+Na následujícím obrázku můžete vidět diagram tříd k IS pro knihovníky.
+
+<img src="https://images.edrawmax.com/images/knowledge/class-diagram-uml/example1.jpg"/>
 
 Návod na tvorbu diagramů tříd v draw.io naleznete [ZDE](https://drawio-app.com/uml-class-diagrams-in-draw-io/)
 
