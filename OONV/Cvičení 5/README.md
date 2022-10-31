@@ -55,7 +55,7 @@ Diagram aktivit představuje vysokoúrovňový pohled na vnitřní chování sys
 
 Na následujícím obrázku vidíte diagram aktivit pro objednání zboží na eshopu.
 
-<img src="https://webusupload.apowersoft.info/gitmind/wp-content/uploads/2021/04/online-shopping-activity.jpg.webp"/>
+<img src="https://www.edrawsoft.com/templates/images/shopping-order-activity-diagram.png"/>
 
 Návod na tvorbu diagramů aktivit v draw.io naleznete [ZDE](https://drawio-app.com/create-uml-activity-diagrams-in-draw-io/)
 
