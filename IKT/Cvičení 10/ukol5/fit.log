@@ -1,0 +1,284 @@
+
+
+*******************************************************************************
+Sun Sep 12 13:15:18 2021
+
+
+FIT:    data read from "bitcoin_month.dat" u 1:2
+        format = x:z
+        #datapoints = 8
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**4 + b*x**3 + c*x**2 + d*x + e
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'a' is zero.
+Warning: Initial value of parameter 'b' is zero.
+Warning: Initial value of parameter 'c' is zero.
+Warning: Initial value of parameter 'd' is zero.
+Warning: Initial value of parameter 'e' is zero.
+iter      chisq       delta/lim  lambda   a             b             c             d             e            
+   0 1.5305166098e+10   0.00e+00  7.93e+02    1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30
+   7 4.6767407825e+07  -3.67e-01  7.93e-05    3.818011e+02  -6.451299e+03   3.409749e+04  -5.762254e+04   5.868189e+04
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 4.67674e+07
+rel. change during last iteration : -3.66855e-06
+
+degrees of freedom    (FIT_NDF)                        : 3
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 3948.31
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.55891e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 381.801          +/- 92.8         (24.31%)
+b               = -6451.3          +/- 1678         (26.01%)
+c               = 34097.5          +/- 1.033e+04    (30.29%)
+d               = -57622.5         +/- 2.476e+04    (42.98%)
+e               = 58681.9          +/- 1.851e+04    (31.55%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      e      
+a               1.000 
+b              -0.995  1.000 
+c               0.977 -0.993  1.000 
+d              -0.935  0.963 -0.988  1.000 
+e               0.851 -0.889  0.930 -0.972  1.000 
+
+
+*******************************************************************************
+Sun Sep 12 13:16:16 2021
+
+
+FIT:    data read from "bitcoin_month.dat" u 1:2
+        format = x:z
+        #datapoints = 8
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**4 + b*x**3 + c*x**2 + d*x + e
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'a' is zero.
+Warning: Initial value of parameter 'b' is zero.
+Warning: Initial value of parameter 'c' is zero.
+Warning: Initial value of parameter 'd' is zero.
+Warning: Initial value of parameter 'e' is zero.
+iter      chisq       delta/lim  lambda   a             b             c             d             e            
+   0 1.5305166098e+10   0.00e+00  7.93e+02    1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30
+   7 4.6767407825e+07  -3.67e-01  7.93e-05    3.818011e+02  -6.451299e+03   3.409749e+04  -5.762254e+04   5.868189e+04
+
+After 7 iterations the fit converged.
+final sum of squares of residuals : 4.67674e+07
+rel. change during last iteration : -3.66855e-06
+
+degrees of freedom    (FIT_NDF)                        : 3
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 3948.31
+variance of residuals (reduced chisquare) = WSSR/ndf   : 1.55891e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 381.801          +/- 92.8         (24.31%)
+b               = -6451.3          +/- 1678         (26.01%)
+c               = 34097.5          +/- 1.033e+04    (30.29%)
+d               = -57622.5         +/- 2.476e+04    (42.98%)
+e               = 58681.9          +/- 1.851e+04    (31.55%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      e      
+a               1.000 
+b              -0.995  1.000 
+c               0.977 -0.993  1.000 
+d              -0.935  0.963 -0.988  1.000 
+e               0.851 -0.889  0.930 -0.972  1.000 
+
+
+*******************************************************************************
+Sun Sep 12 13:16:37 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**4 + b*x**3 + c*x**2 + d*x + e
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'a' is zero.
+Warning: Initial value of parameter 'b' is zero.
+Warning: Initial value of parameter 'c' is zero.
+Warning: Initial value of parameter 'd' is zero.
+Warning: Initial value of parameter 'e' is zero.
+iter      chisq       delta/lim  lambda   a             b             c             d             e            
+   0 1.1122935027e+09   0.00e+00  7.38e+12    1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30   1.000000e-30
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Sun Sep 12 13:20:51 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*exp(-x/c)
+fitted parameters initialized with current variable values
+
+Warning: Initial value of parameter 'a' is zero.
+Warning: Initial value of parameter 'b' is zero.
+Warning: Initial value of parameter 'c' is zero.
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 1.1122935027e+09   0.00e+00  5.77e-01    1.000000e-30   1.000000e-30   1.000000e-30
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Sun Sep 12 13:21:32 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*exp(-x/c)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 1.1121807195e+09   0.00e+00  5.77e-01    1.000000e+00   1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Sun Sep 12 13:21:53 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*exp(-x/c)
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 1.1121807195e+09   0.00e+00  5.77e-01    1.000000e+00   1.000000e+00   1.000000e+00
+BREAK: Singular matrix in Invert_RtR
+
+*******************************************************************************
+Sun Sep 12 13:24:14 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*x
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 9.3315446184e+08   0.00e+00  1.43e+03    1.000000e+00   1.000000e+00
+   3 8.4610963415e+08  -1.67e-02  1.43e+00    4.057894e-01   2.336574e+00
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 8.4611e+08
+rel. change during last iteration : -1.66547e-07
+
+degrees of freedom    (FIT_NDF)                        : 10
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 9198.42
+variance of residuals (reduced chisquare) = WSSR/ndf   : 8.4611e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.405789         +/- 1.55e+06     (3.821e+08%)
+b               = 2.33657          +/- 769.2        (3.292e+04%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -1.000  1.000 
+
+
+*******************************************************************************
+Sun Sep 12 13:24:45 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*x + c*x**2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c            
+   0 1.9776241658e+14   0.00e+00  2.35e+06    1.000000e+00   1.000000e+00   1.000000e+00
+   9 4.3880929210e+08  -1.24e-02  2.35e-03    2.240065e+02  -1.685578e+03   8.374068e-01
+
+After 9 iterations the fit converged.
+final sum of squares of residuals : 4.38809e+08
+rel. change during last iteration : -1.2416e-07
+
+degrees of freedom    (FIT_NDF)                        : 9
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 6982.59
+variance of residuals (reduced chisquare) = WSSR/ndf   : 4.87566e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 224.006          +/- 7.764e+08    (3.466e+08%)
+b               = -1685.58         +/- 7.704e+05    (4.571e+04%)
+c               = 0.837407         +/- 191.1        (2.282e+04%)
+
+correlation matrix of the fit parameters:
+                a      b      c      
+a               1.000 
+b              -1.000  1.000 
+c               1.000 -1.000  1.000 
+
+
+*******************************************************************************
+Sun Sep 12 13:25:15 2021
+
+
+FIT:    data read from "bitcoin_years.dat" u 1:2
+        format = x:z
+        #datapoints = 12
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a + b*x + c*x**2 + d*x**3
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c             d            
+   0 8.0524442096e+20   0.00e+00  4.09e+09    1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00
+   9 4.3797740936e+08  -1.65e-02  4.09e+00    1.000217e+00   1.146588e+00  -8.370367e-01   4.155890e-04
+
+After 9 iterations the fit converged.
+final sum of squares of residuals : 4.37977e+08
+rel. change during last iteration : -1.65373e-07
+
+degrees of freedom    (FIT_NDF)                        : 8
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 7399.13
+variance of residuals (reduced chisquare) = WSSR/ndf   : 5.47472e+07
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.00022          +/- 1.867e+10    (1.867e+12%)
+b               = 1.14659          +/- 2.769e+07    (2.415e+09%)
+c               = -0.837037        +/- 1.369e+04    (1.635e+06%)
+d               = 0.000415589      +/- 2.256        (5.429e+05%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      
+a               1.000 
+b              -1.000  1.000 
+c               1.000 -1.000  1.000 
+d              -0.999  1.000 -1.000  1.000 
