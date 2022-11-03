@@ -2,7 +2,7 @@
 
 ## Cvičení 2 - Počítačové sítě
 
-### 1.1 Počítačová síť
+### 2.1 Počítačová síť
 
 #### Dělení počítačových sítí
 Počítačové sítě lze dělit podle mnoha kategorií. Jedna z nejznámějších kategorií je dělení na základě velikosti počítačové sítě.
@@ -47,7 +47,7 @@ Mezi nejznámější protokoly (a hlavně nejpochopitelnější) řadíme např�
 * MAC (Vrstva fyzického rozhraní) - řídí komunikace samotného zařízení s přenosovým médiem (používají ho i celulární sítě jako LTE), řídí přístup na sdílené médium vhodným algoritmem (u Ethernetu CSMA/CD)
 
 
-### 1.2 Síťové prvky
+### 2.2 Síťové prvky
 
 #### Modem
 Vás poskytovatel internetu vám zasílá data skrze nějaký typ signálu. Signál je realizován změnou fyzikálních veličin, takže může být na principu optického přenosu, elektrického proudu, elektromagnetických vln či jiných experimentálních principů. Aby počítačová síť byla schopná s daty z internetu pracovat (a obdobně je do internetu zasílat) musí dojít k transformaci signálu na data. To je úkolem modem. Modem je zkratka za Modulátor-Demodulátor, kde modulace je proces vložení dat do signálu a demodulace je proces získání dat ze signálu. Modem tedy bude představovat první síťový prvek u vás doma, do kterého je připojen signál od poskytovatele. Modem vám typicky pronajímá váš poskytovatel internetového připojení (ISP, internet service provider).
@@ -68,7 +68,7 @@ Síťový prvek, který přijme signál, zesílí ho a přepošle ho dál. Můž
 
 
 
-### 1.3 Diagnostika počítačové sítě
+### 2.3 Diagnostika počítačové sítě
 Pokud se vaše sociální okolí (pokud nějaké máte ...) dozví, že máte IT vzdělání, tak vám zaručuji, že se stanete levným IT servisem. Jedny z nejčastějších problémů jsou problémy s počítačovou sítí (nejde internet). Pro tyto případy se vyplatí umět alespoň nejzákladnější příkazy pro diagnostiku počítačové sítě, čímž rozhodně uděláte radost i případně technické podpoře, který se vás přestane ptát na to, jestli jste zkusili router restartovat.
 
 #### ping
@@ -141,7 +141,7 @@ Detaily o konfiguraci počítače, což se může hodit často i když to vylož
 systeminfo
 ```
 
-### 1.4 Nastavení domácího routeru
+### 2.4 Nastavení domácího routeru
 Ať z vás budou IT specialisti či nebudou, minimálně každý z nás by měl ovládat základy technologií, na kterých jsme denně závislí. V běžném životě z oblastí počítačových sítí je to domácí router. Domácí router je takové all-inclusive síťové zařízení, které předsatvuje router, switch i access-point v jednom. Jeho základní nastavení by měl ovládat každý z nás.
 
 #### Zapojení domácího routeru
