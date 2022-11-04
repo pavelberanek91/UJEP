@@ -8,6 +8,16 @@
 
 #### C3S2. Historie operačních systémů
 
+Úplně první počítače neměly operační systém. Programy v nich nahrané (nebo přímo v nich hardwarově zkonstruované) přímo komunikovaly s hardwarem. Tím bohužel vznikl problém propietárnosti programů vůči hardwaru - programy nebyly přenositelné. Program musel být dělán na míru konkrétnímu počítači. Řešením byl program s názvem operační systém. Tento program neměl sloužit jako aplikace pro konání služeb, kterých si uživatel žádá, ale jako systémový program, tedy program, který zprostředkovává služby.
+
+Jelikož o historii OS se dozvíte všude možně na webu, tak uvedu jen nejdůležitější milníky v historii OS:
+1. General Motors, 1956 - první operační systém pro IBM počítač
+2. IBM, 1960 - distribuce počítačů s operačním systémem
+3. Lorem, lorem - vznik Unixu, oblíbeného operačního systému, jehož rozhraní se stalo POSIX standardem
+4. Microsoft, 1985 - vznik GUI rozhraní Windows pro svůj operační systém MS DOS
+5. 
+
+
 #### C3S3. Shell
 
 Shell je program, který odkrývá uživateli a aplikacím služby a spuštěné procesy operačního systému. Jedná se tedy o rozhraní pro využívání OS. Shelly operačních systémů se rozdělují do dvou kategorií:
@@ -28,46 +38,46 @@ Podle POSIX standardu má každý příkaz následující anatomii:
 Na následující stránce si můžete přečíst návod k použití všech základních příkazů: [ZDE](https://www.hostinger.com/tutorials/linux-commands). Pro případ, že by se s webovou stránkou něco stalo, tak uvedu zmíněné příkazy i sem (bez návodu na použití, to už je snadno vygooglitelné).
 
 Mezi základní příkazy patří:
-1. sudo
-2. pwd
-3. cd
-4. ls
-5. cat
-6. cp
-7. mv
-8. mkdir
-9. rmdir
-10. rm
-11. touch
-12. locate
-13. find
-14. grep
-15. df
-16. du
-17. head
-18. tail
-19. diff
-20. tar
-21. chmod
-22. chown
-23. jobs
-24. kill
-25. ping
-26. wget
-27. uname
-28. top, htop
-29. history
-30. man 
-31. echo
-32. zip, unzip
-33. hostname
-34. useradd, userdel
-35. apt-get
-36. nano, vi, emacs, jed
-37. alias, unalias
-38. su
-39. ps
-40. clear
+1. sudo (Super User DO) - provede příkazy, které potřebují administrátorské (root) oprávnění
+2. pwd (Path of current Working Directory) - zjistí plnou cestu k aktuálnímu adresáři, ve kterém se nacházíte (pracujete v něm)
+3. cd (Change Directory) - přesune vás do jiného zvoleného adresáře (dvojklik na složku v GUI shellu), speciální znaky jsou - (předchozí adresář), .. (o adresář výše), . (aktuální adresář) a ~ (domovský adresář)
+4. ls (List fileS) - vypíše v aktuální adresáři všechny soubory a adresáře (pro výpis skrytých je nutný přínazk -a)
+5. cat (ConcatenATe) - vypisuje a připojuje výpis souboru nebo souborů na standardní výstup (CLI)
+6. cp (CoPy) - kopíruje soubor nebo adresář
+7. mv (MoVe) - přesouvá soubory nebo adresáře
+8. mkdir (MaKe DIRectory) - vytváří adresáře
+9. rmdir (ReMove Directory) - odstraní prázdný adresář
+10. rm (ReMove) - odstraní soubor, avšak umí s příznakem -r odstranit i adresář s celým jeho obsahem (rekurzivní odstranění)
+11. touch - vytváří prázdný soubor
+12. locate - vyhledá soubor s daným názvem nebo řetězcovým vzorem v předem sestavené databázi souborů (offline vyhledávání)
+13. find - vyhledá soubor s daným názvem nebo řetězcovým vzorem v souborovém systému počítače (real-time vyhledávání), je pomalejší jak locate
+14. grep (Global Regular Expression Print) - vyhledá regulární výraz v souboru a vytiskně nález
+15. df (Disk Filesystem) - vypíše využití prostoru disku v procentech a kB
+16. du (Disk Usage) - vypíše kolik prostoru na disku daný soubor nebo adresář zabírá
+17. head - vypíše ze souboru prvních N řádků
+18. tail - vypíše ze souboru posledních N řádků
+19. diff (DIFFerence) - vypíše rozdílné řádky mezi dvěma soubory
+20. tar (Tape ARchive) - zabalí více souborů nebo adresářů do jednoho archivu
+21. chmod (Change MODe) - změní práva na přístup do souborů (čtení, zápis, spuštění) pro vlastníka, člena skupiny a ostatní
+22. chown (Change OWNership) - změní vlastníka souboru nebo adresáře na vybraného uživatele
+23. jobs - vypíše všechny běžící procesy a jejich stav, důležité pro zjištění PID procesu pro zabití
+24. kill - zabije proces podle vybraného PID
+25. ping - zjistí, zda je uzel v síti k dispozici pro komunikaci
+26. wget (Web GEt) - stáhne z webu soubor nebo rekurzivně obsah adresářů
+27. uname (Unix NAME) - vypíše informace o operačním systému a hardwaru počítače
+28. top, htop (Table Of Processes) - vypíše informace o běžících procesech včetně výpočetních prostředků, které zabírají
+29. history - vypíše historii použitých příkazů v shellu
+30. man (MANual) - vypíše uživatelský manuál ke zvolenému POSIX příkazu
+31. echo - vypíše na standardní výstup specifikovaný řetězec, lze využít pro výpis výstupu programů, které normálně netisknout data na obrazovku 
+32. zip, unzip - provede kompresi nebo dekompresi archivu
+33. hostname - vypíše síťový název uzlu v síti nebo IP adresu
+34. useradd, userdel - přidá nový uživatelský účet do počítače nebo ho smaže
+35. apt-get (Advancet Package Tool) - software pro stahování, odinstalaci a modifikace programů 
+36. nano, vi, emacs, jed - zapne textový editor v CLI shellu
+37. alias, unalias - vytvoří textového zástupce (alias) pro soubor nebo program
+38. su (Switch User) - přepne účet na jiný uživatelský účet 
+39. ps (Process Status) - vypíše snímek (snapshot) všech běžících procesů v systému
+40. clear - smaže text na obrazovce CLI shellu
 
 ### Zadání cvičení
 
