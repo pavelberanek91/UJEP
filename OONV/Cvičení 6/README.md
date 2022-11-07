@@ -40,4 +40,21 @@ Více se dozvíte o návrhovém vzoru prototype [ZDE](https://refactoring.guru/d
 
 ### Builder
 
+Návrhový vzor Builder řeší problém s třídami, které obsahují velké množství nastavení, které při vytváření specifikujete pomocí atributů parametrů v konstruktoru. Tento problém je snadno identifikovatelný konstruktorem s velkým počtem parametrů. Typickým řešením těchto situací je vytvořit velké množství potomků, které rodiče rozšiřují o daný parametr. Tím bohužel vytvoříte obří množství tříd, kterých může být tolik, kolik je možných kombinací parametrů. Tím bychom problém velkého rozhraní konstruktoru vyřešili za cenu velkého množství potomků. 
 
+Řešením je využít návrhový vzor builder, který extrahuje kroky tvorby do třídy zvané builder. Třída, která má velký konstruktor je osekána na potřebné minimum. Builder poté vytvoří tento objekt a klient pouze zvolí, jaké metody se mají zavolat pro rozšíření vytvářeného objektu.
+
+Vylepšním návrhového vzoru je využití tzv. Directors. Proces tvorby je delegován na direktory. Ty volají konkrétní buildery, kteří mají vlastní implementaci build metod.
+
+Více se dozvíte o návrhovém vzoru singleton [ZDE](https://refactoring.guru/design-patterns/builder)
+
+**Úkol**
+
+1. Vytvořte třídu Voják s následujícími parametry v konstruktoru: brnění, meč, luk, kopí, přilba, chrániče, štít, magická kniha.
+2. Všechny tyto atributy jsou typu boolean a určují, zda bude příslušná položka v inventáři Vojáka.
+3. Vytvořte rozhraní IBuilder, do kterého abstrahujete tvořící kroky na metody.
+4. Vytvořte 4 konkrétní buildery: builder lidského vojáka, builder orčího vojáka, builder elfího vojáka a builder nemrtvého vojáka.
+5. Vytvořte directory s názvem PěšákDirectory, LučistníkDirector, MágDirector.
+6. Implementuje kód pro tvorbu jednotek do diredcorů.
+7. Zvolte rasu a nechte a directora vytvořit několik instancí každého typu jednotky
+8. Poté zvolte jinou rasu a vytvořte opět armádu.
