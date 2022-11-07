@@ -255,6 +255,7 @@ Napište proceduru, která přijme 2D matici (seznam seznamů) a ve vhodné graf
 Napište proceduru, která přijme seznam hodnot na ose y (řady) a k tomu popisky osy x. Následně vykreslí do jednoho grafu v knihovně matplotlib data na obrazovku. Tím budete mít připravenou proceduru jako náhražku Excelu.
 
 **Úkol 3: Která písmena jsou velká?**
+
 Napište funkci, do které vložíte řetězec a vrátí se vám seznam velkých písmen.
 
 **Úkol 4: Vyhledání pozice slova**
@@ -265,6 +266,7 @@ př.: get_index([g,f,a,f,h], a) -> 2
 ```
 
 **Úkol 5 - Řada lichých čísel**
+
 Napište funkci, do které vložíte počáteční a konečný prvek z číselné řady a program vám vrátí všechna lichá čísla z této řady.
 
 ```
