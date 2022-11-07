@@ -100,6 +100,63 @@ Více se dozvíte o návrhovém vzoru prototype [ZDE](https://refactoring.guru/d
 9. Vytvořte kopii této třídy.
 10. Pohněte se s oběmi instancemi a zkontrolujte, že mají tytéž informace a rozdílné poziceX a Y.
 
+**Řešení**
+
+```
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace ws
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Nepritel jozinZBazin = new Nepritel("Jozin", 50, 10, 5, 3, 3.5f, 2.3f);
+            Nepritel klonJozina = jozinZBazin.VytvorKlon();
+            jozinZBazin.PohniSe(5.0f, 5.0f);
+            System.Console.WriteLine(jozinZBazin.Xpos);
+            System.Console.WriteLine(klonJozina.Xpos);
+        }
+    }
+
+    interface IKlonovatelne<T>{
+        public T VytvorKlon();
+    }
+
+    class Nepritel: IKlonovatelne<Nepritel>{
+        
+        public string Typ {get; private set;}
+        public int Hp {get; private set;}
+        public int Mp {get; private set;}
+        public int Attack {get; private set;}
+        public int Defense {get; private set;}
+        public float Xpos {get; private set;}
+        public float Ypos {get; private set;}
+
+
+        public Nepritel(string typ, int hp, int mp, int attack, int defense, float xpos, float ypos){
+            this.Typ = typ;
+            this.Hp = hp;
+            this.Mp = mp;
+            this.Attack = attack;
+            this.Defense = defense;
+            this.Xpos = xpos;
+            this.Ypos = ypos;
+        }
+
+        public void PohniSe(float dx, float dy){
+            this.Xpos += dx;
+            this.Ypos += dy;
+        }
+
+        public Nepritel VytvorKlon(){
+            return new Nepritel(this.Typ, this.Hp, this.Mp, this.Attack, this.Defense, this.Xpos, this.Ypos);
+        }
+    }
+}
+```
 
 ### Builder
 
