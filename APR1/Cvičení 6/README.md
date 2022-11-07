@@ -107,8 +107,96 @@ if __name__ == "__main__":
 
 **Cvičení 3: Přihlašovací systém**
 
-```
+Napište kód, který se skládá z následujících podprogramů.
+1. Funkce pro načtení loginu a hesla z klávesnice. Pokud uživatel vynechá údaj, tak ho aplikace nepustí dál.
+2. Funkce pro ověření, zda se dvojice login, heslo nachází mezi registrovanými uživateli
+3. Procedura pro registraci neregistrovaného uživatele
+4. Funkce pro detekci 3x za sebou nesprávného hesla
+5. Procedura pro výpis informace o úspěšném přihlášení.
 
+Opět můžete si kód rozdělit na více užitečných funkcí a procedur podle libosti. Zadání není nutné striktně dodržet, jde pouze o to cvičit informatické myšlení.
+
+```
+def nacti_udaje():
+    login = over_prazdny_udaj(hlaska="Zadej login: ")
+    heslo = over_prazdny_udaj(hlaska="Zadej heslo: ")
+    return login, heslo
+
+
+def over_prazdny_udaj(hlaska):
+    vstup = input(hlaska)
+    while not vstup:
+        print("Nezadal jsi zadny vstup! Zkus to znovu")
+        vstup = input(hlaska)
+    return vstup
+    
+
+def uzivatel_se_spravne_prihlasil(uzivatele, login, heslo):
+    return (login, heslo) in uzivatele
+
+
+def uzivatel_je_registrovan(uzivatele, login, heslo):
+    for registrovany_login, heslo in uzivatele:
+        if login == registrovany_login:
+            return True
+    else:
+        return False
+
+
+def ziskej_spravne_heslo_k_loginu(uzivatele, hledany_login):
+    for login, heslo in uzivatele:
+        if login == hledany_login:
+            return heslo
+
+
+def ziskej_spravne_heslo(uzivatele, login, max_pocet_pokusu):
+    spravne_heslo = ziskej_spravne_heslo_k_loginu(uzivatele, login)
+    pokusy = max_pocet_pokusu
+    print(f"Heslo není správné. Zbývá {pokusy} pokusů.")
+    while pokusy > 0:
+        zadane_heslo = over_prazdny_udaj(hlaska="Zadej heslo: ")
+        if zadane_heslo != spravne_heslo:
+            pokusy -= 1
+            print(f"Heslo není správné. Zbývá {pokusy} pokusů.")
+        else:
+            return zadane_heslo
+    else:
+        return None
+
+
+def zadost_o_registraci():
+    return input("Chcete se registrovat?: ").lower()[0] in ["a", "y"]
+
+
+def registruj_uzivatele(uzivatele, udaje_registranta):
+    uzivatele.append(udaje_registranta)
+
+
+def privitani_uzivatele(hlaska, login):
+    print(hlaska + " " + login)
+
+
+def odmitnuti_uzivatele(hlaska):
+    print(hlaska)
+
+
+def main():
+    uzivatele = [("Pepa", "123"), ("Milan", "heslo"), ("Jana", "janicka")]
+    login, heslo = nacti_udaje()
+
+    if uzivatel_se_spravne_prihlasil(uzivatele, login, heslo):
+        privitani_uzivatele(login=login, hlaska="Vitej v systému uživateli")
+    elif uzivatel_je_registrovan(uzivatele, login, heslo):
+        heslo = ziskej_spravne_heslo(uzivatele, login, 2)
+        if not heslo:
+            odmitnuti_uzivatele(hlaska="Došly vám pokusy. Je nám líto, ale nejste přihlášen. Přeji hezký zbytek dne.")
+    else:
+        if zadost_o_registraci():
+            registruj_uzivatele(uzivatele, (login, heslo))
+
+
+if __name__ == "__main__":
+    main()
 ```
 
 **Video týdne 1: idiom Main**
