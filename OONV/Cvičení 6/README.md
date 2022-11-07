@@ -58,3 +58,5 @@ Více se dozvíte o návrhovém vzoru singleton [ZDE](https://refactoring.guru/d
 6. Implementuje kód pro tvorbu jednotek do diredcorů.
 7. Zvolte rasu a nechte a directora vytvořit několik instancí každého typu jednotky
 8. Poté zvolte jinou rasu a vytvořte opět armádu.
+
+Pokud si se cvičením nevíte rady, zkuste následující vysvětlení: [ZDE](https://betterprogramming.pub/understanding-the-builder-design-pattern-f4f56fa18c9)
