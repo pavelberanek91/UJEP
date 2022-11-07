@@ -1,5 +1,9 @@
 # Algoritmizace a programování
 
+## Cvičení 6 - Funkce
+
+### On-site cvičení
+
 Pro úspěšnou programátorskou kariéru je nutné trénovat 3 základní dovednosti informatického myšlení:
 1. dekompozice problému na dílčí části
 2. abstrakce činností do obecných celků
@@ -198,6 +202,266 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+
+**Cvičení 4: Výpočet obsahu metodou Monte Carlo**
+
+Napište program, který pomocí metody Monte Carlo spočítá obsah kružnice. Dekompozici programu nebudu již napovídat a nechám to na vašem uvážení. Program funguje následovně:
+1. Kružnice o vybraném poloměru se nachází uvnitř jiné tělesa, například čtverce (ten použiju já)
+2. Program náhodně střílí do čtverce a počítá, kolikrát se trefil do kružnice nebo mimo ní (do čtverce se trefíte vždy)
+3. Tento děj opakujte po zvolený počet iterací v cyklu
+4. Po dokončení procesu střílení se spočítá obsah obklopujícího tělesa a vynásobí se podílem počtu zásahů ku výstřelů. Výsledná hodnota je aproximace obsahu vnitřního tělesa.
+
+```
+import random
+
+def generuj_nahodne_desetinne_cislo(cislo_min, cislo_max):
+    return cislo_min + random.random()*(cislo_max - cislo_min)
+
+def vygeneruj_nahodne_souradnice(cislo_min, cislo_max):
+    random_x = generuj_nahodne_desetinne_cislo(cislo_min, cislo_max)
+    random_y = generuj_nahodne_desetinne_cislo(cislo_min, cislo_max)
+    return (random_x, random_y)
+
+def trefeni_se(souradnice, souradnice_stredu, polomer):
+    rozdil_x = souradnice[0] - souradnice_stredu[0]
+    rozdil_y = souradnice[1] - souradnice_stredu[1]
+    return rozdil_x**2 + rozdil_y**2 <= polomer**2
+
+def spocitej_obsah_metodou_mc(polomer, pocet_vystrelu):
+    pocet_zasahu = 0
+    for ivystrel in range(pocet_vystrelu):
+        souradnice = vygeneruj_nahodne_souradnice(cislo_min=-1, cislo_max=1)
+        if trefeni_se(souradnice, (0, 0), polomer):
+            pocet_zasahu += 1
+    obsah_ctverce = (polomer*2)**2
+    return pocet_zasahu/pocet_vystrelu * obsah_ctverce
+
+def main():
+    obsah_kruznice = spocitej_obsah_metodou_mc(polomer=1, pocet_vystrelu=10000000)
+    print(f"Obsah zadane kruznice je: {obsah_kruznice}")
+
+if __name__ == "__main__":
+    main()
+```
+
+### Domácí úkoly:
+
+**Úkol 1: Pretty printer matic**
+
+Napište proceduru, která přijme 2D matici (seznam seznamů) a ve vhodné grafické textové podobě ji vypíše na obrazovku.
+
+**Úkol 2: Vykreslovací procedura**
+
+Napište proceduru, která přijme seznam hodnot na ose y (řady) a k tomu popisky osy x. Následně vykreslí do jednoho grafu v knihovně matplotlib data na obrazovku. Tím budete mít připravenou proceduru jako náhražku Excelu.
+
+**Úkol 3: Která písmena jsou velká?**
+Napište funkci, do které vložíte řetězec a vrátí se vám seznam velkých písmen.
+
+**Úkol 4: Vyhledání pozice slova**
+
+Napište funkci, která vrátí index prvku, který vyhledáváte. Nepoužívejte předpřipravenou funkci index nad seznamem.
+```
+př.: get_index([g,f,a,f,h], a) -> 2
+```
+
+**Úkol 5 - Řada lichých čísel**
+Napište funkci, do které vložíte počáteční a konečný prvek z číselné řady a program vám vrátí všechna lichá čísla z této řady.
+
+```
+př.: get_licha(min=5,max=15) -> [5,7,9,11,13,15] 
+```
+
+**Úkol 6 - Registrace uživatele**
+
+Napište proceduru, která vloží do seznamu tuple s loginem a heslem, pokud se login již nenacházi v seznamu uživatelů a heslo se liší od loginu.
+
+```
+př.: registruj((jana, 896), [(jana, 123)(petr, heslo)] -> neregistruje
+
+př.: registruj((milan, milan), [(jana, 123)(petr, heslo)] -> neregistruje
+
+př.: registruj((milan, 896), [(jana, 123)(petr, heslo)] -> registruje
+```
+
+**Úkol 7: Validace hesla**
+
+Napište funkci, která požádá uživatele o heslo a vrátí ho, pouze pokud heslo obsahuje alespoň 1 velké písmeno, 4 malé písmeno a alespoň 1 číslo. Pokud heslo neobsahuje tyto znaky, pak žádá o zadání hesla ještě 2x, jinak vypíše chybu printem a vrátí None.
+
+
+**Úkol 8: Nalezení písmen s háčky a čárkami**
+
+Napište funkci, který nalezne všechna písmena ve větě, která obsahují háčky a čárky a vrátí seznam těchto písmen. Věta bude vstupem funkce.
+
+```
+př.: nalezni_hacky_carky("čau jak se máš") -> [č,á,š]
+```
+
+**Úkol 9 - Objem tělesa**
+
+Napište funkci, která spočíta objem vloženého tělesa. Vstupem budou délky hran a typ tělesa. Výstupem bude objem. Typy těles jsou - krychle, kvádr, koule.
+
+```
+př.: get_objem([2,3,4], "kvádr") -> 24
+př.: get_objem([2], "koule") -> 33.5
+```
+
+**Úkol 10: Všechna velká**
+
+Napište funkci, do které vložíte řetězec a vrátí se vám řetězec, který bude obsahovat všechna písmena velká.
+
+```
+př.: get_velka("Ahoj") -> "AHOJ"
+```
+
+**Úkol 11: Čísla bezezbytku**
+
+Napište funkce, do které vložíte počátek číselné řady, konec číselné řady a modulo a vrátí se vám počet čísel dělitelných v řadě modulem bezezbytku.
+
+```
+př.: delitelna_bez(a=5, b=20, mod=5) -> [5,10,15,20]
+```
+
+**Úkol 12: Počet výskytů**
+
+Napište funkci, do které vložíte řetězec a znak a vrátí se vám počet výskytů tohoto znaku v řetězci.
+
+```
+př.: pocet_vyskytu("aha hmm", "h") -> 2
+```
+
+**Úkol 13: Každé druhé**
+
+Napište funkci, do které vložíte řetězec a funkce vám vrátí každé druhé písmeno. Můžete použít list slicing.
+
+```
+př.: kazde_druhe("ahojpepo") -> [h,j,e,o] nebo "hjeo"
+```
+
+**Úkol 14: Smazání písmenka**
+
+Napište funkci, do které vložíte řetězec a znak a funkce vám vrátí seznam písmen bez vloženého znaku. Můžete použít remove.
+
+```
+př.: smazani("ahoj", "o") -> [a,h,j]
+```
+
+**Úkol 15: Spojení seznamů**
+
+Napište funkci, do které vložíte dva seznamy a funkce vám vrátí seznam složený ze dvou řetězců na přeskáčku.
+
+```
+př.: spoj([1,2,3],["a","b","c"]) -> [1,"a",2,"b",3,"c"]
+```
+
+**Úkol 16: Skalární součin**
+
+Napište funkci, která přijme dva seznamy čísel o stejné velikosti a vrátí jejich skalární součin.
+
+př.: sksoucin([1,2,3],[2,3,4]) -> 1x2 + 2x3 + 3x4 = 20
+
+
+**Úkol 17: Náhodný seznam**
+
+Napište funkci, která vrátí seznam náhodných desetinných čísel v rozmezí od a do b, kde a,b jsou parametry funkce.
+
+
+**Úkol 18: Promíchání písmenek**
+
+Napište funkci, do které vložíte seznam písmenek a funkce vrátí nový seznam, kde budou tato písmenka náhodně rozmíchaná.
+
+**Úkol 19 - Brownovský pohyb**
+
+Napište program strukturovaným paradigmatem, který bude představovat brownovský pohyb jedné částice v prostoru. Realizace ja zcela na vás.
+
+
+**Úkol 20: Výpočet kořenů kvadratické rovnice**
+
+Napište program pro výpočet kořenů kvadratické rovnice procedurálním paradigmatem.
+
+**Úkol 21: Porovnání frekvence slov dvou textů**
+
+Napište proceduru, která přijme text od uživatele a vrátí seznam slov s počtem výskytů slov v procentech. Tato procedura bude volána z jiné procedury, která přijme 2 texty a vypíše na obrazovku v hezké podobě informace o shodnosti těchto dvou textů (jaké informace to budou je na vás).
+
+**Úkol 22: Zašifrování a dešifrování textu**
+
+Napište funkci, do které vložíte text a substituční slovník. Funkce provede substituční šifru, kde nalezená písmena ve slovníku (klíče) přemění na příslušné hodnoty. Př.: text="ahoj", substituční slovník = {a = j, o = k} pak funkce vrátí "jhkj". Obdobně napište i dešifrovač textu.
+
+**Úkol 23: SIR model procedurálně**
+
+Přepište program, realizující simulaci SIR modelu šíření viru tak, aby byl napsán strukturovaným paradigmatem namísto imperativního paradigmatu.
+[TEORIE](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology)
+
+```
+import matplotlib.pyplot as plt
+
+#tady zacina program
+def main():
+    t = list(range(76))  #časové stopy (týdny)
+    N = 7768662420       #světová populace
+    I = 1                #počet nakažených
+    R = 0                #počet vyléčených
+    S = N - I            #počet nakazitelných
+  
+    nakazitelni = [S]
+    nakazeni = [I]
+    vyleceni = [R]
+
+    rychlostSireni = 1.5     #nejaktuálnější basic reproduction rate: https://en.wikipedia.org/wiki/Basic_reproduction_number
+    rychlostZotaveni = 0.5  #recovery rate kterej sem si přibližně spočítal (průměrnej denní přirůstek nakažených/průměrnej denní přirůstek vyléčených)
+
+    for i in range(75):
+        dS = - rychlostSireni * I * S / N
+        dI = rychlostSireni * I * S / N - rychlostZotaveni * I
+        dR = rychlostZotaveni * I
+        S += dS
+        I += dI
+        R += dR
+
+        nakazitelni.append(S)
+        nakazeni.append(I)
+        vyleceni.append(R)
+
+    plt.title("SIR Model of Coronavirus")
+    plt.ylabel("World Population")
+    plt.xlabel("Time")
+    plt.plot(t,nakazitelni,"b-",label = "Susceptible")
+    plt.plot(t,nakazeni,"r-",label = "Infected")
+    plt.plot(t,vyleceni,"m-",label = "Recovered")
+    plt.legend()
+    plt.show()
+
+
+if __name__== "__main__":
+    main()
+```
+
+
+**Úkol 24: Strukturovaný upravovač fotografií**
+
+Přepište kód na úpravu fotografie pomocí filtrů do procedurálního paradigmatu. Pro případ zde přikládám impertivní kód:
+
+```
+from PIL import Image
+obrazek = Image.open("prase.jpg")
+sirka, vyska = obrazek.size
+x = 0
+while x < sirka:
+    y = 0
+    while y < vyska:
+        r, g, b = obrazek.getpixel((x,y))
+        prumer = int((r+g+b)/3)
+        if prumer > 127:
+            obrazek.putpixel((x,y), (r+30, g+30, b+30))
+        else:
+            obrazek.putpixel((x,y), (r-30, g-30, b-30))
+        y += 1
+    x += 1
+display(obrazek)
+```
+
+**Úkol 25: Procedurálně napsaná hra**
+
+Napište nějakou jednoduchou textovou hru pomocí procedurálního paradigmatu. Ideální kandidáti jsou uhádni číslo, šibenice, karetní hra prší, člověče nezlob se nebo piškvorky.
 
 **Video týdne 1: idiom Main**
 
