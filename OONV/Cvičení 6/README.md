@@ -180,6 +180,8 @@ Více se dozvíte o návrhovém vzoru singleton [ZDE](https://refactoring.guru/d
 
 Pokud si se cvičením nevíte rady, zkuste následující vysvětlení: [ZDE](https://betterprogramming.pub/understanding-the-builder-design-pattern-f4f56fa18c9)
 
+**Řešení**
+
 ```
 using System;
 using System.Collections.Generic;
