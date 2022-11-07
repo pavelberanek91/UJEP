@@ -18,6 +18,69 @@ Více se dozvíte o návrhovém vzoru singleton [ZDE](https://refactoring.guru/d
 6. Vytvořte dvě instance Analytika a přiřaďte jim singleton CSV soubor.
 7. Ověřte, že obě instance čtou a zapisují do stejného CSV souboru. Pokud byla cesta k CSV souboru změněna, bude změněna pro oba analytiky.
 
+**Řešení**
+
+```
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace ws
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Analytik pepa = new Analytik(CSVDatabaze.ziskejDatabazi("db.csv"));
+            Analytik franta = new Analytik(CSVDatabaze.ziskejDatabazi("db_alternativni.csv"));
+
+            pepa.ZapisDoDB("Ahoj ja jsem Pepa\n");
+            franta.ZapisDoDB("Ahoj ja jsem Franta\n");
+            Console.WriteLine(pepa.PrectiDataZDB());
+            Console.WriteLine(franta.PrectiDataZDB());
+        }
+    }
+
+    class Analytik{
+
+        public CSVDatabaze db {get; set;}
+        public Analytik(CSVDatabaze db){
+            this.db = db;
+        }
+
+        public void ZapisDoDB(string data){
+            using (StreamWriter sw = File.AppendText(this.db.Cesta)){
+                sw.Write(data);
+            }
+        }
+
+        public string PrectiDataZDB(){
+            string text = "";
+            using (StreamReader sr = File.OpenText(this.db.Cesta)){
+                text = sr.ReadToEnd();
+            }
+            return text;
+        }
+    }
+
+    class CSVDatabaze{
+
+        private static CSVDatabaze _db;
+        public string Cesta {get; private set;}
+        private CSVDatabaze(string cesta){
+            this.Cesta = cesta;
+        }
+
+        public static CSVDatabaze ziskejDatabazi(string cesta){
+            if(CSVDatabaze._db == null){
+                CSVDatabaze._db = new CSVDatabaze(cesta);
+            } 
+            return CSVDatabaze._db;
+        }
+    }
+}
+```
+
 ### Prototype
 
 Návrhový vzor prototype se používá v případech, kdy potřebujete vytvořit kopii instance třídy. Problém spočívá v tom, že instance třídy mají některé atributy a metody privátní. Svět kolem je zná jen díky jejich veřejnému rozhraní (veřejné metody, metody z rozhraní interface, veřejné proměnné a gettery a settery). Mnoho atributů vám může být skryto při vytváření kopie instance. Řešením je vytvořit rozhraní s metodou clone, kterou si musí klonovatelné třídy implementovat. Jelikož klonování probíhá uvnitř třídy, pak jsou jim známé i privátní atributy.
