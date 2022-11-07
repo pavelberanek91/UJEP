@@ -174,9 +174,8 @@ Více se dozvíte o návrhovém vzoru singleton [ZDE](https://refactoring.guru/d
 2. Všechny tyto atributy jsou typu boolean a určují, zda bude příslušná položka v inventáři Vojáka.
 3. Vytvořte rozhraní IBuilder, do kterého abstrahujete tvořící kroky na metody.
 4. Vytvořte 4 konkrétní buildery: builder lidského vojáka, builder orčího vojáka, builder elfího vojáka a builder nemrtvého vojáka.
-5. Vytvořte directory s názvem PěšákDirectory, LučistníkDirector, MágDirector.
-6. Implementuje kód pro tvorbu jednotek do diredcorů.
-7. Zvolte rasu a nechte a directora vytvořit několik instancí každého typu jednotky
-8. Poté zvolte jinou rasu a vytvořte opět armádu.
+5. Vytvořte directora s postupy pro tvorbu pěšáků, lučistníků, kopiníků a mágů.
+6. Zvolte rasu a nechte a directora vytvořit několik instancí každého typu jednotky.
+7. Poté zvolte jinou rasu a vytvořte opět armádu.
 
 Pokud si se cvičením nevíte rady, zkuste následující vysvětlení: [ZDE](https://betterprogramming.pub/understanding-the-builder-design-pattern-f4f56fa18c9)
