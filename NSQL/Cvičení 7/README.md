@@ -28,7 +28,23 @@ Na dokument se zeptáme pomocí příkazu find: ```db.studenti.find({ jméno: �
 
 #### 7.3 Připojení MongoDB obrazu do docker-compose souboru
 
-lorem
+Pokud chcete přidat mongodb obraz do vaší aplikace s architekturou mikroslužeb, pak spuštění mongo v compose souboru vypadá takto:
+```
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
+```
 
 #### 7.4 Komunikace s MongoDB přes Python
 
@@ -56,5 +72,9 @@ zaznam = {
   
 # vložení záznamu (dokumentu) do databáze
 zaznam = db.kolekce.insert(zaznam)
+
+# čtení záznamů z databáze
+for záznam in db.kolekce.find({jméno: "Pavel Beránek"})
+    print(i)
 
 ```
