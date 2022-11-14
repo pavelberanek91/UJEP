@@ -37,22 +37,27 @@ Více se dozvíte o návrhovém vzoru factory method [ZDE](https://refactoring.g
 
 ### Abstract factory
 
-Návrhový vzor prototype se používá v případech, kdy potřebujete vytvořit kopii instance třídy. Problém spočívá v tom, že instance třídy mají některé atributy a metody privátní. Svět kolem je zná jen díky jejich veřejnému rozhraní (veřejné metody, metody z rozhraní interface, veřejné proměnné a gettery a settery). Mnoho atributů vám může být skryto při vytváření kopie instance. Řešením je vytvořit rozhraní s metodou clone, kterou si musí klonovatelné třídy implementovat. Jelikož klonování probíhá uvnitř třídy, pak jsou jim známé i privátní atributy.
+Návrhový vzor abstract factory představuje typické rozšíření návrhového vzoru Factory method. S narůstajícím množstvím typů instancí, které je nutné vytvářet podle kontextu, by rostl počet Creatorů ve Factory method. Navíc některé Creatory mohou tvořit rodinu, kterou v návrhovém vzory Factory method vytvoříte maximálně podle podobného jména (CreatorHTMLForm, CreatorHTMLList, CreatorAndroidForm, CreatorAndroiList, atd.). Proto se Factory method s rostoucí komplexností přepíše do jiného návrhového vzoru jako je Prototype nebo právě Abstract factory.
+
+Abstract factory slouží pro vytváření související rodiny objektů podle kontextu, nikoliv tedy jen jednoho objektu. Můžete vytvářet kolekci Android widgetů, kolekci HTML5 prvků, atd. V návrhovém vzoru se nachází tyto třídy:
+1. Abstraktní továrna - rozhraní továrních metod (VytvořTlačítko, VytvořFormulář, VytvořSeznam, aj.)
+2. Konkrétní továrny - implementují rozhraní abstraktní továrny, obsahují tedy implementace toho, jak vytvořit např. HTML5 tlačítko, Android tlačítko, aj.
+3. Abstraktní produkt - rozhraní metod produktů, například OnClick pro tlačítko (ať už Android nebo HTML5), Select pro seznamy, aj.
+4. Konkrétní produkty - obsahují implementaci metod z rozhraní pro produkty, tedy konkrétní chování produktu při zavolání této metody
+5. Klientský kód - 
 
 Více se dozvíte o návrhovém vzoru abstract factory [ZDE](https://refactoring.guru/design-patterns/abstract-factory) a [ZDE](https://www.dofactory.com/net/abstract-factory-design-pattern)
 
 **Úkol**
 
-1. Vytvořte třídu Nepřítel.
-2. Třída bude obsahovat následující privátní atributy: druh, HP, MP, Attack, Defense, poziceX, poziceY.
-3. Třída bude obsahovat metodu PohniSe (pokud chcete další, tak můžete podle libosti)
-4. Privátní atributy budou odkryty veřejnosti pomocí getterů a setterů
-5. Vytvořte rozhraní ICLoneable s metodou clone. 
-6. Třída Nepřítel bude toto rozhraní implementovat.
-7. Napište implementaci metody clone.
-8. Vytvořte instanci třídy Nepřítel s nějakými atributy pro parametry konstruktoru.
-9. Vytvořte kopii této třídy.
-10. Pohněte se s oběmi instancemi a zkontrolujte, že mají tytéž informace a rozdílné poziceX a Y.
+1. Vytvořte abstraktní třídu pro abstraktní produkt s názvem Gun.
+2. Rozhraní bude obsahovat následující abstraktní metody: Shoot, Reload, Melee; a atributy: Ammunition, Attack, Durability.
+3. Vytvořte třídy pro konkrétní produkty, které implementují rozhraní abstraktního produktu a to třídy: Revolver, CombatRifle, Shotgun, SniperRifle.
+4. Implementujte metody pro tyto konkrétní produkty.
+5. Vytvořte abstraktní továrnu s názvem GunFactory, která bude obsahovat tovární metody pro tvorbu všech typů produktů (Revoler, CombatRifle, atd.).
+6. Vytvořte konkrétní továrny: Dahl, Hyperion, Jacobs, které budou obsahovat implementace továrních metod z GunFactory
+7. Nasimulujte případ, kdy klient (hráč) otevře truhlu a nalezne v ní nějakou ze zbraní (Revoler, CombatRifle, aj.) od dané značky (Dahl, Hyperion, aj.).
+8. O výběru továrny a produktu rozhodujte náhodným generátorem, tedy kontextu nebude pevný z konfiguračního souboru.
 
 **Řešení**
 
