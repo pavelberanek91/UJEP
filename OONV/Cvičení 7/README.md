@@ -50,11 +50,11 @@ Více se dozvíte o návrhovém vzoru abstract factory [ZDE](https://refactoring
 
 **Úkol**
 
-1. Vytvořte abstraktní třídu pro abstraktní produkt s názvem Gun.
-2. Rozhraní bude obsahovat následující abstraktní metody: Shoot, Reload, Melee; a atributy: Ammunition, Attack, Durability.
-3. Vytvořte třídy pro konkrétní produkty, které implementují rozhraní abstraktního produktu a to třídy: Revolver, CombatRifle, Shotgun, SniperRifle.
+1. Vytvořte abstraktní třídy pro všechny varianty produktu: BluePrintRevolver, BluePrintCombatRifle, BluePrintShotgun, BluePrintSniperRifle.
+2. Rozhraní budou obsahovat různé abstraktní metody, které jsou pro typ zbraně specifické, např.: Shoot, Reload, Melee, Zoom, AltShoot; a atributy: Ammunition, Attack, Durability, atd..
+3. Vytvořte třídy pro konkrétní produkty, které implementují rozhraní abstraktních produktů a to třídy: Revolver, CombatRifle, Shotgun, SniperRifle. Tyto třídy budete muset udělat pro všechny značky zbraní (Dahl, Hyperion, Jacobs).
 4. Implementujte metody pro tyto konkrétní produkty.
-5. Vytvořte abstraktní továrnu s názvem GunFactory, která bude obsahovat tovární metody pro tvorbu všech typů produktů (Revoler, CombatRifle, atd.).
+5. Vytvořte abstraktní továrnu s názvem GunFactory, která bude obsahovat tovární metody pro tvorbu všech typů abstraktních produktů (BluePrintRevoler, BluePrintCombatRifle, atd.).
 6. Vytvořte konkrétní továrny: Dahl, Hyperion, Jacobs, které budou obsahovat implementace továrních metod z GunFactory
 7. Nasimulujte případ, kdy klient (hráč) otevře truhlu a nalezne v ní nějakou ze zbraní (Revoler, CombatRifle, aj.) od dané značky (Dahl, Hyperion, aj.).
 8. Značka je pevně daná a souvisí s tím, do jaké frakce hráč patří (Dahl, Hyperion, aj.), typ produktu (Revolver, CombatRifle, aj.) se vybírá náhodným generátorem.
