@@ -39,8 +39,8 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    5   |  Databáze REDIS | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%205) |
 |    6   |  Aplikace databází typu klíč-hodnota | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%206) |
 |    7   |  Dokumentová databáze Mongo | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%207) |
-|    8   |  Map-reduce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%208) |
-|    9   |  Aplikace dokumentových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%209) |
+|    8   |  Aplikace dokumentových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%208) |
+|    9   |  Map-reduce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%209) |
 |   10   |  Sloupcová databáze Cassandra | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2010) |
 |   11   |  Aplikace sloupcových databází | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2011) |
 |   12   |  Grafová databáze Neo4J | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/NSQL/Cvičen%C3%AD%2012) |
