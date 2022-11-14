@@ -8,7 +8,7 @@ Cílem tohoto cvičení je provádět základní CRUD operace nad databází Mon
 
 #### 8.1 Komunikace s MongoDB z Flasku
 
-lorem
+Na následujícím odkaze naleznete návod jak pracovat z Flasku s mongoDB databází [ZDE](https://stackabuse.com/integrating-mongodb-with-flask-using-flask-pymongo/)
 
 #### 8.2 Objektově-dokumentové mapování pro Mongo
 
@@ -93,7 +93,7 @@ Vytvořte CRUD operace pro váš ODM kód.
 
 #### 8.4 Vytvoření endpointu pro dotazy nad Mongo
 
-S mongoDB se nejčastěji pracuje skrze API, které volá CRUD operace. API nevolá uživatel sám, ale volají ho aplikace, které jsou na serverovou instanci Flasku datově navázané (typicky mobilní aplikace). Tím se zmenší datová zátěž, kterou vyvíjíte na mobilní internet uživatele. 
+S mongoDB se nejčastěji pracuje skrze API, které volá CRUD operace. API nevolá uživatel sám, ale volají ho aplikace, které jsou na serverovou instanci Flasku datově navázané (typicky mobilní aplikace). Tím se zmenší datová zátěž, kterou vyvíjíte na mobilní internet uživatele. Více informací naleznete v tomto tutoriálu [ZDE](https://pythonbasics.org/flask-mongodb/)
 
 ```
 import json
@@ -131,10 +131,10 @@ clanek = Clanek(
 
 @app.route('/', methods=['GET'])
 def read():
-    autor = request.args.get('autor')
-    clanek = Clanek.objects(autor=autor).first()
+    nadpis = request.args.get('nadpis')
+    clanek = Clanek.objects(nadpis=nadpis).first()
     if not clanek:
-        return jsonify({'chyba': 'clanek od zadaneho autora nebyl nalezen'})
+        return jsonify({'chyba': 'clanek se zadanym nazvem nebyl nalezen'})
     else:
         return jsonify(clanek.to_json())
 
@@ -169,12 +169,12 @@ def update():
 @app.route('/', methods=['DELETE'])
 def delete_record():
     zaznam = json.loads(request.data)
-    clanek = Clanek.objects(name=record['name']).first()
-    if not user:
-        return jsonify({'error': 'data not found'})
+    clanek = Clanek.objects(nadpis=zaznam['nadpis']).first()
+    if not clanek:
+        return jsonify({'chyba': 'clanek se zadanym nadpisem nebyl nalezen'})
     else:
-        user.delete()
-    return jsonify(user.to_json())
+        clanek.delete()
+    return jsonify(clanek.to_json())
 
 if __name__ == "__main__":
     app.run(debug=True)
