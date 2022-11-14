@@ -37,11 +37,10 @@ clanek1 = Clanek(
 clanek1.save()
 
 for dokument in Clanek.objects(autor="Johana Hovorková"):
-  print(doc.url)
-
+  print(dokument.url)
 
 for dokument in Clanek.objects:
-  print(doc.nadpis)
+  print(dokument.nadpis)
 ```
 
 **Úkol**
