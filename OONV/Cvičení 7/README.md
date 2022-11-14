@@ -57,7 +57,8 @@ Více se dozvíte o návrhovém vzoru abstract factory [ZDE](https://refactoring
 5. Vytvořte abstraktní továrnu s názvem GunFactory, která bude obsahovat tovární metody pro tvorbu všech typů produktů (Revoler, CombatRifle, atd.).
 6. Vytvořte konkrétní továrny: Dahl, Hyperion, Jacobs, které budou obsahovat implementace továrních metod z GunFactory
 7. Nasimulujte případ, kdy klient (hráč) otevře truhlu a nalezne v ní nějakou ze zbraní (Revoler, CombatRifle, aj.) od dané značky (Dahl, Hyperion, aj.).
-8. O výběru továrny a produktu rozhodujte náhodným generátorem, tedy kontextu nebude pevný z konfiguračního souboru.
+8. Značka je pevně daná a souvisí s tím, do jaké frakce hráč patří (Dahl, Hyperion, aj.), typ produktu (Revolver, CombatRifle, aj.) se vybírá náhodným generátorem.
+9. Otestujte funkčnost továren.
 
 **Řešení**
 
