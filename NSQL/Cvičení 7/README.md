@@ -32,10 +32,29 @@ lorem
 
 #### 7.4 Komunikace s MongoDB přes Python
 
-lorem
+Pro komunikace s mongodb budeme potřebovat ovladač pro python: ```pip install pymongo```. Poté můžeme provést základní test komunikace python aplikace s mongodb:
+```
+from pymongo import MongoClient
+  
+# připojení do mongo databáze pomocí mongo klienta
+client=MongoClient()
+client = MongoClient(“mongodb://localhost:27017/”)
+  
+# připojení do konkrétní databáze
+db = client["fakulta"]
+  
+# připojení ke kolekci
+kolekce=db[‘studenti’]
+  
+# dokument ve formátu json (slovník slovníků), který přidáme do databáze
+zaznam = {
+  "jméno": "Pavel Beránek", 
+  "obor": "Aplikovaná informatika", 
+  "tags": ["KI", "PŘF", "APLINF"], 
+  "počet kreditů": 120
+}
+  
+# vložení záznamu (dokumentu) do databáze
+zaznam = db.kolekce.insert(zaznam)
 
-https://realpython.com/search?q=mongodb
-
-https://realpython.com/introduction-to-mongodb-and-python/
-
-https://realpython.com/web-scraping-with-scrapy-and-mongodb/
+```
