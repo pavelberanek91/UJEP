@@ -51,7 +51,7 @@ Více se dozvíte o návrhovém vzoru abstract factory [ZDE](https://refactoring
 **Úkol**
 
 1. Vytvořte abstraktní třídy pro všechny varianty produktu: BluePrintRevolver, BluePrintCombatRifle, BluePrintShotgun, BluePrintSniperRifle.
-2. Rozhraní budou obsahovat různé abstraktní metody, které jsou pro typ zbraně specifické, např.: Shoot, Reload, Melee, Zoom, AltShoot; a atributy: Ammunition, Attack, Durability, atd..
+2. Abstraktní třídy budou obsahovat různé abstraktní metody, které jsou pro typ zbraně specifické, např.: Shoot, Reload, Melee, Zoom, AltShoot; a atributy: Ammunition, Attack, Durability, atd..
 3. Vytvořte třídy pro konkrétní produkty, které implementují rozhraní abstraktních produktů a to třídy: Revolver, CombatRifle, Shotgun, SniperRifle. Tyto třídy budete muset udělat pro všechny značky zbraní (Dahl, Hyperion, Jacobs).
 4. Implementujte metody pro tyto konkrétní produkty.
 5. Vytvořte abstraktní továrnu s názvem GunFactory, která bude obsahovat tovární metody pro tvorbu všech typů abstraktních produktů (BluePrintRevoler, BluePrintCombatRifle, atd.).
