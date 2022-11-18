@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- <!DOCTYPE menu SYSTEM "menu.dtd"> -->
+<?xml-stylesheet type="text/xsl" href="menu.xsl"?>
+
+<menu xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="menu.xsd">
+    <recept autor_článku="Recepty (recepty.cz)" hodnocení="1" počet_hodnotících="0">
+        <informace>
+            <název>Cuba Libre</název>
+            <země_původu>Kuba</země_původu>
+            <doba_přípravy>10</doba_přípravy>
+            <obtížnost>
+                <začátečník />
+            </obtížnost>
+        </informace>
+        <ingredience>
+            <položka odkaz_koupě="www.obchod.cz/rum" typ="základ">50 ml bílý rum</položka>
+            <položka typ="dochucovadlo">100 ml coca cola</položka>
+            <položka typ="dochucovadlo">limetka</položka>
+        </ingredience>
+        <postup>
+            Do sklenice nakrájíme na čtvrtiny omytou limetku, kterou mírně vymačkáme. Přidáme kostky ledu a nalijeme světlý rum.
+            Dolijeme Coca Colou. Dozdobit můžete drink kolečkem limety.
+        </postup>
+    </recept>
+
+    <recept autor_článku="redakce (recepty.cz)" hodnocení="1" počet_hodnotících="0">
+        <informace>
+            <název>Cosmopolitan</název>
+            <doba_přípravy>5</doba_přípravy>
+            <obtížnost>
+                <začátečník />
+            </obtížnost>
+        </informace>
+        <ingredience>
+            <položka typ="základ">0,60 dl vodka</položka>
+            <položka typ="dochucovadlo">0,40 dl pomerančový likér Cointreau</položka>
+            <položka typ="dochucovadlo">0,80 dl džus brusinkový</položka>
+            <položka typ="dochucovadlo">limetková šťáva z 1 limetky</položka>
+            <položka typ="dochucovadlo">led</položka>
+            <položka typ="dekorace">2 ks pomerančová kůra</položka>
+        </ingredience>
+        <postup>
+            Do šejkru nalijte vodku, pomerančový likér, brusinkový džus a přidejte čerstvě vylisovanou šťávu z limetky. 
+            Protřepejte a nalijte do namražených sklenic. Servírujte se spirálou čerstvé pomerančové kůry.
+        </postup>
+    </recept>
+
+    <recept autor_článku="Jana Kadlecová (recepty.cz)" hodnocení="1" počet_hodnotících="0">
+        <informace>
+            <název>Daiquiri</název>
+            <země_původu>Kuba</země_původu>
+            <doba_přípravy>10</doba_přípravy>
+            <obtížnost>
+                <mistr />
+            </obtížnost>
+        </informace>
+        <ingredience>
+            <položka typ="základ">4 dl bílý rum kubánský</položka>
+            <položka typ="dochucovadlo">1 dl cukrový roztok</položka>
+            <položka typ="dochucovadlo">ledová tříšť</položka>
+            <položka typ="dochucovadlo">2 dl limetková šťáva čerstvá</položka>
+        </ingredience>
+        <postup>
+            Do šejkru vložíme led (tříšť), odměříme všechny suroviny a důkladně protřepáme. Přes sítko nalijeme nápoj do 
+            koktejlové sklenky.
+        </postup>
+    </recept>
+    <recept autor_článku="recepty73 (recepty.cz)" hodnocení="1" počet_hodnotících="0">
+        <informace>
+            <název>Whiskey Sour</název>
+            <země_původu>Wisconsin</země_původu>
+            <doba_přípravy>10</doba_přípravy>
+            <obtížnost>
+                <pokročilý />
+            </obtížnost>
+        </informace>
+        <ingredience>
+            <položka typ="základ">0,40 dl whisky-skotská</položka>
+            <položka typ="dochucovadlo">0,30 dl citronová šťáva s limetkovou</položka>
+            <položka typ="dochucovadlo">0,20 dl cukrový roztok</položka>
+            <položka typ="dekorace">bílek</položka>
+            <položka typ="dekorace">plátek limetky</položka>
+        </ingredience>
+        <postup>
+            Veškeré ingredience nadávkujeme do šejkru plného ledu a vše důkladně prošejkrujeme, poté přelijeme do vychlazené 
+            sklenice, ozdobíme a přidáme brčko.
+        </postup>
+    </recept>
+</menu>

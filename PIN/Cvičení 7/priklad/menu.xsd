@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<!-- definition of simple elements -->
+<xs:element name="název" type="xs:string"/>
+<xs:element name="doba_přípravy" type="xs:positiveInteger"/>
+<xs:element name="obtížnost" type="xs:string"/>
+<xs:element name="země_původu" type="xs:string"/>
+<xs:element name="postup" type="xs:string"/>
+<xs:element name="obtížnost">
+    <xs:complexType />
+</xs:element>
+
+<!-- definition of simple types -->
+<xs:simpleType name="položka_typ">
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="základ"/>
+        <xs:enumeration value="dochucovadlo"/>
+        <xs:enumeration value="dekorace"/>
+        <xs:enumeration value="nezařazené"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<!-- definition of attributes -->
+<xs:attribute name="autor_článku" type="xs:string"/>
+<xs:attribute name="hodnocení" type="xs:positiveInteger" fixed="1"/>
+<xs:attribute name="počet_hodnotících" type="xs:decimal" fixed="0"/>
+<xs:attribute name="počet_porcí" type="xs:positiveInteger" default="1"/>
+<xs:attribute name="odkaz_koupě" type="xs:string"/>
+<xs:attribute name="typ" type="položka_typ" default="nezařazené"/>
+
+<!-- definition of complex types -->
+<xs:element name="menu">
+    <xs:complexType>
+        <xs:sequence>
+            <xs:element ref="recept" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="recept">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="informace"/>
+      <xs:element ref="ingredience"/>
+      <xs:element ref="postup"/>
+    </xs:sequence>
+    <xs:attribute ref="autor_článku" use="required"/>
+    <xs:attribute ref="hodnocení"/>
+    <xs:attribute ref="počet_hodnotících"/>
+    </xs:complexType>
+</xs:element>
+
+<xs:element name="informace">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="název"/>
+      <xs:element ref="země_původu" minOccurs="0" maxOccurs="1"/>
+      <xs:element ref="doba_přípravy" />
+      <xs:element ref="obtížnost" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="ingredience">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element ref="položka" minOccurs="1" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="počet_porcí" default="1"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:element name="položka">
+    <xs:complexType>
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="odkaz_koupě"/>
+                <xs:attribute ref="typ"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+</xs:element>
+
+</xs:schema>

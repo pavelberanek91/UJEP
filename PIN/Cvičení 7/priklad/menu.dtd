@@ -1,0 +1,32 @@
+<!ELEMENT menu (recept+)>
+<!ATTLIST menu xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance">
+<!ATTLIST menu xsi:noNamespaceSchemaLocation CDATA #FIXED "menu.xsd">
+
+<!ELEMENT recept (informace, ingredience, postup)>
+<!ATTLIST recept 
+autor_článku CDATA #REQUIRED
+hodnocení CDATA #FIXED "1"
+počet_hodnotících CDATA #FIXED "0">
+
+<!ELEMENT informace (název, země_původu?, doba_přípravy, obtížnost)>
+
+<!ELEMENT název (#PCDATA)>
+
+<!ELEMENT země_původu (#PCDATA)>
+
+<!ELEMENT doba_přípravy (#PCDATA)>
+
+<!ELEMENT obtížnost (začátečník|pokročilý|mistr)?>
+<!ELEMENT začátečník EMPTY>
+<!ELEMENT pokročilý EMPTY>
+<!ELEMENT mistr EMPTY>
+
+<!ELEMENT ingredience (položka+)>
+<!ATTLIST ingredience počet_porcí CDATA "1">
+
+<!ELEMENT položka (#PCDATA)>
+<!ATTLIST položka 
+odkaz_koupě CDATA #IMPLIED
+typ (základ|dochucovadlo|dekorace|nezařazené) "nezařazené">
+
+<!ELEMENT postup (#PCDATA)>

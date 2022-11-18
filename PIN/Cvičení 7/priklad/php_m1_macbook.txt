@@ -1,0 +1,10 @@
+navod jak spustit na apache, php a mariadb na m1 macbook:
+1. apache je uz nainstalovan, spusti se sudo apachectl start
+2. overeni behu apache pres http://localhost
+3. otevrit sudo nano /etc/apache2/httpd.conf
+4. odkomentovat #LoadModule php7_module libexec/apache2/libphp7.so
+5. zmenit uvnitr podminky <IfModule dir_module> telo na DirectoryIndex index.php index.html
+6. restartovat apache sudo apachectl restart
+7. nastavit opravneni slozky aby nevyzadovalo sudo /Library/WebServer/Documents pomoci "sudo chmod 777 Documents"
+8. otevrit slozku Documents ve visual studio code pomoci "code ."
+9. vytvorit index.php a zacit kodit
