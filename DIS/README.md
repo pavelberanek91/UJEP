@@ -36,7 +36,7 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    3   |  Pravděpodobnost správné diagnostiky | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%203) |
 |    4   |  Numerický výpočet charakteristického čísla | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%204) |
 |    5   |  Optimální pořadí paralelních kontrol | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%205) |
-|    6   |  Diagnosticka založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
+|    6   |  Diagnostika založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
 |    7   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
 |    8   |   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
 |    9   |  Spolehlivost a její ukazatele | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
