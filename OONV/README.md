@@ -37,8 +37,8 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    3   | Dědičnost | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%203) |
 |    4   | Komunikace na úrovni tříd | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%204) |
 |    5   | UML diagramy tříd | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%205) |
-|    6   | Jedináček, Prototyp, Stavitel | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
-|    7   | Tovární metody a objekty | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
+|    6   | Jedináček, Prototyp, Stavitel| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%206) |
+|    7   | Tovární metoda a Abstraktní továrna | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%207) |
 |    8   | Fasáda, Adaptér| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
 |    9   | Dekorátor, Most, Proxy| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%209) |
 |   10   | Muší váha, Kompozit| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2010) |
