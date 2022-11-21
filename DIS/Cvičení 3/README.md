@@ -4,4 +4,4 @@
 
 V tomto cvičení se podíváme na to, jak moc můžeme důvěřovat syndromu, který diagnostický systém vrací.
 
-<img src="DIS/Cvičení 3/DEP03.jpg">
+<img src="https://raw.githubusercontent.com/pavelberanek91/UJEP/main/DIS/Cvičen%C3%AD%203/DEP03.jpg">
