@@ -1,6 +1,6 @@
 # Objektově-orientované návrhové vzory
 
-## Strukturální vzory - Adaptér, Fasáda, Dekorátor
+## Strukturální vzory - Adaptér, Fasáda
 
 Strukturální vzory řeší problémy, které vycházejí ze struktury již vytvořených objektů, jejichž struktura nám za běhu nevyhovuje. Mezi první probírané patří:
 1. Adaptér - umožňuje komunikaci dvou objektů, které mají nekompatibilní rozhraní
