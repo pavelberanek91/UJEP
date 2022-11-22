@@ -75,7 +75,18 @@ Závady mají ještě dva stavy:
 
 **1.5 Chyba**
 
+Je takový stav systému (hodnoty proměnných), který může vést k seláhní služby. Pro chyby je specifické to, že mohou vyvolat jiné chyby. Pokud se například nenahrála do seznamu všechna data z databáze, pak na webové stránce bude HTML seznam prázdný (což je taky nežádoucí stav). Uživatel následně uvidí selhání služby, jelikož nevidí na obrazovce monitoru výpis dat. Chyba nemusí nutně vyvolat selhání, jelikož špatně nastavené proměnné nemusí ovlivnit ty části podsystému, které se využívají pro dodání služby. Chyba se tedy nedostala svým šířením až na hranice systému (rozhraní).
+
 **1.6 Selhání**
+
+Selhání systému je takový stav systému, kdy chyba se šířila až na samotné rozhraní, kde je uživatelem vnímatelná. Systém nedodává službu v takové kvalitě jaké uživatel vyžaduje (není tedy dependabilní) a systém selhal. Někdy se selháním označuje o taková chyba, které doputovala v rámci komponenty k rozhraní komponenty a šíří se do další komponenty jako chyba. Občas termíny splývají při vysoké míře abstrakce, kde atomem je komponenta (při pohledu na komponentu jako atom nemůže mít rozhraní). 
+
+Selhání se nemusí ihned projevit. Podle času, kdy se projeví, je rozdělujeme na:
+1. bezprostřední selhání
+2. selhání s časovou prodlevou
+3. neovlivňující selhání
+
+Komponenta, která selhala, nemusí vyvolat selhání služby okamžitě, jelikož nemusí být vůbec volaná uživatelem a neúčastní se služeb. Například je-li chybně nastaven chatbot a nikdo ho měsíc na e-shopu nevyužívá, tak se selhání neprojeví. Také existují prostředky, jak zamezit tomu, aby selhání ovlivňovalo systém pomocí chytrých algoritmů (koncepce systémů odolných vůči závadám).
 
 **1.7 Prostředky pro zvýšení odolnosti proti selhání**
 
