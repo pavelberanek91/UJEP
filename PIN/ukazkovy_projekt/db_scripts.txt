@@ -1,0 +1,11 @@
+drop table if exists `uzivatele`;
+create table `uzivatele` (
+    id int not null auto_increment,
+    jmeno text not null,
+    heslo text not null,
+    primary key (id)
+);
+insert into `uzivatele` (jmeno, heslo) values
+    ("pavel","pavel"),
+    ("alena","heslo"),
+    ("petr","12345");
