@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drink autor_článku="Pavel Beránek">
+    <informace>
+        <název>Cuba Libre</název>
+        <země_původu>Španělsko</země_původu>
+        <země_původu>Kuba</země_původu>
+        <doba_přípravy 
+            jednotka="min">
+            1
+        </doba_přípravy>
+        <obtížnost>
+            <začátečník />
+        </obtížnost>
+    </informace>
+  <ingredience>
+    <položka
+        typ="základ" 
+        množství="5" 
+        odkaz_koupě="https://www.alza.cz/havana-club-anejo-3y-0-7l-40-d6364551.htm?">
+        Bílý rum
+    </položka>
+    <položka
+        typ="dochucovadlo" 
+        množství="12">
+        Coca Cola
+    </položka>
+    <položka>
+        Limetková šťáva
+    </položka>
+    <položka
+        typ="dekorace">
+        Limetka
+    </položka>
+  </ingredience>
+  <postup>
+    Nalijte všechny přísady do vysoké sklenice naplněné ledem. Ozdobte limetkou.  
+  </postup>
+</drink>

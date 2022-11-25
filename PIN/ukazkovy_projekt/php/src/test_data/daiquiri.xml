@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drink autor_článku="Pavel Beránek">
+    <informace>
+        <název>Daiquiry</název>
+        <doba_přípravy 
+          jednotka="min">
+          2
+        </doba_přípravy>
+        <obtížnost>
+            <mistr />
+        </obtížnost>
+    </informace>
+  <ingredience>
+    <položka
+        typ="základ" 
+        množství="4.5" 
+        odkaz_koupě="https://www.alza.cz/havana-club-anejo-3y-0-7l-40-d6364551.htm">
+        Bílý rum
+    </položka>
+    <položka
+        typ="dochucovadlo" 
+        množství="2.5">
+        Limetková šťáva
+    </položka>
+    <položka
+        typ="dochucovadlo" 
+        množství="1.5">
+        Sirup
+    </položka>
+  </ingredience>
+  <postup>
+    Všechny přísady nalijte do šejkru s kostkami ledu. Dobře Protřepejte. Podávejte ve vychlazené koktejlové sklenici.
+  </postup>
+</drink>

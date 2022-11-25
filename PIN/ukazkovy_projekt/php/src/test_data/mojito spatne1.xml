@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drink autor_článku="Pavel Beránek">
+    <informace>
+        <název>Mojito</název>
+        <země_původu>Kuba</země_původu>
+        <doba_přípravy>1 minuta</doba_přípravy>
+        <obtížnost>
+            <pokročilý />
+        </obtížnost>
+    </informace>
+  <ingredience>
+    <položka
+        typ="základ" 
+        množství="4" 
+        odkaz_koupě="https://www.alza.cz/havana-club-anejo-3y-0-7l-40-d6364551.htm">
+        Bílý rum
+    </položka>
+    <položka
+        typ="dochucovadlo" 
+        množství="4">
+        Limetková šťáva
+    </položka>
+    <položka
+        typ="dochucovadlo">
+        Sodovka
+    </položka>
+    <položka
+        typ="dekorace"
+        množství="6"
+        jednotka="lístků">
+        Máta
+    </položka>
+    <položka
+        množství="2"
+        jednotka="lžičky">
+        Třtinový cukr
+    </položka>
+  </ingredience>
+</drink>

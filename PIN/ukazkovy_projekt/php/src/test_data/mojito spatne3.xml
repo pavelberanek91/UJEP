@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drink autor_článku="Pavel Beránek">
+    <informace>
+        <název>Mojito</název>
+        <země_původu>Kuba</země_původu>
+        <doba_přípravy>1 minuta</doba_přípravy>
+        <obtížnost>
+            <pokročilý />
+        </obtížnost>
+    </informace>
+  <ingredience>
+  </ingredience>
+  <postup>
+    Nadrťte lístky máty s cukrem a limetkovou šťávou. Přidejte trochu sodovky a naplňte sklenici nadrceným ledem. Nalijte rum a dolijte sodovku. Podávejte s brčkem.
+  </postup>
+</drink>
