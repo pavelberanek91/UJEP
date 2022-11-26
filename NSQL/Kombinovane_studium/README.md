@@ -163,11 +163,40 @@ docker rm $(docker ps -a -q)
 
 Pokud zadáte do vašeho prohlížeče adresu: ```http://localhost:5000```, tak by se měla objevit webová stránka s vaším flask projektem z docker obrazu. Pokud vám docker psal konflikt na portech, pak změňte port, na který si posíláte data, např.: ```docker run -d -p 5001:5000 flask```. Pak zavoláte na vašem localhostovi aplikaci pod novým portem: ```http://localhost:5001```.
 
-#### 3. Docker-compose
+#### 3. Flask
 
-Dalším krokem je instalace Docker-compose.
+V této fázi můžeme vytvořit nějakou menší webovou aplikaci ve Flask frameworku. V této sekci vás provedu základními možnostmi Flask frameworku.
 
-#### 4. Flask
+
+
+#### 4. Docker-compose
+
+Dalším krokem je instalace Docker-compose. Tato aplikace nám umožní stáhnout další obrazy (předpřipravené z dockerhubu) a propojit je s naším obrazem. Naše výsledná aplikace se bude skládat z menšího množství vzájemně komunikujících obrazů.
+
+V našem pracovním adresáři vytvoříme soubor s názvem docker-compose.yaml. Do něj vložíme následující kód:
+
+```
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "5000:5000"
+  redis:
+    image: redis:latest
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+```
 
 #### 5. Redis
 
