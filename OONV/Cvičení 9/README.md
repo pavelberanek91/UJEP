@@ -34,20 +34,14 @@ Pokud byste měli problém úkol vyřešit, tak zde naleznete pro ukázku zajím
 
 ### Dekorátor
 
+Dekorátor je třída, která rozšiřuje chování jiné třídy a nevyužívá k tomu genelizační struktury jako je dědičnost nebo agregaci/kompozici. Kód (klient) za běhu rozhodne, jaké chování navíc bude umět dekorovaná třída a to tím, že ji obalí dekorátory. Příkladem může být například marketingová aplikace, která slouží pro zasílání příspěvku nebo příběhů na všechny sociální sítě (Instagram, Tik-Tok, Facebook). Podmínkou je, aby základní aplikace pro sociální sítě byla nainstalovaná nebo byla nakonfigurovaná. Takže chcete za běhu pro všechny dostupné aplikace pro správu sociálních sítí zaslat váš příspěvek, aniž byste chtěli vytvářet pro každý typ příspěvku potomka. Oproti předchozímu cvičení vidíme, že záleží spíše na klientovo straně ohledně toho, o jaké chování bude objekt rozšířen. U návrhového vzoru Proxy záleželo spíš na serverové straně.
 
 Více se o dekorátoru dočtete [ZDE](https://refactoring.guru/design-patterns/decorator) nebo [ZDE](https://www.dofactory.com/net/decorator-design-pattern).
 
 **Cvičení**
 
-V tomto cvičení vytvoříte registrační systém do eshopu.
-1. Vytvořte třídu Formulář, které požádá uživatele o zadání uživatelského jména a hesla.
-2. Formulář si volá třídu ValidátorNeprázdnýchVstupů, který pro Formulář zjistí, zda jsou vstupy neprázdné. Pokud nejsou, tak Formulář požádá opět o zadaní dat.
-3. Vytvořte třídu PřihlašovačDoDB, která zjistí, zda se uživatel s daným jméném a heslem nachází v databázi nebo ne.
-4. Formulář předá data PřihlašovaciDoDB, který přihlásí uživatele, pokud se tam nachází uživatel.
-4. Vytvořte třídu Registrovač, která umožní zaregistrovat nového uživatele se zadaným jménem a heslem do databáze.
-5. Vytvořte třídu ZjišťovačSílyHesla, která zjistí, jak moc je silné zadané heslo.
-6. Pokud PřihlašovačDoDB zjistí, že se uživatel se zadaným jménem a heslem nenachází v DB, tak zavolá Registrovač.
-7. Registrovač se zeptá uživatele, zda se chce zaregistrovat do DB.
-8. Pokud se chce uživatel zaregistrovat, tak registrovač zavolá ZjišťovačSílyHesla, který ověří, zda heslo je dostatečně silné, tento poznatek navrátí Registrovači.
-9. Podle síly hesla Registrovač zavolá objekt třídy Databáze a zaregistruje uživatele nebo ho požádá o nové silnější heslo.
-10. Vytvořte k této komplexní komunikaci různých objektů fasádu s názvem RegistračníSystém, který celou komunikaci obaluje.
+V tomto cvičení vytvoříte dekorátory pro zápis textového obsahu do více možných formátů.
+1. Vytvořte třídu ZapisovačDoSouboru, která zapíše vložený text do souboru pomocí metody zapišText(string text, string cesta).
+2. Vytvořte dekorátor HTMLZapisovač, který upravuje chování zapisovačů tím, že obalí jejich text do HTML značek a vygeneruje při zápisu validní HTML kód.
+3. Vytvořte dekorátor LaTeXZapisovač, který upravuje chování zapisovačů tím, že obalí jejich text do LaTeX značek a vygeneruje při zápisu validní LaTeX kód.
+4. Co se stane, když ve vašem případě obalíte ZapisovačDoSouboru oběma dekorátory? :)
