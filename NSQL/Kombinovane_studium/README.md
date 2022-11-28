@@ -167,7 +167,55 @@ Pokud zadáte do vašeho prohlížeče adresu: ```http://localhost:5000```, tak 
 
 V této fázi můžeme vytvořit nějakou menší webovou aplikaci ve Flask frameworku. V této sekci vás provedu základními možnostmi Flask frameworku.
 
+Do našeho pracovního adresáře vytvoříme dvě složky:
+1. Templates: do tohoto adresáře vkládáme html stránky (název je pevně nastaven).
+2. Static: do tohoto adresáře vytvořte ještě adresáře css, js a imgs (názvy se mohou lišit).
+3. CSS: do tohoto adresáře vkládáme kaskádové styly, které graficky upraví vzhled našich stránek.
+4. JS: do toho adresáře vkládáme kód v jazyce javascript nebo jiné skripty spouštěné na straně uživatele.
+5. IMGS: do tohoto adresáře vkládáme obrázky.
 
+Pojďme upravit náš soubor app.py (vysvětlení je v komentářích v kódu):
+
+```
+#Flask je třída, jejíž instance představuje zhmotnění (instantizování) naší webové aplikace
+#render_template slouží pro vrácení webové stránky ze složky templates uživateli
+#request slouží pro získání dat z formuláře a zjištění http metody (GET, POST, PUT, DELETE)
+from flask import Flask, render_template, request
+
+#slovník db představuje naší falešnou databázi (prozatím, vy implementujete nějakou NoSQL)
+db = {
+    'jana@email.com': 'Co ze sem mam napsat?',
+    'pepa@gmail.com': 'Ahoj. Chci se zeptat, jestli mi prodas vas produkt za kafe.',
+    'johana@seznam.cz': 'johana@seznam.cz'
+}
+
+#instantizace webové aplikace
+app = Flask(__name__)
+
+#vytvoření endpointu root, který vrací webovou stránku index.html s kontextem databaze
+#kontext je sada proměnných, jejichž hodnoty můžeme v html stránkách (=šablonách) využívat
+@app.route('/')
+def index():
+    return render_template('index.html', databaze=db)
+
+#další endpoint, který přijímá jak GET tak i POST HTTP požadavky
+#pokud přijde požadavek typu POST, tak uživatel nahrál data na naší webovou stránku (formulář), tak je zpracujeme
+#pokud přijde požadavek typu GET, tak uživatel chce jen po nás webovou stránku z formulářem
+@app.route('/kontakt', methods=['GET', 'POST'])
+def kontakt():
+    if request.method == "GET":
+        return render_template('kontakt.html')
+    elif request.method == "POST":
+        email = request.form['email']
+        dotaz = request.form['dotaz']
+        db[email] = dotaz
+        return render_template('kontakt.html', vzkaz="Dotaz byl prijat. Dekujeme!")
+
+#kód, který spouští naší instanci webové aplikace
+if __name__ == "__main__":
+    app.run(debug=True)
+
+```
 
 #### 4. Docker-compose
 
