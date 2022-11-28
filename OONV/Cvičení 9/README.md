@@ -12,7 +12,7 @@ Obě návrhové vzory nemění rozhraní, jen chování (adaptér měnil rozhran
 
 Klient chci využívat instanci nějaké třídy. Tato instance není optimální z hlediska svého chování. Příkladem může být situace, kde přístup k této instanci je náročný na prostředky (typicky přístup na pevný disk). Proto můžeme obalit chování této na prostředky náročné třídy Proxy třídou, která problém řeší aniž by se změnil způsob, jak se na prostředky náročná třída používá (nemění se rozhraní). Pro představu si vzpomeňte na oblíbenou NoSQL databázi typu klíč-hodnota s názvem Redis, která cachuje data z relačních databází.
 
-Více o návrhovém vzoru naleznete [ZDE](https://refactoring.guru/design-patterns/proxy).
+Více o návrhovém vzoru proxy naleznete [ZDE](https://refactoring.guru/design-patterns/proxy) nebo [ZDE](https://www.dofactory.com/net/proxy-design-pattern).
 
 **Cvičení**
 
@@ -34,9 +34,8 @@ Pokud byste měli problém úkol vyřešit, tak zde naleznete pro ukázku zajím
 
 ### Dekorátor
 
-Cílem návrhového vzoru fasáda je skrýt/zaobalit komplexitu závislostí instancí tříd na sobě do jedné třídy. Představme si například následující didaktický příklad z oblasti počítačové grafiky. Uživatel chcete vykreslit na obrazovku graf typu histogram. Vstup mají být data ze souboru a výstupem má být graf na obrazovce. Tento graf si vytváří uživatel svépomocí pomocí geometrických útvarů. Vytvoření takového grafu bude zahrnovat přečtení dat ze souboru, rozklíčování dat ve formě řetězce do popisků os (osa x) a kategorií (osa y), vykreslení plátna, vykreslení obdélníků na plátno, jejichž velikost závisí na načtených datech, vykreslení šipek jako os, dodání ticků a popisků osy, atd. Tyto grafické prvky jsou na sebe v určitém pořadí závislé. Přesto se celé volání dá shrnout jedním příkazem - vytvoř histogram. Tvořič histogramů bude fasáda.
 
-Více se o fasádě dočtete [ZDE](https://refactoring.guru/design-patterns/facade) nebo [ZDE](https://www.dofactory.com/net/facade-design-pattern).
+Více se o dekorátoru dočtete [ZDE](https://refactoring.guru/design-patterns/decorator) nebo [ZDE](https://www.dofactory.com/net/decorator-design-pattern).
 
 **Cvičení**
 
