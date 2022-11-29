@@ -8,105 +8,71 @@ namespace ws
     {
         static void Main(string[] args)
         {
-            TradicniZarizeni aligator = new TradicniZarizeni(new MobilniTelefon());
-            aligator.vyberAdresareKlavesnici("obrazky");
-            aligator.vyberSouboruKlavesnici("rodina.jpg");
+            Projektil sniperProjektil = new Projektil(
+                cestaTextura: "textura.jpg",
+                poskozeni: 10, 
+                sanceKritickyZasah: 0.2f
+            );
 
-            DotykoveZarizeni samsung_galaxy_note = new DotykoveZarizeni(new MobilniTelefon());
-            samsung_galaxy_note.dotykNaIkonkuAdresare("obrazky");
-            samsung_galaxy_note.dotykNaIkonkuSouboru("rodina.jpg");
+            Projektil brokovniceProjektil = new Projektil(
+                cestaTextura: "brokovniceTextura.jpg",
+                poskozeni: 5,
+                sanceKritickyZasah: 0.1f
+            );
 
-            TradicniZarizeni thinkpadT400 = new TradicniZarizeni(new Pocitac());
-            thinkpadT400.vyberAdresareKlavesnici("obrazky");
-            thinkpadT400.vyberSouboruKlavesnici("rodina.jpg");
+            List<PohybujiciSeProjektil> projektilySniperGun = new List<PohybujiciSeProjektil>();
+            for(int i = 0; i < 1000; i++){
+                projektilySniperGun.Add(
+                    new PohybujiciSeProjektil(
+                        poloha: new float[]{0.0f, 0.0f, 0.0f}, 
+                        rychlost: new float[]{0.0f, 0.0f, 0.0f}, 
+                        projektil: sniperProjektil
+                    )
+                );        
+            }
+
+            List<PohybujiciSeProjektil> projektilyBrokovnice = new List<PohybujiciSeProjektil>();
+            for(int i = 0; i < 1000; i++){
+                projektilyBrokovnice.Add(
+                    new PohybujiciSeProjektil(
+                        poloha: new float[]{0.0f, 0.0f, 0.0f}, 
+                        rychlost: new float[]{0.0f, 0.0f, 0.0f}, 
+                        projektil: brokovniceProjektil
+                    )
+                );        
+            }
         }
     }
 
-    interface IZarizeni{
-        void otevriSoubor(string cesta);
-        void otevriSlozku(string cesta);
-        void vratSeZpet();
-        void vratSeDopredu();
-    }
+    class PohybujiciSeProjektil{
 
-    class Pocitac: IZarizeni{
-        public void otevriSoubor(string cesta){
-            Console.WriteLine("Linux->syscall.openFile: {0}", cesta);
+        float[] poloha;
+        float[] rychlost;
+        Projektil projektil;
+
+        public PohybujiciSeProjektil(float[] poloha, float[] rychlost, Projektil projektil){
+            this.poloha = poloha;
+            this.rychlost = rychlost;
+            this.projektil = projektil;
         }
-        public void otevriSlozku(string cesta){
-            Console.WriteLine("Linux->syscall.openFolder: {0}", cesta);
-        }
-        public void vratSeZpet(){
-            Console.WriteLine("Linux->syscall.returnPrev");
-        }
-        public void vratSeDopredu(){
-            Console.WriteLine("Linux->syscall.returnNext");
+
+        public void inkrementacePohybu(float casovyKrok){
+            for(int idim = 0; idim < 3; idim++){
+                poloha[idim] += rychlost[idim]*casovyKrok;
+            }
         }
     }
 
-    class MobilniTelefon: IZarizeni{
-        public void otevriSoubor(string cesta){
-            Console.WriteLine("Android->android_system.FileOpen: {0}", cesta);
-        }
-        public void otevriSlozku(string cesta){
-            Console.WriteLine("Android->android_system.FolderOpen: {0}", cesta);
-        }
-        public void vratSeZpet(){
-            Console.WriteLine("Android->android_system.PrevFolder");
-        }
-        public void vratSeDopredu(){
-            Console.WriteLine("Android->android_system.CancelReturnFolder");
-        }
+    class Projektil{
 
-    }
+        public string cestaTextura;
+        public int poskozeni;
+        public float sanceKritickyZasah;
 
-    class DotykoveZarizeni{
-
-        private IZarizeni zarizeni;
-
-        public DotykoveZarizeni(IZarizeni zarizeni){
-            this.zarizeni = zarizeni;
-        }
-
-        public void dotykNaIkonkuAdresare(string cesta){
-            zarizeni.otevriSlozku(cesta);
-        }
-
-        public void dotykNaIkonkuSouboru(string cesta){
-            zarizeni.otevriSoubor(cesta);
-        }
-
-        public void dotykNaSipkuZpet(){
-            zarizeni.vratSeZpet();
-        }
-
-        public void dotykNaSipkuDopredu(){
-            zarizeni.vratSeDopredu();
-        }
-    }
-
-    class TradicniZarizeni{
-        
-        private IZarizeni zarizeni;
-
-        public TradicniZarizeni(IZarizeni zarizeni){
-            this.zarizeni = zarizeni;
-        }
-
-        public void vyberAdresareKlavesnici(string cesta){
-            zarizeni.otevriSlozku(cesta);
-        }
-
-        public void vyberSouboruKlavesnici(string cesta){
-            zarizeni.otevriSoubor(cesta);
-        }
-
-        public void stiskSipkyDoleva(){
-            zarizeni.vratSeZpet();
-        }
-
-        public void stiskSipkyDoprava(){
-            zarizeni.vratSeDopredu();
+        public Projektil(string cestaTextura, int poskozeni, float sanceKritickyZasah){
+            this.cestaTextura = cestaTextura;
+            this.poskozeni = poskozeni;
+            this.sanceKritickyZasah = sanceKritickyZasah;
         }
     }
 }
