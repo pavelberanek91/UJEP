@@ -42,9 +42,9 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 |    8   | Fasáda, Adaptér| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%208) |
 |    9   | Dekorátor, Proxy| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%209) |
 |   10   | Most, Muší váha, Kompozit| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2010) |
-|   11   | Příkaz, Pozorovatel | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2011) |
-|   12   | Memo | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2012) |
-|   13   | Seminární projekt | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2013) |
+|   11   | Příkaz, Řetěz odpovednosti, Iterátor| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2011) |
+|   12   | Memento, Stav, Mediátor, Pozorovatel| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2012) |
+|   13   | Strategie, Šablona metoda, Návštěvník| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/OONV/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky úspěšného získání zápočtu
