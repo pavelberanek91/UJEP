@@ -8,71 +8,85 @@ namespace ws
     {
         static void Main(string[] args)
         {
-            Projektil sniperProjektil = new Projektil(
-                cestaTextura: "textura.jpg",
-                poskozeni: 10, 
-                sanceKritickyZasah: 0.2f
-            );
+            Soubor eva_vasek_lyrics = new Soubor("Jednu bílou orchidej, dals mi nic víc, ...");
+            eva_vasek_lyrics.prectiObsah();
+            
+            Adresar metal = new Adresar(new List<IPrectitelne>(){
+                new Soubor("Brothers everywhere, Raise your hands into the air."),
+                new Soubor("Fear of the dark, I have a constant fear that something's always near")
+            });
 
-            Projektil brokovniceProjektil = new Projektil(
-                cestaTextura: "brokovniceTextura.jpg",
-                poskozeni: 5,
-                sanceKritickyZasah: 0.1f
-            );
+            Adresar pop = new Adresar(new List<IPrectitelne>(){
+                new Soubor("I live for the applause, applause, applause"),
+                new Soubor("Never gonna give you up, Never gonna let you down :)) Rick Rolled you")
+            });
 
-            List<PohybujiciSeProjektil> projektilySniperGun = new List<PohybujiciSeProjektil>();
-            for(int i = 0; i < 1000; i++){
-                projektilySniperGun.Add(
-                    new PohybujiciSeProjektil(
-                        poloha: new float[]{0.0f, 0.0f, 0.0f}, 
-                        rychlost: new float[]{0.0f, 0.0f, 0.0f}, 
-                        projektil: sniperProjektil
-                    )
-                );        
-            }
+            Adresar punk = new Adresar(new List<IPrectitelne>(){
+                new Adresar(
+                    new List<IPrectitelne>(){
+                        new Soubor("So am I still waiting, For this world to stop hating?"),
+                        new Soubor("How can one little street swallow so many lives?")
+                    }
+                ),
+                new Adresar(
+                    new List<IPrectitelne>(){
+                        new Soubor("The night will come, And rip away, Her wings of innocence through every word we say"),
+                        new Soubor("The world I love, the tears I drop, To be part of the wave, can't stop")
+                    }
+                ),
+            });
 
-            List<PohybujiciSeProjektil> projektilyBrokovnice = new List<PohybujiciSeProjektil>();
-            for(int i = 0; i < 1000; i++){
-                projektilyBrokovnice.Add(
-                    new PohybujiciSeProjektil(
-                        poloha: new float[]{0.0f, 0.0f, 0.0f}, 
-                        rychlost: new float[]{0.0f, 0.0f, 0.0f}, 
-                        projektil: brokovniceProjektil
-                    )
-                );        
-            }
+            Adresar hiphop = new Adresar(new List<IPrectitelne>(){
+                new Soubor("When the pimp's in the crib ma, Drop it like it's hot")
+            });
+
+            Adresar hudba = new Adresar(new List<IPrectitelne>(){});
+            hudba.pridejNovyUzel(metal);
+            hudba.pridejNovyUzel(pop);
+            hudba.pridejNovyUzel(punk);
+            punk.pridejNovyUzel(new Soubor("Right now, Oh I am an anti-Christ"));
+            hudba.pridejNovyUzel(hiphop);
+            hudba.prectiObsah();
         }
     }
 
-    class PohybujiciSeProjektil{
+    interface IPrectitelne{
+        void prectiObsah();
+    }
 
-        float[] poloha;
-        float[] rychlost;
-        Projektil projektil;
+    class Soubor:IPrectitelne{
 
-        public PohybujiciSeProjektil(float[] poloha, float[] rychlost, Projektil projektil){
-            this.poloha = poloha;
-            this.rychlost = rychlost;
-            this.projektil = projektil;
+        private string text;
+
+        public Soubor(string text){
+            this.text = text;
         }
 
-        public void inkrementacePohybu(float casovyKrok){
-            for(int idim = 0; idim < 3; idim++){
-                poloha[idim] += rychlost[idim]*casovyKrok;
-            }
+        public void prectiObsah(){
+            Console.WriteLine(this.text);
         }
     }
 
-    class Projektil{
+    class Adresar:IPrectitelne{
 
-        public string cestaTextura;
-        public int poskozeni;
-        public float sanceKritickyZasah;
+        List<IPrectitelne> potomci;
 
-        public Projektil(string cestaTextura, int poskozeni, float sanceKritickyZasah){
-            this.cestaTextura = cestaTextura;
-            this.poskozeni = poskozeni;
-            this.sanceKritickyZasah = sanceKritickyZasah;
+        public Adresar(List<IPrectitelne> potomci){
+            this.potomci = potomci;
+        }
+
+        public void pridejNovyUzel(IPrectitelne potomek){
+            this.potomci.Add(potomek);
+        }
+
+        public void smazExistujiciUzel(IPrectitelne potomek){
+            this.potomci.Remove(potomek);
+        }
+
+        public void prectiObsah(){
+            foreach(IPrectitelne potomek in potomci){
+                potomek.prectiObsah();
+            }
         }
     }
 }
