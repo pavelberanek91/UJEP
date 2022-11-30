@@ -71,7 +71,7 @@ namespace ws
         public int[] sestupneRazeni(int[] cisla){
             int tmp = 0;
             for (int i = 0; i < cisla.Length; i++){
-                for (int j = i + 1; j < cisla.Length-1; i++){
+                for (int j = 0; j < cisla.Length-1-i; j++){
                     if (cisla[j] < cisla[j+1]){
                         tmp = cisla[j];
                         cisla[j] = cisla[j+1];
@@ -85,7 +85,7 @@ namespace ws
         public int[] vzestupneRazeni(int[] cisla){
             int tmp = 0;
             for (int i = 0; i < cisla.Length; i++){
-                for (int j = i + 1; j < cisla.Length-1; i++){
+                for (int j = 0; j < cisla.Length-1-i; j++){
                     if (cisla[j] > cisla[j+1]){
                         tmp = cisla[j];
                         cisla[j] = cisla[j+1];
@@ -116,11 +116,11 @@ namespace ws
             
             while (i <= j){
         
-                while (cisla[i] < pivot){
+                while (cisla[i] > pivot){
                     i++;
                 }
         
-                while (cisla[j] > pivot){
+                while (cisla[j] < pivot){
                     j--;
                 }
         
