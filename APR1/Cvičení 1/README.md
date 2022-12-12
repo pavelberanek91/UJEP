@@ -1,14 +1,10 @@
 # Algoritmizace a programování 1
 
-**Obsah cvičení 1**:
-* Standardní vstup a výstup
-* Objekty základních tříd (řetězce, čísla, logické hodnoty)
-* Základní funkce v pythonu
-* Základní metody nad objektama základních tříd
-
-## On-site cvičení 1
+## Cvičení 1 - Práce s objekty jazyka Python
 
 Pojďme si na začátek shlédnout nějaké motivační video, co se vlastně budete učit. Cílem kurzu je naučit se algoritmizaci, tzn. schopnost řešit problémy pomocí strojových příkazů. To jsou takové příkazy, kterým rozumí počítací stroje. Strojové příkazy se zapisují v programovacím jazyce (programy jsou kolekce příkazů, například školní program nějaké střední školy je kolekce předmětů jako je fyzika, chemie, atd.). Vybraným jazykem pro tento kurz je jazyk Python, který je doporučeným jazykem pro začátečníky. Navíc ve spojení s Javascriptem vám vystačí na celý život. Toto krátké video vám v rychlosti poví, k čemu jazyk slouží a co umí. [ZDE](https://www.youtube.com/watch?v=x7X9w_GIm1s)
+
+### On-site
 
 **Úkol OS1.1: (De)motivační aplikace**
 
@@ -59,7 +55,7 @@ je_pravouhly = True if prepona**2 == odvesna1**2 + odvesna2**2 else False
 je_pravouhly
 ```
 
-## Domácí cvičení 1
+### Domácí cvičení 1
 
 **Úkol HW1.1: Dotazník**
 
@@ -137,5 +133,3 @@ V tomto videu se dozvíte pár základních rad, jak se naučit efektivně progr
 **Video týdne 2: Tisk na standardní výstup**
 
 V tomto videu se naučíte další možnosti tisku na standardní výstup. To se vám bude hodit pro případy, kdy je nutné datový formát výstupu dodatečně upravovat a tím snížíte počet řádků vašeho kódu. Některé termíny (jako třída nebo definice funkce) z videa pochopíte v pozdějších cvičeních, avšak cílem je vidět možnosti výpisu a jejich potenciální sílu. [ZDE](https://www.youtube.com/watch?v=BxUxX1Ku1EQ)
-
-
