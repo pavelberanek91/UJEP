@@ -17,8 +17,6 @@ Vyhledávání vzorů umožní poznat v programu typický problém, který jsme 
 
 Takový logicky uspořádaný kód je pak přehlednější, sémantičtější a zejména upravitelnější a opravitelnější. Z technické hlediska nám k tomu pomůže v jazyce python definice podprogramu. Podprogramy rozdělujeme na funkce a procedury (tento terminus technicus se může zdroj od zdroje lišit, nebudu ho striktně vyžadovat). Funkce vracejí nějaké návratové hodnoty a procedury nevracejí. Podprogramy mají své vstupní parametry, které mohou mít implicitní (defaultní) hodnoty nebo mohou být jejich hodnoty určeny argumenty). Podprogramy volají jiné podprogramy nebo hlavní program (typicky zvaný main). 
 
-Python není staticky typovaný jazyk. Přesto se hodí psát alespoň formou nápovědy, s jakým datovým typem podprogram počítá u svých parametrů nebo jaký datový typ navrací jako návratovou hodnotu. Tomuto mechanismu se říká napovídání typů - type hinting. Python umí type hinting pro mnohé typy, avšak pokud nějaký chybí, pak ho naleznete v knihovně typing. Nový python 3.11 by měl umět i návratovou hodnotu self, tudíž s další verzí pythonu počítejte s novými typy k dispozici bez knihovny Callable. Type hinting pro parametry se píše pomocí dvojtečky v definici funkce u parametrů a type hinting pro návratovou hodnotu se píše za název funkce pomocí šipky.
-
 Proceduru main budeme realizovat tak, že na poslední řádky programu napíšeme podmínku, která rozhoduje o tom, zda náš program je hlavním programem. Nahrávané moduly jsou také programy a jejich kód se při importování spustí. Hlavní program se od importovaného modulu liší tím, že jeho systémová proměnná ```__name__``` je rovna hodnota ```"__main__"```. V této konstrukci se píšou dvě podtržítka (double underscore), což zkracujeme v angličtině jako dunder. Systémovou proměnnou ```__name__``` tedy čteme jako dunder-name-dunder.
 
 **OS7.1: Součet čísel**
@@ -338,5 +336,3 @@ Napište program strukturovaným paradigmatem, který bude představovat brownov
 **Video týdne 1: zacyklené importování**
 
 Ze cvičení jste se dozvěděli, že funkce lze rozdělit do více souborů a vytvářet tak moduly jazyka Python. Při importování můžete narazit na to, že program A vyžaduje balíček B, balíček B vyžaduje funkce balíčku C a balíček C vyžaduje program jako balíček A. Tím jste v cyklu podobnému slepice a vejce. V následujícím videu se dozvíte, jak se vypořádat s tímto problémem. [ZDE](https://www.youtube.com/watch?v=UnKa_t-M_kM)
-
-
