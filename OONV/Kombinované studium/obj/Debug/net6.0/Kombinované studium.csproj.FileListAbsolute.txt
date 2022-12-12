@@ -1,0 +1,15 @@
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/Kombinované studium
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/Kombinované studium.deps.json
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/Kombinované studium.runtimeconfig.json
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/Kombinované studium.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/ref/Kombinované studium.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/bin/Debug/net6.0/Kombinované studium.pdb
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.csproj.AssemblyReference.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.GeneratedMSBuildEditorConfig.editorconfig
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.AssemblyInfoInputs.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.AssemblyInfo.cs
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.csproj.CoreCompileInputs.cache
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/ref/Kombinované studium.dll
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.pdb
+/Users/pberanek91/ws/Vyuka/UJEP/OONV/Kombinované studium/obj/Debug/net6.0/Kombinované studium.genruntimeconfig.cache

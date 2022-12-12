@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Kombinované studium/1.0.0": {
+        "runtime": {
+          "Kombinované studium.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Kombinované studium/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
