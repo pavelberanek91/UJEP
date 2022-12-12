@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace ws
@@ -7,237 +7,86 @@ namespace ws
     {
         static void Main(string[] args)
         {
-            RadicCisel radicCisel = new RadicCisel(new BubbleSort());
-
-            int[] serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: false);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
-
-            serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: true);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
-
-
-
-            radicCisel = new RadicCisel(new QuickSort());
-            
-            serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: false);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
-
-            serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: true);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
-
-
-
-            radicCisel = new RadicCisel(new BogoSort());
-            
-            serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: false);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
-
-            serazenaCisla = radicCisel.seradCisla(new int[]{1, 4, 2, 3, 5, 2, 3}, sestupne: true);
-            Console.WriteLine("[{0}]", string.Join(", ", serazenaCisla));
 
         }
-    } 
-
-    interface IRadic{
-        int[] vzestupneRazeni(int[] cisla);
-        int[] sestupneRazeni(int[] cisla);
     }
 
-    class RadicCisel{
+    class Hrac{}
 
-        private IRadic strategieRazeni;
+    abstract class NPCAI{
 
-        public RadicCisel(IRadic strategieRazeni){
-            this.strategieRazeni = strategieRazeni;
+        public int[] pocatecni_souradnice {get; private set;}
+        public int zasahoveBody {get; private set;}
+        public int utocneBody {get; private set;}
+        public int obranneBody {get; private set;}
+        
+        public NPCAI(int[] pocatecni_souradnice, int zasahoveBody, int utocneBody, int obranneBody){
+            this.pocatecni_souradnice = pocatecni_souradnice;
+            this.zasahoveBody = zasahoveBody;
+            this.utocneBody = utocneBody;
+            this.obranneBody = obranneBody;
         }
 
-        public void zvolAlgoritmus(IRadic strategieRazeni){
-            this.strategieRazeni = strategieRazeni;
+        public void zmenPoziciNaMape(int[] souradnice){
+            Random random = new Random();
+            for (int idim = 0; idim < pocatecni_souradnice.Length; idim++){
+                pocatecni_souradnice[idim] += random.Next(1, 5);
+            }
         }
 
-        public int[] seradCisla(int[] cisla, bool sestupne){
-            if (sestupne == true){
-                return strategieRazeni.sestupneRazeni(cisla);
-            } else{
-                return strategieRazeni.vzestupneRazeni(cisla);
+        public abstract void pockejNaMiste();
+
+        public abstract void interakceSHracem(Hrac hrac);
+
+        public abstract void utekZBoje(int[] souradniceBojiste);
+    }
+
+    class NeagresivniNPC: NPCAI{
+
+        public override void pockejNaMiste(){
+            Console.WriteLine("Cekam na miste 5 sekund");
+        }
+
+        public override void interakceSHracem(Hrac hrac){
+            Console.WriteLine("Co si preješ statný hrdino?");
+        }
+
+        public override void utekZBoje(int[] souradniceBojiste){
+            for (int i = 0; i < 10; i++){
+                
             }
         }
     }
 
-    class BubbleSort: IRadic{
+    class AgresivniNPC: NPCAI{
 
-        public BubbleSort(){}
+        public override void pockejNaMiste(){
 
-        public int[] sestupneRazeni(int[] cisla){
-            int tmp = 0;
-            for (int i = 0; i < cisla.Length; i++){
-                for (int j = 0; j < cisla.Length-1-i; j++){
-                    if (cisla[j] < cisla[j+1]){
-                        tmp = cisla[j];
-                        cisla[j] = cisla[j+1];
-                        cisla[j+1] = tmp;
-                    }
-                }
-            }
-            return cisla;
         }
 
-        public int[] vzestupneRazeni(int[] cisla){
-            int tmp = 0;
-            for (int i = 0; i < cisla.Length; i++){
-                for (int j = 0; j < cisla.Length-1-i; j++){
-                    if (cisla[j] > cisla[j+1]){
-                        tmp = cisla[j];
-                        cisla[j] = cisla[j+1];
-                        cisla[j+1] = tmp;
-                    }
-                }
-            }
-            return cisla;
+        public override void interakceSHracem(Hrac hrac){
+
+        }
+
+        public override void utekZBoje(int[] souradniceBojiste){
+
         }
     }
 
-    class QuickSort: IRadic{
+    class Protihrac: NPCAI{
 
-        public QuickSort(){}
+        public override void pockejNaMiste(){
 
-        public int[] sestupneRazeni(int[] cisla){
-             return sestupnyQuickSort(cisla, 0, cisla.Length - 1);
         }
 
-        public int[] vzestupneRazeni(int[] cisla){
-            return vzestupnyQuickSort(cisla, 0, cisla.Length - 1);
+        public override void interakceSHracem(Hrac hrac){
+
         }
 
-        private int[] sestupnyQuickSort(int[] cisla, int levyIndex, int pravyIndex){
-            int i = levyIndex;
-            int j = pravyIndex;
-            int pivot = cisla[levyIndex];
-            
-            while (i <= j){
-        
-                while (cisla[i] > pivot){
-                    i++;
-                }
-        
-                while (cisla[j] < pivot){
-                    j--;
-                }
-        
-                if (i <= j){
-                    int temp = cisla[i];
-                    cisla[i] = cisla[j];
-                    cisla[j] = temp;
-                    i++;
-                    j--;
-                }
-            }
-    
-            if (levyIndex < j){
-                sestupnyQuickSort(cisla, levyIndex, j);
-            }
-            if (i < pravyIndex){
-                sestupnyQuickSort(cisla, i, pravyIndex);
-            }
-            
-            return cisla;
-        }
+        public override void utekZBoje(int[] souradniceBojiste){
 
-        private int[] vzestupnyQuickSort(int[] cisla, int levyIndex, int pravyIndex){
-            int i = levyIndex;
-            int j = pravyIndex;
-            int pivot = cisla[levyIndex];
-            
-            while (i <= j){
-        
-                while (cisla[i] < pivot){
-                    i++;
-                }
-        
-                while (cisla[j] > pivot){
-                    j--;
-                }
-        
-                if (i <= j){
-                    int temp = cisla[i];
-                    cisla[i] = cisla[j];
-                    cisla[j] = temp;
-                    i++;
-                    j--;
-                }
-            }
-    
-            if (levyIndex < j){
-                vzestupnyQuickSort(cisla, levyIndex, j);
-            }
-            if (i < pravyIndex){
-                vzestupnyQuickSort(cisla, i, pravyIndex);
-            }
-            
-            return cisla;
         }
     }
 
-    class BogoSort: IRadic{
 
-        public BogoSort(){}
-
-        public int[] sestupneRazeni(int[] cisla){
-            List<int> bogoSeznam = new List<int>();
-            foreach(int cislo in cisla){
-                bogoSeznam.Add(cislo);
-            }
-            while (!jeSerazenoSestupne(bogoSeznam)){
-                bogoSeznam = zamichej(bogoSeznam);
-            }
-            for(int i = 0; i < bogoSeznam.Count; i++){
-                cisla[i] = bogoSeznam[i];
-            }
-            return cisla;
-        }
-
-        public int[] vzestupneRazeni(int[] cisla){
-            List<int> bogoSeznam = new List<int>();
-            foreach(int cislo in cisla){
-                bogoSeznam.Add(cislo);
-            }
-            while (!jeSerazenoVzestupne(bogoSeznam)){
-                bogoSeznam = zamichej(bogoSeznam);
-            }
-            for(int i = 0; i < bogoSeznam.Count; i++){
-                cisla[i] = bogoSeznam[i];
-            }
-            return cisla;
-        }
-
-        private bool jeSerazenoVzestupne(List<int> bogoSeznam){
-            for (int i = 0; i < bogoSeznam.Count - 1; i++){
-                if (bogoSeznam[i] > bogoSeznam[i + 1]){
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private bool jeSerazenoSestupne(List<int> bogoSeznam){
-            for (int i = 0; i < bogoSeznam.Count - 1; i++){
-                if (bogoSeznam[i] < bogoSeznam[i + 1]){
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        //michaci algoritmus zalozeny na metode Fisher-Yates.
-        private List<int> zamichej(List<int> bogoSeznam){
-            Random r = new Random();
-            for (int n = bogoSeznam.Count - 1; n > 0; --n){
-                int k = r.Next(n + 1);
-                int temp = bogoSeznam[n];
-                bogoSeznam[n] = bogoSeznam[k];
-                bogoSeznam[k] = temp;
-            }
-            return bogoSeznam;
-        }
-    }
 }

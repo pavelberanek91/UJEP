@@ -271,14 +271,18 @@ namespace ws
 
 ### Šablona metoda
 
+Template metod (metoda jako šablona, šablonní metoda nebo jiný vhodný překlad) je návrhový vzor, který řeší duplicitu podobných metod tím, že rozdělí algoritmus metod do kroků, které jsou stejné. Implementace kroků se však liší. Příkladem může být aplikace, které získává data ze souborů. Je jedno, jestli se jedná o csv soubor, json soubor, xml soubor nebo jiný soubor. Vždy bude algoritmus mít společné kroky - otevři soubor, vyhledej informace, přečti informaci, transformuj informaci, vrať informaci. Můžeme tedy vytvořit nadtřídu, která tyto obecné kroky obsahuje a podtřídy si je podle sebe implementují (podle typu souboru). Pokud některé kroky budou mít i stejnou implementaci, lze vložit implementaci do nadtřídy. Pokud naopak některá konkrétní podtřída krok z nadtřídy nepotřebuje, pak je možné mu dát prázdnou implementaci.
 
-Více se o Template method dočtete [ZDE]() nebo [ZDE](https://www.dofactory.com/net/template-method-design-pattern).
+Více se o Template method dočtete [ZDE](https://refactoring.guru/design-patterns/template-method) nebo [ZDE](https://www.dofactory.com/net/template-method-design-pattern).
 
 **Cvičení**
 
-```
+Představme si, že tvoříme umělou inteligenci do videohry. Videohra je typu RTS (real-time strategy) jako například Starcraft nebo Warcraft. V naší hře se budou vyskytovat následující typy entit:
+1. NeagresivniNPC - pohybuje se po mapě, čeká nějakou dobu, interaguje s hráčem dialogem, pokud je hráčem napadnut, tak neutíká z boje v případě malého zdraví
+2. AgresivniNPC - pohybuje se po mapě, čeká nějakou dobu, interakce s hráčem je formou útoku na hráče, utíká z boje v případě malého zdraví
+3. Protihráč - pohybuje se po mapě, nečeká na místě, interakce s hráčem je formou útoku na hráče, utíká z boje v případě malého zdraví
 
-```
+Naprogramujte AI pro tyto tři typy NPC pomocí návrhového vzoru Template Method.
 
 **Řešení**
 
@@ -289,7 +293,7 @@ Více se o Template method dočtete [ZDE]() nebo [ZDE](https://www.dofactory.com
 ### Návštěvník
 
 
-Více se o návrhovém vzoru Návštěvník dočtete [ZDE]() nebo [ZDE](https://www.dofactory.com/net/visitor-design-pattern).
+Více se o návrhovém vzoru Návštěvník dočtete [ZDE](https://refactoring.guru/design-patterns/visitor) nebo [ZDE](https://www.dofactory.com/net/visitor-design-pattern).
 
 **Cvičení**
 
