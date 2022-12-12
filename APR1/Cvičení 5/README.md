@@ -189,25 +189,21 @@ for klient in klienti:
 
 ### Domácí cvičení
 
-**HW5.1 - Lorem**
+**HW5.1 - Modelování Zoo**
 
-lorem
+Vytvořte slovník, který reprezentuje Ústeckou Zoo. Vložte do něj potřebné informace.
 
-**HW5.2 - Lorem**
+**HW5.2 - Modelování MHD**
 
-lorem
+Vytvořte slovník, který reprezentuje Ústecké MHD (městská hromadná doprava). Vložte do něj potřebné informace.
 
-**HW5.3 - Lorem**
+**HW5.3 - Průměrná známka**
 
-lorem
+Napište funkci, která vrátí průměrnou známku třídy. Známky třídy budou vloženy jako slovník, kde klíčem je jméno studenta a hodnotou je seznam jeho známek.
 
-**HW5.4 - Lorem**
+**HW5.4 - Slovník s náhodným počtem klíčů**
 
-lorem
-
-**HW5.5 - Lorem**
-
-lorem
+Vytvořte slovník, který bude obsahovat náhodný počet klíčů. Tento počet bude generován generátorem náhodných čísel od 1 do 10 včetně. Klíče budou řetězce "klíčX", kde místo X bude pořadí. Například pokud generátor vylosuje číslo 3, tak máte 3 klíče: klíč0, klíč1, klíč2. Hodnoty budou seznamy 10ti náhodných čísel.
 
 **Video týdne 1: Code interview**
 
