@@ -193,8 +193,11 @@ with open("top3.txt", "w") as soubor:
 ```
 
 Kód pro zápis doporučuji rozdělit na tři fáze:
-1. Získání aktulních hráčů a jejich skóre ze souboru do seznamu
-2. 
+1. Získání aktuálních hráčů a jejich skóre ze souboru do seznamu.
+2. Seřazení seznamu hráčů se skóre podle jejich skóre a získání tří nejlepších
+3. Přepsání souboru top hráčů novými top hráči.
+
+Tento kód provede získání dat hráčů ze souboru.
 
 ```
 top3_hraci = []
@@ -208,10 +211,9 @@ with open("top3.txt", "r") as soubor:
 print(top3_hraci)
 ```
 
-lorem ipsum
+Tento kód přidá aktuálního hráče s jeho skóre mezi ostatní hráče do seznamu a seřadí pomocí anonymní funkce na základě skóre. Pro jistotu pochopení zde uvádím neustálé vypisování stavu seznamu po každé akci.
 
 ```
-jmeno = "pavel"
 print(top3_hraci)
 top3_hraci.append((jmeno, skore))
 print(top3_hraci)
@@ -219,7 +221,11 @@ top3_hraci.sort(key=lambda x:x[1])
 print(top3_hraci)
 top3_hraci = top3_hraci[1:]
 print(top3_hraci)
+```
 
+Tento kód přepíše obsah souboru novými daty.
+
+```
 with open("top3.txt", "w") as soubor:
     for hrac_skore in top3_hraci:
         hrac, skore = hrac_skore
