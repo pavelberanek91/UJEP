@@ -1,6 +1,6 @@
 # Algoritmizace a programování
 
-## Cvičení 9 - Hashovací funkce
+## Cvičení 9 - Složitost algoritmů
 
 ### On-site cvičení
 

@@ -43,7 +43,7 @@ Cvičí:
 |    6   |  Vlastní funkce | parametry, návratové hodnoty, návrat a rozbalení n-tice, algoritmy, návrh SW   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%206) |
 |    7   | Procedurální programování  | Dekompozice programu na podprogramy | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%207) |
 |    8   | Algoritmy nad seznamem | duplikace, generování, mapování, filtrace, zipování, redukce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%208) |
-|    9   |  Hashovací tabulky | implementace, hashovací funkce, využití v bezpečnosti, princip blockchain   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%209) |
+|    9   |  Složitost algoritmů | typy složitostí, měření složitosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%209) |
 |   10   |  Práce se soubory | čtení, zápis a připisování do textových souborů, binární soubory, bytová pole| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2010) |
 |   11   |  Práce s adresáři | tvorba a kopírování adresářů a souborů, procházení souborovým systémem       | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2011) |
 |   12   |  Ošetření výjimek | kontextový manažer, strom výjimek, hierarchie výjimek, testování assercí     | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2012) |

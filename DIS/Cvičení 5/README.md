@@ -1,8 +1,7 @@
 # Dependabilita informačních systémů
 
-## Cvičení 5 - Optimální pořadí paralelních kontrol
+## Cvičení 5 - Diagnostika na základě tabulky syndromu
 
-V tomto cvičení se podíváme na to, jak nalézt nezávislé dvojice kontrol, které můžeme naráz spustit.
+V tomto cvičení se podíváme na to, jak nalézt závadné moduly na základě diagnostiky syndromu.
 
-<img src="https://raw.githubusercontent.com/pavelberanek91/UJEP/main/DIS/Cvičen%C3%AD%205/DEP05-1.jpg">
-<img src="https://raw.githubusercontent.com/pavelberanek91/UJEP/main/DIS/Cvičen%C3%AD%205/DEP05-2.jpg">
+<img src="https://raw.githubusercontent.com/pavelberanek91/UJEP/main/DIS/Cvičen%C3%AD%205/DEP05.jpg">
