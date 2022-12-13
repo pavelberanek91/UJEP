@@ -31,19 +31,19 @@ Cvičí: [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni
 
 |  Týden |  Název |  Materiály | Zadání |
 | :----: | :----: |   :----:   | :----: |
-|    1   |  Samokontrola a samodiagnostika na systémové úrovni | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%201) |
+|    1   |  Dependabilita | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%201) |
 |    2   |  Preparatova metoda diagnostiky | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%202) |
 |    3   |  Pravděpodobnost správné diagnostiky | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%203) |
 |    4   |  Numerický výpočet charakteristického čísla | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%204) |
-|    5   |  Optimální pořadí paralelních kontrol | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%205) |
-|    6   |  Diagnostika založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
-|    7   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
-|    8   |   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
-|    9   |  Spolehlivost a její ukazatele | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
-|   10   |  Dependabilita | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
-|   11   |  Petriho sítě v dependabilitě | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2011) |
-|   12   |  Řešení praktických úloh | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2012) |
-|   13   |  Řešení praktických úloh pomocí Petriho sítí | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2013) |
+|    5   |  Diagnostika založená na tabulce syndromů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%205) |
+|    6   |  Optimální pořadí paralelních kontrol | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%206) |
+|    7   |  Aposteriorní pravděpodobnost správnosti modulů | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%207) |
+|    8   |  Diagnostika založená na výpočtu aposteriorní pravděpodobnosti  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%208) |
+|    9   |  t/(n-1) diagnostika | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%209) |
+|   10   |  Diagnostika interminentních selhání  | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2010) |
+|   11   | Petriho sítě | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2011) |
+|   12   | Petriho sítě v dependabilitě | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2012) |
+|   13   | Zápočet | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/DIS/Cvičen%C3%AD%2013) |
 
 
 ## 5. Podmínky úspěšného zakončení předmětu

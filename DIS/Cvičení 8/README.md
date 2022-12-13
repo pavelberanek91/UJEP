@@ -1,6 +1,6 @@
 # Dependabilita informačních systémů
 
-## Cvičení 8 - Pravděpodobnostní hodnocení správné diagnostiky
+## Cvičení 8 - Diagnostika založená na výpočtu aposteriorní pravděpodobnosti
 
 V tomto cvičení se podíváme na to, jak nalézt závadné moduly na základě výpočtu aposteriorní pravděpodobnosti správnosti modulů.
 
