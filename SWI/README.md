@@ -2,58 +2,75 @@
 
 ## 1. Informace o předmětu
 
-Předmět zahrnuje vybrané partie softwarového inženýrství tak, aby pokrývaly všechny základní fáze tvorby softwaru. Některé aspekty softwarového inženýrství spojené s fází implementace, testováním a tvorby dokumentace jsou navíc zahrnuty i v předmětu Objektově orientovaný návrh. Důraz je kladen na praktické využití existujících nástrojů a na praktické znalosti a poznatky zprostředkovávané odborníky z praxe.
+Cílem předmětu je seznámit studenty s dílčími aktivitami procesu vývoje softwaru a užitečnými nástroji, které mohou na různých pozicích v procesu vývoje využít. Předmět zahrnuje vybrané partie softwarového inženýrství tak, aby pokrývaly všechny základní fáze tvorby softwaru. Některé aspekty softwarového inženýrství spojené s fází implementace, testováním a tvorby dokumentace jsou navíc zahrnuty i v předmětu Objektově orientovaný návrh. Důraz je kladen na praktické využití existujících nástrojů a na praktické znalosti a poznatky zprostředkovávané odborníky z praxe.
 
-Přednáší: [Pavel Beránek](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
+## 2. Informace o seminářích
 
-## 2. Informace o cvičení
-
-Cvičení jsou vedeny samostatnou prací studentů na úkolech ze zadání na tomto repozitáři. Cvičící slouží jako mentor během hodin: pomáhá s vysvětlováním problematiky, hledá chyby v případě "záseku" studenta a radí, jak nejlépe cvičení vyřešit. Odpovědnost za učení je převážně na studentovi. Teorii potřebnou na cvičení získá z přednášek a z materiálů, které jsou ke každé lekci uvedené v tabulce sylabus cvičení. Student si musí tyto materiály před samotným cvičením projít, aby cvičením rozuměl.
+Semináře jsou vedeny částečně samostatnou prací studentů na úkolech ze zadání na tomto repozitáři a částečně výkladem teoretických poznatků. Cvičící slouží jako mentor během hodin: pomáhá s vysvětlováním problematiky, hledá chyby v případě "záseku" studenta a radí, jak nejlépe cvičení vyřešit, vysvětluje problematické teoretické partie a dává příklady ze své praktické zkušenosti. Odpovědnost za učení je převážně na studentovi. Teorii potřebnou na cvičení získá z materiálů, které jsou ke každé lekci uvedené v tabulce sylabus seminářů. Student si musí tyto materiály před samotným seminářem projít, aby semináři rozuměl.
 
 Cvičí:
 1. [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
-2. [RNDr. Jiří Škvára, Ph.D.](https://ki.ujep.cz/cs/personalni-slozeni/jiri-skvara/)
-3. [Ricardo Rodríguez Jorge, Ph.D.](https://ki.ujep.cz/cs/personalni-slozeni/ricardo-rodriguez-jorge/)
+2. [](https://ki.ujep.cz/cs/personalni-slozeni/)
+3. [](https://ki.ujep.cz/cs/personalni-slozeni/)
 
-## 3. Sylabus přednášek
+## 3. Sylabus seminářů
 
-1. Základní terminologie objektově orientovaného programování, objekty (hodnoty) základních tříd (čísla, logické hodnoty) a operace resp. metody nad nimi
-2. Proměnné, standardní vstup a výstup, větvení programu (konstrukce if-then)
-3. Cykly (while a for), předčasné ukončení cyklů
-4. Řetězce a metody nad řetězci, indexace, modifikovatelné odkazované hodnoty (referenční sémantika)
-5. Seznamy (rozhraní), asymptotická (časová) složitost
-6. Uživatelské funkce (vstupní parametry, návratové hodnoty, oblast viditelnosti proměnných), n tice
-7. Klíčové algoritmy nad seznamy (např. duplikace, filtrace, redukce)
-8. Slovníky (rozhraní, využití pro representaci asociativních polí, řídkých polí a mezipamětí [cache])
-9. Hashovací tabulky (interní implementace, hashovací funkce)
-10. Vstup a výstup do souborů (textový)
-11. Vstup a výstup do souborů (binární), bytová pole
-12. Výjimky a základní ošetření výjimek, kontextový manager (with) použitý ve správě prostředků
-13. Závěrečné shrnutí
+Tento obsah odpovídá mé představě o kurzu, kdybych ho vyučoval v celé míře. Mnou nevyučovaná témata se mohou značně lišit obsahem a formou výuky. Materiály přesto můžete použít k přípravě na zkoušku a svou budoucí kariéru.
 
-## 4. Sylabus cvičení
+<table>
+    <thead>
+        <tr>
+            <th>Týden</th><th>Téma</th><th>Materiály</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td><td>Proces vývoje softwaru</td><td>[Sem1]()</td>
+        </tr>
+        <tr>
+            <td>2</td><td>Inženýrství požadavků</td><td>[Sem2]()</td>
+        </tr>
+        <tr>
+            <td>3</td><td>Návrh architektury</td><td>[Sem3]()</td>
+        </tr>
+        <tr>
+            <td>4</td><td>Proces implementace</td><td>[Sem4]()</td>
+        </tr>
+        <tr>
+            <td>5</td><td>Verzování softwaru</td><td>[Sem5]()</td>
+        </tr>
+        <tr>
+            <td>6</td><td>Systémy pro správu verzí</td><td>[Sem6]()</td>
+        </tr>
+        <tr>
+            <td>7</td><td>DevOps</td><td>[Sem7]()</td>
+        </tr>
+        <tr>
+            <td>8</td><td>Verifikace softwaru</td><td>[Sem8]()</td>
+        </tr>
+        <tr>
+            <td>9</td><td>Validace požadavků</td><td>[Sem9]()</td>
+        </tr>
+        <tr>
+            <td>10</td><td>Evoluce softwaru</td><td>[Sem10]()</td>
+        </tr>
+        <tr>
+            <td>11</td><td>Správa softwarových služeb</td><td>[Sem11]()</td>
+        </tr>
+        <tr>
+            <td>12</td><td>Nasazení a správa softwaru</td><td>[Sem12]()</td>
+        </tr>
+        <tr>
+            <td>13</td><td>Softwarová podpora</td><td>[Sem13]()</td>
+        </tr>
+        <tr>
+            <td>14</td><td>Správa softwarových projektů</td><td>[Sem14]()</td>
+        </tr>
+    </tbody>
+</table>
 
-|  Týden |  Název |  Obsah | Materiály | Zadání |
-| :----: | :----: | :----: |  :----:   | :----: |
-|    1   |  Vstup a výstup | seznámení s prostředím, markup jazyk, proměnná, artimetické a logické operace    | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%201) |
-|    2   |  Rozhodování | podmínky, větvení a vnoření podmínek, logické spojky v podmínce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%202) |
-|    3   |  Opakování | cyklus while, řídící proměnná, cyklus for (foreach), předčasné ukončení cyklu a iterace | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%203) |
-|    4   |  Kolekce | indexace, vyhledávání, mutabilita, reference a kopie, metody kolekcí, seznam, ntice, množina | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%204) |
-|    5   |  Slovníky a jejich využití | metody slovníku, asociativní pole, řídké pole, mezipaměti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%205) |
-|    6   |  Vlastní funkce | parametry, návratové hodnoty, návrat a rozbalení n-tice, algoritmy, návrh SW   | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%206) |
-|    7   | Procedurální programování  | Dekompozice programu na podprogramy | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%207) |
-|    8   | Algoritmy nad seznamem | duplikace, generování, mapování, filtrace, zipování, redukce | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%208) |
-|    9   |  Složitost algoritmů | typy složitostí, měření složitosti | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%209) |
-|   10   |  Práce se soubory | čtení, zápis a připisování do textových souborů, binární soubory, bytová pole| [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2010) |
-|   11   |  Práce s adresáři | tvorba a kopírování adresářů a souborů, procházení souborovým systémem       | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2011) |
-|   12   |  Ošetření výjimek | kontextový manažer, strom výjimek, hierarchie výjimek, testování assercí     | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2012) |
-|   13   |  Opakování na zápočtový test |  práce s kolekcí, vlastní algoritmy, práce se souborovým systémem | [Materiály]() | [Zadání](https://github.com/pavelberanek91/UJEP/tree/main/APR1/Cvičen%C3%AD%2013) |
+## 4. Podmínky získání zápočtu
 
+## 5. Obsah zkoušky
 
-## 5. Podmínky získání zápočtu
-
-Podmínkou získání zápočtu je zpracování seminární práce nebo úspěšné napsání zápočtového písemného testu. Zápočet je možné i získat, pokud cvičící usoudí programátorské nadání jedince na cvičeních na základě plnění všech úkolů ze cvičení. 
-
-Zápočtový test proběhne ve zkouškovém období. Kód bude psán na papír pomocí psacích potřeb a jsou povolené libovolné vytištěné materiály. Zakázány jsou jakékoliv elektronické prostředky (chytré hodinky, telefon, tablet, laptop, aj.). Cílem bude napsat sadu menších programů, které řeší zadané problémy. Příklad zápočtového testu naleznete [ZDE]().
-
-Seminární práci si vymýšlí student sám a schvaluje ji cvičící, nebo v případě zájmu bude nějaké zadání vymyšleno přednášejícím/cvičícím. Kontrola toho, zda student své práci dostatečně rozumí (dokáže vysvětlit jednotlivé řádky a mentální postup za nimi) proběhne na konzultacích příslušného cvičícího (pokud garant předmětu neurčí jinak). Příklad seminární práce naleznete [ZDE]().
+## 6. Doporučená literatura
