@@ -343,7 +343,7 @@ Proces bude vypadat následovně:
 5. měříte svůj postup na grafu vyhoření
 6. iterace trvá 90 minut
 
-Kanban tabuli s měřením grafu vyhoření můžete nalézt například v aplikace ClickUp pro správu projektů. Bohužel graf vyhoření je k dispozici pouze v placené verzi. Ačkoliv do vás nemám problém investovat, tak v ClickUpu se platí za osobu v týmu a to už se mi trošku nevyplatíte :). Z toho důvodu jsem to vymyslel následovně:
+Kanban tabuli s měřením grafu vyhoření můžete nalézt například v aplikaci ClickUp pro správu projektů. Bohužel graf vyhoření je k dispozici pouze v placené verzi. Ačkoliv do vás nemám problém investovat, tak v ClickUpu se platí za osobu v týmu a to už se mi trošku nevyplatíte :). Z toho důvodu jsem to vymyslel následovně:
 
 1. Ve složce ```sem1/soubory``` v tomto repozitáři naleznete produktový backlog ve formátu csv. Tento soubor si můžete naimportovat do libovolného tabulkového kalkulátoru (např.: Excel, Calc, Google tabulky). Jedná se o soubor s názvem ```kanban.csv```.
 2. Buď si nalezněte nějakou aplikaci pro kanban tabuli (spousty softwaru pro zápis myšlenek lze zneužít) nebo zneužijte tabulku s backlogem jako Kanban tabuli (je to tam již pro vás připravené). Pro autentický zážitek však doporučuji používat Kanban v softwaru ClickUp
