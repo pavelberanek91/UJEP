@@ -203,7 +203,7 @@ def test_secti_kladna_cela_cisla():
 
 Testových případů by mělo v testovacím souboru tolik, abychom pokryly všechny domény ekvivalence. Doména ekvivalence je  množina vstupních hodnot, na které program reaguje stejným způsobem. Uznávám, že tato definice se mi příliš nepovedla, takže pojďme si to vysvětlit na příkladu. Pokud vložím do naší funkce ```secti(a:float, b:float) -> float``` vstupy ```(2.5, 3.1)``` a vstupy ```(5.1, 6.7)```, tak budu očekávat podobné chování, které nemusím již dále testovat. Rozdílné chování může být v situacích, kdy vložím jiný datový typ: ```(2.1, 3)```, ```(2, 3)```, ```("2", "3")``` nebo extrémní hodnoty typu nula a nekonečna.
 
-<img src="./soubory/domeny.png" alt="domény ekvivalence"/>
+<img src="./soubory/domeny.png" alt="domény ekvivalence" style="width: 600px;"/>
 
 **Možnosti testových pracovních rámců**
 
