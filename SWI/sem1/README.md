@@ -67,7 +67,7 @@ Důležitou vlastností modelů procesu vývoje softwaru je jejich iterativnost.
 
 Nejznámějším příkladem implementace sekvenčního modelu vývoje softwaru je vodopádový model (je to ale spíše metodika). Vodopádový model obsahuje za sebou jdoucí aktivity z procesu vývoje softwaru, které se jen částečně nebo vůbec nepřekrývají. Takový projekt se dobře řídí, jelikož projektový IT manažer ví, jak daleko jsme v projektu, kolik jaká aktivita z procesu stála, aj. Problém nastane v situaci, kdy se opomene nebo špatně pochopí kritický funkcionální požadavek ve fázi analýzy softwaru. To může způsobit nutnost zahození větší části kódové báze, jelikož proces není agilní. To způsobí velkou časovou i finanční újmu (věřím, že i psychologickou). Úspěch vodopádového modelu je značně závislý na kvalitní analýze požadavků.
 
-<img src="./soubory/vodopad.png" alt="vodopádový model" style="width: 500px;"/>
+<img src="./soubory/vodopad.png" alt="vodopádový model" style="width: 600px;"/>
 
 Mezi další zajímavé spíše sekvenční metodiky vývoje řadíme:
 1. V-model
