@@ -83,7 +83,7 @@ Mezi další zajímavé spíše iterativní metodiky vývoje řadíme:
 2. Boehmův spirálový vývoj 
 3. Kanban
 
-<img src="./soubory/iterace.png" alt="iterativní model"/>
+<img src="./soubory/iterace.png" alt="iterativní model" style="width: 400px;"/>
 
 **Manifest agilního vývoje softwaru**
 
