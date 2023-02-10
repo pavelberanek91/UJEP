@@ -232,7 +232,7 @@ Mezi další zajímavé techniky, které testovací frameworky (pytest, unittest
 * fixtures = funkce, které se spustí před fází akt z procesu AAA a mění stav aplikace (např.: připojí se a uloží data do databáze)
 * monkey patching = technika pro modifikaci implicitního chování komponenty za běhu (např.: pokud komponenta získává data z internetu, tak to zamezim a vrátím ji lokální data)
 
-<img src="./soubory/mocking.png" alt="mocking"/>
+<img src="./soubory/mocking.png" alt="mocking" style="width: 400px;"/>
 
 **Proces vývoje softwaru řízeného testy**
 
@@ -250,7 +250,7 @@ def test_secti_dve_nenulova_desetinna_cisla():
 
 Naším cílem je dostat se nejrychlejší a nejjednodušší možnou cestou do stavu zelená na semaforu. Tohoto stavu dosáhneme tak, že se kód spustí. Musíme tedy napsat implementaci testované funkce tak, aby prošla testy.
 
-<img src="./soubory/cervena.png" alt="červený semafor"/>
+<img src="./soubory/cervena.png" alt="červený semafor" style="width: 400px;"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -264,7 +264,7 @@ def test_secti_dve_nenulova_desetinna_cisla():
 
 Teď již půjde kód spustit a jsme v barvě zelené. Následuje proces refaktorizace, při kterém uvažujeme, jak kód vylepšit. Kód však musí stále procházet právě prošlým testem. Pokud nevíme jak kód vylepšit, pak nám může pomoct napsání dalšího testového případu, ze kterého vzejdou nápady na refaktorizaci.
 
-<img src="./soubory/zelena.png" alt="zelený semafor"/>
+<img src="./soubory/zelena.png" alt="zelený semafor" style="width: 400px;"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -283,7 +283,7 @@ def test_secti_dve_nulova_desetinna_cisla():
 
 Tímto testem jsme se opět dostali do červené barvy a je nutné se dostat do zelené.
 
-<img src="./soubory/cervena.png" alt="červený semafor"/>
+<img src="./soubory/cervena.png" alt="červený semafor" style="width: 400px;"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -303,7 +303,7 @@ def test_secti_dve_nulova_desetinna_cisla():
     assert navratova_hodnota == 0.0
 ```
 
-<img src="./soubory/zelena.png" alt="zelený semafor"/>
+<img src="./soubory/zelena.png" alt="zelený semafor" style="width: 400px;"/>
 
 Jsme opět v zelených barvách a můžeme přemýšlet nad refaktorizací. Refaktorizaci provádíme typicky tehdy, když se náš myšlenkový postup opakuje 2 a vícekrát.
 
