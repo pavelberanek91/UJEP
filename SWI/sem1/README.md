@@ -13,7 +13,6 @@ Je nutné podotknout, že software se vyvíjí, nikoliv vyrábí nebo tvoří. T
 
 Z tohoto rozdělení nám vyplývá, že při dodržení pouček softwarového inženýrství nezaručíte, že výsledný software bude dependabilní. Proto zkušení vývojáři (analytici, programátoři, testeři) mají vysoké mzdy. Znalosti z tohoto kurzu nevyužijete pravděpodobně pro malé seminární práce, které píšete v hodinách úvodních kurzů nebo závěrečnou kvalifikační práci. Věřím však, že vám budou více než nápomocné pro váš profesní život a případně pro projektové semináře.
 
-<img src="#" alt="návazanost seminářů na sebe"/>
 
 ### Samostudium před seminářem
 
@@ -25,7 +24,7 @@ Proces je sekvence aktivit. Aktivita je nějaká činnost/fáze, která může b
 3. validace
 4. evoluce
 
-<img src="#" alt="model procesu vývoje softwaru"/>
+<img src="./soubory/proces.png" alt="model procesu vývoje softwaru"/>
 
 **Analýza**
 
@@ -64,13 +63,11 @@ Obdobně jako softwary mají své archnitektonické vzory, tak i procesy vývoje
 
 Důležitou vlastností modelů procesu vývoje softwaru je jejich iterativnost. Iterace je cyklus, během které se vyvine určitá verze výsledného produktu a předá se klientovi. Klient na základě této verze navrhne nové požadavky, který tým v další iteraci implementuje. Pokud je iterace za celý vývoj pouze jedna, pak se jedná o sekvenční model. Modely, které mají mnoho iterací, budeme nazývat iterační modely. Velké množství iterací přenáší část zodpovědnosti na klienta, což se nemusí mnoha klientům líbit, a také jsou daleko hůře říditelné běžnámi manažerskými technikami. Na druhou stranu, se jakékoliv nejasnosti mohou po iteraci vyjasnit a projekt může být klientem vhodně nasměrován. Iterativní modely by měly být úspěšnější, avšak používají je spíše menší týmy bez hierarchie. Velké zakázky jsou typicky sekvenční. Iterativnost je jeden ze způsobů, jak zvýšit ohebnost (agilitu) procesu vývoje softwaru. Proto se iterativní modely a agilní vývoj staly synonymy.
 
-<img src="#" alt="iterativnost modelu"/>
-
 **Sekvenční metodiky**
 
 Nejznámějším příkladem implementace sekvenčního modelu vývoje softwaru je vodopádový model (je to ale spíše metodika). Vodopádový model obsahuje za sebou jdoucí aktivity z procesu vývoje softwaru, které se jen částečně nebo vůbec nepřekrývají. Takový projekt se dobře řídí, jelikož projektový IT manažer ví, jak daleko jsme v projektu, kolik jaká aktivita z procesu stála, aj. Problém nastane v situaci, kdy se opomene nebo špatně pochopí kritický funkcionální požadavek ve fázi analýzy softwaru. To může způsobit nutnost zahození větší části kódové báze, jelikož proces není agilní. To způsobí velkou časovou i finanční újmu (věřím, že i psychologickou). Úspěch vodopádového modelu je značně závislý na kvalitní analýze požadavků.
 
-<img src="#" alt="vodopádový model"/>
+<img src="./soubory/vodopad.png" alt="vodopádový model"/>
 
 Mezi další zajímavé spíše sekvenční metodiky vývoje řadíme:
 1. V-model
@@ -86,7 +83,7 @@ Mezi další zajímavé spíše iterativní metodiky vývoje řadíme:
 2. Boehmův spirálový vývoj 
 3. Kanban
 
-<img src="#" alt="iterativní model"/>
+<img src="./soubory/iterace.png" alt="iterativní model"/>
 
 **Manifest agilního vývoje softwaru**
 
@@ -121,15 +118,13 @@ Během vývoje pracuje tým s následujícími artefakty:
 2. zásobník sprintu (sprint backlog) - obsahuje funkční požadavky na software pro aktuální sprintovou iteraci
 3. softwarový přírůstek (software increment) - představuje předchozí vydanou verzi softwaru rozšířenou o implementované požadavky z aktuální sprintové iterace
 
-<img src="#" alt="scrum artefakty/>
-
 Kromě toho je užitečné přidat další artefakty, které rozšiřují scrum:
 4. graf vyhoření (burndown chart) - liniový graf, který ukazuje zbývající práci v čase
 5. definice hotového (Definition of Done, DoD) - definice podmínek, které musí být splněny, aby byl požadavek považován za úspěšně implementovaný (například kód projde regresními testy)
 6. rychlost (velocity) - aktuálně nedoporučovaný artefakt, který ukazuje, jak rychle tým vyvíjel v minulém sprintu oproti aktuálnímu, může být vhodný pro pochopení vlastní kapacity vývoje, avšak zneužitelný zainteresovanými osobami, který chtějí software rychle a levně
 7. špička (spike) - striktně časově ohraničený úsek vývoje, kdy tým může zkoumat technologie a přijít s prototypem, který je důležitý pro rozhodnutí o vývoji
 
-<img src="#" alt="graf vyhoření/>
+<img src="./soubory/burndown.png" alt="graf vyhoření/>
 
 Proces této metodiky vypadá zhruba takto:
 1. plánování sprintu - nejprve se naplánuje pro aktuální iteraci (=sprint), co se bude programovat za požadavky z produktového zásobníku do zásobníku sprintu
@@ -139,7 +134,7 @@ Proces této metodiky vypadá zhruba takto:
 5. sprint review - výsledný obohacený produkt je představen zainteresovaným osobám pro získání zpětné vazby o požadavcích
 6. sprint retrospektiva - tým se poučí ze svých chyb a přijde na možné zlepšení pro další iteraci
 
-<img src="#" alt="schéma procesu Scrum"/>
+<img src="./soubory/scrum.png" alt="schéma procesu Scrum"/>
 
 
 #### S1.4 - Extrémní programování (autor Kent Beck)
@@ -155,7 +150,9 @@ Extrémní programování je jedna z iterativních metodik, jejíž filosofie je
 6. krátké iterace v řádu dnů až hodin
 7. zákazník se nachází v pracovišti vývojářů pro ujasnění nejasností
 
-<img src="#" alt="zpětná vazba v XP"/>
+Pro extrémní programování je velice důležitá zpětná vazba (to souvisí i s tím, že zákazník je na pracovišti vývojářů). Pokud se podíváme na rychlost získávání zpětné vazby, tak nám dojde, jak jsou některé koncepty extrémního programování důležité.
+
+<img src="./soubory/xp.png" alt="zpětná vazba v XP"/>
 
 **Verifikace softwaru testy**
 
@@ -206,7 +203,7 @@ def test_secti_kladna_cela_cisla():
 
 Testových případů by mělo v testovacím souboru tolik, abychom pokryly všechny domény ekvivalence. Doména ekvivalence je  množina vstupních hodnot, na které program reaguje stejným způsobem. Uznávám, že tato definice se mi příliš nepovedla, takže pojďme si to vysvětlit na příkladu. Pokud vložím do naší funkce ```secti(a:float, b:float) -> float``` vstupy ```(2.5, 3.1)``` a vstupy ```(5.1, 6.7)```, tak budu očekávat podobné chování, které nemusím již dále testovat. Rozdílné chování může být v situacích, kdy vložím jiný datový typ: ```(2.1, 3)```, ```(2, 3)```, ```("2", "3")``` nebo extrémní hodnoty typu nula a nekonečna.
 
-<img src="#" alt="domény ekvivalence"/>
+<img src="./soubory/domeny.png" alt="domény ekvivalence"/>
 
 **Možnosti testových pracovních rámců**
 
@@ -235,7 +232,7 @@ Mezi další zajímavé techniky, které testovací frameworky (pytest, unittest
 * fixtures = funkce, které se spustí před fází akt z procesu AAA a mění stav aplikace (např.: připojí se a uloží data do databáze)
 * monkey patching = technika pro modifikaci implicitního chování komponenty za běhu (např.: pokud komponenta získává data z internetu, tak to zamezim a vrátím ji lokální data)
 
-<img src="#" alt="mocking"/>
+<img src="./soubory/mocking.png" alt="mocking"/>
 
 **Proces vývoje softwaru řízeného testy**
 
@@ -253,7 +250,7 @@ def test_secti_dve_nenulova_desetinna_cisla():
 
 Naším cílem je dostat se nejrychlejší a nejjednodušší možnou cestou do stavu zelená na semaforu. Tohoto stavu dosáhneme tak, že se kód spustí. Musíme tedy napsat implementaci testované funkce tak, aby prošla testy.
 
-<img src="#" alt="červený semafor"/>
+<img src="./soubory/cervena.png" alt="červený semafor"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -267,7 +264,7 @@ def test_secti_dve_nenulova_desetinna_cisla():
 
 Teď již půjde kód spustit a jsme v barvě zelené. Následuje proces refaktorizace, při kterém uvažujeme, jak kód vylepšit. Kód však musí stále procházet právě prošlým testem. Pokud nevíme jak kód vylepšit, pak nám může pomoct napsání dalšího testového případu, ze kterého vzejdou nápady na refaktorizaci.
 
-<img src="#" alt="zelený semafor"/>
+<img src="./soubory/zelena.png" alt="zelený semafor"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -286,7 +283,7 @@ def test_secti_dve_nulova_desetinna_cisla():
 
 Tímto testem jsme se opět dostali do červené barvy a je nutné se dostat do zelené.
 
-<img src="#" alt="červený semafor"/>
+<img src="./soubory/cervena.png" alt="červený semafor"/>
 
 ```
 def secti(a: float, b:float) -> float:
@@ -306,7 +303,7 @@ def test_secti_dve_nulova_desetinna_cisla():
     assert navratova_hodnota == 0.0
 ```
 
-<img src="#" alt="zelený semafor"/>
+<img src="./soubory/zelena.png" alt="zelený semafor"/>
 
 Jsme opět v zelených barvách a můžeme přemýšlet nad refaktorizací. Refaktorizaci provádíme typicky tehdy, když se náš myšlenkový postup opakuje 2 a vícekrát.
 
@@ -325,7 +322,7 @@ def test_secti_dve_nulova_desetinna_cisla():
     assert navratova_hodnota == 0.0
 ```
 
-<img src="#" alt="refaktorizace semafor"/>
+<img src="./soubory/refactor.png" alt="refaktorizace semafor"/>
 
 Kód je refaktorován a můžeme psát další test. Tento cyklus opakujeme, dokavaď neskončí pracovní den nebo není projekt plně hotov :).
 
