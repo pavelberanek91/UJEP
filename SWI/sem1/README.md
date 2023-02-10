@@ -232,7 +232,7 @@ Mezi další zajímavé techniky, které testovací frameworky (pytest, unittest
 * fixtures = funkce, které se spustí před fází akt z procesu AAA a mění stav aplikace (např.: připojí se a uloží data do databáze)
 * monkey patching = technika pro modifikaci implicitního chování komponenty za běhu (např.: pokud komponenta získává data z internetu, tak to zamezim a vrátím ji lokální data)
 
-<img src="./soubory/mocking.png" alt="mocking" style="width: 400px;"/>
+<img src="./soubory/mocking.png" alt="mocking" style="width: 600px;"/>
 
 **Proces vývoje softwaru řízeného testy**
 
