@@ -152,7 +152,7 @@ Extrémní programování je jedna z iterativních metodik, jejíž filosofie je
 
 Pro extrémní programování je velice důležitá zpětná vazba (to souvisí i s tím, že zákazník je na pracovišti vývojářů). Pokud se podíváme na rychlost získávání zpětné vazby, tak nám dojde, jak jsou některé koncepty extrémního programování důležité.
 
-<img src="./soubory/xp.png" alt="zpětná vazba v XP"/>
+<img src="./soubory/xp.png" alt="zpětná vazba v XP" style="width: 600px;"/>
 
 **Verifikace softwaru testy**
 
