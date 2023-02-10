@@ -2,7 +2,12 @@
 
 ## Seminář 1 - Proces vývoje softwaru
 
-Pokud chcete přeskočit rovnou na on-site cvičení, tak klikněte na [TELEPORT](#on-site-cvičení).
+Obsah semináře:
+* [Proces vývoje softwaru](#s1.1-proces-vývoje-softwaru)
+* [Modely procesu vývoje softwaru](#s1.2-modely-procesu-vývoje-softwaru)
+* [Scrum](#s1.3-scrum)
+* [Extrémní programování](#s1.4-extrémníprogramování)
+* [On-site cvičení](#on-site-cvičení)
 
 Dnešní společnost je na počítačích a jejich aplikacích závislá čím dál více. Vzdělávání online pomocí MS Teams a LMS Moodle, komunikace na projektu v Slack, řízení projektů v ClickUp, integrovaný software kontrolující chování automobilu, psaní přítelkyni/milence/milencovi přes Instant Messaging aplikaci, atd. Mohli bychom výčtem pokračovat do nekonečna. Čím více jsme na technologii závislí, tím více od ní vyžadujeme, aby byla dependabilní, tedy aby poskytovala služby v takové kvalitě, se kterými budeme spokojeni. Určitě si z hlavy vzpomenete na spousty počítačových aplikací, které zrovna dependabilní nejsou (zabugované videohry, zasekané vývojové prostředí, Windows ...).
 
@@ -139,7 +144,7 @@ Proces této metodiky vypadá zhruba takto:
 <img src="./soubory/scrum.png" alt="schéma procesu Scrum"/>
 
 
-#### S1.4 - Extrémní programování (autor Kent Beck)
+#### S1.4 - Extrémní programování
 
 **Co je to extrémní programování?**
 
