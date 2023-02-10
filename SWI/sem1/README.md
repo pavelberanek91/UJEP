@@ -322,7 +322,7 @@ def test_secti_dve_nulova_desetinna_cisla():
     assert navratova_hodnota == 0.0
 ```
 
-<img src="./soubory/refactor.png" alt="refaktorizace semafor" style="width: 500px;"/>
+<img src="./soubory/refactor.png" alt="refaktorizace semafor" style="width: 400px;"/>
 
 Kód je refaktorován a můžeme psát další test. Tento cyklus opakujeme, dokavaď neskončí pracovní den nebo není projekt plně hotov :).
 
