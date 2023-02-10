@@ -9,6 +9,9 @@ Obsah semináře:
 * [Extrémní programování](#s14---extrémní-programování)
 * [On-site cvičení](#on-site-cvičení)
 
+Obsah semináře z minulých let: 
+<a href="./soubory/sem1.pdf"/>Zápisky 2021</a>
+
 Dnešní společnost je na počítačích a jejich aplikacích závislá čím dál více. Vzdělávání online pomocí MS Teams a LMS Moodle, komunikace na projektu v Slack, řízení projektů v ClickUp, integrovaný software kontrolující chování automobilu, psaní přítelkyni/milence/milencovi přes Instant Messaging aplikaci, atd. Mohli bychom výčtem pokračovat do nekonečna. Čím více jsme na technologii závislí, tím více od ní vyžadujeme, aby byla dependabilní, tedy aby poskytovala služby v takové kvalitě, se kterými budeme spokojeni. Určitě si z hlavy vzpomenete na spousty počítačových aplikací, které zrovna dependabilní nejsou (zabugované videohry, zasekané vývojové prostředí, Windows ...).
 
 Inženýrství je discplína, která se zabývá metodickým postupem jak navrhovat a implementovat produkt v požadované kvalitě. Softwarové inženýrství se tedy zabývá tím, jak vytvářet (nebo upravovat) takový software, aby byl dependabilní. Metodický postup, tedy návod jak postupovat, nazýváme procesem vývojem softwaru, o kterém bude v této první lekci řeč. Ve zbylých seminářích se blíže podíváte na detailnější metodické postupy k jednotlivým podčástem procesu vývoje softwaru. 

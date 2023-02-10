@@ -2,9 +2,19 @@
 
 ## Seminář 2 - Inženýrství požadavků
 
+Obsah semináře:
+* [Proces inženýrství požadavků](#s21---proces-inženýrství-požadavků)
+* [Sběr požadavků](#s22---sběr-požadavků)
+* [Analýza požadavků](#s23---analýza-požadavků)
+* [Specifikace požadavků](#s24---specifikace-požadavků)
+* [Správa požadavků](#s25---správa-požadavků)
+* [On-site cvičení](#on-site-cvičení)
+
 ### Samostudium před seminářem
 
 #### S2.1 - Proces inženýrství požadavků
+
+<img src="./soubory/refactor.png" alt="refaktorizace semafor" style="width: 400px;"/>
 
 #### S2.2 - Sběr požadavků
 
@@ -25,3 +35,9 @@
 #### C2.4 - Vytvoření UI/UX prototypu
 
 #### C2.5 - Softwarová specifikace požadavků
+
+Soubory si můžete stáhnout i zde:
+<ul>
+    <li><a href="./soubory/kanban.csv">kanban</a></li>
+    <li><a href="./soubory/burndown.csv">burndown</a></li>
+</ul>
