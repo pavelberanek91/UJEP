@@ -3,7 +3,7 @@
 ## Seminář 1 - Proces vývoje softwaru
 
 Obsah semináře:
-* [Proces vývoje softwaru](#s11-proces-vývoje-softwaru)
+* [Proces vývoje softwaru](#s11---proces-v%C3%BDvoje-softwaru)
 * [Modely procesu vývoje softwaru](#s12-modely-procesu-vývoje-softwaru)
 * [Scrum](#s13-scrum)
 * [Extrémní programování](#s14-extrémní-programování)
