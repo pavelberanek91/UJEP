@@ -2,7 +2,7 @@
 
 ## Seminář 1 - Proces vývoje softwaru
 
-Pokud chcete přeskočit rovnou na on-site cvičení, tak klikněte na [TELEPORT](### On-site cvičení).
+Pokud chcete přeskočit rovnou na on-site cvičení, tak klikněte na [TELEPORT](On-site cvičení).
 
 Dnešní společnost na počítačích a jejich aplikacích závislá čím dál více. Vzdělávání online pomocí MS Teams a LMS Moodle, komunikace na projektu v Slack, řízení projektů v ClickUp, integrovaný software kontrolující chování automobilu, psaní přítelkyni/milence/milencovi přes Instant Messaging aplikaci, atd. Mohli bychom výčtem pokračovat do nekonečna. Čím více jsme na technologii závislí, tím více od ní vyžadujeme, aby byla dependabilní, tedy aby poskytovala služby v takové kvalitě, se kterými budeme spokojeni. Určitě si z hlavy vzpomenete na spousty počítačových aplikací, které zrovna dependabilní nejsou (zabugované videohry, zasekané vývojové prostředí, Windows ...).
 
