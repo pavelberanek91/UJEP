@@ -3,10 +3,10 @@
 ## Seminář 1 - Proces vývoje softwaru
 
 Obsah semináře:
-* [Proces vývoje softwaru](#s1.1-proces-vývoje-softwaru)
-* [Modely procesu vývoje softwaru](#s1.2-modely-procesu-vývoje-softwaru)
-* [Scrum](#s1.3-scrum)
-* [Extrémní programování](#s1.4-extrémníprogramování)
+* [Proces vývoje softwaru](#s11-proces-vývoje-softwaru)
+* [Modely procesu vývoje softwaru](#s12-modely-procesu-vývoje-softwaru)
+* [Scrum](#s13-scrum)
+* [Extrémní programování](#s14-extrémní-programování)
 * [On-site cvičení](#on-site-cvičení)
 
 Dnešní společnost je na počítačích a jejich aplikacích závislá čím dál více. Vzdělávání online pomocí MS Teams a LMS Moodle, komunikace na projektu v Slack, řízení projektů v ClickUp, integrovaný software kontrolující chování automobilu, psaní přítelkyni/milence/milencovi přes Instant Messaging aplikaci, atd. Mohli bychom výčtem pokračovat do nekonečna. Čím více jsme na technologii závislí, tím více od ní vyžadujeme, aby byla dependabilní, tedy aby poskytovala služby v takové kvalitě, se kterými budeme spokojeni. Určitě si z hlavy vzpomenete na spousty počítačových aplikací, které zrovna dependabilní nejsou (zabugované videohry, zasekané vývojové prostředí, Windows ...).
