@@ -28,40 +28,40 @@ Tento obsah odpovídá mé představě o kurzu, kdybych ho vyučoval v celé mí
             <td>1</td><td>Proces vývoje softwaru</td><td><a href="./sem1/README.md">Seminář 1</a></td>
         </tr>
         <tr>
-            <td>2</td><td>Inženýrství požadavků</td><td>[Sem2]()</td>
+            <td>2</td><td>Inženýrství požadavků</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>3</td><td>Návrh architektury</td><td>[Sem3]()</td>
+            <td>3</td><td>Návrh architektury</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>4</td><td>Proces implementace</td><td>[Sem4]()</td>
+            <td>4</td><td>Proces implementace</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>5</td><td>Verzování softwaru</td><td>[Sem5]()</td>
+            <td>5</td><td>Verzování softwaru</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>6</td><td>Systémy pro správu verzí</td><td>[Sem6]()</td>
+            <td>6</td><td>Systémy pro správu verzí</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>7</td><td>DevOps</td><td>[Sem7]()</td>
+            <td>7</td><td>DevOps</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>8</td><td>Verifikace softwaru</td><td>[Sem8]()</td>
+            <td>8</td><td>Verifikace softwaru</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>9</td><td>Validace požadavků</td><td>[Sem9]()</td>
+            <td>9</td><td>Validace požadavků</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>10</td><td>Evoluce softwaru</td><td>[Sem10]()</td>
+            <td>10</td><td>Evoluce softwaru</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>11</td><td>Správa softwarových služeb</td><td>[Sem11]()</td>
+            <td>11</td><td>Správa softwarových služeb</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>12</td><td>Nasazení a správa softwaru</td><td>[Sem12]()</td>
+            <td>12</td><td>Nasazení a správa softwaru</td><td><a href="#">zatím nic :(</a></td>
         </tr>
         <tr>
-            <td>13</td><td>Správa softwarových projektů</td><td>[Sem14]()</td>
+            <td>13</td><td>Správa softwarových projektů</td><td><a href="#">zatím nic :(</a></td>
         </tr>
     </tbody>
 </table>
