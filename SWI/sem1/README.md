@@ -345,3 +345,19 @@ Proces bude vypadat následovně:
 4. požadavky z backlogu zapisujete na kanban tabuli
 5. měříte svůj postup na grafu vyhoření
 6. iterace trvá 90 minut
+
+Kanban tabuli s měřením grafu vyhoření můžete nalézt například v aplikace ClickUp pro správu projektů. Bohužel graf vyhoření je k dispozici pouze v placené verzi. Ačkoliv do vás nemám problém investovat, tak v ClickUpu se platí za osobu v týmu a to už se mi trošku nevyplatíte :). Z toho důvodu jsem to vymyslel následovně:
+
+1. Ve složce ```sem1/soubory``` v tomto repozitáři naleznete produktový backlog ve formátu csv. Tento soubor si můžete naimportovat do libovolného tabulkového kalkulátoru (např.: Excel, Calc, Google tabulky). Jedná se o soubor s názvem ```kanban.csv```.
+2. Buď si nalezněte nějakou aplikaci pro kanban tabuli (spousty softwaru pro zápis myšlenek lze zneužít) nebo zneužijte tabulku s backlogem jako Kanban tabuli (je to tam již pro vás připravené). Pro autentický zážitek však doporučuji používat Kanban v softwaru ClickUp
+3. Ve složce ```sem1/soubory``` se také nachází csv soubor s mnou naměřeným burndown grafem na úkolech z produktového backlogu s názvem ```burndown.csv```. Tento soubor si otevřete v tabulkovém kalkulátoru a zapisujte si do něj údaje o plnění funkcionalit. Svoje data jsem aproximoval lineární funkcí.
+4. Programujte pomocí vývoje řízeného testy funkcionality z produktového backlogu ve dvojicích (párové programování).
+5. Vždy po dokončení funkčního požadavku vysvětlete váš kód gumové kachničce (k dispozici u mě k vyzvednutí, po semináři vrátit!).
+6. Přesouvejte požadavky do správných sloupečků na kanban tabuli.
+7. Na konci hodiny mi ukažte váš burndown chart v porovnání s mým.
+
+Soubory si můžete stáhnout i zde:
+<ul>
+    <li><a href="./soubory/kanban.csv">kanban</a></li>
+    <li><a href="./soubory/burndown.csv">burndown</a></li>
+</ul>
