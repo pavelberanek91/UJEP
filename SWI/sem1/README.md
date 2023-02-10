@@ -328,7 +328,7 @@ Kód je refaktorován a můžeme psát další test. Tento cyklus opakujeme, dok
 
 ### On-site cvičení
 
-V tomto cvičení si vyzkoušíte vyvíjet jednoduchý softwaru pomocí kombinovaného a upraveného procesu vývoje softwaru, který zahrnuje prvky z metodiky Scrum a XP. Budete vyvíjet jednoduchý software, kde požadavky od product ownera jsou již dodané a vybrané na aktuální sprint. Výstupem dnešního semináře je změřit si burndown chart s ideálním.
+V tomto cvičení si vyzkoušíte vyvíjet jednoduchý software pomocí kombinovaného a upraveného procesu vývoje softwaru, který zahrnuje prvky z metodiky Scrum a XP. Budete vyvíjet jednoduchý software, kde požadavky od product ownera jsou již dodané a vybrané na aktuální sprint. Výstupem dnešního semináře je změřit si burndown chart s ideálním.
 
 Budete mít k dispozici následující artefakty:
 1. produktový backlog s požadavky
