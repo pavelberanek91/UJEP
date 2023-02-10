@@ -124,7 +124,7 @@ Kromě toho je užitečné přidat další artefakty, které rozšiřují scrum:
 6. rychlost (velocity) - aktuálně nedoporučovaný artefakt, který ukazuje, jak rychle tým vyvíjel v minulém sprintu oproti aktuálnímu, může být vhodný pro pochopení vlastní kapacity vývoje, avšak zneužitelný zainteresovanými osobami, který chtějí software rychle a levně
 7. špička (spike) - striktně časově ohraničený úsek vývoje, kdy tým může zkoumat technologie a přijít s prototypem, který je důležitý pro rozhodnutí o vývoji
 
-<img src="./soubory/burndown.png" alt="graf vyhoření" style="width: 400px;"/>
+<img src="./soubory/burndown.png" alt="graf vyhoření" style="width: 600px;"/>
 
 Proces této metodiky vypadá zhruba takto:
 1. plánování sprintu - nejprve se naplánuje pro aktuální iteraci (=sprint), co se bude programovat za požadavky z produktového zásobníku do zásobníku sprintu
