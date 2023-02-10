@@ -9,9 +9,9 @@ Cílem předmětu je seznámit studenty s dílčími aktivitami procesu vývoje 
 Semináře jsou vedeny částečně samostatnou prací studentů na úkolech ze zadání na tomto repozitáři a částečně výkladem teoretických poznatků. Cvičící slouží jako mentor během hodin: pomáhá s vysvětlováním problematiky, hledá chyby v případě "záseku" studenta a radí, jak nejlépe cvičení vyřešit, vysvětluje problematické teoretické partie a dává příklady ze své praktické zkušenosti. Odpovědnost za učení je převážně na studentovi. Teorii potřebnou na cvičení získá z materiálů, které jsou ke každé lekci uvedené v tabulce sylabus seminářů. Student si musí tyto materiály před samotným seminářem projít, aby semináři rozuměl.
 
 Cvičí:
-1. [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
-2. [](https://ki.ujep.cz/cs/personalni-slozeni/)
-3. [](https://ki.ujep.cz/cs/personalni-slozeni/)
+1. [doc. RNDr. Viktor Maškov, DrSc.](https://ki.ujep.cz/cs/personalni-slozeni/viktor-maskov/)
+2. Petr Hřebejk, Ph.D
+3. [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
 
 ## 3. Sylabus seminářů
 
@@ -120,3 +120,31 @@ Doporučená: Cha, S., Taylor, R.N., Kang, K., ed. Handbook of Software Engineer
 Doporučená: Chacon, S. Pro Git. Praha: CZ.NIC, z.s.p.o., 2009. CZ.NIC. ISBN 978-80-904248-1-4..
 
 Doporučená: Sommerville, I. Softwarové inženýrství. Brno: Computer Press, 2013. ISBN 978-80-251-3826-7.
+
+## 7. Kombinované studium
+
+Pro kombinované studium platí stejné podmínky jako pro prezenční. V případě nízkého počtu studentů bude klasifikovaný zápočet ve formě přípravy softwaru pro nasazení nahrazen teoretičtější prací na vybrané téma softwarového inženýrství (nové trendy, výsledky výzkumu, aj.).
+
+Studium je naplánováno do dvou setkání o délce 4 hodin.
+
+<table>
+    <thead>
+        <tr>
+            <th>Setkání číslo</th><th>Počet hodin</th><th>Téma</th><th>Přednášející</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td><td>2</td><td>Proces vývoje softwaru, návrh architektury softwaru</td><td>Berának Pavel</td>
+        </tr>
+        <tr>
+            <td>1</td><td>2</td><td>Verzování softwaru</td><td>Hřebejk Petr</td>
+        </tr>
+        <tr>
+            <td>2</td><td>2</td><td>Návrh služeb</td><td>Hřebejk Petr, Beránek Pavel</td>
+        </tr>
+        <tr>
+            <td>2</td><td>2</td><td>Testování a spolehlivost softwaru</td><td>Maškov Viktor</td>
+        </tr>
+    </tbody>
+</table>
