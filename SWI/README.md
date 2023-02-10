@@ -25,7 +25,7 @@ Tento obsah odpovídá mé představě o kurzu, kdybych ho vyučoval v celé mí
     </thead>
     <tbody>
         <tr>
-            <td>1</td><td>Proces vývoje softwaru</td><td>[Sem1]()</td>
+            <td>1</td><td>Proces vývoje softwaru</td><td><a href="./sem1/README.md">Seminář 1</a></td>
         </tr>
         <tr>
             <td>2</td><td>Inženýrství požadavků</td><td>[Sem2]()</td>
@@ -61,10 +61,7 @@ Tento obsah odpovídá mé představě o kurzu, kdybych ho vyučoval v celé mí
             <td>12</td><td>Nasazení a správa softwaru</td><td>[Sem12]()</td>
         </tr>
         <tr>
-            <td>13</td><td>Softwarová podpora</td><td>[Sem13]()</td>
-        </tr>
-        <tr>
-            <td>14</td><td>Správa softwarových projektů</td><td>[Sem14]()</td>
+            <td>13</td><td>Správa softwarových projektů</td><td>[Sem14]()</td>
         </tr>
     </tbody>
 </table>
