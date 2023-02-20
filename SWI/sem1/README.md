@@ -368,3 +368,18 @@ Soubory si můžete stáhnout i zde:
     <li><a href="./soubory/kanban.csv">kanban</a></li>
     <li><a href="./soubory/burndown.csv">burndown</a></li>
 </ul>
+
+Funkční požadavky na software:
+požadavky:
+1. Třída kalkulačka: Naprogramujte třídu Kalkulačka, která bude mít jeden atribut: výsledek předchozí operace, který si pamatuje. Na začátku je výsledek prázdný.
+2. Metoda sečti: Naprogramujte metodu sečti, která přijme dvě čísla. Algoritmus je stejný jako v běžné aritmetice. Čísla mohou být v datovém formátu int, float, string. Pokud nelze vstup ve formátu string překonvertovat na float, kalkulačka vyhodí výjimku pomocí příkazu raise (je na vás jakou). Metoda vrací výsledek jako desetinné číslo.
+3. Metoda odečti: Naprogramujte metodu odečítání, která přijme dvě čísla. Algoritmus je stejný jako v běžné aritmetice. Čísla mohou být v datovém formátu int, float, string. Pokud nelze vstup ve formátu string překonvertovat na float, kalkulačka vyhodí výjimku pomocí příkazu raise (je na vás jakou). Metoda vrací výsledek jako desetinné číslo.
+4. Metoda vynásob: Naprogramujte metodu násobení, která přijme dvě čísla. Algoritmus je stejný jako v běžné aritmetice. Čísla mohou být v datovém formátu int, float, string. Pokud nelze vstup ve formátu string překonvertovat na float, kalkulačka vyhodí výjimku pomocí příkazu raise (je na vás jakou). Metoda vrací výsledek jako desetinné číslo.
+5. Metoda dělení: Naprogramujte metodu dělení, která přijme dvě čísla. Algoritmus je stejný jako v běžné aritmetice. Čísla mohou být v datovém formátu int, float, string. Pokud nelze vstup ve formátu string překonvertovat na float, kalkulačka vyhodí výjimku pomocí příkazu raise (je na vás jakou). Metoda vrací výsledek jako desetinné číslo.
+6. Ukládání do paměti: Při provedení nějaké z libovolných metod se uloží výsledek operace do paměti. Bude tedy vždy uložen jen jeden výsledek a to poslední provedené operace.
+7. Používání paměti: Upravte metody tak, aby měly povinný jen jeden argument. Pokud bude druhý nevyplněný, tak se provede následující algoritmus:
+* sčítání: vrátí se paměť + argument
+* odečítání: vrátí se paměť - argument
+* násobení: vrátí se paměť * argument
+* dělení: vrátí se paměť / argument
+8. Chyba vstupu: Pokud zadá uživatel špatný vstup, který není konvertovatelný, tak mu metody vrací vlastní nadefinovanou výjimku ChybaVstupu.
