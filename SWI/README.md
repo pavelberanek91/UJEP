@@ -12,6 +12,7 @@ Cvičí:
 1. [doc. RNDr. Viktor Maškov, DrSc.](https://ki.ujep.cz/cs/personalni-slozeni/viktor-maskov/)
 2. Petr Hřebejk, Ph.D
 3. [Ing. Mgr. Pavel Beránek, MBA, LL.M.](https://ki.ujep.cz/cs/personalni-slozeni/pavel-beranek/)
+4. ???
 
 ## 3. Sylabus seminářů
 
