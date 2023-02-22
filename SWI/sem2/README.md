@@ -260,16 +260,18 @@ Vytvořte dvojice. Jeden z dvojice si zahraje na zákazníka a druhý na analyti
 
 #### C2.2 - Analýza konfliktních požadavků z uživatelských příběhů
 
-Sepište si z odpovědí ze strukturovaného interview požadavky do prvotních specifikací v textové podobě. Společně rozeberte, zda jsou požadavky jasné, dojasněte si je a případně se domluvte, jak vyřešit konflikty v požadavcích.
+Sepište si z odpovědí ze strukturovaného interview požadavky do prvotních specifikací v textové podobě. Společně rozeberte, zda požadavky splňují vlastnosti kvalitních požadavků (jasnost, úplnost, aj.), dojasněte si je a případně se domluvte, jak vyřešit konflikty v požadavcích. Příběhy vhodně kategorizujte a ujasněte si, jestli nechybí nějaké produktové nebo externí požadavky.
 
 #### C2.3 - Vytvoření UI/UX prototypu
 
-#### C2.4 - Softwarová specifikace požadavků
+Vyzkoušejte si nástroj Figma (nebo jiný grafický nástroj) a navrhněte na základě požadavků UI/UX prototyp aplikace. Ujasněte si na prototypu, zda jsou všechny požadavky v pořádku nebo případně na základě interakce s prototypem je ve spolupráci s klientem pozměňte.
 
-#### C2.5 - Dokumentace pomocí případů užití
+#### C2.4 - Mapování uživatelských příběhů
 
-Soubory si můžete stáhnout i zde:
-<ul>
-    <li><a href="./soubory/kanban.csv">kanban</a></li>
-    <li><a href="./soubory/burndown.csv">burndown</a></li>
-</ul>
+Požadavky zapište do schématu pro uživatelské příběhy a zakreslete je do tabule pro uživatelské příběhy. Můžete použít jakýkoliv nástroj, například Miro nebo [Figma](https://www.figma.com/templates/user-story-mapping/). Příběhy rozdělte do epik: [Vysvětlení](https://www.plutora.com/blog/epic-vs-story-whats-the-difference-and-how-to-use-each). Tyto příběhy lze pak použít pro zadávání do kanban tabule z minulé hodiny.
+
+#### C2.5 - Vývoj řízený chováním
+
+Nainstalujte si modul Behave do Pythonu a přepište do jazyka Gherkin alespoň 2 požadavky [TUTORIAL](https://semaphoreci.com/community/tutorials/getting-started-with-behavior-testing-in-python-with-behave)
+
+Implementujte kód a proveďte validační testování pomocí modulu Behave, že jsou požadavky splněny.
