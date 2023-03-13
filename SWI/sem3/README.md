@@ -12,7 +12,7 @@ Obsah semináře:
 
 ### Samostudium před seminářem
 
-... lorem ...
+V této lekci se dozvíte spousty spousty opravdu spousty informací o tom, jak modelovat software. A to existuje ještě mnoho dalších informací na internetu a knihách. Přeji příjemné noční počtení :).
 
 Při návrhu softwaru jsou se můžeme setkat s celkem 4 rolemi návrhářů. Často všechny role zastupuje stejný člověk, ale u velkých projektů mohou být v praxi oddělené:
 
@@ -37,10 +37,15 @@ Hlavním pomocníkem těchto návrhářů jsou softwary pro tvorbu základního 
 
 #### S3.1 - Návrh systému
 
-Kontextové diagramy jsou diagramy, které používají systémový inženýr pro návrh systému holistickým způsobem. Jejich cílem je, aby vývojáři pochopili, jak vyvíjený software přispívá do celkového obrázku k řešení cílu. 
+Kontextové diagramy jsou diagramy, které používají systémový inženýr pro návrh systému holistickým způsobem. Jejich cílem je, aby vývojáři pochopili, jak vyvíjený software přispívá do celkového obrázku k řešení cílu. Z těchto diagramů by měl tým návrhářů být schopen vyčíst jaké entity interagují se systémem, kde jsou hranice systému, vztah systému k externím komponentám (jiné aplikace).
 
 <img src="./soubory/kontext.png" alt="kontextový diagram pro systém" style="width: 600px;"/>
 
+Kontextové diagramy se skládají z následujících prvků:
+
+* Produkt (kružnice) - systém nebo entita, která interaguje se systémem.
+* Agent (obdélník) - externí systém nebo externí entita, který není součástí systému, ale interaguje se systémem (ty produkty, které nelze ovlivnit).
+* Tok (spojnice) - představují tok dat mezi entitami, tok je popsán komentářem, který vyjadřuje, co se tokem koná.
 
 
 #### S3.2 - Návrh architektury
@@ -89,19 +94,48 @@ V této architektuře jsou komponenty zároveň servery i klienty. Komponenty se
 
 **Událost-sběrnice architektura**
 
-...
+Tato architektura je typická pro mobilní aplikace (ve smyslu aplikace pro mobilní telefony ... ne že by ta aplikace někam utíkala). V této architektuře se setkáme se 4 typy komponent:
+
+* Zdroje událostí (Event sources)
+* Naslouchači událostí (Event listeners)
+* Kanály (Channels)
+* Událostní sběrnice (Event bus)
+
+Událostní sběrnice je komponenta, která obsahuje kanály. Kanály jsou cesty pro zprávy. Zdroje událostí zasílají na vstup kanálu zprávy a naslouchači z kanálů zprávy přijímají. Naslouchači se registrují pro náslech z vybraných kanálů. 
 
 **MVC architektura**
 
-...
+Jedná se o jednu z nejznámějších architektur pro programátory, kteří nikdy o problematice architektur neslyšeli. Pomocí této architektury se typicky staví webové aplikace, jelikož na tomto principu fungují webové frameworky jako je Ruby on Rails (Ruby), Django (Python), Laravel (PHP), ASP.NET (C#), aj. Aplikace je rozdělena do tří částí:
+* model - obsahuje business logiku a data
+* view - zobrazuje data uživateli
+* controller - zpracovává data uživatele
 
-**Tabule architektura**
+Existují různé variace a rozšíření této architektury. Typicky se z modelu ještě oddělují služby (business logika) do Services a v modelu zůstávají jen data. Z dat se dále ještě oddělí logika práce s daty od dat samotných a vznikne tak část Repository, která obsahuje operace nad daty (metody nad objektově namapovanými entitami databáze nebo query dotazy - tzv. native queries).
 
-...
+Typický tok dat pak vypadá následovně (rozšířený model, typický třeba pro Spring framework v Javě):
+1. Klient vidí data v pohledu View (např.: webová stránka), ve kterém něco zašle formulářem.
+2. Controller zpracuje zaslaná data a podle vstupního pole a dat zavolá službu ze Services.
+3. Zavolaná služba provede algoritmus a zavolá Repository, které má data persistentně změnit.
+4. Repository má sadu metod pro CRUD operace (Create, Read, Update, Delete) nebo nějakou složitější operaci pomocí SQL/CQL/PSSQL, TSQL a Bůh ví jakého dalšího SQL dotazu (tzv. native query).
+5. Model je pak sada definovaných relačně namapovaných objektů nebo dokumentů, která provedou pomocí getterů/setterů práci s databází.
+
+**Tabule (Úložiště) architektura**
+
+Tato architektura je velice zajímavá, jelikož se s ní běžně nesetkáte, pokud neděláte datové vědy. Využití je zejména v oblasti umělé inteligence. Architektura se skládá z následujících komponent.
+
+* Tabule - jedná se o globální paměťový prostor, obsahující data (stav tabule). 
+* Zdroje znalostí - komponenty, které obsahují algoritmy pro vyhledávání v datech tabule a výpočtu nového stavu tabule.
+* Řadič - komponenta, která koordinuje práci zdrojů znalostí nad tabulí. 
+
+Představit si to můžeme na příkladu výuky v učebně. Na tabuli je nějaký problém, např.: příklad na výpočet kořenů kvadratické rovnice. Žáci mají krok za krokem výpočítat na tabuli řešení problému: určení diskriminantu, výpočet prvního kořene, druhého, slovní zápis řešení, atd. Učitel je řadičem, zdroje znalostí jsou žáci. Žáci si čtou aktuální obsah na tabuli a pokud tuší, jak provést změnu obsahu tabule (ví, jak na další krok výpočtu), tak se přihlásí o slovo. Řadič (učitel) vybere konkrétní zdroj znalostí, který zapíše na tabuli nový krok, tedy změní stav tabule. 
+
+Tento vzor se používá v oblasti zpracování přirozeného jazyka, rozpoznání řeči, identifikace a sledování vozidel, interpretace signálů a dalších oblastí umělé inteligence.
+
+Tato architektura je také mimo oblast umělé inteligence známá pod pojmem repozitář/úložiště.
 
 **Tlumočník architektura**
 
-...
+Vzor tlumočník (asi to čtěte jako interpetr, což se ustálilo v české programovací terminologie) je vzor, který se používá pro interpretaci formálního jazyka, tedy jeho pochopení ke spuštění požadovaných operací. Vzor čte datový soubor s jazykem řádek po řádku a interpretuje, co má s řádkem dělat. Používá se u SQL dotazů, programovacích jazyků, komunikačních protokolů. Hlavní myšlenka spočívá v tom, že obdržené jednotky jazyka (symboly, lexémy, tokeny, různé obory to nazývají různě) se rozdělují na terminály a neterminály (o tom se budete učit v kurzu automatů a formálních jazyků). Neterminály se dále dělí na další terminály a neterminály, zatímco terminály se již na nic nedělí (listy stromu). Analýzou terminálů a neterminálů získáte strom, který vyjadřuje operace nad listy. Tyto operace jsou ještě závislé na kontextu. Po analýze lze spouštět operace nad listy v nějakém kontextu (stav aplikace) a provádět něco užitečného (například REPL jazyka Python). S tímto vysoce specializovaným architektonickým vzorem se setkáte v kurzech jako jsou doménově-specifické jazyky.
 
 #### S3.3 - Návrh komponent
 
@@ -113,15 +147,56 @@ Poté, co máme architekturu, tedy rozdělení softwarového systému na subsyst
 
 **UML**
 
-... UML jako takové ...
+Jednotný modelovací jazyk je sada diagramů, které lze použít pro modelování jakéhokoliv systému. V praxi se jedná o dominantní způsob jak vyjadřovat strukturu a chování systémů. Ještě se používají BPMN diagramy pro podnikové procesy (Business Process Modeling Notatin). Diagramy se rozdělují do 3 kategorií:
+
+1. Diagramy struktury - používají se pro modelování struktury softwaru, tedy z jakých komponent se software skládá (statický aspekt softwaru).
+2. Diagramy chování - používají se pro modelování chování softwaru, tedy co se musí dít uvnitř a vně systému (dynamický aspekt softwaru).
+3. Diagramy interakce - používají se pro modelování toku dat a řízení uvnitř systému (podmnožina chování).
+
+Diagramy struktury jsou následující diagramy:
+* diagram tříd (class diagram) - nejpoužívanější, používá se pro modelování softwaru s paradigmatem OOP, tedy komponenty jsou třídy.
+* diagram objektů (object diagram) - podobný diagramu tříd, jen se zde vyskytují instance tříd. Pomáhá lepšímu pohledu na zhmotněný (rozeběhnutý) software.
+* diagram komponent (component diagram) - každá komponenta je podsystém, který se skládá z dílčích komponent. Podsystémy spolu komunikují. Slouží pro lepší přehled u velkých systémů.
+* diagram balíčků (package diagram) - podobné jako diagram komponent, ale balíček je něco obecnějšího. Zatímco komponenta je samostatně existující kus softwaru s rozhraním (třeba třída nebo modul funkcí), tak balíček je cokoliv spolu souvisejícího (datové zdroje, software, konfigurační soubory, atd.). 
+* diagram nasazení (deployment diagram) - ukazuje vztah mezi softwarem a hardwarem, na kterém bude software nasazen. Užitečné pro modelování distribuovaných aplikací, kde spolu hardwarové uzly komunikují.
+* diagram složené struktury (composite structure diagram) - málo používáný diagram, který modeluje vnitřní strukturu tříd. 
+* diagram profilů (profile diagram) - jedná se o další velice specifický diagram, který slouží pro rozšíření UML diagramů o další prvky. Je to takový způsob, jak si customizovat UML.
+
+Diagramy chování jsou následující diagramy:
+* diagram případů užití (use case diagram) - důležité diagramy, které se v sekvenčních metodikách vývoje softwaru používají pro zakreslení funkčních požadavků na software. Ukazují, jak jednotlivé role interagují se systémem a žádají jeho služby (případy použití).
+* diagram aktivit (activity diagram) - také velice důležité diagramy, které modelují podnikové procesy. Jelikož software přispívá k plnění podnikových procesů, tak modelují i tok používání softwaru a jeho výstupů. 
+* stavový diagram (state machine diagram) - modelují stavy systému při interakci agentů se systémem. Jedná se o konečný automat.
+
+Diagramy interakce jsou následující diagramy:
+* sekvenční diagram (sequence diagram) - ukazuje sekvenci událostí v čase zhora dolu s důrazem na pořadí. Vyjadřuje návaznost spolupráce komponent.
+* diagram časování (timing diagram) - ukazuje sekvenci událostí v čase zleva doprava s důrazem na délku událostí (oproti sekvenční diagramu). Důležité pro real-time systémy.
+* diagram komunikace (communication diagram) - podobné jako sekvenční diagramy, jen komponenty jsou třídy, které si vyměnují zprávy. Jedná se o lepší diagram pro OOP.
+* diagram přehledu interakcí (interaction overview diagram)  - podobné, jako sekvenční diagram, jen prvky mohou být subsystémy, obsahující interakční diagramy (je to tedy takový sekvenční diagram diagramů - sekvenčních, časových, komunikačních).
+
+
+Nebudeme si nic nalhávat. V praxi jsou lidé líní modelovat software. Proto rozdělujeme využití UML diagramů na dvě kategorie:
+
+* dopředný návrh = návrh pomocí UML modelů je sestaven dříve, než se začne programovat. Cílem je poskytnout programátorům přehled o vyvíjeném softwaru.
+* zpětný návrh = návrh pomocí UML modelů je sestaven poté, co se doprogramovalo. Cílem je dokumentace softwaru pro lepší udržitelnost.
 
 **UML diagramy pro procedurální programování**
 
-... UML ... pro moduly a funkce
+Pokud budete komponenty vyjadřovat pomocí procedur a funkcí, které jsou v balíčkách, pak bych doporučoval následující diagramy:
+* diagram komponent
+* sekvenční diagram
+* stavový diagram
+* diagram případů užití
+
+Diagramy komponent dokáží modelovat procedury a funkce s rozhraním. Sekvenční diagram pak ukazuje návaznosti komunikace komponent. Pro specifický software, který mění stav se vyplatí stavový diagram. Diagram případů užití je dobrý pro propis toho, jak se bude se softwarem interagovat. Minimálně zkuste diagram komponent, ideálně všechny.
 
 **UML diagramy pro objektově-orientované programování**
 
-... UML ... pro třídy
+Pokud budete komponenty vyjadřovat pomocí třídy, pak bych doporučoval následující diagramy:
+* diagram tříd
+* sekvenční diagram
+* diagram případů užití
+
+Diagramy tříd dokáží modelovat třídy z OOP. Sekvenční diagram pak ukazuje návaznosti komunikace komponent. Diagram případů užití je dobrý pro propis toho, jak se bude se softwarem interagovat. Minimálně zkuste diagram tříd, ideálně všechny.
 
 **Návrhové principy komponent**
 
@@ -308,6 +383,8 @@ Strategie je návrhový vzor, který umožňuje vytvořit rodinu vzájemně zam�
 Návštěvník je návrhový vzor, který umožňuje oddělit chování od objektů, na které mají působit. Vypadá to, jakobyste oddělili zpětně třídu na datovou strukturu a funkce, avšak stále v objektovém paradigmatu. Realizuje se pomocí rozhraní Návštěvník, který definuje sadu polymorfních metod. To jsou takové metody, které se jmenují stejně, ale mají jiné paramety (takže v Pythonu máte smůlu). KonkrétníNávštěvníci jsou pak implementace tohoto rozhraní. Každá polymorfní metoda je chování vůči zadanému objektu. Představme si to jako učitele. Učitel může učit fyziku, matematiku, informatiku. Když jde na hodinu matematiky (třída matematiky jsou data), tak učí, ale učí didaktikou matematiky. Pokud jde na hodinu fyziky, tak učí didaktikou fyziky. Podle typu dat (kontextu) se různě chová, což je polymorfismus. Tento kontext je tvořen objektem, který nazýváme Element. Element bude rozhraní, které obsahuje metodu pro přijmutí návštěvníka. KonkrétníElementy jsou pak implementace rozhraní Element, které mají v sobě implementaci metody pro přijetí Návštěvníka. Tím jsme dostali systém, kde Elementy přijímají Návštěvníky, kteří podle toho, který Element je přijal konají různé chování. Objekt se chová různě podle toho, kde je. Za mě osobně velice zajímavý pattern :).
 
 #### S3.5 - Návrh uživatelského rozhraní
+
+... doplnit ...
 
 ### On-site cvičení
 
