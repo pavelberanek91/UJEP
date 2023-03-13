@@ -45,6 +45,63 @@ Kontextové diagramy jsou diagramy, které používají systémový inženýr pr
 
 #### S3.2 - Návrh architektury
 
+Komponenty se navrhují do nějakého diagramu, který vyjadřuje podstatu komponent (například diagram tříd z UML). Topologie (propojení) komponent se typicky řídí nějakým vzorem, kterým říkáme architektonické vzory. Architekt musí tedy zvolit dobrý architektonický vzor a dosadit do něj alespoň podstatné komponenty bez velkých detailů. Takže stačí nazvat obdélníky názvama komponent, které vyjadřují dostatečně jejich účel a vhodně je propojit, kde dobrým způsobem propojení je vybraný architektonický vzor.
+
+Mezi základní architektonické vzory patří:
+1. Vrstevnatá architektura (Layered architecture)
+2. Klient-server (Client-server)
+3. Pán-otrok (nazvěme to nově Hlavní-Vedlejší kvůli BLM hnutí v USA)
+4. Roury-filtry (Pipes and filters)
+5. Zprostředkovatel (Broker)
+6. Peer-to-Peer
+7. Událost-sběrnice (Event-bus)
+8. Model-View-Controller (MVC)
+9. Tabule (Blackboard)
+10. Tlumočník (Interpreter)
+
+**Vrstevnatá architektura**
+
+Vrstevnatá architektura je architektura softwaru, kterou znáte například z OSI/ISO modelu protokolového zásobníku z počítačových sítí nebo z jeho praktické realizace TCP/IP protokolového zásobníku. Jedná se o užitečný vzor, který lze použít pro tradiční stolní aplikace i webové e-commerce aplikace. Princip vzoru je dekompozice programu na N vrstev, kde tradičně máme minimálně 4 vrstvy:
+* Prezentační vrstva: vrstva grafického rozhraní, tedy komponenty, které uživatel vidí a přes které interaguje s aplikací.
+* Aplikační vrstva: jedná se o takové operace, které využívají aplikačně nezávislé služby z vrstvy business logiky a konají aplikačně závislý kód. Tyto operace úzce souvisí s GUI prvky prezentační logiky.
+* Vrstva business logiky: jedná se o služby, tedy komponenty, které konají uživatelem žádané činnosti. Tyto služby by mělo jít využít i v jiné aplikaci.
+* Vrstva datového přístupu: jedná se o komponenty, které umožňují persistenci (zachování i po vypnutí) dat, takže databáze.
+
+**Klient-server architektura**
+
+V tomto vzoru se nachází jedna hlavní komponenta zvaná server, ke které se připojují ostatní komponenty, které nazýváme klienty. Server poskytuje klientům služby, o které server žádají. Server neustále naslouchá klientům, ale může je i prioritizovat v prioritní frontě. Pro vás se jedná o jeden z nejznámějších vzorů, jelikož na jeho principu fungují veškeré cloudové služby: emailový schránka, stremovací servery jako Netflix, Cloudová úložiště, aj.
+
+**Hlavní-vedlejší architektura**
+
+V tomto vzoru hlavní komponenta rozděluji práci vedlejším komponentám. Vedlejší komponenty provedou výpočetní operaci a navrátí výsledek hlavní komponentě. Ta následně výsledky vedlejších komponent zaprocesuje. Tato architektura může být využita v cloudových databázích s redundancí nebo chytrých domácích úložištích.
+
+**Roury-filtry architektura**
+
+Vzor Roury a filtry je vzor, ve kterém dochází k postupnému zpracování vstupních dat skrze sekvenci aktivity. Těmto aktivitám se říká filtry. Vstup jde první rourou do prvního filtru, který zpracuje data a zašle je upravená druhému filtru druhou rourou. Takto se sekvence opakuje až do posledního filtru. Roury nemusí být jen zcela propustné kanály, ale mohou obsahovat i nějaký synchronizační algoritmus, například buffering. Tento vzor se používá pro psaní aplikací, které zpracovávají data. Příkladem je ETL transformace: Extract-Transform-Load, kde se nejprve data získají z nějakého zdroje (například webscrapping), následně se transformují do vhodné podoby a uloží do databáze. Transform může být sám o sobě sada filtrů, propojených rourama. Další aplikací jsou překladače programovacích jazyků, které se skládají s pustupně navazujících fází, které transformují vždy svůj vstup a předají ho jako pozměněný výstup další fáze: lexiální analýza, syntaktický analýza, sémantická analýza, optimalizace, generování spustitelného souboru.
+
+**Zprostředkovatel architektura**
+
+Vzor zprostředkovatel je architektura, ve které se nachází komponenta zvaná zprostředkovatel. Zprostředkovatel komunikuje se servery, které poskytují služby klientům, a klienty, které žádají služby od serverů. Pokud má klient zájem o službu serveru, tak požádá o službu zprostředkovatele. Zprostředkovatele vybere vhodný server, kterého o službu pro klienta požádá. Zprostředkovatel vybírá vhodný server podle různých parametrů - typ služby, vytíženost serveru, atd. Servery tedy musí hlásit své informace nebo si je musí zprostředkovatel ukládat a vypočítávat. S takovou architekturou se setkáte zejména u aplikací s veledaty. Pokud jste někdy slyšeli o big data technologiích nebo o brokerech e-shopů s velkým vytížením jako jsou technologie Apache Kafka, RabbitMQ, JBoss Messaging, tak to je přesně ono.
+
+**Peer-to-Peer architektura**
+
+V této architektuře jsou komponenty zároveň servery i klienty. Komponenty se vzájemně žádají o služby. Jedná se tedy o způsob polo-duplexní komunikace z počítačových sítí, kde jeden uzel je příjemcem a druhý vysílačem, jen tady se střídají role klient a server. Tuto architekturu znáte z aplikací na sdílení obsahu jako jsou různé torrenty nebo různé aplikace vystavěné na block-chainu.
+
+**Událost-sběrnice architektura**
+
+...
+
+**MVC architektura**
+
+...
+
+**Tabule architektura**
+
+...
+
+**Tlumočník architektura**
+
+...
 
 #### S3.3 - Návrh komponent
 
@@ -62,7 +119,7 @@ Poté, co máme architekturu, tedy rozdělení softwarového systému na subsyst
 
 ... UML ... pro moduly a funkce
 
-**UML diagramy pro objektově-orientovaní programování**
+**UML diagramy pro objektově-orientované programování**
 
 ... UML ... pro třídy
 
@@ -230,19 +287,48 @@ Vzory pro dodávání odpovědnosti ve formě chování komponentám.
 9. šablonová metoda (template method)
 10. návštěvník (visitor)
 
+Řetěz odpovědnosti je návrhový vzor, který umožňuje zaslat požadavek frontě řešitelů požadavku (pipe-line), kde každý řešitel rozhodne o tom, co s požadavkem udělá a zašle to dalšímu řešiteli v řadě. Představte si, že voláte do nějakého call-centra, např.: vašeho dodavatele elektrické energie. Máte problém s tím, že vám již nefunguje půl roku elektrický proud :D. Nejprve se dovoláte nějakému obecnému operátorovi, která vás přepojí na nějakého odborného operátora. Ten vás následně přepojí na operátora, řešící nefungující elektrický proud. Ten následně vyšle technika na vaše odběrné místo. Každý řešitel vašeho požadavku má možnost s požadavkem něco dělat (např.: zapsat si problém) a přeposlat ho dál, nebo jen přeposlat dál. Hlavní myšlenka spočívá v tom, že řešitelé jsou konkrétní implementace jednotného rozhraní, které je zavazuje umět si přiřadit další řešitele v pořadí. Řešitelé si při konstrukci konstruktorem nastaví svého dalšího řešitele v pořadí a již ho nepřenastavují aby netrhali vytvořený řetěz. Kromě toho mají svou metodu pro řešení požadavku. Ta musí i rozhodnout o tom, zda požadavek vyřeší, částečně vyřeší a pošlou dále nebo ho pošlou dále. Komponenta Řetěz (pokud to neudělá klient sám) pak určuje někde ve své logice, jak budou řešitelé propojeni, tzv. instantizuje komponenty a nastaví jejich následníka. Vzhledem k tomu, že každý řešitel by měl mít část kódu společného (rozhodování o tom, zda mu náleží požadavek a zda ho přepošle dál nebo ho eliminuje) a také má odkaz na následníka, tak se zde hodí skvěle abstraktní třída.
 
+Příkaz je návrhový vzor, který umožňuje přeměnit požadavek na samostatně existující objekt, který drží všechny potřebné informace o požadavku. Tento vzor se používá kdekoliv, kde potřebujete separovat zájmy a tyto zájmy vytváří určitou vrstvu nebo rodinu. Příkladem je naivně tvořená GUI aplikace. Aplikace má nějaké GUI prvky (tlačítko, formulář, navigační lišta, atd.). Při interakci s tímto prvkem můžete vyvolat nějakou logiku rovnou nebo lépe zavolat službu, která to provede. Pokud budou grafické prvky oddělené od logiky, pak můžeme snadno zaměnit grafické prvky za jiné bez značného přepisování aplikace. Aby šlo tyto tzv. zájmy separovat, je zapotřebí, aby GUI prvky dodaly službě všechny potřebné informace pro vykonání služby - ty se právě zabalí do příkazu. Dalším důvodem pro separaci zájmů je služba, která je možná volat z více GUI bodů. Například uložit projekt lze pomocí tlačítka na obrazovce (např. ikonka diskety), z výběrového menu (soubor - uložit) nebo klávesovou zkratkou. Jedna služba má více způsobů, jak ji zavolat. V takovém případě bychom duplikovali kód pokud bychom nevyužili návrhového vzoru Příkaz. Hlavní myšlenka je taková, že KonkrétníPříkazy jsou implementace rozhraní Příkaz. Příkaz obsahuje metodu pro spuštění příkazu. Konkrétní příkazy jsou typicky nemutabilní typy, takže je lze nastavit pouze při konstrukci konstruktorem. Při jejich zavolání se vytvoří nová instance KonkrétníhoPříkazu, do které se nastaví na koho má příkaz působit (Příjemce příkazu) a jaké jsou parametry (vše potřebné pro business logiku). Tyto KonkrétníPříkazy vyvolává nějaký Vyvolávač (Invoker). Invoker sestaví příkaz konstruktorem a spustí ho. Aby věděl jak ho spustit, tak využívá rozhraní Příkazu. KonkrétníPříkazy pak působí na svého Příjemce (Receiver), který se podívá do parametrů zaslaného příkazu a provede logiku. Tento návrhový vzor se často kombinuje s mementem pro Undo/Redo operace v editorech (Word, Excel, Powerpoint, Gimp). Doporučuji se tento návrhový vzor naučit, jelikož pravděpodobně skoro všechny aplikace, které budete dělat a klient je bude používat pro kancelářskou práci, tak vyžadují tuto schopnost. V editorech funguje tak, že Invoker je samotná GUI aplikace, která ve svém konstruktoru naváže na tlačítka, menu položky a klávesové zkratky příslušné příkazy pro open, save, copy, rename, ... konkrétní příkazy. Každý příkaz pracuje s nějakým GUI prvkem, například editorem, což je nějaké pracovní pod okénko. Tento měněný GUI prvek má příkaz v sobě nastaven (Receiver). Jakmile aplikace zaregistruje událost (klik na tlačítko), tak spustí požadovaný příkaz, který zapůsobí na příjemce a uloží se do zasobníku s historií úkonů.
+
+Iterátor je návrhový vzor, který umožňuje procházet (traverzovat) kolekcí bez toho, aniž bychom museli odkrývat její vnitřní reprezentaci (seznam, zásobník, fronta, ntice, strom, graf). To nám umožňuje vytvořit si vlastní unikátní způsoby jak procházet komplexní komponentu z komponent dokonce různými způsoby (do hloubky, do šířky, aj.). Vzor je realizován tak, že se vytvoří rozhraní Iterator. Toto rozhraní má dvě důležité operace - získej další prvek v pořadí a příznak, zda existuje další prvek v pořadí (tzn. zda se má dále traverzovat nebo jsme na konci). Toto rozhraní implementují KonkrétníIterátory, které představují traverzní algoritmy. Například iterátor pro prochází do hloubky, iterátor pro procházení do šířky. Konkrétní iterátory v sobě obsahují algoritmy, o které se zavázeli svým rozhraním Iterátor (získání dalšího prvku a zjištění, zda jsme na konci). KonkrétníIterátory také v sobě obsahují odkaz na KonkrétníKolekci, kterou chceme iterovat, jelikož nad ní pracují. Tyto KonkrétníKolekce implementují stejné rozhraní IterovatelnéKolekce, jelikož iterátory mohou pracovat nad více kolekcema.
+
+Prostředník je návrhový vzor, který slouží pro redukci chaotického chování mezi komponentami pomocí jednotného místa komunikace - prostředníka. Komponenty v sobě obsahují odkaz na objekt, implementující rozhraní pro prostředníky. Toto rozhraní umí jednu operaci a to zasílat zprávu zadanému příjemci. Konkrétní prostředník je pak třída, splňující toto rozhraní. Tato abstrakce pomáhá tomu, že může existovat více prostředníků (takže některé komponenty spolu komunikují skrze různé prostředníky). Konkrétní prostředník má v sobě odkaz na registrované komponenty a operaci, kterou registrované komponenty volají když chtějí poslat jiné komponentě zprávu. Myšlenka je v tom, že komponenty nemají nic vědět o jiných komponentách. Celá identifikační logika je na prostředníkovi. Když komponentaA zavolá prostředníka a zašle informaci, tak mediátor musí rozhodnout o tom, jaké komponenty mají být o zpravě informovány. Mediátor reaguje na zavolání jeho operace a volá reakční metody vybraných komponent. Mediátor v sobě může obsahovat i určitou business logiku.
+
+Memento je návrhový vzor, který umožňuje provádět to, čemu v emulátorech videoher říkáme save-state, load-state, tedy umožňuje uložit aktuální stav objektu a později po změnách ho opět nahrát zpět. Jedná se o ukládací a nahrávací mechanismus videoher. Silnější obdoba problému je zásobník takových stavů, který znáte z kancelářských aplikací, vracející změny (šipka zpět/undo, šipka dopředu/redo). Vzor je realizován pomocí třídy Správce (CareTaker), jehož úkolem je uchovávat v sobě historii aplikace. Tato aplikace bude nazývána Původce (originator) a jeji nemutabilní stav se bude nazývat Memento. Správce v případě požadavku (undo operace) vybere ze zásobníku mement Memento na vrcholu a pošle ho Původcovi metody pro obnovení stavu (restore operace). Memento je jen jednochá třída se všemi informacemi o stavu v době uložení. Původce umí kromě nahrání mementa z minulosti i uložit nové memento na vrchol zásobníku Správce. Pokud jazyk umí zanořené třídy, pak Memento je zanořená třída uvnitř Původce. Původce pak má přístup do jeho atributů (i když jsou privátní). Naopak Správce nemůže do privátních atributů zasahovat a číst je, takže nic nepokazí. Pokud není jazyk vybaven schopností zanořených tříd (např.: PHP), pak je nutné vytvořit k Mementu rozhraní, které bude používat Správce. Toto rozhraní bude definovat jediné operace, které může Správce s mementem provádět. Původce pak provádí jakékoliv operace bez omezení, ale podmínkou jsou veřejné modifikátory přístupu (není to nejšťastnější řešení, tak radši nepoužívejte PHP :) ...).
+
+Pozorovatel je návrhový vzor, který umožňuje vytvořit odběratelský (subscribe) mechanismus, který odběratelským třídám posílá notifikace o událostech, které se provádí na objektu, ke kterému se upsali odběrem. Pozorovaná třída, ke které se komponenty upisují se nazývá Vydavatel (Publisher). Ten v sobě agreguje Odběratele (Subscribery). Vydavatel má schopnosti zapsat nebo odepsat Odběratele (jako v emailech). Vydavatel má schopnost vyslat signál všem Odběratelům o změně jeho interního stavu dedikovanou notifikační operací. Každý, kdo chce být Odběratelem, tak musí implementovat rozhraní pro Odběratele, kde jeho povinností je implementace operace pro update (příjem zprávy). Vydavatel si může registrovat pouze ty odběratele, splňující tuto povinnost.
+
+Stav je návrhový vzor, který umožňuje změnit chování objektu když se změní jeho interní stav (tedy dojde k nějaké změně jeho atributů setterem). Objekt se chová navenek, jakoby změnil třídu (jiné chování). Jedná se o ideální návrhový vzor pro systémy, které se chovají jako stavové automaty, tedy konečné automaty typu Mealy/Moor. Praktická implementace těchto automatů může být soubor, který se nachází v různých stavech, požadavek na Kanban tabuli, pull-request na githubu. Řekněme, že máte soubor, do kterého píšete v nějakém redakčním systému. Tento soubor vám poskytuje všechny potřebny metody pro editaci. Soubor následně publikujete a čeká na schválení od recenzentů. Recenzenti mohou provádět jiné operace se souborem - schválení, zamítnutí, aj. Soubor se může vrátit do předchozího stavu po zamítnutí nebo se může dostat do následného stavu po přijetí, kde je publikován a lidé si ho mohou prohlížet přes URL. Po určité expirační době se opět může publikovaný soubor vrátit do původního stavu a zmizet z veřejného přístupu (nějak takto fungují zpravodajské portály jako novinky.cz). Realizace vzoru je provedena tak, že všechny konkrétní stavy implementují rozhraní stav. Toho rozhraní obsahuje všechny povinné operace pro všechny konkrétní stavy. Operace navíc si implementují potomci v sobě. Dokument je pak třída, která má operaci změň stav a může ho změnit pouze za objekty, implementující rozhraní stav. Dokument má v sobě uložen aktuální stav a může využívat jeho operace. Jedná se tedy o formu rozšíření třídy pomocí agregace.
+
+Strategie je návrhový vzor, který umožňuje vytvořit rodinu vzájemně zaměnitelných algoritmů. Skvělým příkladem je navigace v mapové aplikaci. Na mapách se můžete navigovat autem, pěšky, veřejnou hromadnou dopravou. Při výběru typu navigace vám appka ukáže jinou optimální cestu. Podle kontextu (co si vybere uživatel) se mohou algoritmy vypočítání optimální trasy měnit bez změny v kódu, jelikož jsou ze stejné rodiny a dělají stejnou činnost, jen mají jinou implementaci. Vzájemná zaměnitelnost se řeší tak, že všechny tyto algoritmy (konkrétní strategie) jsou třídy, které splňují jednotné rozhraní pro strategii.
+
+Šablonová metoda je návrhový vzor, ve kterém jsou obecné kroky algoritmu nadefinovány v nadtřídě (struktura algoritmu), ale konkrétní implementaci kroků je na potomcích. Tento vzor se používá, pokud máte nějaký problém, ve kterém lze identifikovat obecné kroky. Konkrétní způsob realizace těchto kroků se ale liší podle kontextu. Například pokud je příliš dat, použiju takový způsob realizace. Pokud málo kroků, použiju takový způsob realizace. Některé kroky mohou být společné pro všechny potomky. Ty které si mají potomci sami doplnit, tak se vytvoří jako abstraktní metody. Příkladem může být dolovač dat z různých datových formátů - csv, pdf, xlsx, docx, html, aj. Každý dolovač bude podle formátu mít svá specifika, avšak dolování dat je proces, který je všude stejný - otevření souboru, parsování souboru, analyzování souboru, vytvoření reportu ze souboru, zavření souboru.
+
+Návštěvník je návrhový vzor, který umožňuje oddělit chování od objektů, na které mají působit. Vypadá to, jakobyste oddělili zpětně třídu na datovou strukturu a funkce, avšak stále v objektovém paradigmatu. Realizuje se pomocí rozhraní Návštěvník, který definuje sadu polymorfních metod. To jsou takové metody, které se jmenují stejně, ale mají jiné paramety (takže v Pythonu máte smůlu). KonkrétníNávštěvníci jsou pak implementace tohoto rozhraní. Každá polymorfní metoda je chování vůči zadanému objektu. Představme si to jako učitele. Učitel může učit fyziku, matematiku, informatiku. Když jde na hodinu matematiky (třída matematiky jsou data), tak učí, ale učí didaktikou matematiky. Pokud jde na hodinu fyziky, tak učí didaktikou fyziky. Podle typu dat (kontextu) se různě chová, což je polymorfismus. Tento kontext je tvořen objektem, který nazýváme Element. Element bude rozhraní, které obsahuje metodu pro přijmutí návštěvníka. KonkrétníElementy jsou pak implementace rozhraní Element, které mají v sobě implementaci metody pro přijetí Návštěvníka. Tím jsme dostali systém, kde Elementy přijímají Návštěvníky, kteří podle toho, který Element je přijal konají různé chování. Objekt se chová různě podle toho, kde je. Za mě osobně velice zajímavý pattern :).
 
 #### S3.5 - Návrh uživatelského rozhraní
 
 ### On-site cvičení
 
+Cílem tohoto cvičení je navrhnout architekturu aplikace z pohledu všech typů rolí v architektonickém procesu vývoje. Vyzkoušíte si tvorbu obecného kontextového diagramu jako systémový inženýr, výběr a návrh základních komponent z pohledu softwarového architekta až návrháře komponent (záleží jak detailně budete komponenty rozebírat) a návrh uživatelského rozhraní z pohledu návrháře rozhraní. Z návrháře rozhraní si vyzkoušíte částečně všechny tři role - návrhář vzhledu, zážitku i interakce. Pro tvorbu diagramů (úkoly C3.1 až C3.3) si najděte nějaký vhodný editor UML diagramů nebo obecných diagramů. V úkolu C3.4 nejsou žádné praktické úkoly, jen si prohlédněte seznam návrhových vzorů a zamyslete se, zda se vás nějaký týká a neřeší aktuální problém již v době návrhu nebo zda bude pravděpodobně řešit problém, který v budoucnu nastane. V úkolu C3.5 si navrhnete uživatelské rozhraní v nějakém softwaru, ve kterém se vám bude dobře navrhovat. Lze využít velice šikovně i software pro prezentační snímky, protože prvky ve snímku umožňují hypertextové odkazy na jiné snímky a mohou simulovat interakci a průchod softwarem. Každopádně spíše doporučuji použít software Figma nebo Adobe XD pokud máte licenci. 
 
 #### C3.1 - Tvorba kontextového diagramu
 
+Hrajete si na systémového inženýra. Z úkolu z předchozí lekce si vytvořte jednoduchý kontextový diagram, který říká, z jakých hlavních subsystémů a komponent je složena vaše výsledná aplikace, kterou budete odevzdávat k zápočtu.
+
 #### C3.2 - Výběr vhodného architektornického vzoru
 
-#### C3.3 - Třídní diagramy pro architektonický vzor
+Hrajete si na softwarového architekta. Na základě kontextového diagramu vyberte, jaký architektonický vzor by byl nejlepší pro váš program v jeho kontextu. Architektonický vzor doplňte o hlavní komponenty, které vytváří to nejdůležitějších ze struktury kódu. Řešte pomocí UML diagramů a vyznačte šikovně architektonický vzor (například třídy ve vrstvách, třídy zasebou v rouře, atd.). UML třídy nechte zatím jen s názvem (bez operací a atributů).
 
-#### C3.4 - Docker-compose soubor pro architekturu z mikro-služeb
+#### C3.3 - Třídní diagramy pro komponenty
 
-#### C3.5 - Návrh uživatelského rozhraní ve Figma
+Hrajete si na návrháře komponent. Pokud se vám to vejde (u jednodušší aplikace), tak do předchozího diagramu doplňte do komponent operace a atributy. Pokud se to nevejde, tak je dopňte do nového souboru, kde bude jen třídní diagram. Nezapomeňte vyznačit modifikátory přístupu, statické metody a atributy, abstraktní třídy a rozhraní, agregaci a dědičnost a jiné komponenty třídních diagramů. Vhodné jsou i poznámky pro slovní vysvětlení toho, co třída dělá.
+
+#### C3.4 - Návrhový vzor
+
+Pročtěte si ještě jednou (nebo poprvé, protože vím, že jste to ještě neudělali) návrhové vzory a zamyslete se, jestli ve vaší aplikace nebude jeden z nich vhodné využít (možná i více z nich). Pokud si všimnete podobnosti vašeho propojení komponent s jedním ze vzorů, tak si o vzoru více vyhledejte a ujistěte se. Vhodné použití vzorů může dramaticky zlepšit udržitelnost vaší aplikace.
+
+#### C3.5 - Návrh uživatelského rozhraní
+
+Ve vhodném softwaru pro tvorbu grafických prototypů (třeba Figma) navrhněte grafický prototyp vaší aplikace (ideálně stolní i mobilní verzi), která bude interaktivní.
