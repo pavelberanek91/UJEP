@@ -2,17 +2,19 @@
 
 ## Seminář 7 - Moduly Spark: MLlib, GraphX a Spark Streaming
 
+https://www.analyticsvidhya.com/blog/2022/08/complete-guide-to-run-machine-learning-on-spark-using-spark-mllib/
+
 ### Samostudium
 
-#### S7.1 - lorem
+#### S7.1 - Spark SQL
 
-#### S7.2 - lorem
+#### S7.2 - MLlib
 
-#### S7.3 - lorem
+#### S7.3 - GraphX
 
-#### S7.4 - lorem
+#### S7.4 - Spark Streaming
 
-#### S7.5 - lorem
+#### S7.5 - Knihovny třetích stran
 
 ### Cvičení
 
