@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myweb-{% block subtitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Name of my website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">About</a>
+            </li>
+            <li>
+                <a href="{{ url_for('datasets') }}">Datasets</a>
+            </li>
+            <li>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy;Beránek Pavel, UJEP, 2023</p>
+    </footer>
+</body>
+</html>

@@ -1,96 +1,182 @@
 # NoSQL databázové systémy
 
-**Obsah cvičení 2**:
-* Webové aplikace ve Flask
-* Koncové body
-* Šablony
-
 ## On-site cvičení 2
 
-V této lekci si připravíte jednoduchý webový portál, který bude vracet uložené články ve formě html stránek. Dále také může kdokoliv na portál nahrát vlastní článek. Na domovské stránce uživatel vyplní do formuláře text článku, své jméno a další náležitosti. Tyto data se vezmou, vytvoří se nová webová stránka a uloží se do adresáře s ostatními články. Tato nově přidaná stránka bude k dispozici pro otevření v seznamu článku na domovské stránce.
+V této lekci se naučíte vyplnit šablony daty a pracovat s různými požadavky typu GET a POST na váš webserver.
 
-### Úkol OS2.1 Vytvoření prostředí pro vývoj:
-
-Pro vývoj v jazyce Flask si budeme muset Flask modul nainstalovat. Doporučuji si jako první vytvořit a aktivovat virtuální prostředí. Jako první se ujistěte, že máte mezi balíčky nainstalován balíček pro tvorbu virtuálních prostředí (např.: venv nebo virtualenv).
-
-```
-python3 -m venv
-```
-
-Dále si vytvořte virtuální prostředí s nějakým názvem do pracovního adresáře.
-
-```
-python3 -m venv venv
-```
-
-Prostředí si aktivujte postupem podle vašeho operačního systému. V operačním systému Windows se vám vygeneruje aktivační skript pro powershel a dávkový soubor .bat. Stačí tento skript jednoduše vyhledat a spustit. V operačních systémech jako je Linux nebo MacOS musíte použít příkat source.
-
-```
-source venv/bin/activate
-```
-
-Pokud máte v terminále vedle vašeho uživatelského jména v závorkách název virtuálního prostředí, tak aktivace proběhla správně.
-
-Následně si nainstalujte mezi knihovny virtuálního prostředí balíček Flask.
-
-```
-pip install flask
-```
-
-Ve vámi vybraném editoru zvolte interpretr jazyka Python právě ten interpret z virtuálního prostředí. V prostředí VS Code stačí stisknout klávesovou zkratku cmd(ctrl)+shift+P a zvolit možnost "Python: vybrat interpret". Občas se mi ve VS Code stává, že i po vybraní cesty se mi interpret nenahraje. Pak stačí jako pracovní adresář otevřít složku, ve které je i složka s virtuálním prostředím.
-
-### Úkol OS2.1 Vytvoření Flask projektu:
-
-Vytvořte si adresář src, do kterého umistěte soubor s názvem app.py. Tento soubor bude prozatím obsahovat vše, co se týká jazyka Python a frameworku Flask. Později si uděláte korektní strukturu vašeho projektu. Na této stránce naleznete návod, jak spustit Flask aplikaci: [ZDE](https://www.tutorialspoint.com/flask/flask_application.htm).
-
-Pro pohodlnost si nastavte debug režim a rovnou si nastavte i port (napište stejné číslo jako je defaultní port Flasku). Port si nastavte explicitně z toho důvodu, že se vám může nějaká aplikace na portu bouchat s vaší za určitých okolností a chcete rychle vědět bez googlení, jak port změnit.
-
-
-### Úkol OS2.2 Metody pro koncové body:
-
-Dalším úkolem je vytvoření koncových bodů. Zatím si zkuste obecně jak routování ve Flasku funguje, později přepíšete kód podle vaší semestrální práce. Jak zpracovávat data z koncových bodů naleznete: [ZDE](https://www.tutorialspoint.com/flask/flask_variable_rules.htm).
-
-Zatím si můžeme představit, že uživatel chce vracet nějaký článek s univerzitními novinkami. Tyto články se volají přes své id v URL adrese. Zkuste si tedy odchytávat z URL adresy id.
-
-### Úkol OS2.3 Vrácení šablon:
+### Úkol 2.1 Vyplnění šablony daty:
 
 Flask slouží jako webový server, který zpracovává požadavky. Typickým požadavkem u běžných webových aplikací je návrat obsahu webové stránky. Na následující stránce naleznete návod, jak vrátit uživateli webovou stránku: [ZDE](https://www.tutorialspoint.com/flask/flask_templates.htm).
 
-Zkuste vytvořit endpoint články, kterým přesměrujete uživatele na webovou stránku, obsahující seznam všech hypotetických článků na vašem serveru.
+**app.py**
+```
+from flask import Flask, render_template
 
-### Úkol OS2.4 Zpracování HTTP metod:
+app = Flask(__name__, template_folder='templates')
 
-Protokol HTTP umožňuje zasílat 4 typy metod. Nejčastěji užívanou metodou je metoda GET a POST. GET se používá pro stahování webových stránek a POST pro nahrávání dat na server. Vytvořte si v HTML formulář a pomocí metody POST vložit článek nějakého textu na server. Návod na zpracování požadavků naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_http_methods.htm)
+user_reviews = {
+    "pepa": "Hele fakt bomba website, ale chybi mi tu vlastne vsechno",
+    "franta": "Chtel jsem najit recept na smazeny vajicka, ale dostal jsem se tu. Nevi jak.",
+    "alena": "Produkt teto firmy je nejlepsi. Pouzivame ho vsichni. Obcas ho pujcime i dedeckovi."
+}
 
-Pro řádné bezpečné formuláře doporučuji využít knihovu WTF flask. Návod na její používání naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_wtf.htm).
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def index():
+    return render_template("index.html", reviews=user_reviews)
 
-### Úkol OS2.5 Statické soubory:
+@app.route("/datasets")
+def datasets():
+    return render_template("datasets.html")
 
-Váš webový portál bude pro svou funkci vyžadovat statické soubory (kaskádové styly, javascript, obrázky). Následující odkaz vám ukáže, jak nahrát na webový portál statické soubory [ZDE](https://www.tutorialspoint.com/flask/flask_static_files.htm).
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
 
-## Domácí cvičení 2
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
 
-### Úkol HW2.1 HTML5:
+**index.html**
+```
+{% extends "template.html" %}
 
-Váš výsledný produkt bude využívat HTML5 standard jazyka. Ne všichni programátoři využívají HTML5 možnosti do maximální míry. Projděte si tutorial na w3schools, který vám ukáže možnosti HTML5 [ZDE](https://www.w3schools.com/html/default.asp).
+{% block subtitle %}
+About
+{% endblock %}
 
-### Úkol HW2.2 Bootstrap5/W3.CSS:
+{% block main %}
+<p>This page have been seen <span id="view_count">{{ view_count }}</span> times</p>
+
+<h3>Recenze:</h3>
+<ul>
+{% for user, review in reviews.items() %}
+<li><span class="username">{{ user }}</span>:<span class="review">{{ review }}</span></li>
+{% endfor %}
+</ul>
+{% endblock %}
+```
+
+### Úkol 2.2 Zpracování dat z formuláře:
+
+Protokol HTTP umožňuje zasílat 4 typy metod. Nejčastěji užívanou metodou je metoda GET a POST. GET se používá pro stahování webových stránek a POST pro nahrávání dat na server. Data zaslané metodou post pak můžete na koncové bodě zpracovat. Návod na zpracování požadavků naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_http_methods.htm)
+
+**contact.html**
+```
+{% extends "template.html" %}
+
+{% block subtitle %}
+Contact
+{% endblock %}
+
+{% block main %}
+<h2>Contact</h2>
+<form action="/contact" method="post">
+    <fieldset>
+        <label for="username">Your name: </label>
+        <input type="text" name="username" required>
+        <label for="review">Your review: </label>
+        <input type="text" name="review" required>
+    </fieldset>
+    <button type="submit">Send review</button>
+</form>
+{% endblock %}
+```
+
+**app.py**
+```
+from flask import Flask, render_template, request
+
+app = Flask(__name__, template_folder='templates')
+
+user_reviews = {
+    "pepa": "Hele fakt bomba website, ale chybi mi tu vlastne vsechno",
+    "franta": "Chtel jsem najit recept na smazeny vajicka, ale dostal jsem se tu. Nevi jak.",
+    "alena": "Produkt teto firmy je nejlepsi. Pouzivame ho vsichni. Obcas ho pujcime i dedeckovi."
+}
+
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def index():
+    counter = 1
+    return render_template("index.html", reviews=user_reviews, view_count=counter)
+
+@app.route("/datasets")
+def datasets():
+    return render_template("datasets.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        user_name = request.form.get("username")
+        user_review = request.form.get("review")
+        user_reviews[user_name] = user_review
+    return render_template("contact.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+### Úkol 2.3 Zpracování dat z URL:
+
+Jak zpracovávat data z URL koncových bodů naleznete: [ZDE](https://www.tutorialspoint.com/flask/flask_variable_rules.htm).
+
+**app.py**
+```
+from flask import Flask, render_template, request
+
+app = Flask(__name__, template_folder='templates')
+
+user_reviews = {
+    "pepa": "Hele fakt bomba website, ale chybi mi tu vlastne vsechno",
+    "franta": "Chtel jsem najit recept na smazeny vajicka, ale dostal jsem se tu. Nevi jak.",
+    "alena": "Produkt teto firmy je nejlepsi. Pouzivame ho vsichni. Obcas ho pujcime i dedeckovi."
+}
+
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def index():
+    counter = 1
+    return render_template("index.html", reviews=user_reviews, view_count=counter)
+
+@app.route("/review/<username>")
+def get_review(username):
+    if username in user_reviews:
+        return f"Returning requested review. {username}:{user_reviews[username]}"
+    else:
+        return "Username not found in database."
+
+@app.route("/datasets")
+def datasets():
+    return render_template("datasets.html")
+
+@app.route("/contact", methods=["GET", "POST"])
+def contact():
+    if request.method == "POST":
+        user_name = request.form.get("username")
+        user_review = request.form.get("review")
+        user_reviews[user_name] = user_review
+    return render_template("contact.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+### Úkol OS2.4 Bootstrap5:
 
 Místo kaskádových stylů svépomocí se dnes využívají hotové frameworky. Nejoblíbenějším frameworkem je Bootstrap. Alternativou od W3schools je W3.css. Podívejte se na následující tutoriály a vyzkoušejte si implementaci těchto frameworků do vaší aplikace. Návod na Bootstrap5 [ZDE](https://www.w3schools.com/bootstrap5/index.php). Návod na W3.CSS [ZDE](https://www.w3schools.com/w3css/default.asp).
 
-### Úkol HW2.3 SQLAlchemy:
+Ve finálním kódu, který je ve složce kody jsem udělal spousty zajímavých prvků odesignovaných bootstrapem, které si můžete prohlédnout.
 
-Pro připojení do databáze budeme používat balíček SQLAlchemy. Budeme s ním pracovat příští hodinu. Zprovozněte si SQLAlchemy podle následujícího tutoriálu [ZDE](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/quickstart/#installation).
+## Domácí cvičení 2
 
-### Úkol HW2.4 Objektově-relační mapování:
+### Úkol HW2.1 Bezpečné formuláře:
 
-V tutoriálu z HW2.3 jste si mohli všimnout, že využívají tříd pro práci s databází. Tomuto konceptu se říká objektově-relační mapování. Na následující stránce se dočtete, co je to vlastně ORM [ZDE](https://docs.sqlalchemy.org/en/14/orm/tutorial.html)
+Pro řádné bezpečné formuláře doporučuji využít knihovu WTF flask. Návod na její používání naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_wtf.htm).
 
+### Video týdne 1: Docker
 
-**Video týdne 1: ORM**
-
-ORM má své výhody i nevýhody. Podívejte se na následující video [ZDE](https://www.youtube.com/watch?v=3EvhK7-DlZA).
-
-**Video týdne 2: Flask**
-
-Projděte si následující tutoriál na framework flask [ZDE](https://www.youtube.com/watch?v=Z1RJmh_OqeA).
+Pro snadné používání databází v našem vývojářském ekosystému budeme používat aplikaci Docker. Podívejte se na následující video, které vás do Dockeru zasvětí. [ZDE](https://www.youtube.com/watch?v=gAkwW2tuIqE)

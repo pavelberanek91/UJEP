@@ -1,151 +1,242 @@
 # NoSQL databázové systémy
 
-**Obsah přednášky 1**:
-1. Vymezení a cíle NoSQL databázových systémů
-
-**Obsah cvičení 1**:
-* Co jsou to NoSQL databáze
-* BASE model konzistence
-* Veledata
-
 ## On-site cvičení 1
 
-### Cognitive apprenticeship
+V této lekci si připravíte jednoduchý webový portál, který bude vracet html stránky. Webový portál bude realizovaný webovým pracovním rámcem Flask v jazyce Python. Instalace závislostí bude provedena do dedikovaného virtuálního prostředí z modulu venv jazyka Python.
 
-### Úkol OS1.1 NoSQL Databáze:
+### Úkol 1.1 Vytvoření prostředí pro vývoj:
 
-Databáze je množina dat, která má určitý formát (tabulka, slovník, XML soubor). Tyto databáze spravujeme pomocí aplikací, kterým se říká systémy řízení báze dat (anglicky database management systems, DBMS). Existují dvě hlavní kategorie DBMS:
-* SQL
-* NoSQL
+Pro vývoj v jazyce Flask si budeme muset Flask modul nainstalovat. Doporučuji si jako první vytvořit a aktivovat virtuální prostředí. Jako první se ujistěte, že máte mezi balíčky nainstalován balíček pro tvorbu virtuálních prostředí (např.: venv nebo virtualenv).
 
-SQL DBMS jsou typické tím, že databáze představuje tabulky, které mají mezi sebou určitý vztah (relaci). Do tabulek zaznamenáváme informace (atributy) o reálných objektech v našem světě (entity). Atributy entit je možné rozdělit do více tabulek. Jeden řádek v tabulce se nazývá záznam. Z toho vyplývá jeden určitý problém, že entita je rozprostřená mezi tabulkami a musíme ji skládat zpět. To napovídá, že by bylo vhodnější určité problémy řešit jiným modelem databází. NoSQL DBMS jsou řešením některých problému tradičních SQL databází.
+```
+python3 -m venv
+```
 
-Mezi nejpoužívanější NoSQL DBMS patří:
-1. Redis: klíč-hodnota orientovaná DB
-2. MongoDB: dokumentově orientovaná DB
-3. Apache Cassandra: sloupcově orientovaná DB
-4. Neo4J: grafově orientovaná DB
+Dále si vytvořte virtuální prostředí s nějakým názvem do pracovního adresáře.
 
-### Úkol OS1.2 CAP teorém (Eric Brewer):
+```
+python3 -m venv venv
+```
 
-CAP teorém tvrdí, že není možné, aby DBMS plnil všechny z následujících tří vlastností:
-1. Consistency - všichni vidí ve stejném čase stejná data
-2. Availability - systém operuje i tehdy, dojde-li k výpadku serveru
-3. Partititon Tolerance - systém operuje i tehdy, dojde-li k přeřušení spojení serverů
+Prostředí si aktivujte postupem podle vašeho operačního systému. V operačním systému Windows se vám vygeneruje aktivační skript pro powershell a dávkový soubor .bat. Stačí tento skript jednoduše vyhledat a spustit. V operačních systémech jako je Linux nebo MacOS musíte použít příkat source.
 
-Konzistence v CAP teorému představuje splnění linearizovatelnosti operací. Mějme 2 transakce A a B. Nejprve se úspěšně provede transakce A a poté se provede transakce B. Pokud je DBMS konzistentní, pak transakce B vidí taková data, jaká měla na svém výstupu transakce. Konzistence je typický pro SQL DBMS. 
+```
+source venv/bin/activate
+```
 
-Availability v CAP teorému představuje dostupnost v případě požadavku. Každá databáze, která neselhala (server s instancí DB běží), tak musí při mém požadavku úkol provést. 
+Pokud máte v terminále vedle vašeho uživatelského jména v závorkách název virtuálního prostředí, tak aktivace proběhla správně.
 
-Partition Tolerace v CAP teorému představuje odolnost pri chybám v síti, kdy se přeruší propojení serverů.
+Ve vámi vybraném editoru zvolte interpretr jazyka Python právě ten interpret z virtuálního prostředí. V prostředí VS Code stačí stisknout klávesovou zkratku cmd(ctrl)+shift+P a zvolit možnost "Python: vybrat interpret".
 
-Důkaz CAP teorému spočívá v následující úvaze. Představme si, že máme dva servery a na nich bězí dvě kopie databáze. Jeden server je například v Americe a druhý v Evropě. Tyto servery si spolu vyměňují data, jakmile někdo provede na jednom z nich transakci. Jsou tedy konzistentní. Pak nastane problém a jejich spojení se přeřuší. Servery dále běží, avšak již si nemohou zaslat transakce, které způsobí jejich konzistenci. V takovém případě jsou dvě možnosti, jak se situací vypořádat:
-1. Aplikace budou i nadále dostupné a odolné proti výpadkům, jen bude každý server mít trošku jiná data od doby výpadku propojení.
-2. Aplikace se musí zastavit a počkat, než se propojení obnoví, ať neztratíme konzistenci dat. Tím přestává být systém dostupný.
-
-
-Podle těchto písmen rozdělujeme DBMS do tří kategorií:
-* AP = Tyto DB jsou v případě síťového přerušení stále k dispozici, ačkoliv některé servery mají stará data (nekonzistentní). Po obnovení spojení se data dostávají do konzistentního stavu. Př.: Apache Cassandra, CouchDB
-* CP = Tyto DB zůstavají v případě síťového přerušení konzistentní, avšak ne všechny servery jsou dostupné. DBMS musí odpojený server vypnout. Po přopojení si konzistenci obnoví od ostatních Př.: MongoDB, Redis
-* CA = Tyto DB nemohou z principu být P-tolerantní, jelikož nelze v případě síťového výpadku zajistit, že se do pevného disku uloží všude stejná data. Jedná se tedy pouze o nesíťové DB, kde není co přerušovat (takže klasické DB). Př.: MariaDB, MS SQL Server, SQLite3
-
-### Úkol OS1.3 ACID vs. BASE:
-
-Hlavní vlastnost, která odlišuje SQL a NoSQL databáze od sebe je model konzistence dat. SQL používají model ACID, kde je hlavní důraz kladen na integritu dat. NoSQL databáze používají model konzistence BASE, kde je primární vlastností dostupnost dat.
-
-Model konzistence ACID:
-* A (Atomicity) = Transakce dat je atom komunikace s DB. Pokud transakce selže, tak se pomocí mechanismu rollbacku navrací DB do předchozího stabilního stavu.
-* C (Consistence) = Po provedení transakce máme jistotu, že data budou splňovat integritní omezení (správné datové typy, dodržení relací, atd.).
-* I (Isolation) = Transakce jsou vzájemně izolované. DBMS zařídí jejich sekveční provedení.
-* D (Durability) = Po provedení transakce jsou data nevolatilně zapsána do DB a navrát do předchozího stavu se musí dělat z logů o transakcích.
-
-Model konzistence BASE:
-* BA (Basic Availability) = Data jsou vysoce dostupná, kdykoliv je uživatel potřebuje. Nedostupná mohou být jen v případě, kdy celý systém (několik serverů) selže naráz.
-* S (Soft State) = Data uložená v distribuovaném systému serverů se mohou lišit. Hodnoty atributu entity nejsou napříč systémem konzistentní.
-* E (Eventual Constistency) = Data nemusí být v daném čase konzistentní, ale po nějaké době/události nakonec budou konzistentní. Taková událost je třeba požadavek na čtení dat (něž ale někdo požádá, tak nemusí být).
-
-### Úkol OS1.4 Škálovatelnost:
-
-Škálovatelností rozumíme schopnost systému přizpůsobit se požadovanému objemu požadavků. Základní způsoby škálovatelnosti jsou:
-1. vertikální škálování: zvyšování výpočetních prostředků serveru (více RAM, lepší nebo více CPU, větší pevný disk)
-2. horizontální škálování: zvyšování počtu serverů
-
-Vertikální škálování začně být od určitého požadavku na objem požadavků finančně neúnosný a možná i nereálné k provedení na hardwaru aktuální doby. To může představovat velký problém pro SQL databáze, kde víceméně jediný způsob jak provést škálování je vertikální škálování. NoSQL databáze oproti SQL databázím nemají problém s horizontálním škálováním a cíleně využívají tohoto škálování pro zajištění vysoké dostupnosti dat.
-
-NoSQL databáze jsou speficiké svým modelem konzistence BASE, kde je primární dostupnost dat. V případě výpadku server s DB musí existovat mechanismus, který vrátí data, ačkoliv nemusí být integritní.
-1. Duplication: databáze je rozkopírovaná mezi více serverů a v případě výpadku jednoho se používá druhý se zálohou
-2. Sharding: databáze je rozdělena mezi více serverů a v případě výpadku jednoho nedostane uživatel všechna data v celistvé podobně (není integrita), ale nějaká přeci jen dostane
-
-Sharding lze provádět dvěma způsoby. Představme si DB v modelu obyčejné tabulky (jako například tabulka z aplikací tabulkových kalkulátorů):
-1. vertikální sharding: sloupce tabulek jsou rozděleny do více databází, tím se zaručí, že v případě výpadku jsou dostupné všechny entity, avšak jejich informace budou omezené
-2. horizontální sharding: řádky tabulek jsou rozděleny do více databází, tím se zaručí, že v případě výpadku jsou dostupné alespoň některé entity se všemi svými atributy
-
-### Úkol OS1.5 Veledata:
-
-Veledata představují velký problém v oblasti datový analýzy. Jedná se o data, kde práce s nima představuje problém sám o sobě. Taková data jsou typická svými V-vlastnostmi:
-1. Volume: veledata jsou natolik objemná, že klasické DB nestačí
-2. Velocity: veledata přicházejí tak rychlé, že klasické DB nestačí nebo jsou zbytečné
-3. Variety: veledata přicházejí v různých formátech, že práce v klasické DB by byla integritně náročná
-4. Valence: veledate mají variabilní počet relací, který se v čase mění nebo narůstají s každým záznamem
-
-Někteří autoři k těmto V-vlastnostem přidávají řadí další vlastnosti (například Veracity), avšak nám budou stačit tyto. Jedná se tedy především o data z různých IoT (internet of things) zařízení jako jsou chytré senzory a telefony, u kterých ve velmi krátkém čase musíme zpracovat velký objem dat různého charakteru a relace mezi daty jsou variabilní. Z toho vyplývá, že musíme sáhnout právě po nějakých speciálních databázích, kde je prioritní dostupnost, jestli chceme výsledky dat vůbec v reálném čase používat. Těmi jsou právě NoSQL databáze.
-
-DB pro veledata se v oboru business inteligence různě nazývají. Pojďme se na nějaké definice podívat:
-1. Data ocean: jedná se o všechna možná data, které jsme schopni získat z různých zdrojů 
-2. Data lake: jedná se o data z oceánu, které víme, že budeme potřebovat a čistíme je algoritmy
-3. Data swamp: to samé jako jezero, jen je nečistíme, čímž si zhoršímu schopnost je využít
-4. Data pond: jedná se o data, která budeme v brzké době potřebovat a proto jsou značně očištěna
-5. Data puddle: jedná se o data, která zrovna teď potřebujeme a jsou očištěna - připravena 
-6. Data warehouse: jedná se o skladiště dat s danou strukturou (např.: ve formě SQL tabulek)
-7. Data market: funkcionálně ohraničený sklad (data jen pro logistiku nebo účetnictví, atd.)
-8. Data cube (OLAP): tří dimenzionální struktura z dat marketu, která se řeže v osách
-9. Data report: výsledek řezů OLAP kostky nebo jiných dat z tržiště
-
-Přechod mezi strukturami se provádí pomocí tzv. ETL transformací (extract-transform-load). Jedná se o tři činnosti, které je nutné s datama vždy provést. Extract vezme z jedné DB data, která nás zajímají. Transform je přemění do podoby pro následnou databázi. Load je nahraje do následné databáze.
-
-Je nutné zmínit, že velkou roli hraje strojové učení. Intenzivně se zkoumají algoritmy, které dokáží z datových oceánů najít data, která nás budou zajímat, nebo hledat mezi daty z jezera zajimavé souvislosti, které bychom jako lidé nenašli.
-
-## Domácí cvičení 1
-
-Pročtěte si následující tutoriály, ať se lépe konzulte příští lekce NSQL kurzu, kde si probereme strukturu Flask aplikací.
-
-### Úkol HW1.1 Flask:
+### Úkol 1.2 Flask:
 
 Flask je microframework pro vývoj webových aplikací v jazyce Python. Oproti například frameworku Django se jedná o jen to nejmenší nutné, aby python šlo využít pro tvorbu webových aplikací. Vytvořte si projekt ve vašem oblíbeném editoru, vytvořte virtuální prostředí v jazyce Python a balíčkovacím systémem pip si nainstalujte Flask. 
 
 Návod naleznete zde: [ZDE](https://flask.palletsprojects.com/en/2.2.x/installation/)
 
-### Úkol HW1.2 Koncové body:
+Instalace modulu Flask se provede pomocí příkazu:
+
+```
+pip install flask
+```
+
+### Úkol 1.3 Vytvoření Flask projektu:
+
+Vytvořte si adresář code, do kterého umistěte soubor s názvem app.py. Tento soubor bude prozatím obsahovat vše, co se týká jazyka Python a frameworku Flask. Později si uděláte korektní strukturu vašeho projektu. Na této stránce naleznete návod, jak spustit Flask aplikaci: [ZDE](https://www.tutorialspoint.com/flask/flask_application.htm).
+
+Pro pohodlnost si nastavte debug režim (změny v kódu se projeví bez nutnosti restartu aplikace) a rovnou si nastavte i port (napište stejné číslo jako je defaultní port Flasku). Port si nastavte explicitně z toho důvodu, že se vám může nějaká aplikace na portu bouchat s vaší za určitých okolností a chcete rychle vědět bez googlení, jak port změnit. Ip adresu nastavte na samé nuly a to z toho důvodu, že Docker, který budeme později používat, má problém spouštět Flask aplikace na jiné IP adrese.
+
+```
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+### Úkol 1.4 Koncové body:
 
 Webové aplikace využívají principu koncových bodů. V případě, že napíše uživatel do webového prohlížeče URL obsahující adresu serveru, tak může aktivovat určitý koncový bod dodáním symbolu lomítka a následně názvu koncového bodu. Koncový bod je v Pythonu realizován pomocí dekorátoru, který naslouchá na HTTP metody GET, POST, PUT, DELETE a spouští pythonovskou metodu. Tato metoda pak provádí již určitou službu. typicky při HTTP metodě GET vrátí nějakou webovou stránku, při HTTP metodě POST naopak nahrává uživatel data z formuláře do Pythonu, PUT a DELETE se používají jen u REST API aplikací.
 
 Podívejte se na to, jak se koncové body vytvářejí: [ZDE](https://hackersandslackers.com/your-first-flask-application/)
 
+```
+from flask import Flask, render_template
 
-### Úkol HW1.3 Šablony:
+app = Flask(__name__)
 
-Při obdržení požadavku HTTP GET má webový server vracet nějakou webovou stránku. Těm se říká ve Flasku šablony, jelikož mohou obsahovat nějaká data z Pythonu. Tyto data dodáváme do stránky pomocí šablonovacího jazyku, kterým je v případě Flasku jazyk Jinja2. Šablony (webové stránky) ukládáme implicitně do složky templates v projektu Flask aplikace. Šablony mohou mít i své šablony, které jsou pak rozšiřované. 
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def index():
+    return "<h1>Já jsem webovka s nadpisem</h1>"
 
-Podívejte se na to, jak se tvoří a vrací šablony uživateli: [ZDE](https://hackersandslackers.com/flask-jinja-templates)
+@app.route("/datasets")
+def datasets():
+    return "<h1>Já jsem jiná webovka s nadpisem</h1><p>mám i odstavec</p>"
 
-### Úkol HW1.4 Kaskádové styly:
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
 
-Pokud bychom pro tvorbu šablon použili pouze jazyk HTML5, tak jsme sice vytvořili strukturu stránek, ale jejich vzhled by nebyl příliš lákavý. Řešením je využít kaskádových stylů. Psaní grafického návrhu stránky pomocí kaskádových stylů je náročné. Lepší je využít nějaký vhodný pracovní rámec pro styly jako je například W3.CSS nebo Bootstrap5. 
+### Úkol 1.5 Šablony:
+
+Při obdržení požadavku HTTP GET má webový server vracet nějakou webovou stránku. Těm se říká ve Flasku šablony, jelikož mohou obsahovat nějaká data z Pythonu. Tyto data dodáváme do stránky pomocí šablonovacího jazyku, kterým je v případě Flasku jazyk Jinja2. Šablony (webové stránky) ukládáme implicitně do složky templates v projektu Flask aplikace, ale tato složka se dá nastavit parametrem template_folder. Šablony mohou mít i své šablony, které jsou pak rozšiřované. 
+
+Podívejte se na to, jak se tvoří a vrací šablony uživateli: [ZDE](https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-a-flask-application)
+
+**app.py**
+```
+from flask import Flask, render_template
+
+app = Flask(__name__, template_folder='templates')
+
+@app.route("/")
+@app.route("/home")
+@app.route("/index")
+def index():
+    return render_template("index.html")
+
+@app.route("/datasets")
+def datasets():
+    return render_template("datasets.html")
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
+```
+
+**šablona pro webovky template.html**
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myweb-{% block subtitle %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Name of my website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">About</a>
+            </li>
+            <li>
+                <a href="{{ url_for('datasets') }}">Datasets</a>
+            </li>
+            <li>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy;Beránek Pavel, UJEP, 2023</p>
+    </footer>
+</body>
+</html>
+```
+
+**konkrétní stránka index.html**
+```
+{% extends "template.html" %}
+
+{% block subtitle %}
+About
+{% endblock %}
+
+{% block main %}
+<p>My homepage</p>
+{% endblock %}
+```
+
+### Úkol 1.6 Kaskádové styly:
+
+Pokud bychom pro tvorbu šablon použili pouze jazyk HTML5, tak jsme sice vytvořili strukturu stránek, ale jejich vzhled by nebyl příliš lákavý. Řešením je využít kaskádových stylů. Je zvykem dávat css soubory do složky static.
 
 Podívejte se na to, jak dodat CSS do Flask aplikace: [ZDE](https://hackersandslackers.com/flask-assets)
 
-Dále si projděte si tutoriál na Bootstrap5: [ZDE](https://blog.appseed.us/bootstrap-for-beginners-with-examples/)
+**nahrání css do template.html**
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myweb-{% block subtitle %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Name of my website</h1>
+    </header>
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ url_for('index') }}">About</a>
+            </li>
+            <li>
+                <a href="{{ url_for('datasets') }}">Datasets</a>
+            </li>
+            <li>
+                <a href="{{ url_for('contact') }}">Contact</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy;Beránek Pavel, UJEP, 2023</p>
+    </footer>
+</body>
+</html>
+```
 
-### Úkol HW1.5 Přihlašovací formulář:
+**obsah css**
+```
+body{
+    background-color: antiquewhite;
+}
 
-Jedním z prvních úkolů v projektu bude vytvořit přihlašovací systém, který bude využívat relační databázi pro správu uživatelů. Přihlašování bude probíhat pomocí formuláře. 
+#view_count{
+    font-size: larger;
+    font-weight: bolder;
+    color:rgb(165, 55, 55);
+}
+```
 
-Podívejte se, jak se tvoří a zpracovává formulář: [ZDE](https://hackersandslackers.com/flask-wtforms-forms)
+## Domácí cvičení 1
 
-**Video týdne 1: Databázová paradigmata**
+### Úkol HW1.1 HTML5:
 
-Pojďme si zopakovat znalosti z hodiny na youtubovém videu :) [ZDE](https://www.youtube.com/watch?v=W2Z7fbCLSTw)
+Váš výsledný produkt bude využívat HTML5 standard jazyka. Ne všichni programátoři využívají HTML5 možnosti do maximální míry. Projděte si tutorial na w3schools, který vám ukáže možnosti HTML5 [ZDE](https://www.w3schools.com/html/default.asp).
 
-**Video týdne 2: Docker**
+Zaměřte se určitě na následující:
+1. Jaký je rozdíl mezi HEAD a BODY
+2. Co jsou to METAdata?
+3. Jaká se sémantická struktura webové stránky (HEADER, FOOTER, NAV, MAIN, ASIDE, SECTION, ARTICLE)
+4. Jak se tvoří odstavce P a nadpisy H
+5. Jak se tvoří setříděné OL a nesetříděné seznamy UL a jejich prvky LI
+6. Jak se tvoří hyperlinkové odkazy A na dokumenty uvnitř webovky a mimo webovku
+7. Jak se tvoří sémantická tabulka pomocí záhlaví, zápatí, těla, řádků a buněk
+8. Jak se tvoří formuláře pomocí FORM, FIELDSET, INPUT (a jejich typy) a tlačítka BUTTON
+9. Jak používat entity
+10. Jak vkládat multimediální prvky jako plátno, video, audio, obrázky aj.
 
-Pro snadné používání databází v našem vývojářském ekosystému budeme používat aplikaci Docker. Podívejte se na následující video, které vás do Dockeru zasvětí. [ZDE](https://www.youtube.com/watch?v=gAkwW2tuIqE)
+## Úkol HW1.2 CSS3:
+
+Vaše stránka zatím nevypadá příliš vábně. Zkuste si ji malinko ostylovat pomocí kaskádových stylů. Na následujícím odkazu najdete důležitou sadu operátorů a struktur, které můžete používat pro výběr určitých prvků, které chcete nastylovat. [ZDE](https://www.w3schools.com/cssref/css_selectors.php). Podívejte se pak ještě dál na nějaké ukázky a zkuste si ostylovat hezky navigační lištu.
+
+### Video týdne 1: Flask
+
+Projděte si následující tutoriál na framework flask [ZDE](https://www.youtube.com/watch?v=Z1RJmh_OqeA).

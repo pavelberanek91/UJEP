@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+
+{% block subtitle %}
+About
+{% endblock %}
+
+{% block main %}
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-success">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+
+<p>This page have been seen <span id="view_count">{{ view_count }}</span> times</p>
+<section id="news" class="container mt-5">
+    <div class="row">
+        {% for file_name in news_list %}
+        <article class="col-sm-4">
+            {% include file_name %}
+        </article>
+        {% endfor %}
+    </div>
+</section >
+
+<section id="review_list">
+    <h3>Recenze:</h3>
+    <ul>
+    {% for user, review_data in reviews.items() %}
+        <li class="card" style="display: inline-block;">
+            <div class="card-header">
+                <img src="{{ review_data['img'] }}" />
+                <h4>{{ user }}</h4>
+            </div>
+            <div class="card-body">
+                {{ review_data["review"] }}
+            </div>
+        </li>
+    {% endfor %}
+    </ul>
+</section>
+{% endblock %}

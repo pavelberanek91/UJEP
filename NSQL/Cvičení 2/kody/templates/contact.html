@@ -1,0 +1,27 @@
+{% extends "template.html" %}
+
+{% block subtitle %}
+Contact
+{% endblock %}
+
+{% block main %}
+<h2>Contact</h2>
+<form action="contact" method="post" enctype="multipart/form-data">
+    <fieldset>
+        <label for="username">Your name: </label>
+        <input type="text" name="username" required>
+        <label for="review">Your review: </label>
+        <input type="text" name="review" required>
+        <label for="image">Your image: </label>
+        <input type="file" name="image"/>
+    </fieldset>
+    <button type="submit">Send review</button>
+</form>
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-danger">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+
+{% endblock %}
