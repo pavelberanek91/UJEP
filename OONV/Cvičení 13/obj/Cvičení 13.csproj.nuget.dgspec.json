@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 13/Cvičení 13.csproj": {}
+    "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 13\\Cvičení 13.csproj": {}
   },
   "projects": {
-    "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 13/Cvičení 13.csproj": {
+    "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 13\\Cvičení 13.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 13/Cvičení 13.csproj",
+        "projectUniqueName": "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 13\\Cvičení 13.csproj",
         "projectName": "Cvičení 13",
-        "projectPath": "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 13/Cvičení 13.csproj",
-        "packagesPath": "/Users/pberanek91/.nuget/packages/",
-        "outputPath": "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 13/obj/",
+        "projectPath": "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 13\\Cvičení 13.csproj",
+        "packagesPath": "C:\\Users\\beranekp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 13\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/pberanek91/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\beranekp\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -43,16 +43,35 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.23, 6.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.23, 6.0.23]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.23, 6.0.23]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.23, 6.0.23]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/opt/homebrew/Cellar/dotnet/6.0.109/libexec/sdk/6.0.109/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }

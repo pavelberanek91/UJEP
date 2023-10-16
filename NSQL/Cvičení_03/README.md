@@ -8,7 +8,39 @@ lorem
 
 ### Úkol 3.2 Dockerizace aplikace:
 
-lorem
+Jako první budeme muset vyexportovat všechny nainstalované moduly v jazyce Python, které pak nainstalujeme dovnitř prázdného image s Alpine Linuxem a interpretrem Pythonu.
+
+```
+pip freeze > requirements.txt
+```
+
+Následně vytvoříme soubor s názvem Dockerfile. Dockerfile je soubor, ve kterém se nahrává základní obraz (linux s nainstalovanou aplikací) a my do něj můžeme nakopírovat náš zdrojový kód a zadat příkazy pro instalaci závislostí (moduly z requirements.txt).
+
+```
+FROM python:3.10-alpine
+WORKDIR /code
+COPY requirements.txt /code
+RUN pip install -r requirements.txt --no-cache-dir
+COPY ./code /code
+CMD python app.py
+```
+
+* FROM - z jakého základního obrazu vycházíme, ten se stahuje z webového portálu Dockerhub.com
+* WORKDIR - vytvoří pracovní adresář v obrazu
+* COPY - zkopíruju z mého pracovního adresáře do zadané složky v obrazu soubory/adresáře
+* RUN - spusť příkazy, které jsou součástí připravy obrazu, v tomto případě instalace všech balíčků pythonu z requirements souboru a nevytvářej bordel (no-cache)
+* CMD - poté, co je obraz hotov, tak proveď operace v příkazové řádce (spusť naší flask appku)
+
+Následně musíme takový obraz definovaný souborem sestavit (Dockerfile je návod na sestavení).
+```
+docker build -t nsql:flask .  
+```
+
+Teď už jen stačí rozeběhnout náš obraz do běžící instance = kontajner.
+```
+docker run -p 5000:5000 nsql:flask
+```
+
 
 ### Úkol HW3.3 Docker-compose a PostgreSQL:
 

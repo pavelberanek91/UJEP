@@ -1,6 +1,5 @@
 # NoSQL databázové systémy
 
-
 ## On-site cvičení 4
 
 ### Teorie 4.1 NoSQL Databáze:

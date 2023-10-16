@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "svAlj3ju3n71Yxw68PyhYtwomzhL3bzvpSOYczRbbfkEbv1w1v6sygimMzcbdfsSVgzPJwAX7K+5J1DsuUjrgA==",
+  "dgSpecHash": "yJQKeXIULYdd1Mc/lUH9SSPw1j2L/Yoq23eifZiK1llEkUIpR0Dk9ApKIDHV7BvlIVRZaW5Q99wgqiqNssVwgg==",
   "success": true,
-  "projectFilePath": "/Users/pberanek91/ws/Vyuka/UJEP/OONV/Cvičení 1/Cvičení 1.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\beranekp\\Documents\\code_ws\\UJEP\\OONV\\Cvičení 1\\Cvičení 1.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\beranekp\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.23\\microsoft.netcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\beranekp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.23\\microsoft.windowsdesktop.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\beranekp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.23\\microsoft.aspnetcore.app.ref.6.0.23.nupkg.sha512",
+    "C:\\Users\\beranekp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.23\\microsoft.netcore.app.host.win-x64.6.0.23.nupkg.sha512"
+  ],
   "logs": []
 }

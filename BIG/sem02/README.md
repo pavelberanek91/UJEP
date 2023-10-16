@@ -54,6 +54,16 @@ V hejnu se již nevyužívá příkaz docker run, ale hejnový příkaz docker s
 docker service --help
 ```
 
+Pojďme vytvořit naší první službu hejna. Vytvoříme službu, která vezme alpine linux obrazy a zavolá příkaz ping v terminálu aby pingnul server Googlu.
+```
+docker service create alpine ping 8.8.8.8
+```
+
+Službu si můžeme prohlédnout pomocí následující příkazu.
+```
+docker service ls
+```
+
 #### C2.2 - Kubernetes
 
 #### C2.3 - Kontejnerizace aplikace pomocí RKT
