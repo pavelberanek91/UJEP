@@ -35,10 +35,7 @@ user_reviews = {
 def index():
     redis.incr("homepage_requests")
     counter = str(redis.get("homepage_requests"), "utf-8")
-    #counter = 1
-    #news = ["news/" + filename for filename in os.listdir("./code/templates/news")] # pro lokální testování
     news = ["news/" + filename for filename in os.listdir("/code/templates/news")]
-    print(news)
     return render_template("index.html", reviews=user_reviews, view_count=counter, news_list=news)
 
 @app.route("/review/<username>")
