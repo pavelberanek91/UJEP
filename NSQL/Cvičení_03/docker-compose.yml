@@ -1,0 +1,31 @@
+version: '3'
+services:
+  flask:
+    build: .
+    container_name: flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./code:/code
+    depends_on:
+      - redis
+
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"  

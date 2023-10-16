@@ -165,17 +165,17 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
 ```
 
-### Úkol OS2.4 Bootstrap5:
-
-Místo kaskádových stylů svépomocí se dnes využívají hotové frameworky. Nejoblíbenějším frameworkem je Bootstrap. Alternativou od W3schools je W3.css. Podívejte se na následující tutoriály a vyzkoušejte si implementaci těchto frameworků do vaší aplikace. Návod na Bootstrap5 [ZDE](https://www.w3schools.com/bootstrap5/index.php). Návod na W3.CSS [ZDE](https://www.w3schools.com/w3css/default.asp).
-
-Ve finálním kódu, který je ve složce kody jsem udělal spousty zajímavých prvků odesignovaných bootstrapem, které si můžete prohlédnout.
-
 ## Domácí cvičení 2
 
 ### Úkol HW2.1 Bezpečné formuláře:
 
 Pro řádné bezpečné formuláře doporučuji využít knihovu WTF flask. Návod na její používání naleznete [ZDE](https://www.tutorialspoint.com/flask/flask_wtf.htm).
+
+### Úkol HW2.2 Bootstrap5:
+
+Místo kaskádových stylů svépomocí se dnes využívají hotové frameworky. Nejoblíbenějším frameworkem je Bootstrap. Alternativou od W3schools je W3.css. Podívejte se na následující tutoriály a vyzkoušejte si implementaci těchto frameworků do vaší aplikace. Návod na Bootstrap5 [ZDE](https://www.w3schools.com/bootstrap5/index.php). Návod na W3.CSS [ZDE](https://www.w3schools.com/w3css/default.asp).
+
+Ve finálním kódu, který je ve složce kody jsem udělal spousty zajímavých prvků odesignovaných bootstrapem, které si můžete prohlédnout.
 
 ### Video týdne 1: Docker
 
