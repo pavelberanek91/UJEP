@@ -47,16 +47,40 @@ Pro distribuované zpracování dat na uzlech je nutné psát sofistikované pro
 
 #### S1.3 - Virtualizované kontejnery
 
+V oboru softwarového inženýrství se dlouho řešil proces optimalizace nasazení a homogenního vývoje (celý tým vývojářů má stejnou platformu na které staví svůj kód). Řešením bylo využít kontejnerizace. V praxi se virtualizují (odproštění se od hmotné podstaty) aplikace na úrovni samotných aplikací nebo operačních systémů. Takové virtualizované aplikace jsou izolovány od všech ostatních náležitostí hmotného světa. Tím se myslí:
+* Aplikace netuší, jaké jsou skutečné fyzické prostředky počítače. Přidělená operační paměť, procesorový čas a místo na pevném disku může být jen dílčí část skutečných výpočetních prostředů.
+* Aplikace netuší, jaký je reálný hostitelský operační systém. Aplikace může běžet v Linuxu, avšak na skutečném serveru je Windows.
+* Aplikace netuší, jaké další aplikace kromě jí známých skutečně běží na počítači.
+
+Takové izolované aplikace v kontejnerech mohou být pak využity pro nezávislý běh na libovolném počítači a serveru. Neměl by existovat problém se závislostmi, jelikož aplikace mají všechny závislosti v jejich kontejneru již zabudované.
+
 Základní filosofií nástrojů řešící virtualizaci kontejnery je trojice aktivit v procesu virtualizace:
-1. sestav (build) - kontajner je univerzální programový balíček, který by měl být platformově agnostický (nezávislý)
-2. doruč (ship)
-3. spusť (run)
+1. sestav (build) - kontejner je univerzální programový balíček, který je sestaven tak, aby byl platformově agnostický (nezávislý)
+2. doruč (ship) - kontejner je doručen zákazníkovi jako izolovaný soubor nebo jako odkaz na repozitáři, který může snadno stáhnout a sestavit
+3. spusť (run) - sestavený kontejner je snadné spustit a měl by běžet na jakékoliv platformě, kde se nachází aplikace pro správu kontejnerů
 
 #### S1.4 - Docker
 
-Docker je v aktuální době nejpopulárnější virtualizační nástroj pro kontejnery. Jeho způsob sestavování obrazů (předloh) pro kontejnery se stal standardem, kterému říkám OCI.
+Docker je v aktuální době nejpopulárnější virtualizační nástroj pro kontejnery. Jeho způsob sestavování obrazů (předloh) pro kontejnery se stal standardem, kterému říkám OCI. Důležité je pochopit následující terminologii:
+1. Obraz (image) - předloha pro kontejner
+2. Kontejner (container) - instantizovaný obraz do spustitelné izolované aplikace
 
-#### S1.5 - Orchestrace
+Docker se skládá z několika elementů:
+1. Sestavovač (Builder) - čte sestavovací soubory (Dockerfiles) a na základě jejich instrukcí sestavuje obraz aplikace
+2. Klient (Client) - umožňuje komunikace uživatele s obrazy, kontejnery a motorem Dockeru
+3. Démon (Daemon) - spravuje běh kontejnerů a ukládá obrazy na pevný disk
+4. Motor (Engine) - spravuje data kontejnerů a manipuluje na základy požadavků klienta s kontejnery
+5. Událostní sběrnice (Event bus) - poskytuje požadované informace o událostech z kontejnerů
+6. Registr (Registry) - ukládá obrazy a poskytuje rozhraní pro práci s nimi
+7. Tabulka (Table) - obsahuje odpovědnosti všech zmíněných elementů Dockeru
+
+Při používání Dockeru jako kontejnerizační aplikace byste měli dodržovat následující zásady:
+1. Aplikace jsou vrstvené - budování obrazů se děje na základě na sebe naskládaných vrstev. Pokud se změní obsah jedné vrstvy, není nutné znovusestavovat všechny vrstvy.
+2. Jedna aplikace v kontejneru - v kontejneru by měla být vzdy jedna aplikace (např. webová aplikace ve Flask) a ta by měla v případě potřeby komunikovat s aplikacemi v jiných kontejnerech (např. PostgreSQL).
+3. Aplikace jsou bezestavové - kontejnery by měly být efemérní (prchavé, angl. ephemeral), tzn. neměl by být problém s jejich zastavením, zničením, znovuvytvořením a nasazením bez většího úsilí. Nejlepší způsob jak toto zaručit je psát bezestavové aplikace. Data by měly být umístěné mimo aplikační kontejner (interní nebo cloudová databáze).
+
+Více se o Dockeru můžete dočíst například [ZDE](https://delftswa.github.io/chapters/docker/)
+
 
 ### Cvičení
 
@@ -143,17 +167,3 @@ Zkuste schválně přepsat za běhu kontejneru soubor na cestě /usr/local/apach
 #### C1.3 - Docker-compose
 
 #### C1.4 - Dockerhub
-
-#### C1.5 - Dockerswarm
-
-### Domácí úkoly
-
-#### D1.1 - lorem
-
-#### D1.2 - lorem
-
-#### D1.3 - lorem
-
-#### D1.4 - lorem
-
-#### D1.5 - lorem
