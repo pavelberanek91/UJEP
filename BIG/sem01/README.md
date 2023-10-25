@@ -164,6 +164,32 @@ Zkuste schválně přepsat za běhu kontejneru soubor na cestě /usr/local/apach
 
 #### C1.2 - Dockerfile
 
+Doteď jsme pracovali s cizími obrazy, které pro nás někdo připravil a my je jen sestavovali a spouštěli. Zkusme si teď vybudovat vlastní obraz. To se provádí prostřednictvím souboru, kterém se říká Dockerfile.
+
+...
+
+Pojďme si vysvětlit základní instrukce pro Dockerfile:
+* FROM - první příkaz Dockerfilu, vybírá základní obraz, na kterým staví další vrstvu.
+* MAINTAINER - metainformace o tom, kdo je autor obrazu
+* RUN -spouští zadaná příkaz v shellu operačního systému (bash, cmd, ps, ...)
+* CMD - musí být jako jediný příkaz v Dockerfilu a představuje spouštěcí bod aplikace s argumenty, neslouží pro nastavení a instalace závislostí jako RUN
+* LABEL - přidává dodatečné metainformace ve formě dvojic klíč:hodnota
+* EXPOSE - nastavuje naslouchání kontejneru na specifický port
+* ENV - nastavuje proměnné prostředí ve formě klíč:hodnota, typicky pro loginy, hesla a jiná data, která nemají být v kódu odkryta
+* COPY - kopíruje data (soubory a adresáře) z lokálního disku do obrazu
+* ADD - stejně jako příkaz COPY, ale umožňuje i adresovat data pomocí URL
+* ENTRYPOINT - nastavení všech argumentů příkazové řádky, které se spustí při spuštění obrazu (přepisují ty, nastavené v příkazu CMD)
+* VOLUME - slouží pro vytvoření sdíleného diskového místa mezi kontejnerem a hostitelem (mohu tak snadno vyvíjít do kontejneru a zasílat tam transparentně změny ze svého disku)
+* USER - nastaví uživatelské jméno nebo uživatelské UID k obrazu
+* WORKDIR - vytvoří pracovní adresář v obrazu pro příkazy jako RUN, CMD, ENTRYPOINT, COPY a ADD
+* ARG - argumenty, které slouží Dockeru pro tvorbu obrazů, nemělo by být použito pro tajná data (secrets) - pro ty máme ENV
+* ONBUILD - přidává instrukci typu spoušť (trigger), které se spustí, až bude obraz použit jako bázová vrstva pro jiný obraz.
+* STOPSIGNAL - nastaví systémový signál pro násilné ukončení kontejneru (kill signal - SIGKILL).
+* HEALTHCHECK - nastavení procesu měření zdráví kontejneru pomocí příkazů příkazové řádky. Pokud test opakovaně selže, tak je kontejner považován za nemocný.
+* SHELL - umožňuje nastavit základní shell pro příkazy typu CMD.
+
+Hlubší přehled příkazů naleznete [ZDE](https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index)
+
 #### C1.3 - Docker-compose
 
 #### C1.4 - Dockerhub
