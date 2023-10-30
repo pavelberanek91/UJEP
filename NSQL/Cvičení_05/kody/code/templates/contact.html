@@ -1,0 +1,25 @@
+{% extends "template.html" %}
+
+{% block subtitle %}
+Contact
+{% endblock %}
+
+{% block main %}
+<h2>Contact</h2>
+<form action="contact" method="post" enctype="multipart/form-data">
+    <fieldset>
+        {{ form.csrf_token }}
+        {{ form.username }}
+        {{ form.review }}
+        {{ form.image }}
+    </fieldset>
+    <button type="submit">Send review</button>
+</form>
+
+{% for message in get_flashed_messages() %}
+<div class="alert alert-danger">
+    <strong>{{ message }}</strong>
+</div>
+{% endfor %}
+
+{% endblock %}

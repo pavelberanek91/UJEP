@@ -1,0 +1,26 @@
+{% extends "template.html" %}
+
+{% block subtitle %}
+Datasets
+{% endblock %}
+
+{% block main %}
+<h2>Sheep dataset</h2>
+<form action="datasets" method="post">
+    <fieldset>
+        <label for="sheepname">Sheep name: </label>
+        <input type="text" name="sheep" required>
+    </fieldset>
+    <button type="submit">Show sheep info</button>
+</form>
+
+<ul>
+    {% for sheep in sheeps: %}
+    <li>Name: {{ sheep[1] }}</li>
+    <li>Weight [kg]: {{ sheep[2] }}</li>
+    <li>Produced wool [kg]: {{ sheep[3] }}</li>
+    <li>Description: {{ sheep[4] }}</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
