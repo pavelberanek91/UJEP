@@ -59,6 +59,8 @@ Základní filosofií nástrojů řešící virtualizaci kontejnery je trojice a
 2. doruč (ship) - kontejner je doručen zákazníkovi jako izolovaný soubor nebo jako odkaz na repozitáři, který může snadno stáhnout a sestavit
 3. spusť (run) - sestavený kontejner je snadné spustit a měl by běžet na jakékoliv platformě, kde se nachází aplikace pro správu kontejnerů
 
+Jejich využití ve veledatech je takové, že potřebujeme snadno vytvořit homogenní platformu, na které poběží vertikálně škálované aplikace. Virtualizace pomocí kontejnerů tento problém řeší. Kontejnery jsou platformově agnostické jednotky, takže nepotřebuji homogenní platformu, lze je snadno orchestrovat (starat se o životní cyklus a vytvářet nové instance podle aktuální vytíženosti).
+
 #### S1.4 - Docker
 
 Docker je v aktuální době nejpopulárnější virtualizační nástroj pro kontejnery. Jeho způsob sestavování obrazů (předloh) pro kontejnery se stal standardem, kterému říkám OCI. Důležité je pochopit následující terminologii:
@@ -166,7 +168,29 @@ Zkuste schválně přepsat za běhu kontejneru soubor na cestě /usr/local/apach
 
 Doteď jsme pracovali s cizími obrazy, které pro nás někdo připravil a my je jen sestavovali a spouštěli. Zkusme si teď vybudovat vlastní obraz. To se provádí prostřednictvím souboru, kterém se říká Dockerfile.
 
-...
+Následující ukázka je Dockerfile, který stáhne minimalizovaný Linux Alpine (5 MB) s předinstalovaným interpretrem python3, použije ho jako základ do kterého nainstaluje webový framework Flask, nakopíruje do jeho pracovního adresáře /app zdrojové soubory a requirements soubor se závislostma pro správce balíku pythonu (Pip), nainstaluje závislosti a spustí webovou aplikaci.
+
+```
+#stáhni z dockerhubu tento základní obraz
+FROM python
+
+#vytvoř v obrazu pracovní adresář v rootu s názvem app a přesuň se do něj (kombinace mkdir a cd)
+WORKDIR /app
+
+#zkopíruj z mého pracovního adresáře na mém disku soubor requirements.txt se závislostmi pythonu a vlož ho do pracovního adresáře obrazu
+COPY requirements.txt .
+
+#spusť v obrazu správce balíku pip a nainstaluj závislost z requirements souboru
+RUN pip install -r requirements.txt
+
+#zkopíruj z mého pracovního adresáře na mém disku obsah složky src a zkopíruj ho do pracovního adresáře v obrazu (/app)
+COPY src/ ./
+
+#spusť přes příkazovou řádku naší flask aplikaci na adrese 0.0.0.0
+CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+```
+
+Tento soubor se pomocí příkazu ```docker build .``` sestaví ve spustitelný obraz. Tečka na konci znamená, že Dockerfile je v aktuálním pracovním adresáři. Jinak tam uveďte cestu k Dockerfilu.
 
 Pojďme si vysvětlit základní instrukce pro Dockerfile:
 * FROM - první příkaz Dockerfilu, vybírá základní obraz, na kterým staví další vrstvu.
@@ -190,6 +214,159 @@ Pojďme si vysvětlit základní instrukce pro Dockerfile:
 
 Hlubší přehled příkazů naleznete [ZDE](https://kapeli.com/cheat_sheets/Dockerfile.docset/Contents/Resources/Documents/index)
 
-#### C1.3 - Docker-compose
+#### C1.3 - Dockerhub
 
-#### C1.4 - Dockerhub
+Dockerhub je úložiště dockerobrazů, které si můžete stáhnout příkazem ```docker pull [název obrazu]``` do svého projektu a používat obraz jako běžící kontejner, nebo můžete obraz využít jako základní vrstvu pro váš vlastní obraz. Nahrané obrazy na Dockerhubu jsou nahrány různými společnostmi a komunitou. Vy sami si můžete na dockerhub nahrát vlastní obraz, který si ostatní mohou stáhnout a spustit nebo vybudovat nad ním vlastní aplikaci. Na Dockerhubu se musíte nejprve registrovat.
+
+Když sestavujete obraz, který chcete nahrát na dockerhub, tak by postup měl být následující:
+* sestavte si z dockerfilu obraz: ```docker build -t [váš dockerhub login]/[zvolený název obrazu] .```
+* vyzkoušejte lokální běh kontejneru z obrazu: ```docker run [váš dockerhub login]/[zvolený název obrazu]```
+* nahrajte obraz na dockerhub: ```docker push [váš dockerhub login]/[zvolený název obrazu]```
+* zkontrolujte nahrání obrazu na dockerhubu
+* stažení pak kdokoliv provede příkazem: ```docker pull [váš dockerhub login]/[zvolený název obrazu]```
+
+#### C1.4 - Docker-compose
+
+V praxi potřebuji více aplikací (služeb) aby tvořilo můj systém. Řešením by bylo sestavení obrazu mé aplikace a spuštění a následně v jiné instance (nebo při detached modu klidně na popředí) stáhnout další požadované obrazy s aplikacemi (například NoSQL databáze typu Mongo, Neo4J, Redis aj.). To je v praxi dost nepohodlné. Daleko lepší by bylo vytvořit jeden soubor, který mi všechny mé vlastní služby sestaví z Dockerfilů a ostatní stáhne z dockerhubu. Staženým službám nastaví tajemství (loginy, hesla) a další konfigurační informace (porty, závislosti) a spustí výsledné sestavené obrazy v kontejnery. Takovou aplikací je právě docker-compose, která je nově součástí Dockeru samého.
+
+Pojďme se podívat na docker-compose.yml souboru, který sestaví vlastní flask aplikaci a stáhne 3 další obrazy (Redis, MongoDB, Neo4J). Jedná se o minimální nastavení služeb. Zbytek si musíte dohledat na příslušných stránkách samotných obrazů na Dockerhubu.
+* [Redis](https://hub.docker.com/_/redis)
+* [MongoDB](https://hub.docker.com/_/mongo)
+* [Neo4J](https://hub.docker.com/_/neo4j)
+
+```
+version: '3'
+services:
+  flask:
+    build: .
+    container_name: flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./code:/code
+    depends_on:
+      - redis
+
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    ports:
+      - "6379:6379"
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"  
+```
+ 
+Tento soubor se spustí příkazem ```docker-compose up``` pokud je docker-compose.yml soubor v aktuálním pracovním adresáři terminálu. Měli byste vidět v Docker desktopu sestavený zásobník (stack) kontejnerů a minimálně 4 obrazy (4 služby z docker-compose souboru a případně vaší vlastní další).
+
+Rozeberme si příkazy tohoto Docker-compose.yml souboru.
+* version - jaká verze docker-composu se využívá
+* services - pod tento příkaz se definují všechny služby výsledného zásobníku (názvy služeb jsou na nás)
+* build - pro služby, které se sestavují z Dockerfilu, a příkaz udává cestu k příslušnému Dockerfilu
+* container_name - jak se bude jmenovat sestavená kontejner služby
+* ports - na jakých portech uvidíme na hostitelském počítači (první číslo) výstup portu služby (druhé číslo)
+* volumes - propojí souborové systémy v hostitelském počítači (první cesta) se souborovým systémem v kontejnery služby (druhá cesta)
+* depends_on - nastavení závislosti služby na jiné, nejprve se musí spustit služba, na které je aktuální závislá, tím se zabrańuje například tomu, že by se spustila webová aplikace pokud selže spuštění databáze (lze například ještě specifikovat příznakem condition, že služba musí být také zdravá)
+* image - stáhne obraz z dockerhubu a sestaví ho v kontejner
+* environment - nastavení proměnných prostředí (loginy, hesla aj.)
+
+Důležité jsou ještě některé užitečné příkazy konzolového rozhraní docker-composu. Obecně jsou ve formátu ```docker-compose [příznaky] [příkaz] [argumenty]```. Celý přehled naleznete [ZDE](https://docs.docker.com/compose/reference/):
+* build - sestaví nebo znovusestaví služby
+* create - vytvoří kontejnery pro služby
+* start - zapne služby
+* up - vytvoří a zapne služby (create + start najednou)
+* pause - pozastaví služby
+* unpause - odzastaví služby
+* restart - restartuje kontejnery služeb
+* stop - zastaví služby
+* down - zastaví a odstraní služby
+* exec - spustí příkaz ve službě
+* cp - kopíruje soubory mezi hostujícím serverem a službou 
+* logs - vypíše výstup služby
+* port - vypíše veřejné nastavené porty (občas se hodí, když jste zapomněli nastavení a nechcete si prohlížet docker-compose soubor)
+
+Pokud chcete po spuštění příkazem sestavovacího procesu tyto příkazy interaktivně využívat, tak musíte spustit docker-compose v detached režimu ```docker-compose up -d```.
+
+Posledním důležitým poznatkem jsou sítě (network). Kromě závislosti spuštění obrazu v kontejner na základě existence nebo zdravého stavu jiného (depends_on) lze závislost kontejnerů provázat tím, že je dáme do společné sítě, kde na sebe vidí přeš šifrovaný síťový tunel. V terminologii docker síťování existuje několik důležitých termínů:
+* síťové pískoviště (network sandbox) - izolované virtuální síťové prostředí pro komunikaci docker kontejnerů
+* koncový bod (endpoint) - body komunikace s kontejnerem (IP, MAC, DNS adresy)
+* síťový ovladač (network driver) - mechanismus síťové komunikace (bridge, host, none, overlay, macvlan), určuje jak bude docker síť řešena
+* docker motor (docker engine) - spravuje síť s různými network drivery
+* most (bridge) - soukromá síť v hostitelském počítači, kontejnery mají v takové síti vlastní IP adresu přes kterou komunikují; jedná se o typ ovladače
+* overlay - důležitý ovladač pro Docker shluky (docker swarm), který řídí komunikaci shluků s obrazy
+* macvlan - ovladač zjednodušující komunikaci obrazů pomocí přiřazení MAC adresy kontejnerům
+
+Více se dozvíte [ZDE](https://www.edureka.co/blog/docker-networking/).
+
+V našem předchozím příkladě samozřejmě také vznikla síť, jen jsme ji sami nespecifikovali. Po spuštění se vytvořila síť s implicitním názvem a kontejnery spolu komunikují pomocí názvu služeb. Pojďme si ukázat příklad docker-composu, kde si sami specifikujeme síť. V tomto kódu je upravena struktura projektu tak, že React (javascriptový pracovní rámec) se stará o zobrazení dat aplikace. Tato data mu zasílá flask, který je získává z databází. Flask potřebuje komunikovat s databázemi, ale React pouze s Flaskem. Proto jsou vytvořeny dvě sítě - frontend a backend. Flask je součástí frontendu (komunikace s React) a backendu (komunikace s databázemi), ale React je jen součástí frotendu (komunikace s Flask).
+
+```
+version: '3'
+services:
+
+  react:
+    build: Dockerfile-react
+    container_name: react
+    volumes:
+      - ./frontend:/code/frontend
+    depends_on:
+      - flask
+    networks:
+      - frontend
+
+  flask:
+    build: Dockerfile-flask
+    container_name: flask
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./backend:/code/backend
+    depends_on:
+      - redis
+      - mongodb
+      - neo4j
+    networks:
+      - backend
+      - frontend
+
+  redis:
+    image: redislabs/redismod
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - backend
+
+  mongodb:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    networks:
+      - backend
+
+  neo4j:
+    image: neo4j:latest
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    networks:
+      - backend
+
+networks:
+    backend:
+    frontend:
+```
