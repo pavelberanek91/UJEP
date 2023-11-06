@@ -14,7 +14,7 @@ Jakmile se začne růst počet kontejnerů vaší aplikace, tak začne vznikat v
 5. Jak zajistíme komunikaci mezi hardwarovými uzly přes virtuální sítě?
 6. Jak můžeme ukládat a doručovat klíče, hesla a jiná tajemství do správných kontejnerů?
 
-Tyto situace řeší orchestrační nástroje, jako je Docker Swarm nebo Kubernetes.
+Tyto situace řeší orchestrační nástroje, jako je Docker Swarm nebo Kubernetes. Orchestrace je termín, který představuje proces automatické konfigurace, koordinace spolupráce a řízení softwaru. V kontextu kontejnerů se tím myslí schopnost řídit životní cyklus kontejnerů.
 
 Docker Swarm řeší orchestraci tím způsobem, že rozděluje uzly v síti na 2 typy - manažeři a dělníci (manažeři mohou být zároveň dělníky). Manažeři řídí životní cyklus dělníků.
 
@@ -72,7 +72,7 @@ docker service ls
 
 #### C2.5 - Monitorování pomocí Prometheus a Grafana
 
-### Domácí úkoly
+### Samostatné cvičení
 
 #### D2.1 - lorem
 
