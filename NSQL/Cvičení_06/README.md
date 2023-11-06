@@ -1,98 +1,16 @@
 # NoSQL databázové systémy
 
-## On-site cvičení 6
+## Cvičení 6 - Asynchronní úlohy pomocí Redis fronty:
 
-### Úkol OS6.1 Vytvoření prostředí pro vývoj:
+V tomto cvičení budete realizovat na serveru pomocí modulu Redis Queue (nebo Celery) frontu pro asynchronní úlohy. Jednodušší řešení je využít Redis Queue, ale v praxi se více používá celery. Následující odkazy vás zavedou na příslušné tutoriály, které jsou alternativy:
+* Redis Queue: [ZDE](https://testdriven.io/blog/asynchronous-tasks-with-flask-and-redis-queue/)
+* Celery: [ZDE](https://testdriven.io/blog/flask-and-celery/)
 
-Redis budeme využívat přes Docker obraz. Je tedy nutné si nainstalovat Docker. V opačném případě můžete přímo nainstalovat Redis, ale to nedoporučuji pro potřeby vaší výuky. Stáhneme si předpřipravený obraz Redis z DockerHubu pomocí příkazu: ```docker pull redis```.
-
-Kontrolu staženého obrazu provedeme pomocí příkazu: ```docker images```. Tím vypíšeme seznam všech stažených obrazů, které je možné spustit v kontajnerech.
-
-Následně Redis obraz spustíme v kontejneru pomocí Dockeru příkazem v odpojeném módu (na pozadí) na portu 6379 (ten je i implicitní, takže to není nutné specifikovat): ```docker run -d -p 6379:6379 --name muj_redis redis ```.
-
-Ujistíme se, že Docker kontejner běží pomocí příkazu: ```docker ps``` a zapamatujeme si port (měl by být implicitně 6379).
-
-Pokud byste chtěli vidět stavové výpisy Redis, pak napište ```docker logs muj_redis```.
-
-Pokud byste spustili docker kontejner se jménem, se kterým nejste spokojeni, pak můžete docker kontejner zastavit pomocí příkazu: ```docker stop muj_redis``` a případně smazat kontejner příkazem ```docker rmi $(docker image | grep 'muj_redis')```. Pokud byste chtěli smazat stažený obraz, pak použijte příkaz: ```docker rmi $(docker image | grep 'muj_redis')```.
-
-Pokud byste chtěli smazat všechny stažené obrazy, pak to provedete příkazem ```docker rmi $(docker images -q)```.
-
-Pro využívání CLI příkazů na obrazu Redis si zapneme interaktivní mód a zapneme shell: ```docker exec -it muj_redis sh```.
-
-V shellu Redis kontajneru můžeme zapnout aplikace redis-cli pro práci s Redis databází v příkazové řádce: ```redis-cli```.
-
-Vyzkoušejte si, že jste schopni s Redisem komunikovat pomocí příkazu ```PING```. Mělo by se vám ozvat ```PONG```.
-
-### Úkol OS6.2 Komunikace s Redis pomocí redis-py:
-
-Další fází je připojit se jazykem python do redis databáze. Nainstalujte si do virtuálního prostředí (nebo pro odvážlivce nativního prostředí) přes balíčkovací systém pip knihovnu redis ```python -m pip install redis```. Vyzkoušejte si poslat pár příkazů z přednášky do instance redisu:
-
-```
-import redis
-r = redis.Redis()
-
-r.mset({"Katedra Informatiky": "Jiří Škvor", "Katedra Fyzika": "Eva Hejnová"})
-r.get("Katedra Informatiky")
-```
-
-Pokud byste potřebovali nastavit redis jinak než implicitně, pak ```r = redis.Redis(host='localhost', port=6379, db=0, password=None)```. Parametr ```db``` představuje číslo databáze. Redis si své instance označuje identifikátorem a může vám naráz běžet více instancí redis databáze. Port 6379 je implicitní a snad by se vám neměl s žádným křížit. Je však možné, že máte tento port zakázený, tak si ho povolte nebo využijte jiný povolený port.
-
-Vyzkoušejte si nastavit dobu přežití pro nějakou položku v redis databázi:
-
-```
-from datetime import timedelta
-r.setex("Děkan", timedelta(minutes=1), value="Michal Varady")
-```
-
-Pokud se na ní budete ptát, tak po minutě již nebude v databázi přítomna:
-
-```
-r.get("Děkan")
-```
-
-Dobrý tutoriál s výčtem operací rozhraní pro používání Redisu v pythonu naleznete [ZDE](https://realpython.com/python-redis/).
-
-### Úkol OS6.3 Komunikace s Redis z Flask:
-
-Teď již zbývá propojit redis s webovým frameworkem Flask. Návod na propojení naleznete [ZDE](https://pypi.org/project/flask-redis/).
-
-### Úkol OS6.4 Využití Redis jako cachovací databáze:
-
-Hlavní využití Redisu v komerčních aplikacích je redis jako cachovací databáze. Redis běží v operační paměti a je schopen vracet velice rychle data. Myšlenka je zakreslená v následujícím obrázku.
-
-![image](https://user-images.githubusercontent.com/42642687/199008241-984f260f-b345-4cb3-b9c8-36e16c0bfac8.png)
-
-Prověďte následující úkoly:
-1. Naplňte Postgres databázi informacema o katedrách na jednotlivých fakultách (stačí pár údajů) a vyprázdněete Redis databázi. 
-2. Vytvořte webovou stránku ve Flasku, kde uživatel zvolí katedru.
-3. Uživatel si na stránce zvolí katedru,  Flask aplikace se nejprve podívá do redis databáze a pokud se tám katedra nachází, tak vrátí její data.
-4. Pokud se tam nebude katedra nacházet, pak se podívejte do Postgres databáze a přečtěte informace z ní.
-5. Tyto informace uložte do Redis databáze, ať tam jsou nacachované pro příští rychlé využití. 
-6. Informace tam zůstanou nacachované maximálně minutu. 
-7. Vrácená data vizualizujte šablonovacím jazykem Jinja2.
-8. Změřte rychlost vracení nacachované a nenacachované hodnoty z webové aplikace.
+### Zadání
 
 
-## Domácí cvičení 1
 
-### Úkol HW6.1 Úvod do Redis:
+## Materiály k samostudiu
 
-Projděte si následující tutoriál, který vás uvede do světa Redisu krok za krokem [ZDE](https://betterprogramming.pub/getting-started-with-redis-a-python-tutorial-3a18531a73a6)
-
-### Úkol HW6.2 Příkazy Redisu:
-
-Projděte si následující tutoriál, který vám ukáže všechny možné příkazy Redisu. Vyzkoušejte si je volat z redis-py: [ZDE](https://www.tutorialspoint.com/redis/index.htm)
-
-### Úkol HW6.3 Praktická použití Redisu:
-
-Projděte si následující tutoriál, který vám ukáže, jak lze redis využít pro praktické aplikace: [ZDE](https://realpython.com/python-redis/)
-
-### Úkol HW6.4 Flask Redis fronta:
-
-Projděte si následující tutoriál, který vám ukáže praktickou implementace abstraktní datové struktury fronta, kterou tvoří interně Redis ve webové aplikaci [ZDE](https://realpython.com/flask-by-example-implementing-a-redis-task-queue/)
-
-### Úkol HW6.5 Objektové-modelování v Redis:
-
-Projděte si následující tutoriál, který využívá specializovaný modul om-redis, vytvářející abstrakci nad redisem pro práci s objektovým modelem: [ZDE](https://redis.io/docs/stack/get-started/tutorials/stack-python/)
+Projděte si následující tutoriál, který vám ukáže všechny možné příkazy Redisu. Vyzkoušejte si je volat z redis-py: [ZDE](https://www.tutorialspoint.com/redis/index.htm). Tím budete mít zásobu příkazů, které můžete pro vaše aplikace s Redis využít. Dalším zajímavým tutoriálem je tutoriál na využití specializovaného modulu om-redis, vytvářející abstrakci nad redisem pro práci s objektovým modelem: [ZDE](https://redis.io/docs/stack/get-started/tutorials/stack-python/)
 
