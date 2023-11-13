@@ -144,3 +144,5 @@ Měření doby trvání operace při cache hit a cache miss můžete provést po
 Pokud vás tematika zaujala, tak více se můžeme dozvědět o Redis a jeho využívání v ekosystému python technologií na tutoriálech [ZDE](https://realpython.com/search?q=redis).
 Pro lepší procvičení Redisu vám doporučuji minimálně tento tutoriál: [ZDE](https://realpython.com/python-redis/). Pokud se chcete lépe připravit na příští lekci, tak budeme využívat Redis pro frontu. Úloha bude podobná této: [ZDE](https://realpython.com/flask-by-example-implementing-a-redis-task-queue/).
 
+
+
