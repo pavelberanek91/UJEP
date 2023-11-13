@@ -1,80 +1,35 @@
 # NoSQL databázové systémy
 
-## Cvičení 7 - Dokumentová databáze Mongo
+## Cvičení 7 - Dokumentová databáze MongoDB
+
+V tomto cvičení budete realizovat jednoduchou aplikaci, která využívá nejzákladnější příkazy MongoDB pro CRUD operace. Začnete s tutoriálem z W3Schools na základě kterého vytvoříte aplikaci podle zadání.
 
 ### Zadání
 
-Cílem tohoto cvičení je zprovoznit databázi MongoDB.
+Pojedeme podle nejjednoduššího možného tutoriálu (tj. tutoriál z newbie websitu w3schools.com).
+1. Nainstalujte si PyMongo: [ZDE](https://www.w3schools.com/python/python_mongodb_getstarted.asp)
+2. Vytvořte v MongoDB první databázi: [ZDE](https://www.w3schools.com/python/python_mongodb_create_db.asp)
+3. Vytvořte v MongoDB první kolekci: [ZDE](https://www.w3schools.com/python/python_mongodb_create_collection.asp)
+4. Vložte do vytvořené kolekce první záznam: [ZDE](https://www.w3schools.com/python/python_mongodb_insert.asp)
+5. Vložte do kolekce více záznamů a zkuste je vyhledat pomocí find_one() a find() metod: [ZDE](https://www.w3schools.com/python/python_mongodb_find.asp)
+6. Vložte si do kolekce více záznamů a zkuste je filtrovat pomocí regulárních výrazů: [ZDE](https://www.w3schools.com/python/python_mongodb_query.asp)
+7. Seřaďte záznamy: [ZDE](https://www.w3schools.com/python/python_mongodb_sort.asp)
+8. Smažte některé záznamy: [ZDE](https://www.w3schools.com/python/python_mongodb_delete.asp)
+9. Upravte některý záznam: [ZDE](https://www.w3schools.com/python/python_mongodb_update.asp)
+10. Smažte celou kolekci: [ZDE](https://www.w3schools.com/python/python_mongodb_drop_collection.asp)
 
-#### 7.1 Spuštění MongoDB před Docker
+Teď jste připravení na pravé zadání k dnešnímu cvičení :).
 
-Obraz pro MongoDB stáhneme příkazem v terminále: ```docker pull bitnami/mongodb:latest```. Tím se stáhne nejnovější verze obrazu MongoDB. 
+Vytvořte aplikaci, která slouží jako receptář studentských receptů. Funkcionální požadavky:
+1. Aplikace bude mít 3 stránky: Domů (popis, co je to za projekt), Recepty (vypsaný seznam všech receptů z MongoDB), PřidejRecept (formulář, kterým může zaslat kdokoliv recept do systému). Recept bude mít tři informace: jméno receptu, jméno zadavatele, popis receptu.
+2. Naplňte MongoDB několika prvotníma receptama a vypište si je na stránce Recepty na obrazovku.
+3. Zpracujte formulář a přidejte zadaný recept z formuláře do MongoDB. 
+4. Navrhněte si webové API rozhraní pro komunikaci se serverem na všechny CRUD operace (Create, Read, Update, Delete). 
+5. Create přidává recept přes API. Pokud recept s daným názvem od daného uživatele již existuje v MongoDB, tak nebude přidan.
+6. Read vrátí recept podle zadaného jména a zadaného uživatele.
+7. Update upraví existující recept podle zadaného jména a zadaného receptu, pokud uživatel dodal správné tajné heslo k příslušnému záznamu.
+8. Delete smaže existující recept podle zadného jména a zadaného receptu, pokud uživatel dodal správné tajné heslo k příslušnému záznamu.
 
-Spuštění obrazu se provádí příkazem: ```docker run --name mongo mongodb```, kde mongo je název kontejneru a mongodb je název obrazu.
+## Materiály k samostudiu
 
-#### 7.2 Komunikace s MongoDB přes příkazovou řádku
-
-Do obrazu se připojíme příkazem ```docker exec -it mongo bash```. Tím se spustí interaktivní shell, do kterého můžeme zadávat příkazy.
-
-Příkazem ```use fakulta``` vytvoříme databázi falulta. Do této databáze přidáme 3 dokumenty do kolekce studenti:
-
-```
-db.studenti.save({ jméno: “Pavel Beránek” })
-db.studenti.save({ jméno: “Jiří Škvor” })
-db.studenti.save({ jméno: “Petr Kubera” })
-```
-
-Na dokument se zeptáme pomocí příkazu find: ```db.studenti.find({ jméno: “Pavel Beránek” })```
-
-#### 7.3 Připojení MongoDB obrazu do docker-compose souboru
-
-Pokud chcete přidat mongodb obraz do vaší aplikace s architekturou mikroslužeb, pak spuštění mongo v compose souboru vypadá takto:
-```
-version: '3.7'
-services:
-  mongodb_container:
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootpassword
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb_data_container:/data/db
-
-volumes:
-  mongodb_data_container:
-```
-
-#### 7.4 Komunikace s MongoDB přes Python
-
-Pro komunikace s mongodb budeme potřebovat ovladač pro python: ```pip install pymongo```. Poté můžeme provést základní test komunikace python aplikace s mongodb:
-```
-from pymongo import MongoClient
-  
-# připojení do mongo databáze pomocí mongo klienta
-client=MongoClient()
-client = MongoClient(“mongodb://localhost:27017/”)
-  
-# připojení do konkrétní databáze
-db = client["fakulta"]
-  
-# připojení ke kolekci
-kolekce=db[‘studenti’]
-  
-# dokument ve formátu json (slovník slovníků), který přidáme do databáze
-zaznam = {
-  "jméno": "Pavel Beránek", 
-  "obor": "Aplikovaná informatika", 
-  "tags": ["KI", "PŘF", "APLINF"], 
-  "počet kreditů": 120
-}
-  
-# vložení záznamu (dokumentu) do databáze
-zaznam = db.kolekce.insert(zaznam)
-
-# čtení záznamů z databáze
-for záznam in db.kolekce.find({jméno: "Pavel Beránek"})
-    print(i)
-
-```
+Modelování API je důležitou součástí dnešních vývojových procesů. Podívejte se na jazyk RAML a proveďte modelování vašeho API a zdokumentujte si ho: [ZDE](https://raml.org/)
