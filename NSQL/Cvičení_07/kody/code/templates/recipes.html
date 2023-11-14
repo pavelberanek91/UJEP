@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Recipes</h2>
+<ul class="list-group">
+{% for recipe in recipes %}
+<li class="list-group-item">
+    {{ recipe["name"] }} ({{ recipe["author"] }}) - {{ recipe["description"] }}
+</li>
+<ul >
+{% endfor %}
+</ul>
+{% endblock %}

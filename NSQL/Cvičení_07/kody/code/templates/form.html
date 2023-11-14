@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block content %} 
+<form action="form" method="post">
+    <fieldset>
+        <div class="mb-3 mt-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" name="name" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3 mt-3"></div>
+            <label for="author" class="form-label">Author:</label>
+            <input type="text" name="author" class="form-control" id="author" required>
+        </div>
+        <div class="mb-3 mt-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea name="description" class="form-control" id="description" cols="30" rows="10" required></textarea>
+        </div>
+    </fieldset>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <p class="alert alert-success mt-5" role="alert">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{% endblock %}
