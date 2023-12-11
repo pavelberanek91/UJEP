@@ -1,0 +1,24 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Tvůj profil</h2>
+<p>Uprav svůj profil.</p>
+
+<article class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <section class="card-body">
+      <h3 class="card-title">{{ profile.get("user.name") }}</h5>
+      <ul class="card-text">
+        <li>Věk: {{ profile.get("user.age") }}</li>
+        <li>Záliby:
+            <ul>
+            {% for hobby in profile.get("user.hobbies") %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+      </ul>
+    </section>
+</article>
+
+{% endblock %}

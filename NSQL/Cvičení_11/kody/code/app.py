@@ -1,28 +1,15 @@
 from py2neo import Graph, Node, Relationship
+from flask import Flask, render_template
+from random import choice
 
+
+app = Flask(__name__)
 graph = Graph("bolt://neo4j:7687", auth=("neo4j", "adminpass"))
-            
-def print_matches(graph, username):
-    for record in graph.run(f"""
-                        MATCH (friend:Person) 
-                        WHERE user.name = '{username}'
-                        AND (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
-                        RETURN user.name, friend.name
-                        """):
-        print(record["friend.name"])
 
-def avaiable_matches(graph, username):
-    for record in graph.run(f"""
-                        MATCH (friend:Person)
-                        WHERE user.name = '{username}' 
-                        AND NOT (friend:Person)-[:DISLIKES]->(user:Person)-[:DISLIKES]->(friend:Person)
-                        AND NOT (user:Person)-[:DISLIKES]->(friend:Person)
-                        AND NOT (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person)
-                        RETURN user.name, friend.name
-                        """):
-        print(record["friend.name"])
+logged_user = "Pepa"
 
-def main():
+
+def mock_data(graph):
     tx = graph.begin()
     pepa = Node("Person", name="Pepa", age=34, hobbies=["programming", "running"])
     jana = Node("Person", name="Jana", age=30, hobbies=["cats", "running"])
@@ -37,28 +24,75 @@ def main():
     alene_se_nelibi_michal = Relationship(alena, "DISLIKES", michal)
     richardovi_se_libi_alena = Relationship(richard, "LIKES", alena)
     relationships = [pepovi_se_libi_jana, jane_se_libi_pepa, michalovi_se_libi_alena, alene_se_nelibi_michal, richardovi_se_libi_alena]
-    
+
     for user in users:
         graph.create(user)
 
     for relationship in relationships:
         graph.create(relationship)
 
-    # print("Matches for Pepa:")
-    # print_matches(graph, "Pepa")
-    # print("Matches for Jana:")
-    # print_matches(graph, "Jana")
-    # print("Matches for Michal:")
-    # print_matches(graph, "Michal")
-    # print("Matches for Alena:")
-    # print_matches(graph, "Alena")
-    # print("Matches for Richard:")
-    # print_matches(graph, "Richard")
 
-    print("Avaiable matches for Pepa:")
-    avaiable_matches(graph, "Pepa")
-    print("Avaiable matches for Alena:")
-    avaiable_matches(graph, "Alena")
+def get_logged_user_profile(graph, username):
+    return graph.run(f"""
+        MATCH (user:Person)
+        WHERE user.name = '{username}'
+        RETURN user.name, user.age, user.hobbies
+    """).data()[0]
+    
+            
+def get_matches(graph, username):
+    return graph.run(f"""
+        MATCH (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
+        WHERE user.name = '{username}'
+        RETURN friend.name, friend.age, friend.hobbies
+    """).data()
+
+
+def available_matches(graph, username):
+    return graph.run(f"""
+        MATCH (user:Person)
+        MATCH (friend:Person)
+        WHERE user.name = '{username}'
+        AND NOT (user:Person)-[:LIKES]->(friend:Person)
+        AND NOT (friend:Person)-[:DISLIKES]->(user:Person)
+        AND NOT (user:Person)-[:DISLIKES]->(friend:Person)
+        AND NOT friend.name = '{username}'
+        RETURN friend.name, friend.age, friend.hobbies
+    """).data()
+
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
+@app.route("/")
+def hello_world():
+    return render_template("index.html")
+
+
+@app.route("/matches")
+def matches():
+    matches = get_matches(graph, logged_user)
+    return render_template("matches.html", profiles=matches)
+
+
+@app.route("/matching")
+def matching():
+    potential_matches = available_matches(graph, logged_user)
+    if potential_matches:
+        random_profile = choice(potential_matches)
+    else:
+        random_profile = None
+    return render_template("matching.html", profile=random_profile)
+
+
+@app.route("/profile")
+def profile():
+    logged_user_info = get_logged_user_profile(graph, logged_user)
+    return render_template("profile.html", profile=logged_user_info)
+
 
 if __name__ == "__main__":
-    main()
+    #mock_data(graph)
+    app.run(debug=True, host="0.0.0.0", port=5000)
