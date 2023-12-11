@@ -1,8 +1,16 @@
 {% extends "template.html" %}
 
 {% block content %}
-<h2>Tvůj profil</h2>
-<p>Uprav svůj profil.</p>
+<h2>Vítej na Matchomatu</h2>
+<p>Zapaluj, nech se zapalovat a nalezni si zde svou drahou polovičku se kterou budete hořet.</p>
+
+<h3>Statistiky</h3>
+<ul>
+  <li>Počet lidí, se kterými se ještě můžeš seznámit: {{ num_of_available_matches }}</li>
+  <li>Počet lidí, se kterými jsi již v páru: {{ num_of_matches }}</li>
+</ul>
+
+<h3>Tvůj profil</h3>
 
 <article class="card" style="width: 18rem;">
     <!-- <img src="..." class="card-img-top" alt="..."> -->
@@ -20,5 +28,4 @@
       </ul>
     </section>
 </article>
-
 {% endblock %}
