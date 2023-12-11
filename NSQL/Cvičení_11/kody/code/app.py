@@ -4,10 +4,21 @@ graph = Graph("bolt://neo4j:7687", auth=("neo4j", "adminpass"))
             
 def print_matches(graph, username):
     for record in graph.run(f"""
-                         MATCH (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
-                         WHERE user.name = '{username}'
-                         RETURN user.name, friend.name
-                         """):
+                        MATCH (friend:Person) 
+                        WHERE user.name = '{username}'
+                        AND (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
+                        RETURN user.name, friend.name
+                        """):
+        print(record["friend.name"])
+
+def avaiable_matches(graph, username):
+    for record in graph.run(f"""
+                        MATCH (friend:Person)
+                        WHERE user.name = '{username}' 
+                        AND NOT (friend:Person)-[:DISLIKES]->(user:Person)-[:DISLIKES]->(friend:Person)
+                        AND NOT (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person)
+                        RETURN user.name, friend.name
+                        """):
         print(record["friend.name"])
 
 def main():
@@ -32,16 +43,21 @@ def main():
     for relationship in relationships:
         graph.create(relationship)
 
-    print("Matches for Pepa:")
-    print_matches(graph, "Pepa")
-    print("Matches for Jana:")
-    print_matches(graph, "Jana")
-    print("Matches for Michal:")
-    print_matches(graph, "Michal")
-    print("Matches for Alena:")
-    print_matches(graph, "Alena")
-    print("Matches for Richard:")
-    print_matches(graph, "Richard")
+    # print("Matches for Pepa:")
+    # print_matches(graph, "Pepa")
+    # print("Matches for Jana:")
+    # print_matches(graph, "Jana")
+    # print("Matches for Michal:")
+    # print_matches(graph, "Michal")
+    # print("Matches for Alena:")
+    # print_matches(graph, "Alena")
+    # print("Matches for Richard:")
+    # print_matches(graph, "Richard")
+
+    print("Avaiable matches for Pepa:")
+    avaiable_matches(graph, "Pepa")
+    print("Avaiable matches for Alena:")
+    avaiable_matches(graph, "Alena")
 
 if __name__ == "__main__":
     main()
