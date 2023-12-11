@@ -1,0 +1,6 @@
+[console_scripts]
+
+
+[pygments.lexers]
+py2neo.cypher = py2neo.cypher.lexer:CypherLexer
+

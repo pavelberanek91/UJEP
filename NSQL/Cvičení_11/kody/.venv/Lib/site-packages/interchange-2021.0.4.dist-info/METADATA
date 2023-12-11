@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: interchange
+Version: 2021.0.4
+Summary: Data types and interchange formats
+Home-page: https://github.com/py2neo-org/interchange
+Author: Nigel Small
+Author-email: technige@py2neo.org
+License: Apache License, Version 2.0
+Project-URL: Bug Tracker, https://github.com/py2neo-org/interchange/issues
+Project-URL: Documentation, https://docs.py2neo.org/interchange/
+Project-URL: Source Code, https://github.com/py2neo-org/interchange
+Platform: UNKNOWN
+Classifier: Development Status :: 6 - Mature
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Information Technology
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Natural Language :: English
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Topic :: Software Development
+Classifier: Topic :: Software Development :: Libraries
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pytz
+Requires-Dist: six
+
+# Interchange
+
+Interchange is a data type and interchange format library.
+It has been primarily developed for the py2neo project.
+
+
+## `interchange.collections`
+
+TODO
+
+
+## `interchange.math`
+
+TODO
+
+
+## `interchange.packstream`
+
+TODO
+
+
+## `interchange.space`
+
+TODO
+
+
+## `interchange.text`
+
+TODO
+
+
+## `interchange.time`
+
+TODO
+
+
