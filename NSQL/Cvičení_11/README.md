@@ -9,7 +9,7 @@ V tomto cvičení si vytvoříme pomocí Neo4j jednoduchou sociální síť. Cí
 1. Vytvořte si docker-compose.yml soubor, ve kterém si připravíte flask aplikaci s instalací závislostí. Budeme potřebovat pracovat s modulem py2neo, který podstatně usnadňuje práci s neo4j z Pythonu. V compose souboru bude samozřejmě i příprava neo4j databáze. Důležité upozornění! Neo4j se pouští pomalu a pokud se nějaký obraz k ní připojuje, tak musí počkat nějakou dobu, jinak připojení selže. Řešením je použít healthcheck systém Dockeru, který zkontroluje, zda systém již běží. Ostatní kontejnery se připojí do kontrolovaného kontejneru jen tehdy, je-li již v pořádku.
 2. Vytvořte si jednoduchý prototyp online seznamky pomocí py2neo. Vložte do seznamky nějaké uživatele s následujícími parametry: jméno, věk, záliby. Následně vytvořte vztahy mezi nějakými z nich a transakce spusťte. Úspěšné přidání uzlů a vztahů do databáze zkontrolujte pomocí webového prohlížeče.
 3. Vytvořte funkci, která nalezne páry uzlů, které si daly vzájemně like. Vypište si je pomocí printu do terminálu. Pokud by vám přišel terminál přiliš nepřehledný kvůli verbositě neo4j, pak si zobrazte pouze log z flask kontejneru pomocí Dockeru.
-4. Vytvořte funkci, která nalezne vrátí uživatele, který vybraný jedinec ještě neliknul. Nezobrazujte ty uzly, které dali jedincovi dislike. Výsledek si opět vypište pomocí printu.
+4. Vytvořte funkci, která nalezne uživatele, který vybraný jedinec ještě neliknul. Nezobrazujte ty uzly, které daly jedincovi dislike. Výsledek si opět vypište pomocí printu.
 5. Upravte vyhledávání uživatelů tak, aby se jako první upřednostňovali ty účty, se kterými má náš uživatel vysoký počet společných zálib.
 6. Vytvořte kolem funkcionality webový portál ve Flasku. Website bude obsahovat následující stránky: home, search, matches. Při prvotním otevření stránky home vybídne uživatele k přihlášení nebo registraci. Pokud bude přihlášen, pak stránka ukazuje zajímavé (a možná i smutné) informace o uživateli jako je např.: počet lidí k dispozici, se kterými se ještě může matchnout, počet matchů, počet daných liků a pokud jste sadisti tak i počet disliků. Na stránce search se zobrazí účty všech lidí, které ještě může uživatel matchnout a nedali mu dislike. Na stránce matches se zobrazují všechny vzájemné matche. Vytvořte k tomu grafické rozhraní jako ve zjednodušeném Tinderu nebo jiné aplikaci.
 
@@ -100,6 +100,7 @@ docker-compose logs flask
 ```
 
 **Cvičení 4**
+Funkce, která nalezne uživatele, který vybraný jedinec ještě neliknul a nedali mu dislike, by mohla vypadat takto:
 ```
 
 ```
