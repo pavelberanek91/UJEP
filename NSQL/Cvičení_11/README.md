@@ -9,9 +9,8 @@ V tomto cvičení si vytvoříme pomocí Neo4j jednoduchou sociální síť. Cí
 1. Vytvořte si docker-compose.yml soubor, ve kterém si připravíte flask aplikaci s instalací závislostí. Budeme potřebovat pracovat s modulem py2neo, který podstatně usnadňuje práci s neo4j z Pythonu. V compose souboru bude samozřejmě i příprava neo4j databáze. Důležité upozornění! Neo4j se pouští pomalu a pokud se nějaký obraz k ní připojuje, tak musí počkat nějakou dobu, jinak připojení selže. Řešením je použít healthcheck systém Dockeru, který zkontroluje, zda systém již běží. Ostatní kontejnery se připojí do kontrolovaného kontejneru jen tehdy, je-li již v pořádku.
 2. Vytvořte si jednoduchý prototyp online seznamky pomocí py2neo. Vložte do seznamky nějaké uživatele s následujícími parametry: jméno, věk, záliby. Následně vytvořte vztahy mezi nějakými z nich a transakce spusťte. Úspěšné přidání uzlů a vztahů do databáze zkontrolujte pomocí webového prohlížeče.
 3. Vytvořte funkci, která nalezne páry uzlů, které si daly vzájemně like. Vypište si je pomocí printu do terminálu. Pokud by vám přišel terminál přiliš nepřehledný kvůli verbositě neo4j, pak si zobrazte pouze log z flask kontejneru pomocí Dockeru.
-4. Vytvořte funkci, která nalezne uživatele, který vybraný jedinec ještě neliknul. Nezobrazujte ty uzly, které daly jedincovi dislike. Výsledek si opět vypište pomocí printu.
-5. Upravte vyhledávání uživatelů tak, aby se jako první upřednostňovali ty účty, se kterými má náš uživatel vysoký počet společných zálib.
-6. Vytvořte kolem funkcionality webový portál ve Flasku. Website bude obsahovat následující stránky: home, search, matches. Při prvotním otevření stránky home vybídne uživatele k přihlášení nebo registraci. Pokud bude přihlášen, pak stránka ukazuje zajímavé (a možná i smutné) informace o uživateli jako je např.: počet lidí k dispozici, se kterými se ještě může matchnout, počet matchů, počet daných liků a pokud jste sadisti tak i počet disliků. Na stránce search se zobrazí účty všech lidí, které ještě může uživatel matchnout a nedali mu dislike. Na stránce matches se zobrazují všechny vzájemné matche. Vytvořte k tomu grafické rozhraní jako ve zjednodušeném Tinderu nebo jiné aplikaci.
+4. Vytvořte funkci, která nalezne uživatele pro které vybraný jedinec ještě nehlasoval. Nezobrazujte ty uzly, které daly jedincovi dislike. Výsledek si opět vypište pomocí printu.
+5. Vytvořte kolem funkcionality webový portál ve Flasku. Website bude obsahovat následující stránky: home, search, matches. Přihlášení můžete nasimulovat jednoduchou konstantou s jménem uživatele, jenž je přihlášen. Úvodní stránka budet ukazovat zajímavé (a možná i smutné) informace o uživateli jako je např.: počet lidí k dispozici, se kterými se ještě může matchnout, počet matchů, počet daných liků a pokud jste sadisti tak i počet disliků. Na stránce search se zobrazí náhodný účet, který ještě může uživatel matchnout a nedali mu dislike. Na stránce matches se zobrazují všechny vzájemné matche. Vytvořte k tomu grafické rozhraní jako ve zjednodušeném Tinderu nebo jiné aplikaci.
 
 ### Řešení
 
@@ -85,37 +84,144 @@ if __name__ == "__main__":
 **Cvičení 3**
 Funkce, která nalezne páry uzlů, které si daly vzájemně like, by mohla vypadat takto:
 ```
-def print_matches(graph, username):
-    for record in graph.run(f"""
-                         MATCH (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
-                         WHERE user.name = '{username}'
-                         RETURN user.name, friend.name
-                         """):
-        print(record["friend.name"])
+def get_matches(graph, username):
+    return graph.run(f"""
+        MATCH (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person) 
+        WHERE user.name = '{username}'
+        RETURN friend.name, friend.age, friend.hobbies
+    """).data()
 ```
 
-Pro výpis logu z flask kontejneru provedeme do nového shellu příkaz:
+Návratovou hodnotu můžeme vytisknout do terminálu nebo zobrazit na webové stránce. Jelikož je Neo4j docela verbózní, je lepší vytisknout log z flask kontejneru do shellu příkazem:
 ```
 docker-compose logs flask
 ```
 
 **Cvičení 4**
-Funkce, která nalezne uživatele, který vybraný jedinec ještě neliknul a nedali mu dislike, by mohla vypadat takto:
+Funkce, která nalezne uživatele, pro kterého vybraný jedinec ještě nehlasoval (like ani dislike) a jedinci mu nedali mu dislike, by mohla vypadat takto:
 ```
-
+def available_matches(graph, username):
+    return graph.run(f"""
+        MATCH (user:Person)
+        MATCH (friend:Person)
+        WHERE user.name = '{username}'
+        AND NOT (user:Person)-[:LIKES]->(friend:Person)
+        AND NOT (friend:Person)-[:DISLIKES]->(user:Person)
+        AND NOT (user:Person)-[:DISLIKES]->(friend:Person)
+        AND NOT friend.name = '{username}'
+        RETURN friend.name, friend.age, friend.hobbies
+    """).data()
 ```
 
 **Cvičení 5**
+Statistiky je možné získat již pomocí naprogramovaných funkcí.
 ```
+@app.route("/")
+@app.route("/home")
+def hello_world():
+    logged_user_info = get_logged_user_profile(graph, logged_user)
+    num_of_matches = len(get_matches(graph, logged_user))
+    num_of_available_matches = len(available_matches(graph, logged_user)) 
+    return render_template("home.html", profile=logged_user_info, num_of_matches=num_of_matches, num_of_available_matches=num_of_available_matches)
 
 ```
+Zde vidíte stránku s profilem uživatele.
+```
+{% extends "template.html" %}
 
-**Cvičení 6**
+{% block content %}
+<h2>Vítej na Matchomatu</h2>
+<p>Zapaluj, nech se zapalovat a nalezni si zde svou drahou polovičku se kterou budete hořet.</p>
+
+<h3>Statistiky</h3>
+<ul>
+  <li>Počet lidí, se kterými se ještě můžeš seznámit: {{ num_of_available_matches }}</li>
+  <li>Počet lidí, se kterými jsi již v páru: {{ num_of_matches }}</li>
+</ul>
+
+<h3>Tvůj profil</h3>
+
+<article class="card" style="width: 18rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <section class="card-body">
+      <h3 class="card-title">{{ profile.get("user.name") }}</h5>
+      <ul class="card-text">
+        <li>Věk: {{ profile.get("user.age") }}</li>
+        <li>Záliby:
+            <ul>
+            {% for hobby in profile.get("user.hobbies") %}
+                <li>{{ hobby }}</li>
+            {% endfor %}
+            </ul>
+        </li>
+      </ul>
+    </section>
+</article>
+{% endblock %}
+```
+Nejsložitější je naprogramovat situaci, která vybere náhodný dostupný uzel a ten můžeme matchnout. Zde bude trošku problém s identifikací účtu, který jsme matchli. Jedna z fint, kterou jsem využil, je využít skrytý HTML vstupní prvek formuláře s hodnotou uzlu pro pozdější identifikaci. 
+```
+{% extends "template.html" %}
+
+{% block content %}
+<h2>Hledej</h2>
+<p>Zapal nebo uhas profil.</p>
+{% if profile %}
+  <article class="card" style="width: 18rem;">
+      <!-- <img src="..." class="card-img-top" alt="..."> -->
+      <section class="card-body">
+        <h3 class="card-title">{{ profile.get("friend.name") }}</h5>
+        <ul class="card-text">
+          <li>Věk: {{ profile.get("friend.age") }}</li>
+          <li>Záliby:
+              <ul>
+              {% for hobby in profile.get("friend.hobbies") %}
+                  <li>{{ hobby }}</li>
+              {% endfor %}
+              </ul>
+          </li>
+        </ul>
+      </section>
+  </article>
+<form action="/search" method="post">
+  <input type="hidden" name="friend_name" value="{{ profile.get('friend.name') }}">
+  <button type="submit" class="btn btn-primary" name="date_choice" value="like">Like</button>
+  <button type="submit" class="btn btn-primary" name="date_choice" value="dislike">Dislike</button>
+</form>
+{% else %}
+  <p>Žádný profil nenalezen.</p>
+{% endif %}
+{% endblock %}
+```
+A samotné zpracování v Pythonu:
+```
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    if request.method == "GET":
+        potential_matches = available_matches(graph, logged_user)
+        if potential_matches:
+            random_profile = choice(potential_matches)
+        else:
+            random_profile = None
+        return render_template("search.html", profile=random_profile)
+    else:
+        date_choice = request.form.get("date_choice")
+        friend_name = request.form.get("friend_name")
+        user_node = get_user_node(graph, logged_user)
+        friend_node = get_user_node(graph, friend_name)
+        if date_choice == "like":
+            new_relationship = Relationship(user_node, "LIKES", friend_node)
+        elif date_choice == "dislike":
+            new_relationship = Relationship(user_node, "DISLIKES", friend_node)
+        graph.create(new_relationship)
+        return redirect("/search")
 ```
 
-```
+Před matchem vypadá situace takto:
+![Alt text](predlikem.png)
 
-**Cvičení 7**
-```
+Vidíme, že Pepa má vzájemný like s Janou, takže by ji měl vidět v Matches. Dále vidíme, že mu dala like Alena. Pokud tedy dáme like Aleně, měli bychom ji v matches vidět.
+![Alt text](liknirandom.png)
+![Alt text](shody.png)
 
-```
+Zbytek kódu naleznete v adresáři kody.
