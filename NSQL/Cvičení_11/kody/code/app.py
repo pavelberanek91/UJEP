@@ -16,6 +16,7 @@ def avaiable_matches(graph, username):
                         MATCH (friend:Person)
                         WHERE user.name = '{username}' 
                         AND NOT (friend:Person)-[:DISLIKES]->(user:Person)-[:DISLIKES]->(friend:Person)
+                        AND NOT (user:Person)-[:DISLIKES]->(friend:Person)
                         AND NOT (friend:Person)-[:LIKES]->(user:Person)-[:LIKES]->(friend:Person)
                         RETURN user.name, friend.name
                         """):
