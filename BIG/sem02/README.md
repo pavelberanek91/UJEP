@@ -8,7 +8,7 @@
 
 Jakmile se začne růst počet kontejnerů vaší aplikace, tak začne vznikat velké množství problémů:
 1. Jak automatizuji životní cyklus kontejnerů?
-2. Jak můžeme systém škálovat?
+2. Jak můžeme systém škálovat (nahoru i dolu)?
 3. Jak zajistíme znovuspuštění kontejnerů, pokud z nějakého důvodu dojde k jejich pádu při běhu?
 4. Jak můžeme můžeme nasadit změny systému do provozu bez přerušení běhu (tzv. blue-green deployment)?
 5. Jak zajistíme komunikaci mezi hardwarovými uzly přes virtuální sítě?
