@@ -26,7 +26,30 @@ Docker Swarm řeší orchestraci tím způsobem, že rozděluje uzly v síti na 
 
 ### Cvičení
 
-#### C2.1 - Docker Swarm
+#### C2.1 - Nginx
+
+**1. Reverzní proxy**
+1. Vytvořte Dockerfile pro Python
+2. Nahrajte do Dockerfilu jednoduchou Flask aplikaci
+3. Vytvořte Nginx konfigurační soubor a nastavte ho jako reverzní proxy na portu 80
+4. Spojte Dockerfile se stáhnutým Docker obrazem Nginx pomocí dockercompose
+5. Spusťte a otestujte pomocí logs v docker-compose
+
+**2. Bezpečnost**
+1. Vyzkoušejte, že curl http://localhost vrací obsah z backendu, ale curl -I http://localhost vrací jako server nginx
+2. Přidejte do nginx ochranu proti DDoS útokům omezením rychlosti požadavků a otestujte skriptem.
+
+**3. Load balacing**
+1. Přidejte do flask kódu kód, který bude identifikovat, ze kterého serveru se vrací odevzda, např.: return f'Hello from {os.environ["HOSTNAME"]}!'
+2. Vytvořte více instance flask backendu na různých portech v docker-compose
+3. Nastavte nginx jako loadbalacner mezi instantizovanými kontejnery v nginx.conf
+4. Otestujte load balancing
+
+**4. Cachování**
+1. Přidejte do konfiguje nginx cestu ke cachování odpovědí
+2. Ověřte, že se odpovědi vrací z cache
+
+#### C2.2 - Docker Swarm
 
 Pojďme nejprve zapnout Docker Swarm (implicitně je neaktivní, což zjistíte pomocí docker info příkazu). Následující příkaz vytvoří hejno s bezpečnostním certifikátem a tokeny pro připojení do hejna.
 
@@ -64,19 +87,11 @@ Službu si můžeme prohlédnout pomocí následující příkazu.
 docker service ls
 ```
 
-#### C2.2 - Kubernetes
-
 #### C2.3 - Kontejnerizace aplikace pomocí RKT
 
 #### C2.4 - Flatcar Linux
 
 #### C2.5 - Monitorování pomocí Prometheus a Grafana
-
-### Samostatné cvičení
-
-#### D2.1 - lorem
-
-#### D2.2 - lorem
 
 #### D2.3 - lorem
 
