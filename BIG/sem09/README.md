@@ -1,18 +1,18 @@
 # Datová úložiště a nástroje pro Big Data (KI/BIG)
 
-## Seminář 9 -  NoSQL databáze a BigData (Caché)
+## Seminář 9 - Big Data a cloudové služby
 
 ### Samostudium
 
-#### S9.1 - lorem
+#### S9.1 - Cloudové služby
 
-#### S9.2 - lorem
+#### S9.2 - Microsoft Azure
 
-#### S9.3 - lorem
+#### S9.3 - Goodle Cloud Computing (GCP)
 
-#### S9.4 - lorem
+#### S9.4 - Amazon Web Services (AWS)
 
-#### S9.5 - lorem
+#### S9.5 - FinOps
 
 ### Cvičení
 
@@ -26,14 +26,3 @@
 
 #### C9.5 - lorem
 
-### Domácí úkoly
-
-#### D9.1 - lorem
-
-#### D9.2 - lorem
-
-#### D9.3 - lorem
-
-#### D9.4 - lorem
-
-#### D9.5 - lorem

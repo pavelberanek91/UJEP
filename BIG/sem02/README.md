@@ -93,8 +93,3 @@ docker service ls
 
 #### C2.5 - Monitorování pomocí Prometheus a Grafana
 
-#### D2.3 - lorem
-
-#### D2.4 - lorem
-
-#### D2.5 - lorem
