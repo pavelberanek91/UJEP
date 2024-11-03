@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  dash-app:
+    build: .
+    container_name: dash-app
+    ports:
+      - "8050:8050"  # Dash běží na portu 8050
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/ecommerce  # URI pro připojení k MongoDB
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"  # MongoDB defaultní port
+    volumes:
+      - mongo_data:/data/db  # Uložiště pro MongoDB data
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"  # Mongo Express běží na portu 8081
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin  # Uživatelské jméno pro Mongo Express
+      - ME_CONFIG_BASICAUTH_PASSWORD=secret  # Heslo pro Mongo Express
+
+volumes:
+  mongo_data:
+    driver: local
