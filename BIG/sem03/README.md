@@ -228,13 +228,13 @@ for doc in collection.find(query):
 V MongoDB jsou agregační roury (pipelines) pokročilým nástrojem pro zpracování a analýzu dat. Umožňují kombinovat různé kroky (tzv. stages), které postupně zpracovávají dokumenty z kolekce. Každý krok v pipelině vykonává určitý úkol, jako například filtrování, třídění, seskupování nebo transformaci dat. Výstup jednoho kroku se stává vstupem pro další krok, což umožňuje postupné vytváření komplexních dotazů.
 
 **Klíčové kroky v agregační rouře**
-1. $match – Filtrování dokumentů podle specifických kritérií (např. {"age": {"$gte": 18}}).
-2. $group – Seskupování dat podle určitého pole, například počítání průměru, součtu nebo dalších agregovaných hodnot.
-3. $project – Transformace nebo výběr polí, která mají být součástí výstupu. Umožňuje také vytvářet nová pole z existujících (např. formátování dat).
-4. $sort – Třídění výsledků podle zadaných kritérií (např. {"date": -1} pro sestupné pořadí).
-5. $limit a $skip – Omezení počtu dokumentů nebo přeskočení určitého počtu dokumentů, což může být užitečné pro stránkování výsledků.
-6. $lookup – Provedení "joinu" mezi kolekcemi, což je obdoba SQL spojení mezi tabulkami.
-7. $unwind – "Rozbalení" polí typu pole (array) do jednotlivých dokumentů, což umožňuje práci s daty uvnitř pole každého dokumentu.
+1. $match - Filtrování dokumentů podle specifických kritérií (např. {"age": {"$gte": 18}}).
+2. $group - Seskupování dat podle určitého pole, například počítání průměru, součtu nebo dalších agregovaných hodnot.
+3. $project - Transformace nebo výběr polí, která mají být součástí výstupu. Umožňuje také vytvářet nová pole z existujících (např. formátování dat).
+4. $sort - Třídění výsledků podle zadaných kritérií (např. {"date": -1} pro sestupné pořadí).
+5. $limit a $skip - Omezení počtu dokumentů nebo přeskočení určitého počtu dokumentů, což může být užitečné pro stránkování výsledků.
+6. $lookup - Provedení "joinu" mezi kolekcemi, což je obdoba SQL spojení mezi tabulkami.
+7. $unwind - "Rozbalení" polí typu pole (array) do jednotlivých dokumentů, což umožňuje práci s daty uvnitř pole každého dokumentu.
 
 Příklad agregační roury:
 ```
@@ -253,10 +253,93 @@ db.orders.aggregate([
 Účelem tohoto cvičení je procvičit si práci s agregační pipelinou v MongoDB na rozsáhlých datech. Budete analyzovat dataset obsahující informace o prodejích v e-commerce.
 
 #### C3.1 - Připrava docker prostředí
-Připravte si vývojové prostředí, ve kterém budete pracovat s mongem. Pro cvičení budete potřebovat 3 komponenty:
+Připravte si vývojové prostředí, ve kterém budete pracovat s mongem. Pro cvičení budete potřebovat 3 komponenty, které propojte pomocí docker-compose souboru:
 1. Dash - datové dashboardy v Pythonu (můžete pro prvotní úkoly vynechat)
 2. Mongodb
 3. Mongo-express - client k prohlížení mongodat 
+
+**Řešení**
+```requirements.txt
+pandas
+dash
+plotly
+pymongo
+redis
+```
+
+```app.py
+import os
+import redis
+from pymongo import MongoClient
+from dash import Dash
+
+# Připojení k MongoDB
+mongo_client = MongoClient(os.getenv("MONGO_URI"))
+db = mongo_client["ecommerce"]
+
+# Připojení k Redis
+redis_client = redis.Redis(host=os.getenv("REDIS_HOST"), port=os.getenv("REDIS_PORT"))
+
+# Vytvoření Dash aplikace
+app = Dash(__name__)
+
+# Spuštění serveru
+if __name__ == "__main__":
+    app.run_server(host="0.0.0.0", port=8050)
+```
+
+```Dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+
+COPY ./src /app
+COPY ./requirements.txt /app/
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
+```
+
+```docker-compose.yml
+version: '3.8'
+
+services:
+  dash-app:
+    build: .
+    container_name: dash-app
+    ports:
+      - "8050:8050"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://mongodb:27017/ecommerce  # URI pro připojení k MongoDB
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db  # Uložiště pro MongoDB data
+
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_BASICAUTH_USERNAME=admin  # Uživatelské jméno pro Mongo Express
+      - ME_CONFIG_BASICAUTH_PASSWORD=secret  # Heslo pro Mongo Express
+
+volumes:
+  mongo_data:
+    driver: local
+```
 
 #### C3.2 - Generování umělých dat
 Spusťte následující skript, který vám vygeneruje potřebná data na zkoumání principů agregačních rour v MongoDB. Budete si muset nastavit URI podle Vašeho docker-compose souboru.
@@ -363,7 +446,7 @@ print(f"Inserted {len(orders_data)} orders and {len(returns_data)} returns into 
 - Použijte $group s využitím výpočtu celkového příjmu jako price * quantity.
 
 **Zákaznická věrnost: Počet objednávek na zákazníka**
-- Předpokládejte, že zákazník má jednoznačný customer_id. 
+- Předpokládejte, že zákazník má jednoznačný customer_id. Pro zjednodušení si můžete přidat do skriptu na generování umělých dat generování tohoto identifikátoru. 
 - Spočítejte, kolik objednávek vytvořil každý zákazník, a určete, kolik zákazníků vytvořilo více než 10 objednávek. 
 - Použijte $group a $count.
 

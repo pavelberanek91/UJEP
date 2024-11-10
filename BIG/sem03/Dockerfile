@@ -7,10 +7,12 @@ FROM python:3.9-slim
 WORKDIR /app
 
 # Zkopírujte soubory aplikace do kontejneru
-COPY . /app
+COPY ./src /app
+COPY ./requirements.txt /app/
 
 # Nainstalujte potřebné balíčky
 RUN pip install -r requirements.txt
 
 # Spusťte aplikaci
+CMD ["python", "generate_data.py"]
 CMD ["python", "app.py"]

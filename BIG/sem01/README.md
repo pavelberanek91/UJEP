@@ -168,6 +168,26 @@ Zkuste schválně přepsat za běhu kontejneru soubor na cestě /usr/local/apach
 
 Doteď jsme pracovali s cizími obrazy, které pro nás někdo připravil a my je jen sestavovali a spouštěli. Zkusme si teď vybudovat vlastní obraz. To se provádí prostřednictvím souboru, kterém se říká Dockerfile.
 
+Pojďme si nejprve vytvořit jednoduchou webovou aplikaci ve frameworku Flask. Do adresáře `src` v aktuálním pracovním adresáři vložíme následující kód do soubory `app.py`, který při žádosti na koncovém bodu "/" vrátí webovou stránku s nadpisem Ahoj. Aplikaci spustíme v Docker kontejneru na portu 5000 a na adrese 0.0.0.0.
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+  return "<html><body><h1>Ahoj</h1></body></html>"
+
+if __name__ == "__main__":
+  app.run(host="0.0.0.0", port=5000)
+```
+
+Dále v aktuálním pracovním adresáři vytvoříme soubor `requirements.txt`, který bude sloužít pro instalaci modulu Flask do Docker obrazu. Do souboru napíšeme následující závislost:
+```
+flask
+```
+
 Následující ukázka je Dockerfile, který stáhne minimalizovaný Linux Alpine (5 MB) s předinstalovaným interpretrem python3, použije ho jako základ do kterého nainstaluje webový framework Flask, nakopíruje do jeho pracovního adresáře /app zdrojové soubory a requirements soubor se závislostma pro správce balíku pythonu (Pip), nainstaluje závislosti a spustí webovou aplikaci.
 
 ```
@@ -187,7 +207,7 @@ RUN pip install -r requirements.txt
 COPY src/ ./
 
 #spusť přes příkazovou řádku naší flask aplikaci na adrese 0.0.0.0
-CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
+CMD [ "python", "app.py"]
 ```
 
 Tento soubor se pomocí příkazu ```docker build .``` sestaví ve spustitelný obraz. Tečka na konci znamená, že Dockerfile je v aktuálním pracovním adresáři. Jinak tam uveďte cestu k Dockerfilu.
@@ -243,7 +263,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./code:/code
+      - ./src:/app
     depends_on:
       - redis
 
@@ -370,23 +390,3 @@ networks:
     backend:
     frontend:
 ```
-
-### Samostatné cvičení
-
-Tato cvičení vás mají částečně připravit na vaší státní závěrečnou zkoušku (SZZ) z tohoto předmětu. Zde zmíněná cvičení neodpovídají jednu ke jedné zadáním na SZZ, avšak jsou si tématicky podobné. První cvičení vás připraví na datově-analytické úkoly s veledaty na SZZ a druhá část vás připraví na instalaci všeho potřebného pro SZZ.
-
-#### Cvičení 1 - zpracování dat
-* Vytvořte si webovou aplikaci ve vámi vybraném jazyce a připravte k ní Dockerfile.
-* Připojte k vaší aplikaci pomocí docker-composu PostgreSQL databázi a nakonfigurujte ji.
-* Stáhněte si datovou sadu o absolventech vysokých škol podle oboru [ZDE](https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F70889546%2F95b3fae55f694b9b7de0a37461b8d273)
-* Vytvořte jednoduchý datový dashboard pro hledání informací o absolventech ve vaší webové aplikaci. Pokud zvolíte Python, tak doporučuji využít [Dash](https://dash.plotly.com/tutorial) nebo [Streamlit](https://docs.streamlit.io/knowledge-base/tutorials)
-* Vytvořte pro váš projekt repozitář na githubu nebo gitlabu a nahrajte tam zdrojové kódy.
-* Nahrajte obraz vaší aplikace na dockerhub a upravte docker-compose soubor, aby využíval obraz z dockerhubu.
-* Bonus: připravte CI/CD pipelinu pro váš projekt [ZDE](https://docs.docker.com/build/ci/github-actions/)
-
-#### Cvičení 2 - instalace platforem
-* Nainstalujte pomocí docker-compose Redis a vyzkoušejte nějaký Hello-world příklad z terminálu [ZDE](https://redis.io/docs/connect/cli/) a z kódu vaší aplikace [ZDE](https://redis.io/docs/connect/clients/python/).
-* Nainstalujte pomocí docker-compose MongoDB a vyzkoušejte nějaký Hello-world příklad z terminálu [ZDE](https://www.freecodecamp.org/news/learn-mongodb-a4ce205e7739/) a z kódu vaší aplikace [ZDE](https://www.w3schools.com/python/python_mongodb_getstarted.asp).
-* Nainstalujte pomocí docker-compose Neo4j a vyzkoušejte nějaký Hello-world příklad z webového rozhraní [ZDE](https://neo4j.com/developer/cypher/guide-cypher-basics/) a z kódu vaší aplikace [ZDE](https://neo4j.com/docs/python-manual/current/).
-* Naintalujte pomocí docker-compose Hadoop a Apache Spark a vyzkoušejte nějaký Hello-world příklad z kódu vaší aplikace [ZDE](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspar)].
-* Vyzkoušejte si nějaký Hello-world příklad pomocí MongoDB agregačních rour [ZDE](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/) z kódu vaší aplikace.
