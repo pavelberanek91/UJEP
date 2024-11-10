@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  python-app:
+    build: .
+    container_name: python-app
+    depends_on:
+      neo4j:
+        condition: service_healthy
+
+  neo4j:
+    image: 'neo4j:latest'
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    environment:
+      NEO4J_AUTH: 'neo4j/adminpass'
+    healthcheck:
+      test: cypher-shell --username neo4j --password adminpass 'MATCH (n) RETURN COUNT(n);' # Checks if neo4j server is up and running
+      interval: 10s
+      timeout: 10s
+      retries: 5

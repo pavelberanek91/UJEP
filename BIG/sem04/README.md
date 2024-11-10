@@ -515,7 +515,34 @@ V tomto cvičení budete analyzovat data ze sociální sítě.
 
 #### C4.1 - Příprava prostředí v Docker
 
-Připravite si docker-compose.yml soubor, kterým zprovozníte aplikaci. Stačí jen vlastní Dockerfile s pythonem a obraz pro Neo4j. 
+Připravite si docker-compose.yml soubor, kterým zprovozníte aplikaci. Stačí jen vlastní Dockerfile s pythonem a obraz pro Neo4j. Pozor na to, že neo4j dlouho startuje a bude nutné počkat pro závislé kontejnery. Lze to řešit tím, že počkáte určitou dobu nebo pomocí kontroly zdraví kontejneru (healthcheck) počkáte do doby provozu kontejneru.
+
+**Řešení úkolu**
+V tomto docker-compose souboru je jen neo4j a kontejner pro python skript, který budu následně používat.
+```cypher
+version: '3.8'
+
+services:
+  python-app:
+    build: .
+    container_name: python-app
+    depends_on:
+      neo4j:
+        condition: service_healthy
+
+  neo4j:
+    image: 'neo4j:latest'
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    environment:
+      NEO4J_AUTH: 'neo4j/adminpass'
+    healthcheck:
+      test: cypher-shell --username neo4j --password adminpass 'MATCH (n) RETURN COUNT(n);' # Checks if neo4j server is up and running
+      interval: 10s
+      timeout: 10s
+      retries: 5
+```
 
 #### C4.2 - Vygenerujte do databáze falešná data
 Vygenerujte do databáze umělá data skriptem. Můžete použít můj skript, který generuje umělá data o sociální síti. Data zahrnují uživatele a jejich vztahy, příspěvky a komentáře.
@@ -571,12 +598,28 @@ for i in range(NUM_POSTS // 2):
 print("Data byla úspěšně vygenerována.")
 ```
 
-Zobrazte si výslednou sociální síť v základním webovém rozhraní neo4j (Neo4j Browser).
+Python skript bude v kontejneru, který je sestaven následujícícm Dockerfilem:
+```Dockerfile
+FROM python:3.9-slim
+
+WORKDIR /app
+COPY synthetic_data.py /app
+COPY requirements.txt /app
+RUN pip install -r requirements.txt
+CMD ["python", "synthetic_data.py"]
+```
+Tento Dockerfile je právě tím, který builduji v souboru z předchozího cvičení.
+
+Zobrazte si výslednou sociální síť v základním webovém rozhraní neo4j (Neo4j Browser). Implicitně běží na portu 7474 a zobrazit celou síť (bude problém, pokud vygenerujete hodně dat) můžete příkazem:
+
+```cypher
+MATCH (uzel) RETURN uzel
+```
 
 #### C4.3 - Základní operace
 Vyzkoušejte si nad daty následující jednoduché analýzy:
 1. Vyhledejte prvních 10 uživatelů v databázi.
-2. Najděte všechny uživatele, kteří žijí v Praze.
+2. Najděte všechny uživatele, kteří žijí v nějakém zadaném městě.
 3. Vytvořte vztah, kde "Alice" sleduje "Boba".
 4. Zobrazte 5 uživatelů s největším počtem příspěvku.
 5. Zobrazte prvních 10 vztahů, kde jeden uživatel sleduje jiného.
@@ -584,6 +627,89 @@ Vyzkoušejte si nad daty následující jednoduché analýzy:
 7. Odstraňte vztah, kde "Alice" sleduje "Boba"
 8. Najděte 5 uživatelů s největším počtem sledujících.
 9. Najděte uživatele, kteří komentovali příspěvek jiného uživatele, a zobrazte obsah příspěvku.
+
+**Řešení úkolu 1**
+Vyhledejte prvních 10 uživatelů v databázi.
+```cypher
+MATCH (u:User)
+RETURN u
+LIMIT 10;
+```
+
+**Řešení úkolu 2**
+Najděte všechny uživatele, kteří žijí v nějakém vybraném městě.
+```cypher
+MATCH (u:User {location: "New Staceyview"})
+RETURN u;
+```
+
+**Řešení úkolu 3**
+Vytvořte vztah, kde "Alice" sleduje "Boba".
+```cypher
+MERGE (a:User {name: "Alice"}) ON CREATE SET a.age = 30, a.location = "Not specified"
+MERGE (b:User {name: "Bob"}) ON CREATE SET b.age = 30, b.location = "Not specified"
+MERGE (a)-[:FOLLOWS]->(b);
+```
+A prohlédnutí úspěšného dotazu.
+```cypher
+MATCH (a:User {name: "Alice"}), (b:User {name: "Bob"})
+RETURN a, b;
+```
+
+**Řešení úkolu 4**
+Zobrazte 5 uživatelů s největším počtem příspěvků.
+```cypher
+MATCH (u:User)-[:CREATED]->(p:Post)
+RETURN u, COUNT(p) AS num_posts
+ORDER BY num_posts DESC
+LIMIT 5;
+```
+
+**Řešení úkolu 5**
+Zobrazte prvních 10 vztahů, kde jeden uživatel sleduje jiného
+```cypher
+MATCH (u1:User)-[f:FOLLOWS]->(u2:User)
+RETURN u1, f, u2
+LIMIT 10;
+```
+
+**Řešení úkolu 6**
+Zobrazte 10 příspěvků a jejich komentáře
+```cypher
+MATCH (p:Post)<-[:ON]-(c:Comment)
+RETURN p, COLLECT(c) AS comments
+LIMIT 10;
+```
+
+**Řešení úkolu 7**
+Odstraňte vztah, kde "Alice" sleduje "Boba"
+```cypher
+MATCH (a:User {name: "Alice"})-[f:FOLLOWS]->(b:User {name: "Bob"})
+DELETE f;
+```
+
+A prohlédnutí úspěšného dotazu.
+```cypher
+MATCH (a:User {name: "Alice"}), (b:User {name: "Bob"})
+RETURN a, b;
+```
+
+**Řešení úkolu 8**
+Najděte 5 uživatelů s největším počtem sledujících
+```cypher
+MATCH (u:User)<-[:FOLLOWS]-(follower:User)
+RETURN u, COUNT(follower) AS num_followers
+ORDER BY num_followers DESC
+LIMIT 5;
+```
+
+**Řešení úkolu 9**
+Najděte uživatele, kteří komentovali příspěvek jiného uživatele, a zobrazte obsah příspěvku
+```cypher
+MATCH (u1:User)-[:COMMENTED]->(c:Comment)-[:ON]->(p:Post)<-[:CREATED]-(u2:User)
+WHERE u1 <> u2
+RETURN u1.name AS commenter, u2.name AS post_owner, p.content AS post_content;
+```
 
 #### C4.4 - Pokročilé dotazy
 Vyzkoušejte si následující složitější dotazy s využitím knihovny APOC a GDS.
@@ -604,6 +730,7 @@ Vyzkoušejte si následující složitější dotazy s využitím knihovny APOC 
 15. Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
 
 **Řešení úkolu 1**
+Vytvořte vztah "KNOWS" mezi dvěma uživateli pomocí APOC procedury, kde vztah má atribut "since" a jeho význam je, že se znají od nějakého roku.
 ```cypher
 CALL apoc.create.relationship(
   (MATCH (a:User) WHERE a.name = "Alice" RETURN a),
@@ -614,6 +741,7 @@ CALL apoc.create.relationship(
 ```
 
 **Řešení úkolu 2**
+Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno
 ```cypher
 MATCH (u:User)-[:CREATED]->(p:Post)
 WITH u.age AS age, COUNT(p) AS num_posts
@@ -623,6 +751,7 @@ ORDER BY age_group
 ```
 
 **Řešení úkolu 3**
+Pomocí algoritmu PageRank zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS".
 ```cypher
 CALL apoc.algo.pageRank(
   {label: 'User', relationshipType: 'FOLLOWS', iterations: 20, dampingFactor: 0.85}
@@ -633,6 +762,7 @@ LIMIT 5
 ```
 
 **Řešení úkolu 4**
+Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
 ```cypher
 MATCH (p:Post)<-[:ON]-(c:Comment)<-[:COMMENTED]-(u:User)
 WITH p, COUNT(u) AS num_comments, AVG(u.age) AS avg_age
@@ -642,6 +772,7 @@ LIMIT 10
 ```
 
 **Řešení úkolu 5**
+Pomocí APOC vytvořte vztah "SHARED_FOLLOW" mezi uživateli, kteří sledují stejného uživatele.
 ```cypher
 MATCH (u1:User)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2:User)
 WHERE u1 <> u2
@@ -651,6 +782,7 @@ LIMIT 10
 ```
 
 **Řešení úkolu 6**
+Konsolidujte uživatele podle jejich lokace a zkombinujte vlastnosti.
 ```cypher
 MATCH (u:User)
 WITH u.location AS loc, COLLECT(u) AS users
@@ -659,6 +791,7 @@ RETURN node
 ```
 
 **Řešení úkolu 7**
+Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejaktivnějších uživatelů.
 ```cypher
 MATCH (u:User)
 OPTIONAL MATCH (u)-[:CREATED]->(p:Post)
@@ -671,6 +804,7 @@ LIMIT 5
 ```
 
 **Řešení úkolu 8**
+Použijte apoc.periodic.iterate pro iteraci uživatelů a aktualizaci atributu active v dávkách po 50, což simuluje efekt transakce a škálované zpracování.
 ```cypher
 CALL apoc.periodic.iterate(
   "MATCH (u:User) RETURN u",
