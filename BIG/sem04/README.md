@@ -819,6 +819,11 @@ ORDER BY score DESC
 LIMIT 5
 ```
 
+Grafovou projekci můžeme po dokončení hraní si odstranit ať nezabírá zbytečně paměť (u veledat to může být opravdu velký problém).
+```
+CALL gds.graph.drop('userGraph')
+```
+
 **Řešení úkolu 4**
 Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
 ```cypher
@@ -839,12 +844,22 @@ RETURN u1.name, u2.name
 LIMIT 10
 ```
 
+Ověřím, že se povedlo.
+```
+MATCH (u1:User)-[:SHARED_FOLLOW]->(u2:User)
+MATCH (u1)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2)
+RETURN u1.name AS follower1, u2.name AS follower2, u.name AS sharedFollowedUser
+LIMIT 10
+```
+
 **Řešení úkolu 6**
-Konsolidujte uživatele podle jejich lokace a zkombinujte vlastnosti.
+Konsolidujte pomocí knihovny APOC a příkazu refactor.mergeNodes uživatele podle jejich lokace a zkombinujte vlastnosti. Konsolidace je proces sloučení uzlů se shodnou hodnotou vybraného atributu (v tomto případě lokace). Tato úloha je v praxi důležitá pro slučování duplicitních uzlů. Pro ověření funkčnosti přejmenuju uzly podle konsolidovaného atributu - lokace.
+
 ```cypher
 MATCH (u:User)
 WITH u.location AS loc, COLLECT(u) AS users
 CALL apoc.refactor.mergeNodes(users, {properties: "combine"}) YIELD node
+SET node.name = loc
 RETURN node
 ```
 
