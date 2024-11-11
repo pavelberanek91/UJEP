@@ -712,7 +712,34 @@ RETURN u1.name AS commenter, u2.name AS post_owner, p.content AS post_content;
 ```
 
 #### C4.4 - Pokročilé dotazy
-Vyzkoušejte si následující složitější dotazy s využitím knihovny APOC a GDS.
+Vyzkoušejte si následující složitější dotazy s využitím knihovny APOC a GDS. Aby Vám knihovny fungovaly, musíte si je nainstalovat/aktivovat. Budeme používat knihovny APOC a GDS. Do docker-compose musíte přidat do ENV proměnných aktivované moduly:
+```
+version: '3.8'
+
+services:
+  python-app:
+    build: .
+    container_name: python-app
+    depends_on:
+      neo4j:
+        condition: service_healthy
+
+  neo4j:
+    image: 'neo4j:latest'
+    ports:
+      - '7474:7474'
+      - '7687:7687'
+    environment:
+      NEO4J_AUTH: 'neo4j/adminpass'
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
+    healthcheck:
+      test: cypher-shell --username neo4j --password adminpass 'MATCH (n) RETURN COUNT(n);' # Checks if neo4j server is up and running
+      interval: 10s
+      timeout: 10s
+      retries: 5
+```
+
+**Úkoly:**
 1. Vytvořte vztah "KNOWS" mezi dvěma uživateli pomocí APOC procedury, kde vztah má atribut "since" a jeho význam je, že se znají od nějakého roku.
 2. Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno
 3. Pomocí algoritmu PageRank zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS".
@@ -729,19 +756,31 @@ Vyzkoušejte si následující složitější dotazy s využitím knihovny APOC 
 14. Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
 15. Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
 
+
 **Řešení úkolu 1**
 Vytvořte vztah "KNOWS" mezi dvěma uživateli pomocí APOC procedury, kde vztah má atribut "since" a jeho význam je, že se znají od nějakého roku.
+
+Jelikož nám generátor asi nevytvořil Alice a Boba nebo jsme si předchozí uzly smazali, tak si je vytvoříme znovu.
 ```cypher
-CALL apoc.create.relationship(
-  (MATCH (a:User) WHERE a.name = "Alice" RETURN a),
-  "KNOWS",
-  {since: 2023},
-  (MATCH (b:User) WHERE b.name = "Bob" RETURN b)
-)
+CREATE (a:User {name: "Alice"});
+CREATE (b:User {name: "Bob"});
+```
+
+Provete tvorbu vztahu pomocí APOC knihovny.
+```cypher
+MATCH (a:User {name: "Alice"}), (b:User {name: "Bob"})
+CALL apoc.create.relationship(a, "KNOWS", {since: 2023}, b) YIELD rel
+RETURN rel
+```
+
+Ověříme existenci vztahu.
+```
+MATCH (a:User {name: "Alice"})-[r:KNOWS]->(b:User {name: "Bob"})
+RETURN a, r, b
 ```
 
 **Řešení úkolu 2**
-Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno
+Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno pomocí APOC partition.
 ```cypher
 MATCH (u:User)-[:CREATED]->(p:Post)
 WITH u.age AS age, COUNT(p) AS num_posts
@@ -751,12 +790,31 @@ ORDER BY age_group
 ```
 
 **Řešení úkolu 3**
-Pomocí algoritmu PageRank zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS".
+Pomocí algoritmu PageRank (příkaz pageRanek.stream) z knihovny GDS zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS". Budete si muset nejprve vytvořit grafovou projekci příkazem graph.project.cypher.
+
+PageRank je algoritmus původně navržený k hodnocení webových stránek na základě počtu a kvality odkazů. PageRank přiřazuje každému uzlu skóre, které odráží jeho „důležitost“ na základě toho, kolik a jaké uzly na něj směřují. V případě sociálních sítí (např. User a FOLLOWS) by PageRank skóre určilo, kteří uživatelé jsou „vlivnější“ nebo více propojení.
+
+Grafová projekce je dočasná struktura, která slouží k optimalizaci výpočtů grafových algoritmů. Projekce vytváří pohled na data v databázi bez nutnosti změny nebo kopírování původních dat.
+
+Vytvořil jsem grafovou projekci s názvem userGraph (jméno potřebujeme pro pageRank), která vyhledá všechny uživatele a jejich vztahy typu FOLLOWS. Tyto informace potřebuje PageRank algoritmus.
+
 ```cypher
-CALL apoc.algo.pageRank(
-  {label: 'User', relationshipType: 'FOLLOWS', iterations: 20, dampingFactor: 0.85}
-) YIELD node, score
-RETURN node.name AS user, score
+CALL gds.graph.project.cypher(
+  'userGraph',
+  'MATCH (u:User) RETURN id(u) AS id',
+  'MATCH (u1:User)-[:FOLLOWS]->(u2:User) RETURN id(u1) AS source, id(u2) AS target' 
+)
+```
+
+Zde aplikuji PageRank algoritmus na projekci userGraph a vrátím top5 uživatelů s nejvyšším PageRank skórem a jména těchto vlivných uživatelů. MaxIterations říká, kolikrát se má algoritmus opakovat (je tam stochasticita, tak chceme opakovat kvůli statistice). DampingFactor ovlivňuje stochasticitu. Jedná se o pravděpodobnost, že uživatel klikne na další odkaz (u webových stránek). V našem kontextu to znamená, že půjdeme na další napojený uzel. Pokud je DampingFactor 0.85, tak uživatel na 85 % bude následovat hranu do dalšího uzlu a na 15 % přejde na náhodný jiný uzel (na webu odkaz).
+
+```cypher
+CALL gds.pageRank.stream('userGraph', {
+  maxIterations: 20,
+  dampingFactor: 0.85
+})
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS user, score
 ORDER BY score DESC
 LIMIT 5
 ```

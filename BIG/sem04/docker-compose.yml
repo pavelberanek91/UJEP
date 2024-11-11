@@ -15,6 +15,7 @@ services:
       - '7687:7687'
     environment:
       NEO4J_AUTH: 'neo4j/adminpass'
+      NEO4J_PLUGINS: '["apoc", "graph-data-science"]'
     healthcheck:
       test: cypher-shell --username neo4j --password adminpass 'MATCH (n) RETURN COUNT(n);' # Checks if neo4j server is up and running
       interval: 10s
