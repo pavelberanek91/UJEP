@@ -403,14 +403,61 @@ APOC je jedna z nejpoužívanějších knihoven pro Neo4j, která obsahuje stovk
 * Správa grafů: Obsahuje nástroje pro vytváření, mazání a manipulaci s grafovými strukturami, včetně procedur pro správu uzlů a vztahů.
 * Pokročilé agregace a analýzy: Poskytuje agregované a analytické funkce, které nejsou běžně dostupné v Cypheru, jako například metriky centrality.
 
-Příklad použití:
-```cypher
-CALL apoc.create.uuid()
-YIELD uuid
-MATCH (p:Person {name: 'Alice'})
-SET p.id = uuid
-RETURN p
-```
+APOC je velmi používaná knihovna, tak si vypíšeme, co vše umí:
+* agg - 
+* algo - 
+* atomic - 
+* coll - 
+* convert - 
+* couchbase - 
+* create - 
+* custom - 
+* cypher - 
+* data - 
+* date - 
+* dv - 
+* es - 
+* export - 
+* generate - 
+* graph - 
+* hashing - 
+* import - 
+* load - 
+* lock - 
+* log - 
+* map - 
+* math - 
+* merge - 
+* meta - 
+* metrics - 
+* mongo - 
+* mongodb - 
+* monitor - 
+* neighbors - 
+* nlp - nástroje pro zpracování přirozeného jazyka (fráze, nálada, detekce entit, klasifikace)
+* node - nmástroje pro zjišťování informací o jednom uzlu (vstupní a výstupní stupně, značky, vztahy)
+* nodes - nástroje pro práci s uzly (kolapsování, detekce cyklů, zjišťování exitence napojených vztahů apod.)
+* number - nástroje pro převod čísel na jiné datové typy a formáty
+* path - nástroje pro práci s cestami a podgrafy (řezání, rozšířování, směšování)
+* periodic - nástroje pro dávkové zpracování dat
+* redis - nástroje pro komunikaci s Redis databází
+* refactor - 
+* rel - nástroje pro práci se vztahy v grafu (typ, počáteční a koncový uzel)
+* schema - nástroje pro práci s databázovým schématem (ověření, vztahy, omezení)
+* scoring - algoritmy pro hodnocení grafu (existence uzlů, Pareto)
+* search - nástroje pro paralelní prohledávání uzlů
+* spatial - nástroje pro práci s prostorovými (geo) daty
+* static - nástroje pro práci se statickými soubory (klíče na serveru apod.)
+* stats - statistické funkce (zatím jen degress)
+* systemdb - práce s metadaty grafu a spouštění DDL příkazů
+* temporal - nástroje pro práci s časovou zónou
+* text - nástroje pro práci s textem (kapitalizace, fonezitace, čištění, vzdálenosti, fuzzy logika, regexy, rozdělení, kódování)
+* trigger - nástroje pro práci s databázovými triggery
+* ttl - nástroje pro práci s Tíme-to-Live (TTL), tedy časem expirace záznamu
+* util - nástroje pro práci s hashováním a kompresí/dekompresí informací
+* uuid - pro práci s univerzálně jedinečnými identifikátory ve formě 128 bitového čísla
+* warmup - pro rychlé nahrání uzlů a vztahů do paměti
+* xml - poskytuje algoritmy pro práci nad XML soubory
 
 **Graph Data Science (GDS)**
 Graph Data Science je knihovna zaměřená na pokročilé grafové algoritmy a analýzy pro strojové učení, doporučovací systémy a datovou vědu. GDS umožňuje provádět složité analýzy přímo v databázi, což je ideální pro aplikace, kde jsou data silně propojena. Knihovna GDS je k dispozici jako oficiální doplněk Neo4j. Lze ji nainstalovat přímo ze stránky Graph Data Science Library.
@@ -420,16 +467,71 @@ Graph Data Science je knihovna zaměřená na pokročilé grafové algoritmy a a
 * Strojové učení a embeddingy: Nabízí funkce pro tvorbu grafových embeddingů, které slouží jako vstupní data pro modely strojového učení.
 * Správa a projekce subgrafů: Umožňuje vytváření a práci s projekcemi grafů, což usnadňuje práci s velkými grafovými strukturami.
 
-Příklad použití:
-```cypher
-CALL gds.pageRank.stream({
-  nodeProjection: 'Person',
-  relationshipProjection: 'FRIENDS_WITH'
-})
-YIELD nodeId, score
-RETURN gds.util.asNode(nodeId).name AS name, score
-ORDER BY score DESC
-```
+GDS je velmi používaná knihovna, tak si vypíšeme, jaké algoritmy poskytuje:
+* Centralita
+  * Article Rank
+  * Articulation Points
+  * Betweenness Centrality
+  * Bridges
+  * CELF
+  * Closeness Centrality
+  * Degree Centrality
+  * Eigenvector Centrality
+  * Page Rank
+  * Harmonic Centrality (alfa verze)
+  * HITS (alfa verze)
+* Detekce komunit
+  * Conductance metric
+  * K-Core Decomposition
+  * K-1 Coloring
+  * K-Means Clustering
+  * Label Propagation
+  * Leiden
+  * Local Clustering Coefficient
+  * Louvain
+  * Modularity metric
+  * Modularity Optimization
+  * Strongly Connected Components
+  * Triangle Count
+  * Weakly Connected Components
+  * Approximate Maximum k-cut (alfa verze)
+  * Speaker-Listener Label Propagation (alfa verze)
+* Podobnost
+  * Node Similarity
+  * Filtered Node Similarity
+  * K-Nearest Neighbors
+  * Filtered K-Nearest Neighbors
+* Hledání cesty
+  * Delta-Stepping Single-Source Shortest Path
+  * Dijkstra Source-Target Shortest Path
+  * Dijkstra Single-Source Shortest Path
+  * A* Shortest Path
+  * Yen’s Shortest Path
+  * Breadth First Search
+  * Depth First Search
+  * Random Walk
+  * Bellman-Ford Single-Source Shortest Path
+  * Minimum Weight Spanning Tree
+  * Minimum Directed Steiner Tree (beta verze)
+  * Minimum Weight k-Spanning Tree (alfa verze)
+  * All Pairs Shortest Path (alfa verze)
+  * Longest Path for DAG (alfa verze)
+* Orientovaný acyklický graf (DAG)
+  * Topological Sort (alfa verze)
+  * Longest Path (alfa verze)
+* Embdeddings pro uzly
+  * FastRP
+  * GraphSAGE (beta verze)
+  * Node2Vec (beta verze)
+  * HashGNN (beta verze)
+* Predikce topologických vazeb
+  * Adamic Adar (alfa verze)
+  * Common Neighbors (alfa verze)
+  * Preferential Attachment (alfa verze)
+  * Resource Allocation (alfa verze)
+  * Same Community (alfa verze)
+  * Total Neighbors (alfa verze)
+* Pregel API - pro vlastní funkce
 
 **Neo4j Bloom**
 Neo4j Bloom je vizualizační nástroj, který umožňuje interaktivní procházení grafů a vizualizaci dat v Neo4j. Bloom je vhodný pro ne-techniké uživatele, kteří potřebují snadno prozkoumat grafová data. Bloom je samostatný doplněk, dostupný jako součást Neo4j Desktop nebo Enterprise Edition.
@@ -895,15 +997,29 @@ CALL gds.graph.drop('userGraph')
 ```
 
 **Řešení úkolu 9**
-Použijte Louvain algoritmus k detekci komunit mezi uživateli.
+Použijte Louvain algoritmus k detekci komunit mezi uživateli. Cílem je najít skupiny uzlů (nebo komunit), které mají mezi sebou více spojení než s uzly mimo jejich skupinu. Tento algoritmus se často využívá v sociálních sítích, kde může odhalit například skupiny přátel nebo skupiny uživatelů s podobnými zájmy a nákupními preferencemi (doporučovací systémy). Matematicky využívá princip výpočtu modularity (míry kvality komunitní struktury), jejíž hodnotu se snaží algoritmus maximalizovat přesouváním uzlů mezi komunitami. Uzly jsou slučovány do větších komunit, dokud se modularita dále nezvyšuje.
+
+Opět si vytvoříme stejně jako v předešlém cvičení grafovou projekci.
 ```cypher
-CALL gds.louvain.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS'
-})
+CALL gds.graph.project(
+  'userGraph',
+  'User',
+  'FOLLOWS'
+)
+```
+
+Teď již můžeme spoustit Louvain algoritmus nad vytvořenou projekcí. V YIELD zadáme, že chcem vrátit z algoritmu ID uzlu a ID komunity, do které ho algoritmus zařadil. V RETURN pak uvedeme, že chcem převést ID uzlu na uzel v naší databázi.
+```cypher
+CALL gds.louvain.stream('userGraph')
 YIELD nodeId, communityId
 RETURN gds.util.asNode(nodeId).name AS user, communityId
 ORDER BY communityId
+LIMIT 5
+```
+
+Projekci můžeme posléze smazat pro uvolnění paměti.
+```cypher
+CALL gds.graph.drop('userGraph')
 ```
 
 **Řešení úkolu 10**
