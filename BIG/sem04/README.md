@@ -896,9 +896,8 @@ RETURN a, r, b
 Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno pomocí APOC partition.
 ```cypher
 MATCH (u:User)-[:CREATED]->(p:Post)
-WITH u.age AS age, COUNT(p) AS num_posts
-CALL apoc.coll.partition([age, num_posts], 10) YIELD value
-RETURN value[0] AS age_group, SUM(value[1]) AS total_posts
+WITH (u.age / 10) * 10 AS age_group, COUNT(p) AS num_posts
+RETURN age_group, SUM(num_posts) AS total_posts
 ORDER BY age_group
 ```
 
@@ -947,10 +946,12 @@ Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejakt
 ```cypher
 MATCH (u:User)
 OPTIONAL MATCH (u)-[:CREATED]->(p:Post)
+WITH u, COUNT(p) AS post_count
 OPTIONAL MATCH (u)-[:COMMENTED]->(c:Comment)
+WITH u, post_count, COUNT(c) AS comment_count
 OPTIONAL MATCH (u)-[:FOLLOWS]->(f:User)
-WITH u, COUNT(p) + COUNT(c) + COUNT(f) AS total_interactions
-RETURN u.name, total_interactions
+WITH u, post_count, comment_count, COUNT(f) AS follow_count
+RETURN u.name, (post_count + comment_count + follow_count) AS total_interactions
 ORDER BY total_interactions DESC
 LIMIT 5
 ```
@@ -1035,9 +1036,21 @@ CALL gds.graph.drop('userGraph')
 ```
 
 **Řešení úkolu 10**
-Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli.
+Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli. 
+
+Nejprve si zjistíme jména v našich uzlech.
 ```cypher
-MATCH (start:User {name: 'Alice'}), (end:User {name: 'Bob'})
+RETURN n.name AS name
+```
+
+Následně musím vytvořit grafovou projekci.
+```cypher
+
+```
+
+Teď mohu vybrat konkrétní jména a zavolat z GDS Dijkstrův algoritmus (je i v APOC).
+```cypher
+MATCH (start:User {name: 'Chelsea Harrington'}), (end:User {name: 'Russell Sanchez'})
 CALL gds.shortestPath.dijkstra.stream({
   sourceNode: id(start),
   targetNode: id(end),
@@ -1045,6 +1058,11 @@ CALL gds.shortestPath.dijkstra.stream({
 })
 YIELD totalCost, path
 RETURN totalCost, path
+```
+
+Projekci můžeme posléze smazat pro uvolnění paměti.
+```cypher
+CALL gds.graph.drop('userGraph')
 ```
 
 **Řešení úkolu 11**
