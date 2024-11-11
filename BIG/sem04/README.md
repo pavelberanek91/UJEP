@@ -404,36 +404,48 @@ APOC je jedna z nejpoužívanějších knihoven pro Neo4j, která obsahuje stovk
 * Pokročilé agregace a analýzy: Poskytuje agregované a analytické funkce, které nejsou běžně dostupné v Cypheru, jako například metriky centrality.
 
 APOC je velmi používaná knihovna, tak si vypíšeme, co vše umí:
-* agg - 
-* algo - 
-* atomic - 
-* coll - 
-* convert - 
-* couchbase - 
-* create - 
-* custom - 
-* cypher - 
-* data - 
-* date - 
-* dv - 
-* es - 
-* export - 
-* generate - 
-* graph - 
-* hashing - 
-* import - 
-* load - 
-* lock - 
-* log - 
-* map - 
-* math - 
-* merge - 
-* meta - 
-* metrics - 
-* mongo - 
-* mongodb - 
-* monitor - 
-* neighbors - 
+* apoc - nápověda a verze APOC knihovny
+* agg - agregační funkce (první, poslední, medián, percentily, součin, statistiky)
+* algo - algoritmy nad grafem (A*, Dijkstra, cesty)
+* any - nástroje pro práci s virtuálními uzly a vztahy
+* atomic - nástroje pro atomické operace (přidej, připoj, vlož, odstraň, odečti, uprav)
+* bitwise - nástroje pro bitové operace
+* bolt - nástroje pro přístup z Neo4J do jiných databází přes Bolt protokol
+* cluster - pro shlukování uzlů v grafu
+* coll - nástroje pro práci s kolekcemi (obsahuje, průměr z kolekce, rozdělení, zipování, kombinace, množinové operace, míchání apod.)
+* config - nástroje pro práci s nastavením databáze
+* convert - nástroje pro konverzi datových typů (na strom, na čísla, na množiny a jiné kolekce)
+* couchbase - nástroje pro práci s CouchBase databází
+* create - nástroje pro tvorbu a odstraňování uzlů, vztahů, virtuálních cest, uuid a pod.
+* custom - nástroje pro tvorbu vlastních procedur a funkcí
+* cypher - nástroje pro spouštění Cypher dotazů ze souborů, paralelně, sekvenčně apod.
+* data - nástroje pro práci se síťovou cestou (doména, email, URL)
+* date - nástroje pro práci s datumy (expirace, konverze, parsing, standardy, časové zóny)
+* dv - nástroje pro práci s virtuálními daty (nejsou přímo v Neo4J, ale v jiném datovém zdroji)
+* es - nástroje pro práci s Elastic Search (get, post, query)
+* examples - databáze datasetů k hraní si (toy-datasets), má zatím jen jednu databázi a to movies
+* export - nástroje pro export dat z Neo4J do jiných datových formátů (csv, cypher, graphml, json, xls)
+* generate - nástroje pro generování náhodných grafů podle různých modelů (Barabasi-Alber, Erdos-Renyi, Watts-Strogatz)
+* gephi - nástroje pro práci s daty v Gephi formátu (jedna z nejpopulárnější vizualizačních platforem pro grafová data)
+* get - nástroje pro získání uzlů a vztahů podle ID
+* graph - nástroje pro tvorbu grafu z dokumentů, dat a cypher dotazu
+* hashing - funkce pro výpočet hash otisků
+* import - nástroje pro nahrání dat ze souborů s grafovou strukturou a slouží oproti apoc.load pro velké množství dát naráz (CSV, JSON, XML, GraphML)
+* json - nástroje pro traverzaci (cestování) po cestách v JSON souboru
+* label - zjišťování existence značky (label) v grafu
+* load - nástroje pro nahrání dat ze souborů různých formátů (CSV, JSON, HTML, JDBC, XML, XLS), data nemusí mít grafovou strukturu a funkce si s nimi poradí (robustnější oproti import)
+* lock - nástroje pro uzamykání přístupů k uzlům a vztahům
+* log - nástroje pro logování informací (chyby, upozornění)
+* map - nástroje pro úpravu hodnot (zploštění, shlukování, odstranění hodnot)
+* math - matematické funkce (harmonické funkce, regrese, min a max číselných datových typů)
+* merge - nástroje pro slučování uzlů a vztahů
+* meta - nástroje pro meta informaci o grafu (tabulková podoba, podgrafy, datové typy, počty uzlů)
+* metrics - nástroje pro získání a ukládání systémových metrik (start transakce, rollbacky)
+* model - nástroje pro práci s relační databází (přes JDBC - Java Database Connectivity)
+* mongo - nástroje pro komunikaci s MongoDB (CRUD operace)
+* mongodb - to samé co apoc.mongo, ale deprecated
+* monitor - vrací informace o zátězi na výpočetní prostředky
+* neighbors - nástroje pro práci se soudeními uzly vybraného uzlu (vrátí uzly z/do určité vzdálenosti)
 * nlp - nástroje pro zpracování přirozeného jazyka (fráze, nálada, detekce entit, klasifikace)
 * node - nmástroje pro zjišťování informací o jednom uzlu (vstupní a výstupní stupně, značky, vztahy)
 * nodes - nástroje pro práci s uzly (kolapsování, detekce cyklů, zjišťování exitence napojených vztahů apod.)
@@ -441,7 +453,7 @@ APOC je velmi používaná knihovna, tak si vypíšeme, co vše umí:
 * path - nástroje pro práci s cestami a podgrafy (řezání, rozšířování, směšování)
 * periodic - nástroje pro dávkové zpracování dat
 * redis - nástroje pro komunikaci s Redis databází
-* refactor - 
+* refactor - nástroje pro refaktorizaci grafu (odstraň uzly a přepoj cestu apod.)
 * rel - nástroje pro práci se vztahy v grafu (typ, počáteční a koncový uzel)
 * schema - nástroje pro práci s databázovým schématem (ověření, vztahy, omezení)
 * scoring - algoritmy pro hodnocení grafu (existence uzlů, Pareto)
