@@ -742,19 +742,18 @@ services:
 **Úkoly:**
 1. Vytvořte vztah "KNOWS" mezi dvěma uživateli pomocí APOC procedury, kde vztah má atribut "since" a jeho význam je, že se znají od nějakého roku.
 2. Rozdělete uživatele do věkových skupin po deseti letech a spočítejte, kolik příspěvku v každé skupině bylo vytvořeno
-3. Pomocí algoritmu PageRank zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS".
-4. Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
-5. Pomocí APOC vytvořte vztah "SHARED_FOLLOW" mezi uživateli, kteří sledují stejného uživatele.
-6. Konsolidujte uživatele podle jejich lokace a zkombinujte vlastnosti.
-7. Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejaktivnějších uživatelů.
-8. Použijte apoc.periodic.iterate pro iteraci uživatelů a aktualizaci atributu active v dávkách po 50, což simuluje efekt transakce a škálované zpracování.
-9. Pomocí GDS knihovny vypočítejte PageRank pro uživatele a zobrazte 5 uživatelů s nejvyšším skóre.
-10. Použijte Louvain algoritmus k detekci komunit mezi uživateli.
-11. Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli.
-12. Spočítejte betweenness centrality pro uživatele a zobrazte 5 nejvlivnějších uživatelů.
-13. Pomocí Jaccard Similarity zjistěte, kteří uživatelé mají nejpodobnější sledující.
-14. Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
-15. Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
+3. Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
+4. Pomocí APOC vytvořte vztah "SHARED_FOLLOW" mezi uživateli, kteří sledují stejného uživatele.
+5. Konsolidujte uživatele podle jejich lokace a zkombinujte vlastnosti.
+6. Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejaktivnějších uživatelů.
+7. Použijte apoc.periodic.iterate pro iteraci uživatelů a aktualizaci atributu active v dávkách po 50, což simuluje efekt transakce a škálované zpracování.
+8. Pomocí GDS knihovny vypočítejte PageRank pro uživatele a zobrazte 5 uživatelů s nejvyšším skóre, což jsou ti, kteří mají největší vliv v grafu na základě vztahu "FOLLOWS".
+9. Použijte Louvain algoritmus k detekci komunit mezi uživateli.
+10. Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli.
+11. Spočítejte betweenness centrality pro uživatele a zobrazte 5 nejvlivnějších uživatelů.
+12. Pomocí Jaccard Similarity zjistěte, kteří uživatelé mají nejpodobnější sledující.
+13. Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
+14. Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
 
 
 **Řešení úkolu 1**
@@ -790,6 +789,77 @@ ORDER BY age_group
 ```
 
 **Řešení úkolu 3**
+Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
+```cypher
+MATCH (p:Post)<-[:ON]-(c:Comment)<-[:COMMENTED]-(u:User)
+WITH p, COUNT(u) AS num_comments, AVG(u.age) AS avg_age
+RETURN p.content AS post_content, num_comments, avg_age
+ORDER BY num_comments DESC
+LIMIT 10
+```
+
+**Řešení úkolu 4**
+Pomocí APOC vytvořte vztah "SHARED_FOLLOW" mezi uživateli, kteří sledují stejného uživatele.
+```cypher
+MATCH (u1:User)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2:User)
+WHERE u1 <> u2
+CALL apoc.create.relationship(u1, 'SHARED_FOLLOW', {}, u2) YIELD rel
+RETURN u1.name, u2.name
+LIMIT 10
+```
+
+Ověřím, že se povedlo.
+```
+MATCH (u1:User)-[:SHARED_FOLLOW]->(u2:User)
+MATCH (u1)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2)
+RETURN u1.name AS follower1, u2.name AS follower2, u.name AS sharedFollowedUser
+LIMIT 10
+```
+
+**Řešení úkolu 5**
+Konsolidujte pomocí knihovny APOC a příkazu refactor.mergeNodes uživatele podle jejich lokace a zkombinujte vlastnosti. Konsolidace je proces sloučení uzlů se shodnou hodnotou vybraného atributu (v tomto případě lokace). Tato úloha je v praxi důležitá pro slučování duplicitních uzlů. Pro ověření funkčnosti přejmenuju uzly podle konsolidovaného atributu - lokace.
+
+```cypher
+MATCH (u:User)
+WITH u.location AS loc, COLLECT(u) AS users
+CALL apoc.refactor.mergeNodes(users, {properties: "combine"}) YIELD node
+SET node.name = loc
+RETURN node
+```
+
+**Řešení úkolu 6**
+Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejaktivnějších uživatelů. Pro správné počítání musíme použít OPTIONAL MATCH namísto MATCH. MATCH by vynechal uživatele, kteří nemají takový vztah vytvořený (nemají hranu daného typu). OPTINAL MATCH je nevynechá a dá jim šanci získat své počty interakcí v jiné kategorii (tím myslím post, koment, follow).
+
+```cypher
+MATCH (u:User)
+OPTIONAL MATCH (u)-[:CREATED]->(p:Post)
+OPTIONAL MATCH (u)-[:COMMENTED]->(c:Comment)
+OPTIONAL MATCH (u)-[:FOLLOWS]->(f:User)
+WITH u, COUNT(p) + COUNT(c) + COUNT(f) AS total_interactions
+RETURN u.name, total_interactions
+ORDER BY total_interactions DESC
+LIMIT 5
+```
+
+**Řešení úkolu 7**
+Použijte apoc.periodic.iterate pro iteraci uživatelů a aktualizaci atributu active v dávkách po 50, což simuluje efekt transakce a škálované zpracování.
+```cypher
+CALL apoc.periodic.iterate(
+  "MATCH (u:User) RETURN u",
+  "SET u.active = true",
+  {batchSize: 50, iterateList: true}
+) YIELD batches, total
+RETURN batches, total
+```
+
+Můžeme spočítat, jestli se opravdu provedl příkaz u dávky uživatelů. Číslo by mělo odpovídat velikosti dávky (tedy pokud máte dostatek uživatelů).
+```
+MATCH (u:User)
+WHERE u.active = true
+RETURN COUNT(u) AS active_users
+```
+
+**Řešení úkolu 8**
 Pomocí algoritmu PageRank (příkaz pageRanek.stream) z knihovny GDS zjistěte, kteří uživatelé mají největší vliv v grafu na základě vztahu "FOLLOWS". Budete si muset nejprve vytvořit grafovou projekci příkazem graph.project.cypher.
 
 PageRank je algoritmus původně navržený k hodnocení webových stránek na základě počtu a kvality odkazů. PageRank přiřazuje každému uzlu skóre, které odráží jeho „důležitost“ na základě toho, kolik a jaké uzly na něj směřují. V případě sociálních sítí (např. User a FOLLOWS) by PageRank skóre určilo, kteří uživatelé jsou „vlivnější“ nebo více propojení.
@@ -824,83 +894,7 @@ Grafovou projekci můžeme po dokončení hraní si odstranit ať nezabírá zby
 CALL gds.graph.drop('userGraph')
 ```
 
-**Řešení úkolu 4**
-Zobrazte příspěvky s počtem komentářů a průměrným věkem uživatelů, kteří je komentovali.
-```cypher
-MATCH (p:Post)<-[:ON]-(c:Comment)<-[:COMMENTED]-(u:User)
-WITH p, COUNT(u) AS num_comments, AVG(u.age) AS avg_age
-RETURN p.content AS post_content, num_comments, avg_age
-ORDER BY num_comments DESC
-LIMIT 10
-```
-
-**Řešení úkolu 5**
-Pomocí APOC vytvořte vztah "SHARED_FOLLOW" mezi uživateli, kteří sledují stejného uživatele.
-```cypher
-MATCH (u1:User)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2:User)
-WHERE u1 <> u2
-CALL apoc.create.relationship(u1, 'SHARED_FOLLOW', {}, u2) YIELD rel
-RETURN u1.name, u2.name
-LIMIT 10
-```
-
-Ověřím, že se povedlo.
-```
-MATCH (u1:User)-[:SHARED_FOLLOW]->(u2:User)
-MATCH (u1)-[:FOLLOWS]->(u:User)<-[:FOLLOWS]-(u2)
-RETURN u1.name AS follower1, u2.name AS follower2, u.name AS sharedFollowedUser
-LIMIT 10
-```
-
-**Řešení úkolu 6**
-Konsolidujte pomocí knihovny APOC a příkazu refactor.mergeNodes uživatele podle jejich lokace a zkombinujte vlastnosti. Konsolidace je proces sloučení uzlů se shodnou hodnotou vybraného atributu (v tomto případě lokace). Tato úloha je v praxi důležitá pro slučování duplicitních uzlů. Pro ověření funkčnosti přejmenuju uzly podle konsolidovaného atributu - lokace.
-
-```cypher
-MATCH (u:User)
-WITH u.location AS loc, COLLECT(u) AS users
-CALL apoc.refactor.mergeNodes(users, {properties: "combine"}) YIELD node
-SET node.name = loc
-RETURN node
-```
-
-**Řešení úkolu 7**
-Spočítejte celkový počet interakcí každého uživatele a zobrazte 5 nejaktivnějších uživatelů.
-```cypher
-MATCH (u:User)
-OPTIONAL MATCH (u)-[:CREATED]->(p:Post)
-OPTIONAL MATCH (u)-[:COMMENTED]->(c:Comment)
-OPTIONAL MATCH (u)-[:FOLLOWS]->(f:User)
-WITH u, COUNT(p) + COUNT(c) + COUNT(f) AS total_interactions
-RETURN u.name, total_interactions
-ORDER BY total_interactions DESC
-LIMIT 5
-```
-
-**Řešení úkolu 8**
-Použijte apoc.periodic.iterate pro iteraci uživatelů a aktualizaci atributu active v dávkách po 50, což simuluje efekt transakce a škálované zpracování.
-```cypher
-CALL apoc.periodic.iterate(
-  "MATCH (u:User) RETURN u",
-  "SET u.active = true",
-  {batchSize: 50, iterateList: true}
-) YIELD batches, total
-RETURN batches, total
-```
-
 **Řešení úkolu 9**
-Pomocí GDS knihovny vypočítejte PageRank pro uživatele a zobrazte 5 uživatelů s nejvyšším skóre.
-```cypher
-CALL gds.pageRank.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS'
-})
-YIELD nodeId, score
-RETURN gds.util.asNode(nodeId).name AS user, score
-ORDER BY score DESC
-LIMIT 5
-```
-
-**Řešení úkolu 10**
 Použijte Louvain algoritmus k detekci komunit mezi uživateli.
 ```cypher
 CALL gds.louvain.stream({
@@ -912,7 +906,7 @@ RETURN gds.util.asNode(nodeId).name AS user, communityId
 ORDER BY communityId
 ```
 
-**Řešení úkolu 11**
+**Řešení úkolu 10**
 Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli.
 ```cypher
 MATCH (start:User {name: 'Alice'}), (end:User {name: 'Bob'})
@@ -925,7 +919,7 @@ YIELD totalCost, path
 RETURN totalCost, path
 ```
 
-**Řešení úkolu 12**
+**Řešení úkolu 11**
 Spočítejte betweenness centrality pro uživatele a zobrazte 5 nejvlivnějších uživatelů.
 ```cypher
 CALL gds.betweenness.stream({
@@ -938,7 +932,7 @@ ORDER BY score DESC
 LIMIT 5
 ```
 
-**Řešení úkolu 13**
+**Řešení úkolu 12**
 Pomocí Jaccard Similarity zjistěte, kteří uživatelé mají nejpodobnější sledující.
 ```cypher
 CALL gds.nodeSimilarity.stream({
@@ -952,7 +946,7 @@ ORDER BY similarity DESC
 LIMIT 10
 ```
 
-**Řešení úkolu 14**
+**Řešení úkolu 13**
 Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
 ```cypher
 CALL gds.alpha.closeness.stream({
@@ -965,7 +959,7 @@ ORDER BY centrality DESC
 LIMIT 5
 ```
 
-**Řešení úkolu 15**
+**Řešení úkolu 14**
 Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
 ```cypher
 CALL gds.labelPropagation.stream({
