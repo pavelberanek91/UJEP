@@ -1082,12 +1082,9 @@ CALL gds.graph.drop('userGraph')
 ```
 
 **Řešení úkolu 11**
-Spočítejte betweenness centrality pro uživatele a zobrazte 5 nejvlivnějších uživatelů.
+Spočítejte betweenness centrality pro uživatele a zobrazte 5 nejvlivnějších uživatelů. Opět si musíte vytvořit projekci.
 ```cypher
-CALL gds.betweenness.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS'
-})
+CALL gds.betweenness.stream('userGraph')
 YIELD nodeId, score
 RETURN gds.util.asNode(nodeId).name AS user, score
 ORDER BY score DESC
@@ -1097,26 +1094,19 @@ LIMIT 5
 **Řešení úkolu 12**
 Pomocí Jaccard Similarity zjistěte, kteří uživatelé mají nejpodobnější sledující.
 ```cypher
-CALL gds.nodeSimilarity.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS',
-  similarityCutoff: 0.5
-})
+CALL gds.nodeSimilarity.stream('userGraph')
 YIELD node1, node2, similarity
 RETURN gds.util.asNode(node1).name AS user1, gds.util.asNode(node2).name AS user2, similarity
 ORDER BY similarity DESC
 LIMIT 10
 ```
 
-**Řešení úkolu 13**
+**Řešení úkolu 13 - NEFUNGUJE**
 Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
 ```cypher
-CALL gds.alpha.closeness.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS'
-})
-YIELD nodeId, centrality
-RETURN gds.util.asNode(nodeId).name AS user, centrality
+CALL gds.closeness.stream('userGraph')
+YIELD nodeId, score
+RETURN gds.util.asNode(nodeId).name AS user, score AS centrality
 ORDER BY centrality DESC
 LIMIT 5
 ```
@@ -1124,10 +1114,7 @@ LIMIT 5
 **Řešení úkolu 14**
 Pomocí Label Propagation algoritmu zjistěte, do kterých komunit uživatelé patří.
 ```cypher
-CALL gds.labelPropagation.stream({
-  nodeProjection: 'User',
-  relationshipProjection: 'FOLLOWS'
-})
+CALL gds.labelPropagation.stream('userGraph')
 YIELD nodeId, communityId
 RETURN gds.util.asNode(nodeId).name AS user, communityId
 ORDER BY communityId
