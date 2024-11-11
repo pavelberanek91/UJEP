@@ -1038,20 +1038,36 @@ CALL gds.graph.drop('userGraph')
 **Řešení úkolu 10**
 Pomocí Dijkstra algoritmu vypočítejte nejkratší cestu mezi dvěma uživateli. 
 
-Nejprve si zjistíme jména v našich uzlech.
+Nejprve si zjistíme jména uzlů, které jsou propojeny cestou (stačí okometricky). U mě bude cesta dána přímou návazností vztahu FOLLOWS.
 ```cypher
-RETURN n.name AS name
+MATCH(n) RETURN n
 ```
 
-Následně musím vytvořit grafovou projekci.
+Dijkstrův algoritmus vyžaduje, aby cesty měly váhu. U nás je to váha 1. Nepřišel jsem na způsob, jak donutit GDS přijmout projekci s virtuálním atributem (vy na to třeba přijdete), proto jsem všem hranám přidal nový atribut weight s hodnotou 1.
 ```cypher
+MATCH ()-[r:FOLLOWS]->()
+SET r.weight = 1
+```
 
+
+Následně musím vytvořit grafovou projekci. V té si vyberu vztah, který vytváří cestu.
+```cypher
+CALL gds.graph.project(
+  'userGraph',
+  'User',
+  {
+    FOLLOWS: {
+      orientation: 'NATURAL',
+      properties: 'weight'
+    }
+  }
+)
 ```
 
 Teď mohu vybrat konkrétní jména a zavolat z GDS Dijkstrův algoritmus (je i v APOC).
 ```cypher
-MATCH (start:User {name: 'Chelsea Harrington'}), (end:User {name: 'Russell Sanchez'})
-CALL gds.shortestPath.dijkstra.stream({
+MATCH (start:User {name: 'Megan Flores'}), (end:User {name: 'Christina Soto'})
+CALL gds.shortestPath.dijkstra.stream('userGraph', {
   sourceNode: id(start),
   targetNode: id(end),
   relationshipWeightProperty: 'weight'
