@@ -1101,7 +1101,7 @@ ORDER BY similarity DESC
 LIMIT 10
 ```
 
-**Řešení úkolu 13 - NEFUNGUJE**
+**Řešení úkolu 13**
 Pomocí Harmonic Centrality zjistěte, kteří uživatelé jsou nejvíce propojení v rámci sítě.
 ```cypher
 CALL gds.closeness.stream('userGraph')
