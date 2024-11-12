@@ -3,6 +3,7 @@
 ## Seminář 7 - Spark a jeho moduly - MLlib, GraphX, Spark Streaming
 
 https://www.analyticsvidhya.com/blog/2022/08/complete-guide-to-run-machine-learning-on-spark-using-spark-mllib/
+https://github.com/Marcel-Jan/docker-hadoop-spark
 
 ### Samostudium
 
