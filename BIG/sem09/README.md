@@ -1,6 +1,6 @@
 # Datová úložiště a nástroje pro Big Data (KI/BIG)
 
-## Seminář 9 - Big Data a cloudové služby
+## Seminář 9 - Infrastruktura jako služba
 
 ### Samostudium
 

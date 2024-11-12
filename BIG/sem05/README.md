@@ -64,32 +64,6 @@ if __name__ == '__main__':
     WordCount.run()
 ```
 
-#### S5.4 - HiveQL (Hive Query Language)
-
-HiveQL je dotazovací jazyk nástroje Apache Hive, který umožňuje dotazovat se analytovat data uložená v HDFS. Jazyk je podobný jazyku SQL, což si můžeme ukázat na následujícím příkladu:
-```
-SELECT country, COUNT(*) as user_count
-FROM users
-GROUP BY country;
-```
-HiveQL tento dotaz přeloží do MapReduce úlohy a spustí. Tímto způsobem je možné snadno vytvářet různé reporty v oblasti dolování veledat z Hadoop klastru.
-
-Hive dotazy je možné pouštět pomocí Python Knihovny PyHive.
-
-#### S5.5 - Správa pracovních toků
-
-Pracovní datoky (nebo také datové roury-pipelines) jsou automatizované pracovní postupy, které zahrnují získání dat (extrakce), zpracování dat (transformace) a jejich uložení (load). Takové toky potřebujeme volat opakovaně v čase, efektivně s případnou možností škálování. 
-
-Z toho důvodu existují nástroje pro správu a monitoring toků. Mezi nejznámější nástroje patří Apache Airflow, Prefect, Google Cloud Dataflow a Luigi workflows.
-
-Mezi hlavní vlastnosti těchto správců toků patří:
-1. Automatizace: složité kroky z více procesů se spouští automatizovaně od získání dat až po jejich vizualizaci
-2. Správa závislostí: toky mohou být na sobě závislé a správce se postarají o návaznost výsledků ve formě grafové struktury
-3. Detekce stavu toku: správci umí hlídat, které úkoly ještě nebyly splněné a které jo. Hotové úkoly již nebude spouštět.
-4. ETL rámce: správci podporují myšlenky Extract-Transform-Load pracovního rámce datových analytiků
-5. Logování a monitoring: správci mají obyčejně přehledné datové dashboardy a logovací mechanismy pro průběhy procesů a jejich problémy
-6. Toky a strojové učení: velké modely strojového učení se učí z mnoha dat, která jsou získávána toky. Správci umožní takové učení z dat systematizovat.
-
 ### Cvičení
 
 #### C5.1 - Příprava Hadoop([ZDROJ](https://cjlise.github.io/hadoop-spark/Setup-Hadoop-Cluster/))
@@ -584,26 +558,3 @@ python3 numbercount.py -r hadoop hdfs://namenode:9000/input/numbers.txt > vystup
 ```
 
 Tím jste si vyzkoušeli postup práce, jak by vypadal v případě nasazení Hadoop klastru s MapReduce úlohami. Příští cvičení se k tématu vrátíme a budete trénovat psaní MapReduce úloh na lokálním PC.
-
-#### C5.4 - PyHive
-
-https://pypi.org/project/PyHive-Hack/
-
-#### C5.5 - ETL pomocí Pig
-
-ETL (Extract-Transform-Load) je sada fází, které se typicky nachází při analýze dat, které jsou uloženy v datovém skladu. Jedná se o myšlenkový a procesní pracovní rámec, který pomáhá analytikům vytvářet analyzující programy.
-1. Extract - získá data z datového úložiště
-2. Transform - změní data a získá z nich nějakou podnikovou hodnotu (program napsaný pomocí MapReduce)
-3. Load - uloží data do datového úložiště
-
-Tyto fáze představují jednu datovou rouru pro zpracování dat. Apache Pig je jazyk, který umožňuje psát komplexní programy a můžeme si tyto programy obohatit o vlastní uživatelem definované funkce v mnoha jazykých včetně jazyka Python. Tento jazyk nám pomůže psát takové ETL roury.
-
-https://en.wikipedia.org/wiki/Apache_Pig
-
-#### C5.6 - Luigi workflows
-
-Datové roury často běží opakovaně v periodických intervalech. Pokud nám neustále přichází nová data, potřebujeme neustále nové analýzy. Pokud jsou kódy dostatečně univerzální, můžeme je spouštět opakovaně. 
-
-Takové vymazlené roury budeme muset řídit a sledovat jejich stav. K tomu nám mohou pomocí nástroje pro zprácu datových rour nebo také pracovních toků. Jedním z takových nástrojů je Luigi.
-
-https://medium.com/@prasanth_lade/luigi-all-you-need-to-know-f1bc157b20ed

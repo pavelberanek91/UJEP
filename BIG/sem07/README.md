@@ -1,6 +1,6 @@
 # Datová úložiště a nástroje pro Big Data (KI/BIG)
 
-## Seminář 7 - Spark a jeho moduly - MLlib
+## Seminář 7 - Spark a jeho moduly - MLlib, GraphX, Spark Streaming
 
 https://www.analyticsvidhya.com/blog/2022/08/complete-guide-to-run-machine-learning-on-spark-using-spark-mllib/
 
@@ -33,19 +33,13 @@ Komunikace se Sparkem se provádí pomocí API, které nazýváme Apache Spark C
 
 Kromě toho je možné použít knihovny třetích stran, které naleznete [ZDE](https://spark-packages.org).
 
-#### S7.2 - PySpark
-
-PySpark je modul pro jazyk Python, který zprostředkovává API komunikaci se Sparkem.
-
-#### S7.3 - Resilient Distributed Datasets (RDD)
+#### S7.2 - Resilient Distributed Datasets (RDD)
 
 RDD je jeden z nejdůležitějších konceptů Sparku. Představuje základní datovou strukturu Sparku, která je distribuovaná, nemutabilní a odolná proti selhání (fault-tolerant). Tato datová struktura obaluje datové sady, nad kterými je možné na různých uzlech provádět výpočty.
 
 RDD vznikají dvěma způsoby:
 1. paralelizací existující kolekce v Driver programu,
 2. referencí na data v externím datovém úložišti (HDFS, HBase, Cassandra, Amazon S3).
-
-#### S7.4 - RDD operace
 
 RDD struktury podporují dva typy operací:
 1. transformace - vytváří novou datovou sadu z existující,
@@ -81,17 +75,23 @@ Tyto RDD akce lze optimalizovat několika způsoby:
 1. výběr vhodné formy persistence - cachovaní datové sady do paměti uzlů pro následné operace,
 2. sdílené proměnné - procesy ve Sparku mají vlastní kopie dat, avšak je možné využít sdílených proměnných ve formě akumulátorů a mechanismem broadcastu proměnných.
 
-#### S7.5 - MLlib
+#### S7.3 - MLlib
+
+#### S7.4 - GraphX
+
+#### S7.5 - Spark Streaming
 
 ### Cvičení
 
 #### C7.1 - Příprava prostředí
 
-#### C7.2 - Analýza dat pomocí RDD operací
+#### C7.2 - PySpark
 
-#### C7.3 - Optimalizace operací
+PySpark je modul pro jazyk Python, který zprostředkovává API komunikaci se Sparkem.
 
-#### C7.4 - Tvorba reportu
+#### C7.3 - MLlib
 
-#### C7.5 - Analýza streamu
+#### C7.4 - GraphX
+
+#### C7.5 - Spark Streaming
 
