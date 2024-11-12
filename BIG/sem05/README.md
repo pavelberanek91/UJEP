@@ -78,7 +78,17 @@ Hive dotazy je možné pouštět pomocí Python Knihovny PyHive.
 
 #### S5.5 - Správa pracovních toků
 
+Pracovní datoky (nebo také datové roury-pipelines) jsou automatizované pracovní postupy, které zahrnují získání dat (extrakce), zpracování dat (transformace) a jejich uložení (load). Takové toky potřebujeme volat opakovaně v čase, efektivně s případnou možností škálování. 
 
+Z toho důvodu existují nástroje pro správu a monitoring toků. Mezi nejznámější nástroje patří Apache Airflow, Prefect, Google Cloud Dataflow a Luigi workflows.
+
+Mezi hlavní vlastnosti těchto správců toků patří:
+1. Automatizace: složité kroky z více procesů se spouští automatizovaně od získání dat až po jejich vizualizaci
+2. Správa závislostí: toky mohou být na sobě závislé a správce se postarají o návaznost výsledků ve formě grafové struktury
+3. Detekce stavu toku: správci umí hlídat, které úkoly ještě nebyly splněné a které jo. Hotové úkoly již nebude spouštět.
+4. ETL rámce: správci podporují myšlenky Extract-Transform-Load pracovního rámce datových analytiků
+5. Logování a monitoring: správci mají obyčejně přehledné datové dashboardy a logovací mechanismy pro průběhy procesů a jejich problémy
+6. Toky a strojové učení: velké modely strojového učení se učí z mnoha dat, která jsou získávána toky. Správci umožní takové učení z dat systematizovat.
 
 ### Cvičení
 
@@ -468,7 +478,112 @@ Hadoop úloha potřebuje nový adresář pro výpočet, takže pokud byste již 
 hadoop fs -rm -r /output
 ```
 
-Pojďme si ještě napsat úlohu na Map Reduce v Pythonu. Pro Python existuje knihovna s názvem
+Pojďme si ještě napsat úlohu na Map Reduce v Pythonu. Pro Python existuje knihovna s názvem MrJob, kterou musíme nejprve do Hadoop klastru nainstalovat. Jelikož na NameNode není ani Python a ani wget (abychom si mohli python sestavit), tak musíme udělat nějaké brikule. První co musíme udělat je updatovat balíčky pomocí `apt-get update` na NameNode, jenže to vyhodí chybu. Problém je v tom, že používaný Docker pro Hadoop je starý. Musíme změnit URL na zdroj balíčku. Přihlásíme se do NameNode a spustíme následující příkaz:
+```bash
+echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
+apt-get update
+```
+
+Teď nám půjdou instalovat již programy a balíky do našeho NameNodu:
+```bash
+apt-get install python3
+apt-get install python3-pip
+```
+
+Stažený Python je bohužel stará verze 3.5, takže pozor na psaní kódu s novinkami (walrus operátory apod.). Pojďme nainstalovat MrJob modul pro Python:
+```bash
+pip3 install mrjob
+```
+
+Tento postup musíte zopakovat pro všechny uzly v klastru. Osobně netuším, pro které uzly to musí být. Provedl jsem to pro následující 3:
+* NameNode - zde se program překládá, takže povinnost
+* DataNodes - na nich se počítá, netuším, zda je to povinnost. Můžete zkusit přeskočit a uvidíte.
+* NodeManager - zde jsem zjistil, že musí být mrjob nainstalován, jinak úlohy vrátí chybu
+
+Teď můžeme napsat náš první MapReduce program v Pythonu. Vytvoříme soubor wordcount.py a napíšeme do něj tento kód:
+```py
+from mrjob.job import MRJob
+
+class MRWordCount(MRJob):
+    def mapper(self, _, line):
+        for word in line.split():
+            yield(word, 1)
+
+    def reducer(self, word, counts):
+        yield(word, sum(counts))
+
+if __name__ == "__main__":
+    MRWordCount.run()
+```
+
+A vytvořme si nějaký textový soubor se slovy:
+```data.text
+jack be nimble
+jack be quick
+jack jumped over the candlestick
+```
+
+Nahrajme oba soubory na NameNode, nahrajeme vstupní soubor do HDFS.
+```bash
+hadoop fs -mkdir -p /input
+hadoop fs -put data.txt /input/
+```
+
+Spustíme úlohu pomocí:
+```bash
+python3 wordcount.py -r hadoop hdfs://namenode:9000/input/data.txt > vystup.txt
+```
+
+Modul MrJob funguje i lokálně, takže pro testování úloh nepotřebujete být připojeni k Hadoop klastru a zasílat tam úlohy. To bude užitečné pro příští cvičení, kdy budete psát MapReduce úlohy a nechcete neustále nahrávat kód s daty do HDFS.
+
+```bash
+python3 wordcount.py data.txt
+```
+
+**Úkol 1 - Přepsání vlastního MapReduce do MrJob**
+Přepište si Vámi vytvořený Map Reduce program v Javě do pythonu a spusťte ho.
+
+**Řešení**
+Můj program na počítání frekvence výskytu číslic v souboru z Javy by vypadal takto:
+```py
+from mrjob.job import MRJob
+from mrjob.step import MRStep
+
+class NumberCount(MRJob):
+
+    def steps(self):
+        return [
+            MRStep(
+                mapper=self.mapper_get_numbers,
+                reducer=self.reducer_count_numbers
+            )
+        ]
+
+    def mapper_get_numbers(self, _, line):
+        try:
+            number = int(line.strip())
+            yield number, 1
+        except ValueError:
+            pass  # Pokud na řádku není číslo, přeskakujeme
+
+    def reducer_count_numbers(self, number, counts):
+        yield number, sum(counts)
+
+if __name__ == '__main__':
+    NumberCount.run()
+```
+
+Program spustím s daty pomocí (začínám z lokálního PC):
+```bash
+docker cp numbercount.py namenode:/tmp
+docker cp numbers.txt namenode:/tmp
+docker exec -it namenode bash
+cd tmp
+hadoop fs -put numbers.txt /input/
+python3 numbercount.py -r hadoop hdfs://namenode:9000/input/numbers.txt > vystup.txt
+```
+
+Tím jste si vyzkoušeli postup práce, jak by vypadal v případě nasazení Hadoop klastru s MapReduce úlohami. Příští cvičení se k tématu vrátíme a budete trénovat psaní MapReduce úloh na lokálním PC.
 
 #### C5.4 - PyHive
 
