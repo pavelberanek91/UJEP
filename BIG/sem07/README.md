@@ -78,21 +78,146 @@ Tyto RDD akce lze optimalizovat několika způsoby:
 
 #### S7.3 - MLlib
 
+MLlib je knihovna strojového učení pro Apache Spark, která poskytuje škálovatelné a distribuované algoritmy strojového učení, nástroje a užitečné utility a je dostupná ihned po instalace Sparku. Je navržena tak, aby zjednodušila implementaci strojového učení na velkých datových souborech, které jsou distribuovány na výpočetním klastru jako je Hadoop. MLlib nabízí flexibilní API pro programování ve Scale, Pythonu, Javě i R, avšak není tak rozšířen jako využití modulů scikit-learn nebo tensorflow/pytorch ve světe strojového učení. Důvodem je i značnější složitost vlivem zamýšleném využití na výpočetním klastru.
+
+MLlib podporuje následující typy ML algoritmů:
+* Klasifikaci: Například logistická regrese, podpora vektorových strojů (SVM).
+* Regresi: Lineární regrese, Lasso, Ridge regrese.
+* Shlukování: K-means, Gaussian Mixture Models (GMM).
+* Redukci dimenzionality: Principal Component Analysis (PCA), Singular Value Decomposition (SVD).
+* Doporučovací systémy: Alternating Least Squares (ALS) pro doporučování na základě kolaborativního filtrování.
+* Hodnocení modelů: Metody jako ROC křivky, přesnost, MSE, apod.
+
+Následuje ukázka práce s modulem PySpark, který přes API volá Spark.
+
+**Načtení dat:**
+```
+from pyspark.ml.linalg import Vectors
+from pyspark.sql import SparkSession
+
+spark = SparkSession.builder.appName("MLlibExample").getOrCreate()
+data = [(Vectors.dense([0.0, 1.1, 0.1]), 1.0),
+        (Vectors.dense([2.0, 1.0, -1.0]), 0.0),
+        (Vectors.dense([2.0, 1.3, 1.0]), 1.0)]
+df = spark.createDataFrame(data, ["features", "label"])
+```
+
+**Vytvoření a trénování modelu:**
+```
+from pyspark.ml.classification import LogisticRegression
+
+lr = LogisticRegression(maxIter=10, regParam=0.01)
+model = lr.fit(df)
+```
+
+**Predikce:**
+```
+predictions = model.transform(df)
+predictions.show()
+```
+
+**Evaluace modelu:**
+```
+from pyspark.ml.evaluation import BinaryClassificationEvaluator
+
+evaluator = BinaryClassificationEvaluator()
+accuracy = evaluator.evaluate(predictions)
+print(f"Accuracy: {accuracy}")
+```
+
+
 #### S7.4 - GraphX
+
+GraphX je komponenta Apache Spark, která je navržena pro zpracování a analýzu grafových dat a využívá jako základní datové struktury RDD. Umožňuje manipulaci s orientovanými i neorientovanými grafy a provádění grafových algoritmů na distribuovaných datových sadách. Využívá výhod in-memory zpracování a distribuovaných výpočtů v rámci Spark ekosystému. Případy užití jsou totožné s MLlib, tedy využíváme v případech, kdy máme veledata na distribuovaném úložišti a potřebujeme provést výpočty. Pro malé grafy je lepší využít dedikované lokální moduly Pythonu, pro střední Neo4j (který je škálovatelný) a pro datově nejobjemnější případy práve GraphX.
+
+Podporované algoritmy:
+* Subgrafy: Vytváření podgrafů na základě filtrů.
+* Join: Propojení grafů s dalšími daty.
+* Transformace: Modifikace vrcholů a hran.
+* PageRank: Hodnocení významu vrcholů v grafu.
+* Connected Components: Detekce propojených komponent v grafu.
+* Triangle Count: Počítání trojúhelníků (kliky o třech vrcholech).
+* Shortest Path: Nejkratší cesta mezi uzly.
+
+GraphX se používá primárně v Javě, avšak pokud chcete použít Python, tak existuje wrapper [GRAPHFRAMES](https://graphframes.github.io/graphframes/docs/_site/quick-start.html).
+```
+from graphframes import *
+
+# Create a Vertex DataFrame with unique ID column "id"
+v = sqlContext.createDataFrame([
+  ("a", "Alice", 34),
+  ("b", "Bob", 36),
+  ("c", "Charlie", 30),
+], ["id", "name", "age"])
+
+# Create an Edge DataFrame with "src" and "dst" columns
+e = sqlContext.createDataFrame([
+  ("a", "b", "friend"),
+  ("b", "c", "follow"),
+  ("c", "b", "follow"),
+], ["src", "dst", "relationship"])
+# Create a GraphFrame
+g = GraphFrame(v, e)
+
+# Query: Get in-degree of each vertex.
+g.inDegrees.show()
+
+# Query: Count the number of "follow" connections in the graph.
+g.edges.filter("relationship = 'follow'").count()
+
+# Run PageRank algorithm, and show results.
+results = g.pageRank(resetProbability=0.01, maxIter=20)
+results.vertices.select("id", "pagerank").show()
+```
 
 #### S7.5 - Spark Streaming
 
+Spark Streaming je modul Apache Spark navržený pro zpracování datových toků v reálném čase a je dostupný ihned po instalaci Sparku. Umožňuje analyzovat a zpracovávat data přicházející z různých zdrojů, jako jsou senzory, logy, sociální sítě, databáze nebo služby pro sběr dat. Namísto zpracování jednotlivých událostí v reálném čase Spark Streaming rozdělí tok dat do malých časových úseků (např. každých 1 sekundu). Spark Streaming je postaven na Spark Core a integruje se se Spark ekosystémem (např. Spark SQL pro dotazování se, GraphX pokud přicházejí grafová data, MLlib pro využití strojového učení nad daty přicházejícími v reálném čase).
+
+Algoritmus práce Spark Streaming:
+1. Příjem datového toku: Data jsou přijímána ze zdroje (např. Kafka, socket).
+2. Transformace na DStream: Data jsou reprezentována jako DStream (Discretized Stream), což je sekvence RDD (Resilient Distributed Dataset).
+3. Transformace a analýza: Operace na DStreamech (např. map, filter, reduce).
+4. Výstup: Zpracovaná data mohou být uložena do HDFS, databáze nebo použita pro další analýzu.
+
+```
+from pyspark.streaming import StreamingContext
+from pyspark import SparkContext
+
+# Vytvoření Spark kontextu
+sc = SparkContext("local[2]", "NetworkWordCount")
+ssc = StreamingContext(sc, 1)  # Interval mikro-batch (1 sekunda)
+
+# Přijetí datového toku ze socketu na portu 9999
+lines = ssc.socketTextStream("localhost", 9999)
+
+# Zpracování dat (počítání slov)
+words = lines.flatMap(lambda line: line.split(" "))
+wordCounts = words.map(lambda word: (word, 1)).reduceByKey(lambda a, b: a + b)
+
+# Výstup výsledků do konzole
+wordCounts.pprint()
+
+# Spuštění streamingu
+ssc.start()
+ssc.awaitTermination()
+```
+
 ### Cvičení
 
-#### C7.1 - Příprava prostředí
+#### C7.1 - Tutoriál a zprovoznění ekosystému
 
-#### C7.2 - PySpark
+Projděte si následující tutoriál a zprovozněte nástroje Spark a Graphx s případnými Python moduly pro Váš Hadoop docker-compose: [TUTORIAL](https://sparkbyexamples.com/pyspark-tutorial/). Vyzkoušejte si zmíněné příklady.
 
-PySpark je modul pro jazyk Python, který zprostředkovává API komunikaci se Sparkem.
+#### C7.2 - Vlastní projekt využívající ML pro klasifikaci
 
-#### C7.3 - MLlib
+Nahrajte na HDFS nějaká data z Kaggle a zkuste si pomocí MLlib naučit model klasifikovat (například obrázky psů a koček).
 
-#### C7.4 - GraphX
+#### C7.3 - Vlastní projekt využívající grafová data
 
-#### C7.5 - Spark Streaming
+Nahrajte na HDFS nějaká grafová data (můžete je nagenerovat) a zkuste si provést analýzu grafových dat pomocí nějakého algorimu z GraphX
+
+#### C7.4 - Vlastní projekt využívající detekci odchylky v real-time datech
+
+Vytvořte si nějaký real-time datový zdroj, který zasílá do Sparku data (například simulace teploty) a detekujte v datech odchylky s využitím Spark Streaming. Data může generovat skript, který dává data do databáze (můžete využít i Apache Kafka z tutoriálu) a s nějakou malou pravděpodobností vygeneruje do dávky statistickou odchylku. Statistickou odchylku můžete reprezentovat jako číslo větší než 3*sigma.
 
