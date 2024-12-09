@@ -207,7 +207,251 @@ ssc.awaitTermination()
 
 #### C7.1 - Tutoriál a zprovoznění ekosystému
 
-Projděte si následující tutoriál a zprovozněte nástroje Spark a Graphx s případnými Python moduly pro Váš Hadoop docker-compose: [TUTORIAL](https://sparkbyexamples.com/pyspark-tutorial/). Vyzkoušejte si zmíněné příklady.
+1. Zprovozněte si prostředí Sparku, nejprve zvlášť a zkuste si nějaký hello-world příklad. 
+2. Integrujte Spark do Vašeho stávajícího Hadoop ekosystému pro využívání dat z HDFS. Vyzkoušejte na příkladu, kdy vstupní data jsou uložena v HDFS.
+3. Volitelně - zprovoznění do Kubernetes klastru
+
+Nápomocné tutoriály:
+* [SPARKBYEXAMPLES - SPARK V DOCKER-COMPOSE](https://sparkbyexamples.com/pyspark-tutorial)
+* [MEDIUM - SPARK V DOCKER-COMPOSE](https://medium.com/@SaphE/testing-apache-spark-locally-docker-compose-and-kubernetes-deployment-94d35a54f222)
+* [MEDIUM - SPARK LOKÁLNĚ](https://medium.com/@marcelopedronidasilva/how-to-install-and-run-pyspark-locally-integrated-with-vscode-via-jupyter-notebook-on-windows-ff209ac8621f)
+* [MEDIUM - SPARK KUBERNETES](https://medium.com/@SaphE/deploying-apache-spark-on-a-local-kubernetes-cluster-a-comprehensive-guide-d4a59c6b1204)
+
+**Řešení Docker-compose**
+Mé řešení vzniklo na základě druhého tutoriálu MEDIUM - SPARK V DOCKER-COMPOSE. Neprve vytvoříme adresář s názvem `docker-compose-way`, do kterého uložíme všechny potřebné soubory pro běh Spark klastru.
+
+Prvním souborem v adresáři bude Dockerfile s následujícím obsahem.
+```Dockerfile
+# Základní Java obraz, ze kterého vyjdeme
+FROM openjdk:11.0.11-jre-slim-buster as builder
+
+# Instalace všech závislostí včetně Pythonu pro PySpark
+RUN apt-get update && apt-get install -y curl vim wget software-properties-common ssh net-tools ca-certificates python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy
+
+RUN update-alternatives --install "/usr/bin/python" "python" "$(which python3)" 1
+
+# Fix the value of PYTHONHASHSEED
+# Note: this is needed when you use Python 3.3 or greater
+ENV SPARK_VERSION=3.4.0 \
+HADOOP_VERSION=3 \
+SPARK_HOME=/opt/spark \
+PYTHONHASHSEED=1
+
+# Download and uncompress spark from the apache archive
+RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
+&& mkdir -p /opt/spark \
+&& tar -xf apache-spark.tgz -C /opt/spark --strip-components=1 \
+&& rm apache-spark.tgz
+
+
+# Apache spark environment
+FROM builder as apache-spark
+
+WORKDIR /opt/spark
+
+ENV SPARK_MASTER_PORT=7077 \
+SPARK_MASTER_WEBUI_PORT=8080 \
+SPARK_LOG_DIR=/opt/spark/logs \
+SPARK_MASTER_LOG=/opt/spark/logs/spark-master.out \
+SPARK_WORKER_LOG=/opt/spark/logs/spark-worker.out \
+SPARK_WORKER_WEBUI_PORT=8080 \
+SPARK_WORKER_PORT=7000 \
+SPARK_MASTER="spark://spark-master:7077" \
+SPARK_WORKLOAD="master"
+
+EXPOSE 8080 7077 6066
+
+RUN mkdir -p $SPARK_LOG_DIR && \
+touch $SPARK_MASTER_LOG && \
+touch $SPARK_WORKER_LOG && \
+ln -sf /dev/stdout $SPARK_MASTER_LOG && \
+ln -sf /dev/stdout $SPARK_WORKER_LOG
+
+COPY start-spark.sh /
+
+CMD ["/bin/bash", "/start-spark.sh"]
+```
+
+Následně vytvoříme skript, který bude sloužit jako vstupní bod klastru při spuštění.
+```start-spark.sh
+#start-spark.sh
+#!/bin/bash
+. "/opt/spark/bin/load-spark-env.sh"
+# When the spark work_load is master run class org.apache.spark.deploy.master.Master
+if [ "$SPARK_WORKLOAD" == "master" ];
+then
+
+export SPARK_MASTER_HOST=`hostname`
+
+cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.master.Master --ip $SPARK_MASTER_HOST --port $SPARK_MASTER_PORT --webui-port $SPARK_MASTER_WEBUI_PORT >> $SPARK_MASTER_LOG
+
+elif [ "$SPARK_WORKLOAD" == "worker" ];
+then
+# When the spark work_load is worker run class org.apache.spark.deploy.master.Worker
+cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.worker.Worker --webui-port $SPARK_WORKER_WEBUI_PORT $SPARK_MASTER >> $SPARK_WORKER_LOG
+
+elif [ "$SPARK_WORKLOAD" == "submit" ];
+then
+    echo "SPARK SUBMIT"
+else
+    echo "Undefined Workload Type $SPARK_WORKLOAD, must specify: master, worker, submit"
+fi
+```
+
+Teď vytvoříme Docker obraz z Dockerfilu (musíme být ve složce docker-compose-way).
+```bash
+docker build -t our-own-apache-spark:3.4.0 .
+```
+
+
+lorem
+```docker-compose.yml
+version: "3.3"
+services:
+  spark-master:
+    image: our-own-apache-spark:3.4.0
+    ports:
+      - "9090:8080"
+      - "7077:7077"
+    volumes:
+       - ./apps:/opt/spark-apps
+       - ./data:/opt/spark-data
+    environment:
+      - SPARK_LOCAL_IP=spark-master
+      - SPARK_WORKLOAD=master
+  spark-worker-a:
+    image: our-own-apache-spark:3.4.0
+    ports:
+      - "9091:8080"
+      - "7000:7000"
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_DRIVER_MEMORY=1G
+      - SPARK_EXECUTOR_MEMORY=1G
+      - SPARK_WORKLOAD=worker
+      - SPARK_LOCAL_IP=spark-worker-a
+    volumes:
+       - ./apps:/opt/spark-apps
+       - ./data:/opt/spark-data
+  spark-worker-b:
+    image: our-own-apache-spark:3.4.0
+    ports:
+      - "9092:8080"
+      - "7001:7000"
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+      - SPARK_WORKER_CORES=1
+      - SPARK_WORKER_MEMORY=1G
+      - SPARK_DRIVER_MEMORY=1G
+      - SPARK_EXECUTOR_MEMORY=1G
+      - SPARK_WORKLOAD=worker
+      - SPARK_LOCAL_IP=spark-worker-b
+    volumes:
+        - ./apps:/opt/spark-apps
+        - ./data:/opt/spark-data
+```
+
+Následně se připojíme do Spark-Master uzlu, který ovládá výpočetní Spark klastr. Který z kontejnerů je Master uzel Sparku zjistíte podle názvu pokud si vypíšete všechny běžící kontejnery příkazem Docker ps. Měl by se jmenovat docker-compose-way-spark-master-1. Zapamatujte si jeho hash.
+```bash
+docker ps
+docker exec -i -t <hash pro spark-master> /bin/bash
+#v me instanci: docker exec -i -t 0766d76b9da7 /bin/bash
+```
+
+Přejdeme do složky s ukázkovými příklady v jazyce Python
+```bash
+cd /opt/spark/examples/src/main/python
+```
+
+A v editoru Vi vytvoříme nějaký jednoduchý hello-world příklad pro vyzkoušení funkčnosti. Nejprve vytvořte prázdný soubor pomocí Vi.
+```bash
+vi test.py
+```
+
+Zmáčknutím klávesy `i` přejdete do editačního režimu. Můžete vložit následující kód do souboru:
+```test.py
+from pyspark.sql import SparkSession
+
+# Inicializace SparkSession
+spark = SparkSession.builder.appName("HelloWorldApp").getOrCreate()
+
+# Vytvoření jednoduchého RDD
+rdd = spark.sparkContext.parallelize(["Hello", "World", "from", "PySpark"])
+
+# Transformace dat - převod na velká písmena
+transformed_rdd = rdd.map(lambda x: x.upper())
+
+# Akce - sběr výsledků
+result = transformed_rdd.collect()
+
+# Zápis do souboru
+output_path = "/tmp/output.txt"
+with open(output_path, "w") as file:
+    file.write(" ".join(result))
+
+print(f"Výsledek byl zapsán do souboru: {output_path}")
+
+# Ukončení SparkSession
+spark.stop()
+```
+
+Zmáčknutím klávesy escape můžete zadávat příkazy programu Vi. Zmáčkněte klávesu `:` a napište `wq` (write, quit) a tím uložíte zapsaný text a program ukončíte.
+
+Teď stačí kód spustit a přečíst si výsledky (jsou vidět i ve výpisech, ale výpisy jsou tak husté, že je to lehce přehlédnutelné). Pro spuštění musíme přejít do složky se binárními soubory Sparku a spustit aplikaci pro spouštění úloh (Sparl Submit) s uvedením cesty k našemu kódu.
+```bash
+cd /opt/spark/bin
+./spark-submit --master spark://0.0.0.0:7077 --name mujprogram /opt/spark/examples/src/main/python/test.py
+```
+
+Výsledek si můžeme stáhnout z Spark Master kontejneru pomocí Docker Copy (předpokládám, že jste příkazem exit ukončili běh bash ve Spark Master kontejneru a jste zpátky ve svém hostitelském počítači).
+```bash
+docker cp <hash master kontejenru>:/tmp/output.txt ./output.txt
+#v me instanci: docker cp 0766d76b9da7:/tmp/output.txt .output.txt
+```
+
+**Řešení integrace do Hadoop**
+```Dockerfile
+
+```
+```docker-compose.yml
+
+```
+
+```test.py
+from pyspark.sql import SparkSession
+
+# Inicializace SparkSession
+spark = SparkSession.builder.appName("HelloWorldApp").getOrCreate()
+
+# Vytvoření jednoduchého RDD
+rdd = spark.sparkContext.parallelize(["Hello", "World", "from", "PySpark"])
+
+# Transformace dat - převod na velká písmena
+transformed_rdd = rdd.map(lambda x: x.upper())
+
+# Zápis výsledku na HDFS
+output_path = "hdfs://namenode:8020/user/output"
+transformed_rdd.saveAsTextFile(output_path)
+
+print(f"Výsledek byl uložen na HDFS do: {output_path}")
+
+# Ukončení SparkSession
+spark.stop()
+```
+
+**Řešení Kubernetes**
+```Dockerfile
+
+```
+```docker-compose.yml
+
+```
 
 #### C7.2 - Vlastní projekt využívající ML pro klasifikaci
 
