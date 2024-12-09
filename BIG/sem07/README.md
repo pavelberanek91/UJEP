@@ -499,13 +499,13 @@ cd /opt/spark/bin
 ```
 
 **Řešení integrace do Hadoop**
-```Dockerfile
+Teď můžeme zkusit integrovat náš Spark klastru do Hadoop klastru, na kterém jsme pracovali v minulých lekcích. Bude se jednat pouze o sloučení našich dvou docker-compose souborů.
 
-```
 ```docker-compose.yml
-
+DOPLNIT
 ```
 
+V našem kódu pro Spark můžeme výsledky ukládat rovnou do HDFS.
 ```test.py
 from pyspark.sql import SparkSession
 
@@ -529,11 +529,9 @@ spark.stop()
 ```
 
 **Řešení Kubernetes**
-```Dockerfile
-
+Pokud bychom chtěli výpočetní klastr škálovatelný, tak můžeme nechat Kubernetes orchestrovat náš složený klastr.
 ```
-```docker-compose.yml
-
+DOPLNIT
 ```
 
 #### C7.2 - Vlastní projekt využívající ML pro klasifikaci
