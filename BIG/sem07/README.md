@@ -222,33 +222,35 @@ Mé řešení vzniklo na základě druhého tutoriálu MEDIUM - SPARK V DOCKER-C
 
 Prvním souborem v adresáři bude Dockerfile s následujícím obsahem.
 ```Dockerfile
-# Základní Java obraz, ze kterého vyjdeme
+# Základní Java obraz, ze kterého vyjdeme, jelikož budeme později odkazovat na tento obraz, tak mu dáme kratší alias
 FROM openjdk:11.0.11-jre-slim-buster as builder
 
-# Instalace všech závislostí včetně Pythonu pro PySpark
+# Instalace všech závislostí včetně Pythonu a jeho modulů (numpy, scipy, matplotlib) pro PySpark, ssh a net-tools pro komunikaci mezi Spark uzly a curl a wget pro stahování dodatečných souborů
 RUN apt-get update && apt-get install -y curl vim wget software-properties-common ssh net-tools ca-certificates python3 python3-pip python3-numpy python3-matplotlib python3-scipy python3-pandas python3-simpy
 
+# Vytvoření aliasu python pro python3 (skutečná binárka) pro zajištění kompatibility skritpů, volající python3 pod aliasem python
 RUN update-alternatives --install "/usr/bin/python" "python" "$(which python3)" 1
 
-# Fix the value of PYTHONHASHSEED
-# Note: this is needed when you use Python 3.3 or greater
+# Potřebné konstanty pokud využíváme Python 3.3 a větší - verze Sparku, verze Hadoopu, kořenový adresář kam se Spark nainstaluje a fixní seed pro paralelní zpracování dat
 ENV SPARK_VERSION=3.4.0 \
 HADOOP_VERSION=3 \
 SPARK_HOME=/opt/spark \
 PYTHONHASHSEED=1
 
-# Download and uncompress spark from the apache archive
+# Stáhnutí a rozbalení Sparku do adresáře /opt/spark
 RUN wget --no-verbose -O apache-spark.tgz "https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz" \
 && mkdir -p /opt/spark \
 && tar -xf apache-spark.tgz -C /opt/spark --strip-components=1 \
 && rm apache-spark.tgz
 
 
-# Apache spark environment
+# Obalíme částečně sestrojený obraz dalším kódem a dáme nové vrstvě alias apache-spark
 FROM builder as apache-spark
 
+# Nastavení pracovního adresáře
 WORKDIR /opt/spark
 
+# Nastavení portů Sparku, adresářů pro logy Master a Workerů, URI pro Spark Mastera a typ uzlu jako Master (může být ještě Worker)
 ENV SPARK_MASTER_PORT=7077 \
 SPARK_MASTER_WEBUI_PORT=8080 \
 SPARK_LOG_DIR=/opt/spark/logs \
@@ -259,20 +261,23 @@ SPARK_WORKER_PORT=7000 \
 SPARK_MASTER="spark://spark-master:7077" \
 SPARK_WORKLOAD="master"
 
+# Odhalené porty: 8080 = webové UI Masteru, 7077 = Port pro komunikaci s Masterem, 6066 = pro REST API Spark Mastera
 EXPOSE 8080 7077 6066
 
+# Vytvoření logovacích adresářů a nastavení výpisů na standardní výstup z důvodu viditelnosti v Docker logu
 RUN mkdir -p $SPARK_LOG_DIR && \
 touch $SPARK_MASTER_LOG && \
 touch $SPARK_WORKER_LOG && \
 ln -sf /dev/stdout $SPARK_MASTER_LOG && \
 ln -sf /dev/stdout $SPARK_WORKER_LOG
 
+# Spouštěcí skript, který představuje vstupní bod kontejneru.
 COPY start-spark.sh /
 
 CMD ["/bin/bash", "/start-spark.sh"]
 ```
 
-Následně vytvoříme skript, který bude sloužit jako vstupní bod klastru při spuštění.
+Následně vytvoříme skript, který bude sloužit jako vstupní bod klastru při spuštění (byl na konci předchozího Dockerfilu).
 ```start-spark.sh
 #start-spark.sh
 #!/bin/bash
@@ -303,8 +308,7 @@ Teď vytvoříme Docker obraz z Dockerfilu (musíme být ve složce docker-compo
 docker build -t our-own-apache-spark:3.4.0 .
 ```
 
-
-lorem
+Následně provedeme sestavení výpočetního klastr z jednoho hlavního Master uzlu a dvou výpočetního uzlů pomocí Docker-compose.
 ```docker-compose.yml
 version: "3.3"
 services:
@@ -356,6 +360,8 @@ services:
         - ./apps:/opt/spark-apps
         - ./data:/opt/spark-data
 ```
+
+Klastr spustíme pomocí `docker-compose up`
 
 Následně se připojíme do Spark-Master uzlu, který ovládá výpočetní Spark klastr. Který z kontejnerů je Master uzel Sparku zjistíte podle názvu pokud si vypíšete všechny běžící kontejnery příkazem Docker ps. Měl by se jmenovat docker-compose-way-spark-master-1. Zapamatujte si jeho hash.
 ```bash
