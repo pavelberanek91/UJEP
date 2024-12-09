@@ -277,24 +277,28 @@ COPY start-spark.sh /
 CMD ["/bin/bash", "/start-spark.sh"]
 ```
 
-Následně vytvoříme skript, který bude sloužit jako vstupní bod klastru při spuštění (byl na konci předchozího Dockerfilu).
+Následně vytvoříme skript, který bude sloužit jako vstupní bod klastru při spuštění (byl na konci předchozího Dockerfilu). Skript slouží ke spouštění klastrů (vstupní bod) a rozlišuje nastavení uzlu podle proměnné SPARK_WORKLOAD.
 ```start-spark.sh
 #start-spark.sh
 #!/bin/bash
+
+# Načte proměnné prostředí ze souboru load-spark-en.sh, který je součástí instalace Sparku. Jsou v něm defaultní cesty jako SPARK_HOME.
 . "/opt/spark/bin/load-spark-env.sh"
-# When the spark work_load is master run class org.apache.spark.deploy.master.Master
+
+# Pokud je uzel nastaven na úlohu Master
 if [ "$SPARK_WORKLOAD" == "master" ];
 then
-
+# nastaví hosta na sebe (aktuální uzel je Master)
 export SPARK_MASTER_HOST=`hostname`
-
+# spustí Master proces (Java třída), nastaví IP adresu na hostname, port a web UI port a přesměruje výstup do logovacího souboru
 cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.master.Master --ip $SPARK_MASTER_HOST --port $SPARK_MASTER_PORT --webui-port $SPARK_MASTER_WEBUI_PORT >> $SPARK_MASTER_LOG
 
+# Pokud je uzel nastaven na úlohu Worker
 elif [ "$SPARK_WORKLOAD" == "worker" ];
-then
-# When the spark work_load is worker run class org.apache.spark.deploy.master.Worker
+# spustí Worker proces (Java třída), nastaví web UI port Workeru, URI na Master a přesměruje výstup do logovacího souboru
 cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.worker.Worker --webui-port $SPARK_WORKER_WEBUI_PORT $SPARK_MASTER >> $SPARK_WORKER_LOG
 
+# Pokud je uzel nastaven na zasílání úloh do výpočetního klastru. V else je možnost rozšíření klastru o automatizované výpočty. Skript je připraven právě na takové situace, kdy existuje dedikovaný Submit uzel pro úlohy. Běžné je však pouštět úlohy na Masterovi.
 elif [ "$SPARK_WORKLOAD" == "submit" ];
 then
     echo "SPARK SUBMIT"
@@ -312,36 +316,36 @@ Následně provedeme sestavení výpočetního klastr z jednoho hlavního Master
 ```docker-compose.yml
 version: "3.3"
 services:
-  spark-master:
-    image: our-own-apache-spark:3.4.0
+  spark-master: #tvorba kontejneru, který bude Spark Master uzel
+    image: our-own-apache-spark:3.4.0 #použijeme náš vlastní sestrojený obraz z minulých kroků
     ports:
-      - "9090:8080"
-      - "7077:7077"
+      - "9090:8080" #webové rozhraní Sparku
+      - "7077:7077" #port pro komunikaci Mastera s Workery
     volumes:
-       - ./apps:/opt/spark-apps
-       - ./data:/opt/spark-data
+       - ./apps:/opt/spark-apps #vytvoření sdíleného adresáře mezi lokálním PC a kontejnerem Masteru pro naše aplikace
+       - ./data:/opt/spark-data #vytvoření sdíleného adresáře mezi lokálním PC a kontejnerem Masteru pro data pro naše aplikace
     environment:
-      - SPARK_LOCAL_IP=spark-master
-      - SPARK_WORKLOAD=master
-  spark-worker-a:
+      - SPARK_LOCAL_IP=spark-master #IP adresa Spark služby je IP adresa Mastera
+      - SPARK_WORKLOAD=master #nastavení typu úlohy na Master (pro spouštěcí skript)
+  spark-worker-a: #Vytvoření prvního Workera, který počítá úlohy
     image: our-own-apache-spark:3.4.0
     ports:
-      - "9091:8080"
-      - "7000:7000"
+      - "9091:8080" #webové rozhraní Workera
+      - "7000:7000" #port pro komunikaci Workera
     depends_on:
       - spark-master
     environment:
-      - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_DRIVER_MEMORY=1G
-      - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_WORKLOAD=worker
-      - SPARK_LOCAL_IP=spark-worker-a
+      - SPARK_MASTER=spark://spark-master:7077 # adresa na Master uzel, ke kterému se Worker připojí do výpočetního klastru
+      - SPARK_WORKER_CORES=1 # Počet CPU jader, který bude Workerovi přidělen
+      - SPARK_WORKER_MEMORY=1G # Maximální paměť pro Worker pro výpočetní úlohy
+      - SPARK_DRIVER_MEMORY=1G # Maximální paměť pro klientské úlohy (tzv. driver)
+      - SPARK_EXECUTOR_MEMORY=1G # Maximální paměť pro spouštěče úloh
+      - SPARK_WORKLOAD=worker #určení typu uzlu jako výpočetního
+      - SPARK_LOCAL_IP=spark-worker-a #nastavení IP adresy workera
     volumes:
-       - ./apps:/opt/spark-apps
+       - ./apps:/opt/spark-apps #stejné jako u Mastera, sdílený disk pro aplikace a data
        - ./data:/opt/spark-data
-  spark-worker-b:
+  spark-worker-b: #totožné sestrojení druhého výpočetního uzlu
     image: our-own-apache-spark:3.4.0
     ports:
       - "9092:8080"
@@ -370,12 +374,12 @@ docker exec -i -t <hash pro spark-master> /bin/bash
 #v me instanci: docker exec -i -t 0766d76b9da7 /bin/bash
 ```
 
-Přejdeme do složky s ukázkovými příklady v jazyce Python
+Přejdeme do složky s ukázkovými příklady v jazyce Python, které si můžeme prohlédnout a pochopit zhruba, jak funguje Spark.
 ```bash
 cd /opt/spark/examples/src/main/python
 ```
 
-A v editoru Vi vytvoříme nějaký jednoduchý hello-world příklad pro vyzkoušení funkčnosti. Nejprve vytvořte prázdný soubor pomocí Vi.
+Po prohlednutí zkusíme vytvořit nějaký vlastní ukázkový příklad. V editoru Vi vytvoříme nějaký jednoduchý hello-world příklad pro vyzkoušení funkčnosti. Nejprve vytvořte prázdný soubor pomocí Vi.
 ```bash
 vi test.py
 ```
@@ -419,6 +423,79 @@ Výsledek si můžeme stáhnout z Spark Master kontejneru pomocí Docker Copy (p
 ```bash
 docker cp <hash master kontejenru>:/tmp/output.txt ./output.txt
 #v me instanci: docker cp 0766d76b9da7:/tmp/output.txt .output.txt
+```
+
+Vzhledem k tomu, že jsme si v Docker-compose definovali sdílené složky, tak můžeme pro výpočty s daty využít tuto složku. V lokálním počítači vytvoříme následující kód pro shlukování dat metodou Kmeans, který uložíme do sdílené složky apps. Pozor na to, že je potřeba používat starý Pandas. Generativní AI Vám bude generovat pravděpodobně kód nový. Budete muset iterovat.
+```apps/kmeans_clustering.py
+from pyspark.sql import SparkSession
+from pyspark.ml.clustering import KMeans
+from pyspark.ml.feature import VectorAssembler
+import matplotlib.pyplot as plt
+
+# Inicializace SparkSession
+spark = SparkSession.builder.appName("KMeansClustering").getOrCreate()
+
+# Načtení dat ze sdílené složky
+data_path = "/opt/spark-data/artificial_data.csv"
+df = spark.read.csv(data_path, header=True, inferSchema=True)
+
+# Převod sloupců na vektory pro clustering
+vec_assembler = VectorAssembler(inputCols=["x", "y"], outputCol="features")
+vec_df = vec_assembler.transform(df)
+
+# KMeans clustering
+kmeans = KMeans(k=3, seed=1)  # 3 clustery
+model = kmeans.fit(vec_df)
+transformed = model.transform(vec_df)
+
+# Převod výsledků do seznamu Python objektů
+data = transformed.select("x", "y", "prediction").collect()
+
+# Rozdělení dat do clusterů
+clusters = {0: [], 1: [], 2: []}  # Očekáváme 3 clustery
+for row in data:
+    clusters[row["prediction"]].append((row["x"], row["y"]))
+
+# Vykreslení výsledků pomocí matplotlib
+plt.figure(figsize=(8, 6))
+colors = ['blue', 'green', 'red']
+for cluster_id, points in clusters.items():
+    x_vals, y_vals = zip(*points)
+    plt.scatter(x_vals, y_vals, label=f"Cluster {cluster_id}", color=colors[cluster_id])
+plt.title("KMeans Clustering")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.legend()
+output_path = "/opt/spark-data/output.png"
+plt.savefig(output_path)
+print(f"Výsledek byl uložen do: {output_path}")
+
+# Ukončení SparkSession
+spark.stop()
+```
+
+Pro kód vytvoříme nějaká umělá data.
+```data/artificial_data.csv
+x,y
+1.0,1.0
+1.5,1.8
+5.0,8.0
+8.0,8.0
+1.0,0.6
+9.0,11.0
+8.0,2.0
+10.0,2.0
+9.0,3.0
+4.0,7.0
+2.0,2.0
+6.0,5.0
+```
+
+Přihlásíme se do Master nodu a úlohu spustíme. V lokální složce data bychom měli vidět výsledek - output.png.
+```bash
+docker exec -it <hash master kontejenru> bash
+cd /opt/spark/bin
+./spark-submit --master spark://spark-master:7077 /opt/spark-apps/kmeans_clustering.py
 ```
 
 **Řešení integrace do Hadoop**
