@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading;
 
-namespace Iterator
+namespace Memento
 {
 
     public class TextEditor //Originator
