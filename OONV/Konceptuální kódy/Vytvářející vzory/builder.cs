@@ -5,61 +5,61 @@ using System.Text;
 namespace Builder
 {    
 
-    interface IProgrammer
+    interface IProgrammer //IBuilder
     {
-        string CreateClass(string className);
-        string CreateMethod(string methodName, string returnType, string[] parameters);
-        string CreateProperty(string propertyName, string propertyType);
+        string CreateClass(string className); //IBuilder::BuildStepA()
+        string CreateMethod(string methodName, string returnType, string[] parameters); //IBuilder::BuildStepB()
+        string CreateProperty(string propertyName, string propertyType); //IBuilder::BuildStepC()
     }
 
-    class CSharpProgrammer: IProgrammer
+    class CSharpProgrammer: IProgrammer //ConcreteBuilder1
     {
-        public string CreateClass(string className)
+        public string CreateClass(string className) //ConcreteBuilder1::BuildStepA()
         {
             return $"class {className}{{}}\n";
         }
 
-        public string CreateMethod(string methodName, string returnType, string[] parameters)
+        public string CreateMethod(string methodName, string returnType, string[] parameters) //ConcreteBuilder1::BuildStepB()
         {
             string parametersString = string.Join(", ", parameters);
             return $"public {returnType} {methodName}({parametersString}){{}}\n";
         }
 
-        public string CreateProperty(string propertyName, string propertyType)
+        public string CreateProperty(string propertyName, string propertyType) //ConcreteBuilder1::BuildStepC()
         {
             return $"{propertyType} {propertyName} {{ get; set; }}\n";
         }
     }
 
-    class PythonProgrammer: IProgrammer
+    class PythonProgrammer: IProgrammer //ConcreteBuilder2
     {
-        public string CreateClass(string className)
+        public string CreateClass(string className) //ConcreteBuilder2::BuildStepA()
         {
             return $"class {className}:\n";
         }
 
-        public string CreateMethod(string methodName, string returnType, string[] parameters)
+        public string CreateMethod(string methodName, string returnType, string[] parameters) //ConcreteBuilder2::BuildStepB()
         {
             string parametersString = string.Join(", ", parameters);
             return $"def {methodName.ToLower()}(self, {parametersString}):\n\t...\n";
         }
 
-        public string CreateProperty(string propertyName, string propertyType)
+        public string CreateProperty(string propertyName, string propertyType) //ConcreteBuilder2::BuildStepC()
         {
             return $"@property\n{propertyName.ToLower()}(self):\n\treturn self.{propertyName.ToLower()}\n";
         }
     }
 
-    class ProjectManager
+    class ProjectManager //Director
     {
-        private IProgrammer _programmer;
+        private IProgrammer _programmer; //-IBuilder builder
 
-        public ProjectManager(IProgrammer programmer)
+        public ProjectManager(IProgrammer programmer) //Director(IBuilder builder)
         {
             _programmer = programmer;
         }
 
-        public string CreateApp(List<string> requirementsSpecification)
+        public string CreateApp(List<string> requirementsSpecification) //Director::make(type)
         {
             StringBuilder sourceCode = new StringBuilder();
             foreach (string requirement in requirementsSpecification)
