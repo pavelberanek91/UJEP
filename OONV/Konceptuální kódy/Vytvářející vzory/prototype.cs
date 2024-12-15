@@ -7,7 +7,7 @@ namespace Prototype
         T Clone();
     }
 
-    class Database: IPrototype<Database>
+    class Database: IPrototype<Database> //ConcretePrototype
     {
         public string Name { get; private set; }
         private Dictionary<string, List<string>> authorizationTable;
