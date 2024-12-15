@@ -3,7 +3,7 @@ using QRCoder;
 
 namespace FactoryMethod
 {        
-    abstract class DigitalTicket
+    abstract class DigitalTicket //Product
     {
         public string TicketID {get; private set;}
         public string OwnerName {get; private set;}
@@ -20,28 +20,30 @@ namespace FactoryMethod
             Destination = destination;
         }
 
-        public abstract string GenerateTicketDetails();
+        public abstract string GenerateTicketDetails(); //Product: DoStuff()
 
-        public virtual bool ValidateTicket()
+        public virtual bool ValidateTicket() //Product: DoStuff()
         {
             return ValidFrom <= DateTime.Now && DateTime.Now <= ValidTo;
         }
     }
 
-    class TrainTicket : DigitalTicket
+    class TrainTicket : DigitalTicket //ConcreteProductA
     {
         public TrainTicket(string ticketID, string ownerName, DateTime validFrom, DateTime validTo, string destination)
         : base(ticketID, ownerName, validFrom, validTo, destination){}
+        
         public override string GenerateTicketDetails()
         {
             return $"Train Ticket:\nID: {TicketID}\nOwner: {OwnerName}\nValid From: {ValidFrom}\nValid To: {ValidTo}\nDestination: {Destination}";
         }
     }
 
-    class BusTicket : DigitalTicket
+    class BusTicket : DigitalTicket  //ConcreteProductB
     {
         public BusTicket(string ticketID, string ownerName, DateTime validFrom, DateTime validTo, string destination)
         : base(ticketID, ownerName, validFrom, validTo, destination){}
+        
         public override string GenerateTicketDetails()
         {
             string qrData = $"ID: {TicketID}\nOwner: {OwnerName}\nFrom: {ValidFrom}\nTo: {ValidTo}\nDestination: {Destination}";
@@ -69,12 +71,12 @@ namespace FactoryMethod
         }
     }
 
-     class TicketFactory
+     class TicketFactory //Creator
     {
-        private static int currentBusTicketID = 0;
+        private static int currentBusTicketID = 0; //stejné jako Creator::SomeOperation() -> Business logika je vyčleněna z ConcreteProducts (zde počítání správného ID)
         private static int currentTrainTicketID = 0;
 
-        public static DigitalTicket CreateTicket(string type, string destination, string ownername)
+        public static DigitalTicket CreateTicket(string type, string destination, string ownername) //Creator::CreateProduct()
         {
             switch (type)
             {
