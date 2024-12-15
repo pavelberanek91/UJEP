@@ -2,9 +2,9 @@ using System;
 
 namespace Prototype
 {    
-    interface IPrototype<T>
+    interface IPrototype<T> //IPrototype
     {
-        T Clone();
+        T Clone(); //IPrototype::Clone()
     }
 
     class Database: IPrototype<Database> //ConcretePrototype
@@ -38,7 +38,7 @@ namespace Prototype
             }
         }
 
-        public Database Clone()
+        public Database Clone() //ConcretePrototype::Clonse()
         {
             Dictionary<string, List<string>> clonedAuthTable = new Dictionary<string, List<string>>();
             foreach (string key in authorizationTable.Keys)
